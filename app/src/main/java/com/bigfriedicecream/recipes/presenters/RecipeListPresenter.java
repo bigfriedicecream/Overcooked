@@ -3,8 +3,9 @@ package com.bigfriedicecream.recipes.presenters;
 import android.content.Context;
 
 import com.bigfriedicecream.recipes.interfaces.IRecipeListContract;
+import com.bigfriedicecream.recipes.models.RecipeDataModel;
 import com.bigfriedicecream.recipes.models.RecipeModel;
-import com.bigfriedicecream.recipes.models.RecipeResponseModel;
+import com.bigfriedicecream.recipes.models.RecipeResponseDataModel;
 
 import java.util.Map;
 
@@ -17,8 +18,8 @@ public class RecipeListPresenter implements IRecipeListContract.Presenter {
     }
 
     public void load(Context context) {
-        RecipeResponseModel recipeResponseModel = RecipeModel.getList(context);
-        Map<String, Object> map = recipeResponseModel.recipes;
+        RecipeResponseDataModel recipeResponseModel = RecipeModel.getList(context);
+        Map<String, RecipeDataModel> map = recipeResponseModel.recipes;
         view.render(map);
     }
 

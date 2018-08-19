@@ -8,11 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bigfriedicecream.recipes.R;
-import com.bigfriedicecream.recipes.models.RecipeResponseModel;
-import com.google.gson.GsonBuilder;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class MainFragment extends Fragment {
 

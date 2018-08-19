@@ -9,12 +9,9 @@ import android.view.ViewGroup;
 
 import com.bigfriedicecream.recipes.R;
 import com.bigfriedicecream.recipes.interfaces.IRecipeListContract;
-import com.bigfriedicecream.recipes.models.RecipeResponseModel;
+import com.bigfriedicecream.recipes.models.RecipeDataModel;
 import com.bigfriedicecream.recipes.presenters.RecipeListPresenter;
 
-import org.json.JSONObject;
-
-import java.util.HashMap;
 import java.util.Map;
 
 public class RecipeListFragment extends Fragment implements IRecipeListContract.View {
@@ -33,12 +30,13 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
         presenter.load(getContext());
     }
 
-    public void render(Map<String, Object> recipeList) {
-        for (Map.Entry<String, Object> entry : recipeList.entrySet()) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            System.out.println(key);
-            System.out.println(value);
+    public void render(Map<String, RecipeDataModel> recipeList) {
+        for (Map.Entry<String, RecipeDataModel> entry : recipeList.entrySet()) {
+
+            //String key = entry.getKey();
+            //String value = entry.getValue();
+
+            System.out.println(entry.getValue().title);
         }
     }
 }

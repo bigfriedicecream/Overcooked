@@ -9,7 +9,7 @@ import java.io.InputStream;
 
 public class RecipeModel {
 
-    public static RecipeResponseModel getList(Context context) {
+    public static RecipeResponseDataModel getList(Context context) {
         try {
             InputStream inputStream = context.getAssets().open("recipes.json");
             int size = inputStream.available();
@@ -19,11 +19,11 @@ public class RecipeModel {
             String json = new String(buffer, "UTF-8");
 
             // gson
-            return  new GsonBuilder().create().fromJson(json, RecipeResponseModel.class);
+            return  new GsonBuilder().create().fromJson(json, RecipeResponseDataModel.class);
 
         } catch (IOException e) {
             e.printStackTrace();
-            return new RecipeResponseModel();
+            return new RecipeResponseDataModel();
         }
     }
 }
