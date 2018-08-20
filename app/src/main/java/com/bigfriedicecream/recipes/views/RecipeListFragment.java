@@ -3,6 +3,7 @@ package com.bigfriedicecream.recipes.views;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import com.bigfriedicecream.recipes.R;
 import com.bigfriedicecream.recipes.interfaces.IRecipeListContract;
 import com.bigfriedicecream.recipes.models.RecipeDataModel;
 import com.bigfriedicecream.recipes.presenters.RecipeListPresenter;
+import com.google.gson.Gson;
 
 import java.util.Map;
 
@@ -32,11 +34,20 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
 
     public void render(Map<String, RecipeDataModel> recipeList) {
         for (Map.Entry<String, RecipeDataModel> entry : recipeList.entrySet()) {
-
             //String key = entry.getKey();
             //String value = entry.getValue();
+            // System.out.println(entry.getValue().title);
 
-            System.out.println(entry.getValue().title);
+            Bundle bundle = new Bundle();
+            bundle.putString("data", new Gson().toJson(entry.getValue()));
+
+            Fragment fragment = new RecipeListItemFragment();
+            fragment.setArguments(bundle);
+
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.layout_list, fragment)
+                    .commit();
         }
     }
 }
