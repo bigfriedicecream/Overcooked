@@ -21,8 +21,14 @@ public class RecipeListItemFragment extends Fragment {
         Bundle bundle = getArguments();
 
         if (bundle != null) {
-            RecipeDataModel model = new Gson().fromJson(bundle.getString("data"), RecipeDataModel.class);
+            final RecipeDataModel model = new Gson().fromJson(bundle.getString("data"), RecipeDataModel.class);
             ((TextView)view.findViewById(R.id.title)).setText(model.title);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    System.out.println("recipe: " + model.id);
+                }
+            });
         }
 
         return view;
