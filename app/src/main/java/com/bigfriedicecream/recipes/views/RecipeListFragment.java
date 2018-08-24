@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.bigfriedicecream.recipes.R;
 import com.bigfriedicecream.recipes.interfaces.IRecipeListContract;
@@ -33,6 +34,9 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
     }
 
     public void render(Map<String, RecipeDataModel> recipeList) {
+        LinearLayout layoutList = getView().findViewById(R.id.layout_list);
+        layoutList.removeAllViews();
+
         for (Map.Entry<String, RecipeDataModel> entry : recipeList.entrySet()) {
             //String key = entry.getKey();
             //String value = entry.getValue();
