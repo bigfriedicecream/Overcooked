@@ -6,22 +6,35 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.bigfriedicecream.recipes.R;
+import com.bigfriedicecream.recipes.interfaces.IMainContract;
+import com.bigfriedicecream.recipes.presenters.MainPresenter;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements IMainContract.View {
+
+    private IMainContract.Presenter presenter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        presenter = new MainPresenter(this);
+        return inflater.inflate(R.layout.fragment_main, container, false);
+    }
 
-        if (savedInstanceState == null) {
-            getFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.layout_main, new RecipeListFragment())
-                    .commit();
-        }
+    @Override
+    public void onStart() {
+        super.onStart();
+        render();
+    }
 
-        return view;
+    public void render() {
+        LinearLayout layoutList = getView().findViewById(R.id.layout_main);
+        layoutList.removeAllViews();
+
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.layout_main, new RecipeListFragment())
+                .commit();
     }
 }
