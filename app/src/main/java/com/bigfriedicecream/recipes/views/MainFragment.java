@@ -3,6 +3,7 @@ package com.bigfriedicecream.recipes.views;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,22 +36,21 @@ public class MainFragment extends Fragment implements IMainContract.View {
     }
 
     public void renderList() {
-        LinearLayout layoutList = getView().findViewById(R.id.layout_main);
-        layoutList.removeAllViews();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.popBackStack("root", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         getFragmentManager()
                 .beginTransaction()
-                .add(R.id.layout_main, new RecipeListFragment())
+                .replace(R.id.layout_main, new RecipeListFragment())
+                .addToBackStack("root")
                 .commit();
     }
 
     public void renderRecipe() {
-        LinearLayout layoutList = getView().findViewById(R.id.layout_main);
-        layoutList.removeAllViews();
-
         getFragmentManager()
                 .beginTransaction()
-                .add(R.id.layout_main, new RecipeFragment())
+                .replace(R.id.layout_main, new RecipeFragment())
+                .addToBackStack(null)
                 .commit();
     }
 }
