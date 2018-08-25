@@ -44,10 +44,6 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
         layoutList.removeAllViews();
 
         for (Map.Entry<String, RecipeDataModel> entry : recipeList.entrySet()) {
-            //String key = entry.getKey();
-            //String value = entry.getValue();
-            // System.out.println(entry.getValue().title);
-
             Bundle bundle = new Bundle();
             bundle.putString("data", new Gson().toJson(entry.getValue()));
 

@@ -32,9 +32,6 @@ public class RecipeListPresenter implements IRecipeListContract.Presenter, Obser
 
     @Override
     public void update(Observable observable, Object o) {
-        //RecipeResponseDataModel recipeResponseModel = RecipeRepository.getList(context);
-        //Map<String, RecipeDataModel> map = recipeResponseModel.recipes;
-        //view.render(map);
         if (observable instanceof RecipeRepository) {
             view.render(recipeRepository.getList());
         }
