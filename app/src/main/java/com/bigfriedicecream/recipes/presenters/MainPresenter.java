@@ -20,7 +20,7 @@ public class MainPresenter implements IMainContract.Presenter, Observer {
     public void start() {
         eventsRepository = EventsDispatcher.getInstance();
         eventsRepository.addObserver(this);
-        view.render();
+        view.renderList();
     }
 
     public void stop() {
@@ -31,7 +31,10 @@ public class MainPresenter implements IMainContract.Presenter, Observer {
     public void update(Observable observable, Object o) {
         HashMap<String, String> hashMap = (HashMap<String, String>)o;
         if (observable instanceof EventsDispatcher) {
-            System.out.println(hashMap.get("name") + hashMap.get("id"));
+            // System.out.println(hashMap.get("name") + hashMap.get("id"));
+            if (hashMap.get("name").equals("NAVIGATION_RECIPE")) {
+                view.renderRecipe();
+            }
         }
     }
 }

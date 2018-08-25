@@ -34,13 +34,23 @@ public class MainFragment extends Fragment implements IMainContract.View {
         presenter.stop();
     }
 
-    public void render() {
+    public void renderList() {
         LinearLayout layoutList = getView().findViewById(R.id.layout_main);
         layoutList.removeAllViews();
 
         getFragmentManager()
                 .beginTransaction()
                 .add(R.id.layout_main, new RecipeListFragment())
+                .commit();
+    }
+
+    public void renderRecipe() {
+        LinearLayout layoutList = getView().findViewById(R.id.layout_main);
+        layoutList.removeAllViews();
+
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.layout_main, new RecipeFragment())
                 .commit();
     }
 }
