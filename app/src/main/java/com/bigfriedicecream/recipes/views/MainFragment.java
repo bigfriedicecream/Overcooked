@@ -25,7 +25,13 @@ public class MainFragment extends Fragment implements IMainContract.View {
     @Override
     public void onStart() {
         super.onStart();
-        render();
+        presenter.start();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.stop();
     }
 
     public void render() {
