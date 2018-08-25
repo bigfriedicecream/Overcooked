@@ -13,6 +13,7 @@ public interface IRecipeListContract {
     }
 
     interface Presenter {
-        void load(Context context);
+        void start(Context c);
+        void stop();
     }
 }

@@ -17,10 +17,10 @@ public class EventsDispatcher extends Observable {
     }
 
     public void dispatch(String name, String id) {
-        setChanged();
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("name", name);
         hashMap.put("id", id);
+        setChanged();
         notifyObservers(hashMap);
     }
 }

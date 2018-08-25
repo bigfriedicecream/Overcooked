@@ -30,7 +30,13 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
     @Override
     public void onStart() {
         super.onStart();
-        presenter.load(getContext());
+        presenter.start(getContext());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.stop();
     }
 
     public void render(Map<String, RecipeDataModel> recipeList) {
