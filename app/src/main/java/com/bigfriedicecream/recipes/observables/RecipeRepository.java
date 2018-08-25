@@ -26,21 +26,26 @@ public class RecipeRepository extends Observable {
     }
 
     public void loadList(Context c) {
-        try {
-            InputStream inputStream = c.getAssets().open("recipes.json");
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            String json = new String(buffer, "UTF-8");
+        if (model == null) {
+            try {
+                InputStream inputStream = c.getAssets().open("recipes.json");
+                int size = inputStream.available();
+                byte[] buffer = new byte[size];
+                inputStream.read(buffer);
+                inputStream.close();
+                String json = new String(buffer, "UTF-8");
 
-            // gson
-            model = new GsonBuilder().create().fromJson(json, RecipeResponseDataModel.class);
+                model = new GsonBuilder().create().fromJson(json, RecipeResponseDataModel.class);
+                setChanged();
+                notifyObservers();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } else {
             setChanged();
             notifyObservers();
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
