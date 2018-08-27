@@ -16,10 +16,16 @@ import com.bigfriedicecream.recipes.presenters.MainPresenter;
 public class MainFragment extends Fragment implements IMainContract.View {
 
     private IMainContract.Presenter presenter;
+    private boolean isLoaded;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle state) {
         presenter = new MainPresenter(this);
+
+        if (state != null) {
+            isLoaded = state.getBoolean("isLoaded");
+        }
+
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
@@ -27,12 +33,21 @@ public class MainFragment extends Fragment implements IMainContract.View {
     public void onStart() {
         super.onStart();
         presenter.start();
+        if (!isLoaded) {
+            presenter.load();
+        }
     }
 
     @Override
     public void onStop() {
         super.onStop();
         presenter.stop();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle state) {
+        super.onSaveInstanceState(state);
+        state.putBoolean("isLoaded", isLoaded);
     }
 
     public void renderList() {
@@ -44,6 +59,8 @@ public class MainFragment extends Fragment implements IMainContract.View {
                 .replace(R.id.layout_main, new RecipeListFragment())
                 .addToBackStack("root")
                 .commit();
+
+        isLoaded = true;
     }
 
     public void renderRecipe() {
@@ -52,5 +69,7 @@ public class MainFragment extends Fragment implements IMainContract.View {
                 .replace(R.id.layout_main, new RecipeFragment())
                 .addToBackStack(null)
                 .commit();
+
+        isLoaded = true;
     }
 }

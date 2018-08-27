@@ -21,11 +21,14 @@ public class MainPresenter implements IMainContract.Presenter, Observer {
 
     public void start() {
         eventsDispatcher.addObserver(this);
-        view.renderList();
     }
 
     public void stop() {
         eventsDispatcher.deleteObserver(this);
+    }
+
+    public void load() {
+        view.renderList();
     }
 
     @Override

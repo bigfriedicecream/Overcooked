@@ -10,5 +10,6 @@ public interface IMainContract {
     interface Presenter {
         void start();
         void stop();
+        void load();
     }
 }
