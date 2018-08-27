@@ -52,4 +52,8 @@ public class RecipeRepository extends Observable {
     public Map<String, RecipeDataModel> getList() {
         return model.recipes;
     }
+
+    public RecipeDataModel get(String id) {
+        return model.recipes.get(id);
+    }
 }
