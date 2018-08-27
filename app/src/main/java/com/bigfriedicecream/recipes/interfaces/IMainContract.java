@@ -4,7 +4,7 @@ public interface IMainContract {
 
     interface View {
         void renderList();
-        void renderRecipe();
+        void renderRecipe(String id);
     }
 
     interface Presenter {

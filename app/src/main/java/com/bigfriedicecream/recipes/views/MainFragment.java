@@ -63,10 +63,17 @@ public class MainFragment extends Fragment implements IMainContract.View {
         isLoaded = true;
     }
 
-    public void renderRecipe() {
+    public void renderRecipe(String id) {
+        Fragment recipeFragment = new RecipeFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+
+        recipeFragment.setArguments(bundle);
+
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.layout_main, new RecipeFragment())
+                .replace(R.id.layout_main, recipeFragment)
                 .addToBackStack(null)
                 .commit();
 

@@ -9,5 +9,6 @@ public interface IRecipeContract {
     interface Presenter {
         void start();
         void stop();
+        void load(String id);
     }
 }

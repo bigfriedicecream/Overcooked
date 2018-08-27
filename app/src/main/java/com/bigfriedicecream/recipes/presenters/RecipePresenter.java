@@ -11,10 +11,14 @@ public class RecipePresenter implements IRecipeContract.Presenter {
     }
 
     public void start() {
-        view.render();
+
     }
 
     public void stop() {
 
+    }
+
+    public void load(String id) {
+        view.render();
     }
 }

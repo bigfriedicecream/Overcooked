@@ -14,10 +14,19 @@ import com.bigfriedicecream.recipes.presenters.RecipePresenter;
 public class RecipeFragment extends Fragment implements IRecipeContract.View {
 
     IRecipeContract.Presenter presenter;
+    private String id;
+    private boolean isLoaded;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle state) {
         presenter = new RecipePresenter(this);
+
+        id = getArguments().getString("id");
+
+        if (state != null) {
+            isLoaded = state.getBoolean("isLoaded");
+        }
+
         return inflater.inflate(R.layout.fragment_recipe, container, false);
     }
 
@@ -25,6 +34,9 @@ public class RecipeFragment extends Fragment implements IRecipeContract.View {
     public void onStart() {
         super.onStart();
         presenter.start();
+        if (!isLoaded) {
+            presenter.load(id);
+        }
     }
 
     @Override
@@ -33,7 +45,13 @@ public class RecipeFragment extends Fragment implements IRecipeContract.View {
         presenter.stop();
     }
 
-    public void render() {
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle state) {
+        super.onSaveInstanceState(state);
+        state.putBoolean("isLoaded", isLoaded);
+    }
 
+    public void render() {
+        isLoaded = true;
     }
 }
