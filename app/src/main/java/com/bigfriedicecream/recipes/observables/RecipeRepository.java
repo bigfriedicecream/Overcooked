@@ -5,6 +5,8 @@ import android.content.Context;
 import com.bigfriedicecream.recipes.models.RecipeDataModel;
 import com.bigfriedicecream.recipes.models.RecipeResponseDataModel;
 import com.google.gson.GsonBuilder;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,8 +27,8 @@ public class RecipeRepository extends Observable {
         return instance;
     }
 
-    public void loadList(Context c) {
-        if (model == null) {
+    public void loadList(Context c, final FutureCallback callback) {
+        /*if (model == null) {
             try {
                 InputStream inputStream = c.getAssets().open("recipes.json");
                 int size = inputStream.available();
@@ -46,7 +48,19 @@ public class RecipeRepository extends Observable {
         } else {
             setChanged();
             notifyObservers();
-        }
+        }*/
+
+        Ion
+            .with(c)
+            .load("https://raw.githubusercontent.com/bigfriedicecream/recipes/develop/app/src/main/assets/recipes.json")
+            .asString()
+            .setCallback(new FutureCallback<String>() {
+                @Override
+                public void onCompleted(Exception e, String result) {
+                    model = new GsonBuilder().create().fromJson(result, RecipeResponseDataModel.class);
+                    callback.onCompleted(e, model.recipes);
+                }
+            });
     }
 
     public Map<String, RecipeDataModel> getList() {
