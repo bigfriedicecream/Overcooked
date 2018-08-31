@@ -12,18 +12,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#171c21"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/serves_makes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="13sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
+        <TextView
+            android:id="@+id/prep_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="13sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
+        <TextView
+            android:id="@+id/cook_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="13sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="24dp"
+        android:paddingTop="16dp"
         android:paddingBottom="24dp"
-        android:paddingStart="6dp"
-        android:paddingEnd="6dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#3e3e3e"
         android:textSize="18sp"
-        android:lineSpacingExtra="2sp"
-        android:text="" />
+        android:lineSpacingExtra="2sp" />
 </LinearLayout>
