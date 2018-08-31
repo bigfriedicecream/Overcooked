@@ -6,12 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bigfriedicecream.recipes.R;
 import com.bigfriedicecream.recipes.models.RecipeDataModel;
 import com.bigfriedicecream.recipes.observables.EventsDispatcher;
 import com.google.gson.Gson;
+import com.koushikdutta.ion.Ion;
 
 public class RecipeListItemFragment extends Fragment {
 
@@ -23,7 +25,16 @@ public class RecipeListItemFragment extends Fragment {
 
         if (bundle != null) {
             final RecipeDataModel model = new Gson().fromJson(bundle.getString("data"), RecipeDataModel.class);
-            ((TextView)view.findViewById(R.id.title)).setText(model.title);
+            ImageView hero = view.findViewById(R.id.hero);
+            TextView title = view.findViewById(R.id.title);
+
+            Ion.with(hero)
+                    //.placeholder(R.drawable.placeholder_image)
+                    //.error(R.drawable.error_image)
+                    //.animateLoad(spinAnimation)
+                    //.animateIn(fadeInAnimation)
+                    .load("https://c7823c74fcf5919154bf-dc9422fbfab3e488dbd72b998b6187ac.ssl.cf4.rackcdn.com/content/3000/2763/loup-emilyskyefit-sweetpotatonachos-veglentilchilli-l.jpg");
+            title.setText(model.title);
 
             final EventsDispatcher eventsDispatcher = EventsDispatcher.getInstance();
 
