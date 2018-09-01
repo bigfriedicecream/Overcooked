@@ -6,12 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bigfriedicecream.recipes.R;
 import com.bigfriedicecream.recipes.interfaces.IRecipeContract;
 import com.bigfriedicecream.recipes.models.RecipeDataModel;
 import com.bigfriedicecream.recipes.presenters.RecipePresenter;
+import com.koushikdutta.ion.Ion;
 
 public class RecipeFragment extends Fragment implements IRecipeContract.View {
 
@@ -58,7 +60,12 @@ public class RecipeFragment extends Fragment implements IRecipeContract.View {
         String serves = "Serves: " + String.valueOf(recipe.serves);
         String makes = "Makes: " + String.valueOf(recipe.makes);
         String prepTime = "Prep: " + String.valueOf(recipe.prepTime) + " Min";
-        String cookTime = "Cook: " + String.valueOf(recipe.cookTime) + " Min";
+        String cookTime = String.valueOf(recipe.cookTime) + " Min";
+
+        ImageView hero = getView().findViewById(R.id.hero);
+
+        Ion.with(hero)
+                .load("https://c7823c74fcf5919154bf-dc9422fbfab3e488dbd72b998b6187ac.ssl.cf4.rackcdn.com/content/3000/2763/loup-emilyskyefit-sweetpotatonachos-veglentilchilli-l.jpg");
 
         ((TextView)getView().findViewById(R.id.title)).setText(recipe.title);
         ((TextView)getView().findViewById(R.id.serves)).setText(serves);
