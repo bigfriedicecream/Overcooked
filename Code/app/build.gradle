@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 27
@@ -24,4 +27,5 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.koushikdutta.ion:ion:2.+'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
