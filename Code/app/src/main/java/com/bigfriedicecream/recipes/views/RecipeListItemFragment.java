@@ -36,11 +36,7 @@ public class RecipeListItemFragment extends Fragment {
             String cookTimeString = "Cook " + String.valueOf(model.cookTime) + " min";
 
             Ion.with(hero)
-                    //.placeholder(R.drawable.placeholder_image)
-                    //.error(R.drawable.error_image)
-                    //.animateLoad(spinAnimation)
-                    //.animateIn(fadeInAnimation)
-                    .load("https://c7823c74fcf5919154bf-dc9422fbfab3e488dbd72b998b6187ac.ssl.cf4.rackcdn.com/content/3000/2763/loup-emilyskyefit-sweetpotatonachos-veglentilchilli-l.jpg");
+                    .load("https://raw.githubusercontent.com/bigfriedicecream/Recipes/develop/Assets/images/" + model.id + "/hero.jpg");
             title.setText(model.title);
             servesMakes.setText(servesMakesString);
             prepTime.setText(prepTimeString);

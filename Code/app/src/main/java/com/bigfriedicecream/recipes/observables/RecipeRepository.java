@@ -52,7 +52,7 @@ public class RecipeRepository extends Observable {
 
         Ion
             .with(c)
-            .load("https://raw.githubusercontent.com/bigfriedicecream/recipes/develop/app/src/main/assets/recipes.json")
+            .load("https://raw.githubusercontent.com/bigfriedicecream/Recipes/develop/Assets/recipes.json")
             .asString()
             .setCallback(new FutureCallback<String>() {
                 @Override
