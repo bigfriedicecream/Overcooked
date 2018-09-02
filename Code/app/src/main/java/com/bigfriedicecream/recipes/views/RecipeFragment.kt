@@ -54,16 +54,18 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         val makes = "Makes: ${recipe.makes}"
         val prepTime = "Prep: ${recipe.prepTime} Min"
         val cookTime = "Cook ${recipe.cookTime} Min"
+        val totalTime = "${recipe.prepTime + recipe.cookTime} Min"
 
         val hero:ImageView = view!!.findViewById(R.id.hero)
 
-        Ion.with(hero).load("https://c7823c74fcf5919154bf-dc9422fbfab3e488dbd72b998b6187ac.ssl.cf4.rackcdn.com/content/3000/2763/loup-emilyskyefit-sweetpotatonachos-veglentilchilli-l.jpg")
+        Ion.with(hero).load("https://raw.githubusercontent.com/bigfriedicecream/Recipes/develop/Assets/images/${recipe.id}/hero.jpg")
 
         view!!.title.text = recipe.title
         view!!.serves.text = serves
         view!!.makes.text = makes
         view!!.prep_time.text = prepTime
         view!!.cook_time.text = cookTime
+        view!!.total_time.text = totalTime
 
         isLoaded = true
     }
