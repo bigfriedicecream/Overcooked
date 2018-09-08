@@ -91,5 +91,12 @@
             android:background="#f2f2f2"
             android:padding="16dp"
             android:text="Method" />
+
+        <LinearLayout
+            android:id="@+id/method_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp" />
     </LinearLayout>
 </ScrollView>

@@ -69,10 +69,18 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         view!!.total_time.text = totalTime
 
         // render ingredients
-        for (ing:String in recipe.ingredients) {
-            val ingView = TextView(context)
-            ingView.text = ing
-            view!!.ingredients_container.addView(ingView)
+        recipe.ingredients.forEach { ing ->
+            val textView = TextView(context)
+            textView.text = ing
+            view!!.ingredients_container.addView(textView)
+        }
+
+        // render method
+        recipe.method.forEachIndexed { i, method ->
+            val textView = TextView(context)
+            val methodText = "${i + 1}.  $method"
+            textView.text = methodText
+            view!!.method_container.addView(textView)
         }
 
         isLoaded = true

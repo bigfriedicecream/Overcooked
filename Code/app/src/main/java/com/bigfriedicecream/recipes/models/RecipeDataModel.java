@@ -10,4 +10,5 @@ public class RecipeDataModel {
     public int prepTime;
     public int cookTime;
     public List<String> ingredients;
+    public List<String> method;
 }
