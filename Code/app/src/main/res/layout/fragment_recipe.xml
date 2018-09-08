@@ -1,81 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/total_time"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/mission_gothic_regular"
-        android:textColor="#626262"
-        android:textSize="18sp"
-        android:textAllCaps="true"
-        android:textAlignment="center"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/mission_gothic_regular"
-        android:textColor="#3e3e3e"
-        android:textSize="24sp"
-        android:textAllCaps="true"
-        android:textAlignment="center"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:layout_marginBottom="16dp"/>
+        <TextView
+            android:id="@+id/total_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mission_gothic_regular"
+            android:textColor="#626262"
+            android:textSize="18sp"
+            android:textAllCaps="true"
+            android:textAlignment="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
 
-    <ImageView
-        android:id="@+id/hero"
-        android:adjustViewBounds="true"
-        android:contentDescription="Recipe Image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mission_gothic_regular"
+            android:textColor="#3e3e3e"
+            android:textSize="24sp"
+            android:textAllCaps="true"
+            android:textAlignment="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="16dp"/>
 
-    <TextView
-        android:id="@+id/serves"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/hero"
+            android:adjustViewBounds="true"
+            android:contentDescription="Recipe Image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/makes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/serves"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/prep_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/makes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/cook_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/prep_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/mission_gothic_regular"
-        android:textAllCaps="true"
-        android:textColor="#3e3e3e"
-        android:textSize="14sp"
-        android:background="#f2f2f2"
-        android:padding="16dp"
-        android:text="Ingredients" />
+        <TextView
+            android:id="@+id/cook_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/mission_gothic_regular"
-        android:textAllCaps="true"
-        android:textColor="#3e3e3e"
-        android:textSize="14sp"
-        android:background="#f2f2f2"
-        android:padding="16dp"
-        android:text="Method" />
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mission_gothic_regular"
+            android:textAllCaps="true"
+            android:textColor="#3e3e3e"
+            android:textSize="14sp"
+            android:background="#f2f2f2"
+            android:padding="16dp"
+            android:text="Ingredients" />
+
+        <LinearLayout
+            android:id="@+id/ingredients_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mission_gothic_regular"
+            android:textAllCaps="true"
+            android:textColor="#3e3e3e"
+            android:textSize="14sp"
+            android:background="#f2f2f2"
+            android:padding="16dp"
+            android:text="Method" />
+    </LinearLayout>
+</ScrollView>

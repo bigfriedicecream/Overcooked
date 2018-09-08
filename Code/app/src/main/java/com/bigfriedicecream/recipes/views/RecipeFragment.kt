@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 
 import com.bigfriedicecream.recipes.R
 import com.bigfriedicecream.recipes.interfaces.IRecipeContract
@@ -66,6 +67,13 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         view!!.prep_time.text = prepTime
         view!!.cook_time.text = cookTime
         view!!.total_time.text = totalTime
+
+        // render ingredients
+        for (ing:String in recipe.ingredients) {
+            val ingView = TextView(context)
+            ingView.text = ing
+            view!!.ingredients_container.addView(ingView)
+        }
 
         isLoaded = true
     }
