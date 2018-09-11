@@ -1,6 +1,8 @@
 package com.bigfriedicecream.recipes.observables;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.bigfriedicecream.recipes.models.RecipeDataModel;
 import com.bigfriedicecream.recipes.models.RecipeResponseDataModel;
@@ -28,39 +30,32 @@ public class RecipeRepository extends Observable {
     }
 
     public void loadList(Context c, final FutureCallback callback) {
-        /*if (model == null) {
-            try {
-                InputStream inputStream = c.getAssets().open("recipes.json");
-                int size = inputStream.available();
-                byte[] buffer = new byte[size];
-                inputStream.read(buffer);
-                inputStream.close();
-                String json = new String(buffer, "UTF-8");
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(c);
+        final String recipeResponse = preferences.getString("recipe_response", "");
 
-                model = new GsonBuilder().create().fromJson(json, RecipeResponseDataModel.class);
-                setChanged();
-                notifyObservers();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (!recipeResponse.equalsIgnoreCase("")) {
+            model = new GsonBuilder().create().fromJson(recipeResponse, RecipeResponseDataModel.class);
+            callback.onCompleted(new Exception(), model.recipes);
 
         } else {
-            setChanged();
-            notifyObservers();
-        }*/
+            Ion
+                    .with(c)
+                    .load("https://raw.githubusercontent.com/bigfriedicecream/Recipes/develop/Assets/recipes.json")
+                    .asString()
+                    .setCallback(new FutureCallback<String>() {
+                        @Override
+                        public void onCompleted(Exception e, String result) {
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("recipe_response", result);
+                            editor.apply();
+                            model = new GsonBuilder().create().fromJson(result, RecipeResponseDataModel.class);
+                            callback.onCompleted(e, model.recipes);
+                        }
+                    });
+        }
 
-        Ion
-            .with(c)
-            .load("https://raw.githubusercontent.com/bigfriedicecream/Recipes/develop/Assets/recipes.json")
-            .asString()
-            .setCallback(new FutureCallback<String>() {
-                @Override
-                public void onCompleted(Exception e, String result) {
-                    model = new GsonBuilder().create().fromJson(result, RecipeResponseDataModel.class);
-                    callback.onCompleted(e, model.recipes);
-                }
-            });
+        // setChanged();
+        // notifyObservers();
     }
 
     public Map<String, RecipeDataModel> getList() {
