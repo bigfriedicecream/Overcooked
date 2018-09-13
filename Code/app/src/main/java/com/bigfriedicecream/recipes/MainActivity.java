@@ -15,8 +15,18 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.layout_app, new MainFragment())
+                    .replace(R.id.layout_app, new MainFragment())
                     .commit();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            this.finishAffinity();
+            return;
+        }
+
+        super.onBackPressed();
     }
 }
