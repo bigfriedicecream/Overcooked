@@ -52,19 +52,17 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
     override fun render(recipe: RecipeDataModel) {
 
-        val serves = "Serves: ${recipe.serves}"
-        val makes = "Makes: ${recipe.makes}"
-        val prepTime = "Prep: ${recipe.prepTime} Min"
-        val cookTime = "Cook ${recipe.cookTime} Min"
-        val totalTime = "${recipe.prepTime + recipe.cookTime} Min"
+        val servesMakes:String = if (recipe.serves > 0) "Serves: ${recipe.serves}" else "Makes ${recipe.makes}"
+        val prepTime = "Prep ${recipe.prepTime} min"
+        val cookTime = "Cook ${recipe.cookTime} min"
+        val totalTime = "${recipe.prepTime + recipe.cookTime} min"
 
         val hero:ImageView = view!!.findViewById(R.id.hero)
 
         Ion.with(hero).load("https://raw.githubusercontent.com/bigfriedicecream/Recipes/develop/Assets/images/${recipe.id}/hero.jpg")
 
         view!!.title.text = recipe.title
-        view!!.serves.text = serves
-        view!!.makes.text = makes
+        view!!.serves_makes.text = servesMakes
         view!!.prep_time.text = prepTime
         view!!.cook_time.text = cookTime
         view!!.total_time.text = totalTime
