@@ -12,6 +12,7 @@ import com.bigfriedicecream.recipes.R
 import com.bigfriedicecream.recipes.interfaces.IRecipeContract
 import com.bigfriedicecream.recipes.models.RecipeDataModel
 import com.bigfriedicecream.recipes.presenters.RecipePresenter
+import com.google.gson.Gson
 import com.koushikdutta.ion.Ion
 import kotlinx.android.synthetic.main.fragment_recipe.view.*
 
@@ -76,11 +77,19 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         }
 
         // render method
+        view!!.method_container.removeAllViews()
         recipe.method.forEachIndexed { i, method ->
-            val textView = TextView(context)
-            val methodText = "${i + 1}.  $method"
-            textView.text = methodText
-            view!!.method_container.addView(textView)
+            val bundle = Bundle()
+            bundle.putInt("counter", i + 1)
+            bundle.putString("step", method)
+
+            val methodItem:Fragment = RecipeMethodItemFragment()
+            methodItem.arguments = bundle
+
+            fragmentManager!!
+                    .beginTransaction()
+                    .add(R.id.method_container, methodItem)
+                    .commit()
         }
 
         isLoaded = true
