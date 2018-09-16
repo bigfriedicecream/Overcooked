@@ -86,6 +86,35 @@
 				"Place rind in a saucepan of boiling water and cook for 5 minutes or until soft. Drain. Return to pan with orange juice and sugar. Place over low heat and cook, stirring, for 2-3 minutes or until the sugar dissolves and the syrup thickens.",
 				"Turn cake onto a serving plate. Use a skewer to gently prick the top. Spoon over syrup. Cut into wedges to serve."
 			]
+		},
+		"3": {
+			"id": "3",
+			"title": "Spicy Spanish Meatballs",
+			"serves": 0,
+			"makes": 25,
+			"prepTime": 10,
+			"cookTime": 30,
+			"ingredients": [
+				"500g ground pork and beef",
+				"1/2 cup breadcrumbs",
+				"1 egg",
+				"1 tbsp smoked paprika",
+				"1/4 cup chopped parsley",
+				"2 garlic cloves, diced",
+				"1 tsp salt and pepper",
+				"1 tbsp olive oil",
+				"400g tin tomatoes",
+				"1/2 cup red wine",
+				"1 1/2 tbsp smoked paprika"
+			],
+			"method": [
+				"Combine the pork, beef, breadcrumbs, egg, paprika, parsley, garlic and salt and pepper in a bowl. Mix to combine the ingredients. Place in the fridge and marinate up to overnight.",
+				"When you're ready to cook the meatballs, roll the meat mixture into 1 inch balls.",
+				"Head a dutch oven or other heavy pan with 1 tbsp olive oil over medium high heat. Brown the meatballs on all sides and place on a plate.",
+				"Deglaze the pan with the red wine and let it simmer for 2 minutes before adding in the tomatoes and smoked paprika. Simmer for 5 minutes then add the meatballs back in.",
+				"Cook the meatballs for 20 minutes, covered.",
+				"Serve with crusty bread and a glass of red wine."
+			]
 		}
 	}
 }
