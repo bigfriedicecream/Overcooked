@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.bigfriedicecream.recipes.BuildConfig;
 import com.bigfriedicecream.recipes.models.RecipeDataModel;
 import com.bigfriedicecream.recipes.models.RecipeResponseDataModel;
 import com.google.gson.GsonBuilder;
@@ -39,7 +40,7 @@ public class RecipeRepository extends Observable {
             notifyObservers();
             Ion
                     .with(c)
-                    .load("https://raw.githubusercontent.com/bigfriedicecream/Recipes/develop/Assets/recipes.json")
+                    .load(BuildConfig.BASE_URL + "/Assets/recipes.json")
                     .asString()
                     .setCallback(new FutureCallback<String>() {
                         @Override
@@ -53,7 +54,7 @@ public class RecipeRepository extends Observable {
         } else {
             Ion
                     .with(c)
-                    .load("https://raw.githubusercontent.com/bigfriedicecream/Recipes/develop/Assets/recipes.json")
+                    .load(BuildConfig.BASE_URL + "/Assets/recipes.json")
                     .asString()
                     .setCallback(new FutureCallback<String>() {
                         @Override

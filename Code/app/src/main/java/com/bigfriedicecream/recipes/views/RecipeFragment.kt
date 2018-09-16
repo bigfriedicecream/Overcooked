@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.bigfriedicecream.recipes.BuildConfig
 
 import com.bigfriedicecream.recipes.R
 import com.bigfriedicecream.recipes.interfaces.IRecipeContract
@@ -59,7 +60,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
         val hero:ImageView = view!!.findViewById(R.id.hero)
 
-        Ion.with(hero).load("https://raw.githubusercontent.com/bigfriedicecream/Recipes/develop/Assets/images/${recipe.id}/hero.jpg")
+        Ion.with(hero).load("${BuildConfig.BASE_URL}/Assets/images/${recipe.id}/hero.jpg")
 
         view!!.title.text = recipe.title
         view!!.serves_makes.text = servesMakes
