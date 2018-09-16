@@ -57,20 +57,6 @@
 				"Place two tortillas on a board and scatter over half the mozzarella, top with spinach, tomato, olives, feta and oregano. Top with remaining mozzarella and tortillas. Transfer to sandwich press or frypan, and toast until golden on both sides.",
 				"Cut the quesadillas in quarters and serve with tzatziki."
 			]
-		},
-		"2": {
-			"id": "2",
-			"title": "Test",
-			"serves": 2,
-			"makes": 0,
-			"prepTime": 5,
-			"cookTime": 5,
-			"ingredients": [
-				"test",
-			],
-			"method": [
-				"Test"
-			]
 		}
 	}
 }
