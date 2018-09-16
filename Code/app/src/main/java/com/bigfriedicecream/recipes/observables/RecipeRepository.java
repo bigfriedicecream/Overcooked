@@ -29,13 +29,26 @@ public class RecipeRepository extends Observable {
         return instance;
     }
 
-    public void loadList(Context c, final FutureCallback callback) {
+    public void load(Context c) {
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(c);
         final String recipeResponse = preferences.getString("recipe_response", "");
 
         if (!recipeResponse.equalsIgnoreCase("")) {
             model = new GsonBuilder().create().fromJson(recipeResponse, RecipeResponseDataModel.class);
-            callback.onCompleted(new Exception(), model.recipes);
+            setChanged();
+            notifyObservers();
+            Ion
+                    .with(c)
+                    .load("https://raw.githubusercontent.com/bigfriedicecream/Recipes/develop/Assets/recipes.json")
+                    .asString()
+                    .setCallback(new FutureCallback<String>() {
+                        @Override
+                        public void onCompleted(Exception e, String result) {
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("recipe_response", result);
+                            editor.apply();
+                        }
+                    });
 
         } else {
             Ion
@@ -49,20 +62,18 @@ public class RecipeRepository extends Observable {
                             editor.putString("recipe_response", result);
                             editor.apply();
                             model = new GsonBuilder().create().fromJson(result, RecipeResponseDataModel.class);
-                            callback.onCompleted(e, model.recipes);
+                            setChanged();
+                            notifyObservers();
                         }
                     });
         }
-
-        // setChanged();
-        // notifyObservers();
     }
 
     public Map<String, RecipeDataModel> getList() {
-        return model.recipes;
+        return model == null ? null : model.recipes;
     }
 
     public RecipeDataModel get(String id) {
-        return model.recipes.get(id);
+        return model == null ? null : model.recipes.get(id);
     }
 }

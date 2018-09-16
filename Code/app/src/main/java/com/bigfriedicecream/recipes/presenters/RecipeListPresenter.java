@@ -26,12 +26,10 @@ public class RecipeListPresenter implements IRecipeListContract.Presenter, Obser
 
     public void start(Context c) {
         recipeRepository.addObserver(this);
-        recipeRepository.loadList(c, new FutureCallback<HashMap<String, RecipeDataModel>>() {
-            @Override
-            public void onCompleted(Exception e, HashMap<String, RecipeDataModel> result) {
-                view.render(result);
-            }
-        });
+        Map<String, RecipeDataModel> list = recipeRepository.getList();
+        if (list != null) {
+            view.render(list);
+        }
     }
 
     public void stop() {

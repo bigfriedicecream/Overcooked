@@ -27,7 +27,9 @@ public class RecipePresenter implements IRecipeContract.Presenter, Observer {
 
     public void load(String id) {
         RecipeDataModel recipe = recipeRepository.get(id);
-        view.render(recipe);
+        if (recipe != null) {
+            view.render(recipe);
+        }
     }
 
     @Override

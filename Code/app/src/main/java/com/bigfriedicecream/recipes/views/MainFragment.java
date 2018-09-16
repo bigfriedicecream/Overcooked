@@ -32,7 +32,7 @@ public class MainFragment extends Fragment implements IMainContract.View {
     @Override
     public void onStart() {
         super.onStart();
-        presenter.start();
+        presenter.start(getContext());
         if (!isLoaded) {
             presenter.load();
         }
@@ -41,7 +41,7 @@ public class MainFragment extends Fragment implements IMainContract.View {
     @Override
     public void onStop() {
         super.onStop();
-        presenter.stop();
+        presenter.stop(getContext());
     }
 
     @Override

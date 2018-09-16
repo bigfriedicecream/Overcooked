@@ -1,5 +1,7 @@
 package com.bigfriedicecream.recipes.interfaces;
 
+import android.content.Context;
+
 public interface IMainContract {
 
     interface View {
@@ -8,8 +10,8 @@ public interface IMainContract {
     }
 
     interface Presenter {
-        void start();
-        void stop();
+        void start(Context c);
+        void stop(Context c);
         void load();
     }
 }
