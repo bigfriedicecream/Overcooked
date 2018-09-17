@@ -2,6 +2,7 @@ package com.bigfriedicecream.recipes.views
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,6 @@ import com.bigfriedicecream.recipes.R
 import com.bigfriedicecream.recipes.interfaces.IRecipeContract
 import com.bigfriedicecream.recipes.models.RecipeDataModel
 import com.bigfriedicecream.recipes.presenters.RecipePresenter
-import com.google.gson.Gson
 import com.koushikdutta.ion.Ion
 import kotlinx.android.synthetic.main.fragment_recipe.view.*
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bigfriedicecream.recipes.BuildConfig;
 import com.bigfriedicecream.recipes.R;
 import com.bigfriedicecream.recipes.models.RecipeDataModel;
 import com.bigfriedicecream.recipes.observables.EventsDispatcher;
@@ -27,20 +28,10 @@ public class RecipeListItemFragment extends Fragment {
             final RecipeDataModel model = new Gson().fromJson(bundle.getString("data"), RecipeDataModel.class);
             ImageView hero = view.findViewById(R.id.hero);
             TextView title = view.findViewById(R.id.title);
-            TextView servesMakes = view.findViewById(R.id.serves_makes);
-            TextView prepTime = view.findViewById(R.id.prep_time);
-            TextView cookTime = view.findViewById(R.id.cook_time);
 
-            String servesMakesString = model.serves > 0 ? "Serves " + String.valueOf(model.serves) : "Makes " + String.valueOf(model.makes);
-            String prepTimeString = "Prep " + String.valueOf(model.prepTime) + " min";
-            String cookTimeString = "Cook " + String.valueOf(model.cookTime) + " min";
-
-            Ion.with(hero)
-                    .load("https://raw.githubusercontent.com/bigfriedicecream/Recipes/develop/Assets/images/" + model.id + "/hero.jpg");
             title.setText(model.title);
-            servesMakes.setText(servesMakesString);
-            prepTime.setText(prepTimeString);
-            cookTime.setText(cookTimeString);
+            Ion.with(hero)
+                    .load(BuildConfig.BASE_URL + "/Assets/images/" + model.id + "/hero.jpg");
 
             final EventsDispatcher eventsDispatcher = EventsDispatcher.getInstance();
 
