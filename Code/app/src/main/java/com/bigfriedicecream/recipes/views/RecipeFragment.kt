@@ -53,7 +53,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
     override fun render(recipe: RecipeDataModel) {
 
-        val servesMakes:String = if (recipe.serves > 0) "Serves: ${recipe.serves}" else "Makes ${recipe.makes}"
+        val servesMakes:String = if (recipe.serves > 0) "Serves ${recipe.serves}" else "Makes ${recipe.makes}"
         val prepTime = "Prep ${recipe.prepTime} min"
         val cookTime = "Cook ${recipe.cookTime} min"
         val totalTime = "${recipe.prepTime + recipe.cookTime} min"
@@ -69,10 +69,20 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         view!!.total_time.text = totalTime
 
         // render ingredients
+        view!!.ingredients_container.removeAllViews()
         recipe.ingredients.forEach { ing ->
-            val textView = TextView(context)
-            textView.text = ing
-            view!!.ingredients_container.addView(textView)
+            val bundle = Bundle()
+            bundle.putString("item", ing)
+
+            println(ing)
+
+            val ingredientItem:Fragment = RecipeIngredientItemFragment()
+            ingredientItem.arguments = bundle
+
+            fragmentManager!!
+                    .beginTransaction()
+                    .add(R.id.ingredients_container, ingredientItem)
+                    .commit()
         }
 
         // render method
