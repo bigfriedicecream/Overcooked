@@ -29,15 +29,15 @@ public class RecipeListItemFragment extends Fragment {
             ImageView hero = view.findViewById(R.id.hero);
             TextView title = view.findViewById(R.id.title);
 
-            title.setText(model.title);
+            title.setText(model.getTitle());
             Ion.with(hero)
-                    .load(BuildConfig.BASE_URL + "/Assets/images/" + model.id + "/hero.jpg");
+                    .load(BuildConfig.BASE_URL + "/Assets/images/" + model.getId() + "/hero.jpg");
 
             final EventsDispatcher eventsDispatcher = EventsDispatcher.getInstance();
 
             view.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    eventsDispatcher.dispatch("NAVIGATION_RECIPE", model.id);
+                    eventsDispatcher.dispatch("NAVIGATION_RECIPE", model.getId());
                 }
             });
         }

@@ -70,7 +70,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
         // render ingredients
         view!!.ingredients_container.removeAllViews()
-        recipe.ingredients.forEach { ing ->
+        recipe.ingredients?.forEach { ing ->
             val bundle = Bundle()
             bundle.putString("item", ing)
 
@@ -87,7 +87,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
         // render method
         view!!.method_container.removeAllViews()
-        recipe.method.forEachIndexed { i, method ->
+        recipe.method?.forEachIndexed { i, method ->
             val bundle = Bundle()
             bundle.putInt("counter", i + 1)
             bundle.putString("step", method)

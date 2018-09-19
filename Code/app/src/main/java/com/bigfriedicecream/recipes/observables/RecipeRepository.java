@@ -71,10 +71,10 @@ public class RecipeRepository extends Observable {
     }
 
     public Map<String, RecipeDataModel> getList() {
-        return model == null ? null : model.recipes;
+        return model == null ? null : model.getRecipes();
     }
 
     public RecipeDataModel get(String id) {
-        return model == null ? null : model.recipes.get(id);
+        return model == null ? null : model.getRecipes().get(id);
     }
 }
