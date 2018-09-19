@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_recipe.view.*
 class RecipeFragment:Fragment(), IRecipeContract.View {
 
     private var presenter:IRecipeContract.Presenter = RecipePresenter(this)
-    private var id:String? = null
+    private var id:String = ""
     private var isLoaded:Boolean = false
 
     override fun onCreateView(inflater:LayoutInflater, container:ViewGroup?, state:Bundle?):View? {
@@ -73,8 +73,6 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         recipe.ingredients?.forEach { ing ->
             val bundle = Bundle()
             bundle.putString("item", ing)
-
-            println(ing)
 
             val ingredientItem:Fragment = RecipeIngredientItemFragment()
             ingredientItem.arguments = bundle
