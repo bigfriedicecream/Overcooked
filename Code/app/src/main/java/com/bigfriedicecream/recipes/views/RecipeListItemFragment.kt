@@ -11,6 +11,7 @@ import com.bigfriedicecream.recipes.R
 import com.bigfriedicecream.recipes.models.RecipeDataModel
 import com.bigfriedicecream.recipes.observables.EventsDispatcher
 import com.bigfriedicecream.recipes.utils.GlideApp
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.gson.Gson
 import com.koushikdutta.ion.Ion
 
@@ -29,6 +30,7 @@ class RecipeListItemFragment : Fragment() {
             GlideApp
                     .with(view)
                     .load("${BuildConfig.BASE_URL}/Assets/images/${model.id}/hero.jpg")
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .fitCenter()
                     .into(view.hero)
 

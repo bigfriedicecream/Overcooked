@@ -15,6 +15,7 @@ import com.bigfriedicecream.recipes.interfaces.IRecipeContract
 import com.bigfriedicecream.recipes.models.RecipeDataModel
 import com.bigfriedicecream.recipes.presenters.RecipePresenter
 import com.bigfriedicecream.recipes.utils.GlideApp
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.koushikdutta.ion.Ion
 import kotlinx.android.synthetic.main.fragment_recipe.view.*
 
@@ -62,6 +63,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         GlideApp
                 .with(view!!)
                 .load("${BuildConfig.BASE_URL}/Assets/images/${recipe.id}/hero.jpg")
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(view!!.hero)
 
