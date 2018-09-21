@@ -9,12 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="645c06d3-adae-49c7-992b-6186f7ad0534" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/recipes/views/RecipeFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/recipes/views/RecipeFragment.kt" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/recipes/views/RecipeListItemFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/recipes/views/RecipeListItemFragment.kt" />
-    </list>
+    <list default="true" id="645c06d3-adae-49c7-992b-6186f7ad0534" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
