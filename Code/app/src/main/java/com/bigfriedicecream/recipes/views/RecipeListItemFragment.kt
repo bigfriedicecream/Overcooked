@@ -10,6 +10,7 @@ import com.bigfriedicecream.recipes.BuildConfig
 import com.bigfriedicecream.recipes.R
 import com.bigfriedicecream.recipes.models.RecipeDataModel
 import com.bigfriedicecream.recipes.observables.EventsDispatcher
+import com.bigfriedicecream.recipes.utils.GlideApp
 import com.google.gson.Gson
 import com.koushikdutta.ion.Ion
 
@@ -24,7 +25,12 @@ class RecipeListItemFragment : Fragment() {
             val model:RecipeDataModel = Gson().fromJson(arguments?.getString("data"), RecipeDataModel::class.java)
 
             view.title.text = model.title
-            Ion.with(view.hero).load( "${BuildConfig.BASE_URL}/Assets/images/${model.id}/hero.jpg")
+
+            GlideApp
+                    .with(view)
+                    .load("${BuildConfig.BASE_URL}/Assets/images/${model.id}/hero.jpg")
+                    .fitCenter()
+                    .into(view.hero)
 
             val eventsDispatcher:EventsDispatcher = EventsDispatcher.getInstance()
 

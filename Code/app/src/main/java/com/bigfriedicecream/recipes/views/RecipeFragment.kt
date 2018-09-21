@@ -14,6 +14,7 @@ import com.bigfriedicecream.recipes.R
 import com.bigfriedicecream.recipes.interfaces.IRecipeContract
 import com.bigfriedicecream.recipes.models.RecipeDataModel
 import com.bigfriedicecream.recipes.presenters.RecipePresenter
+import com.bigfriedicecream.recipes.utils.GlideApp
 import com.koushikdutta.ion.Ion
 import kotlinx.android.synthetic.main.fragment_recipe.view.*
 
@@ -58,9 +59,11 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         val cookTime = "Cook ${recipe.cookTime} min"
         val totalTime = "${recipe.prepTime + recipe.cookTime} min"
 
-        val hero:ImageView = view!!.findViewById(R.id.hero)
-
-        Ion.with(hero).load("${BuildConfig.BASE_URL}/Assets/images/${recipe.id}/hero.jpg")
+        GlideApp
+                .with(view!!)
+                .load("${BuildConfig.BASE_URL}/Assets/images/${recipe.id}/hero.jpg")
+                .fitCenter()
+                .into(view!!.hero)
 
         view!!.title.text = recipe.title
         view!!.serves_makes.text = servesMakes
