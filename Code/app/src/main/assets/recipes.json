@@ -2,19 +2,193 @@
   "recipes": {
     "0": {
       "id": "0",
-      "title": "Sweet Potato Nachos with Vegetarian Lentil Chilli",
+      "title": "Sweet Potato Nachos with Vegetarian Chilli",
       "serves": 2,
       "makes": 0,
       "prepTime": 10,
-      "cookTime": 35
+      "cookTime": 25,
+      "ingredients": [
+        "300g sweet potatoes, thinly sliced into 0.5cm disks",
+        "2 tsp olive oil",
+        "salt and pepper, to taste",
+        "1/2 red onion, finely chopped",
+        "1 garlic clove, crushed",
+        "1 tsp ground cumin",
+        "1/2 - 1 tsp chilli flakes, depending on taste",
+        "300g firm tofu, crumbled",
+        "400g tin crushed tomatoes",
+        "400g tin kidney beans, drained & rinsed",
+        "400g tin chickpeas, drained & rinsed",
+        "1/4 bunch coriander",
+        "1/4 cup Greek yoghurt",
+        "1 tbs lemon juice",
+        "1/2 cup tasty cheese",
+        "1/4 avocado, sliced"
+      ],
+      "method": [
+        "Preheat oven to 200°C and line a baking tray with baking paper.",
+        "Arrange sweet potato on tray, brush with 1/2 tsp oil and season with salt & pepper. Roast for 10 minutes, toss chips over, brush with another 1/2 tsp oil and roast for another 10 minutes.",
+        "Meanwhile, heat remaining oil, onion, garlic, cumin and half the chilli in a large frypan over medium heat and cook for a couple of minutes. Add tofu and cook for another minute.",
+        "Stir through tomatoes, beans, chickpeas and 1 tbs chopped coriander stems and simmer over low heat for 20 minutes, to thicken. Adjust seasoning.",
+        "Meanwhile, combine remaining chilli flakes, yoghurt and lemon juice in a bowl. Season.",
+        "Arrange nachos on an ovenproof plate, top with chilli, scatter over cheese and return to the oven for a few minutes to melt cheese.",
+        "To serve, drizzle over dressing and top with avocado and picked coriander leaves."
+      ]
     },
     "1": {
       "id": "1",
-      "title": "Bruschetta with Tomato & White Beans",
-      "serves": 1,
+      "title": "Greek Style Quesadilla",
+      "serves": 2,
       "makes": 0,
       "prepTime": 5,
-      "cookTime": 10
+      "cookTime": 5,
+      "ingredients": [
+        "4 large corn tortillas",
+        "100g mozzarella cheese, grated",
+        "60g baby spinach, shredded",
+        "1 medium tomato, diced & drained on paper towel",
+        "20g Kalamata olives, pitted & halved",
+        "100g feta cheese, crumbled",
+        "1/4 tsp dried oregano",
+        "2 tbs tzatziki"
+      ],
+      "method": [
+        "Preheat sandwich press or large non-stick fry pan over medium heat.",
+        "Place two tortillas on a board and scatter over half the mozzarella, top with spinach, tomato, olives, feta and oregano. Top with remaining mozzarella and tortillas. Transfer to sandwich press or frypan, and toast until golden on both sides.",
+        "Cut the quesadillas in quarters and serve with tzatziki."
+      ]
+    },
+    "2": {
+      "id": "2",
+      "title": "Flourless orange cake",
+      "serves": 12,
+      "makes": 0,
+      "prepTime": 15,
+      "cookTime": 100,
+      "ingredients": [
+        "Melted butter, to grease",
+        "2 oranges",
+        "3 eggs",
+        "215g caster sugar",
+        "300g almond meal",
+        "1 teaspoon gluten-free baking powder",
+        "ORANGE SYRUP",
+        "1 orange",
+        "155g caster sugar"
+      ],
+      "method": [
+        "Preheat oven to 170°C. Brush a round 22cm (base measurement) springform pan with melted butter to lightly grease. Line base with non-stick baking paper.",
+        "Place the oranges in a saucepan and cover with cold water. Bring to the boil over medium heat. Cook for 15 minutes or until tender. Drain. Return to pan and cover with cold water. Bring to the boil and cook for 15 minutes (this will reduce the bitterness of the peel). Refresh under cold water. Drain. Coarsely chop oranges. Remove and discard any seeds.",
+        "Place the orange in the bowl of a food processor and process until smooth.",
+        "Use an electric beater to whisk the eggs and sugar in a bowl until thick and pale. Add the orange, almond meal and baking powder and gently fold until just combined. Pour into prepared pan.",
+        "Bake for 1 hour or until a skewer inserted into the centre comes out clean. Set aside for 15 minutes to cool.",
+        "Meanwhile, to make the orange syrup, use a zester to remove the rind from the orange. (Alternatively, use a vegetable peeler to peel the rind from orange. Use a small sharp knife to remove white pith. Cut rind into thin strips.) Juice orange.",
+        "Place rind in a saucepan of boiling water and cook for 5 minutes or until soft. Drain. Return to pan with orange juice and sugar. Place over low heat and cook, stirring, for 2-3 minutes or until the sugar dissolves and the syrup thickens.",
+        "Turn cake onto a serving plate. Use a skewer to gently prick the top. Spoon over syrup. Cut into wedges to serve."
+      ]
+    },
+    "3": {
+      "id": "3",
+      "title": "Spicy Spanish Meatballs",
+      "serves": 0,
+      "makes": 25,
+      "prepTime": 10,
+      "cookTime": 30,
+      "ingredients": [
+        "500g ground pork and beef",
+        "1/2 cup breadcrumbs",
+        "1 egg",
+        "1 tbsp smoked paprika",
+        "1/4 cup chopped parsley",
+        "2 garlic cloves, diced",
+        "1 tsp salt and pepper",
+        "1 tbsp olive oil",
+        "400g tin tomatoes",
+        "1/2 cup red wine",
+        "1 1/2 tbsp smoked paprika"
+      ],
+      "method": [
+        "Combine the pork, beef, breadcrumbs, egg, paprika, parsley, garlic and salt and pepper in a bowl. Mix to combine the ingredients. Place in the fridge and marinate up to overnight.",
+        "When you're ready to cook the meatballs, roll the meat mixture into 1 inch balls.",
+        "Head a dutch oven or other heavy pan with 1 tbsp olive oil over medium high heat. Brown the meatballs on all sides and place on a plate.",
+        "Deglaze the pan with the red wine and let it simmer for 2 minutes before adding in the tomatoes and smoked paprika. Simmer for 5 minutes then add the meatballs back in.",
+        "Cook the meatballs for 20 minutes, covered.",
+        "Serve with crusty bread and a glass of red wine."
+      ]
+    },
+    "4": {
+      "id": "4",
+      "title": "Basil Chicken Coconut Curry",
+      "serves": 4,
+      "makes": 0,
+      "prepTime": 15,
+      "cookTime": 25,
+      "ingredients": [
+        "1 tsp salt",
+        "1/2 tsp ground coriander",
+        "1/2 tsp cumin",
+        "A small pinch of ground cloves",
+        "1/4 tsp cinnamon",
+        "1/4 tsp ground cardamom",
+        "1/2 tsp freshly ground black pepper",
+        "1/4 to 1/2 tsp cayenne, or more to taste",
+        "1/2 tsp turmeric",
+        "500g skinless, boneless chicken thighs, cut into 3cm chunks",
+        "1 large onion, sliced root to tip",
+        "5 cloves garlic, minced",
+        "1 Tbsp finely chopped fresh ginger",
+        "1-2 jalapeño peppers, seeded and minced",
+        "2 Tbsp canola oil, rice bran oil or Indian ghee",
+        "1 415ml can coconut milk",
+        "1 Tbsp lime juice, or to taste",
+        "12-20 fresh basil leaves, torn roughly"
+      ],
+      "method": [
+        "Mix the spices: In a small bowl, mix together the salt, ground coriander, cumin, ground cloves, cinnamon, ground cardamom, black pepper, cayenne and turmeric. Set aside.",
+        "Sauté onions, jalapeños, ginger, garlic, spices: In a wok or deep sauté pan, heat the oil over high heat. The moment the oil begins to smoke, add the onions and jalapeños and toss to coat in oil. Sear the vegetables for 3 minutes, stirring only enough to keep them from burning, but still allowing the onions to sear.",
+        "Add the ginger, garlic and spice mixture and toss to combine, cook for 1 minute.",
+        "Add coconut milk, chicken, simmer:  Add the coconut milk and chicken. Stir the mixture so that the chicken pieces are coated in the coconut milk. Bring to a simmer, reduce the heat, cover and cook for 20 minutes.",
+        "Add basil, lime juice: When the chicken is tender, turn off the heat and add the basil and lime juice. Add more lime juice and salt to taste and serve over rice."
+      ]
+    },
+    "5": {
+      "id": "5",
+      "title": "Chicken Jalfrezi",
+      "serves": 2,
+      "makes": 0,
+      "prepTime": 10,
+      "cookTime": 15,
+      "ingredients": [
+        "330g boneless skinless chicken thighs (cut into bite-size pieces)",
+        "1/4 tsp salt",
+        "1/4 tsp black pepper",
+        "1 Tbsp vegetable oil",
+        "1 pod star anise",
+        "1 tsp cumin seeds",
+        "1 tsp nigella seeds",
+        "4 cloves",
+        "14g fresh ginger (peeled and grated)",
+        "14g garlic (~2 medium cloves, grated)",
+        "80g onion (~1/2 medium , sliced into squares)",
+        "100g green bell pepper (~1 small pepper, seeded & sliced into squares)",
+        "100g re bell pepper (~1 small pepper, seeded & sliced into squares squares)",
+        "200g tomato (~1 medium , sliced into cubes)",
+        "400g tomato sauce (1 can)",
+        "1 Tbsp garam masala",
+        "1 tsp granulated sugar",
+        "1/2 tsp salt",
+        "Cayenne pepper (to taste)",
+        "Cilantro (for garnish)"
+      ],
+      "method": [
+        "Season the chicken with salt and black pepper.",
+        "Heat the oil in a frying pan over medium-high heat until hot and then add the chicken in a single layer. Let the chicken brown on one side before flipping and browning the other side. When the chicken has browned, transfer it to a bowl and set aside.",
+        "Add the star anise, cumin seeds, nigella seeds and cloves to the pan and fry the spices until they start to pop. Be careful not to burn the spices.",
+        "Working quickly, add the ginger and garlic and stir-fry until fragrant.",
+        "Add the onion, green and red bell peppers and tomatoes and stir-fry until most of the liquid from the tomatoes has evaporated.",
+        "Add the tomato sauce, garam masala, sugar and salt. Return the chicken to the pan and simmer until the sauce has thickened and the chicken has cooked through. You can increase the level of heat to taste by adding cayenne pepper.",
+        "Garnish with cilantro and serve with rice or naan."
+      ]
     }
   }
 }

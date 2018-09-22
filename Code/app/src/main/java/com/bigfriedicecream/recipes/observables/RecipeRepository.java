@@ -30,7 +30,26 @@ public class RecipeRepository extends Observable {
         return instance;
     }
 
-    public void load(Context c) {
+    public void load(Context context) {
+        try {
+            InputStream inputStream = context.getAssets().open("recipes.json");
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            String json = new String(buffer, "UTF-8");
+
+            model = new GsonBuilder().create().fromJson(json, RecipeResponseDataModel.class);
+
+            setChanged();
+            notifyObservers();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*public void load(Context c) {
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(c);
         final String recipeResponse = preferences.getString("recipe_response", "");
 
@@ -68,7 +87,7 @@ public class RecipeRepository extends Observable {
                         }
                     });
         }
-    }
+    }*/
 
     public Map<String, RecipeDataModel> getList() {
         return model == null ? null : model.getRecipes();
