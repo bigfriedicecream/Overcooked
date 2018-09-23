@@ -30,6 +30,7 @@ class RecipeListItemFragment : Fragment() {
             GlideApp
                     .with(view)
                     .load("${BuildConfig.BASE_URL}/Assets/images/${model.id}/hero.jpg")
+                    .placeholder(R.drawable.placeholder)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .fitCenter()
                     .into(view.hero)

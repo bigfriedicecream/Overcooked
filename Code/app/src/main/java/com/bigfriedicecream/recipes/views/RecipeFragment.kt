@@ -63,6 +63,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         GlideApp
                 .with(view!!)
                 .load("${BuildConfig.BASE_URL}/Assets/images/${recipe.id}/hero.jpg")
+                .placeholder(R.drawable.placeholder)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(view!!.hero)
