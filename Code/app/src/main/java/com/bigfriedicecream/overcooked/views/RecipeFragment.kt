@@ -1,4 +1,4 @@
-package com.bigfriedicecream.recipes.views
+package com.bigfriedicecream.overcooked.views
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.bigfriedicecream.recipes.BuildConfig
+import com.bigfriedicecream.overcooked.BuildConfig
 
-import com.bigfriedicecream.recipes.R
-import com.bigfriedicecream.recipes.interfaces.IRecipeContract
-import com.bigfriedicecream.recipes.models.RecipeDataModel
-import com.bigfriedicecream.recipes.presenters.RecipePresenter
-import com.bigfriedicecream.recipes.utils.GlideApp
+import com.bigfriedicecream.overcooked.R
+import com.bigfriedicecream.overcooked.interfaces.IRecipeContract
+import com.bigfriedicecream.overcooked.models.RecipeDataModel
+import com.bigfriedicecream.overcooked.presenters.RecipePresenter
+import com.bigfriedicecream.overcooked.utils.GlideApp
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.koushikdutta.ion.Ion
 import kotlinx.android.synthetic.main.fragment_recipe.view.*

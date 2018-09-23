@@ -1,4 +1,4 @@
-package com.bigfriedicecream.recipes.views;
+package com.bigfriedicecream.overcooked.views;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.bigfriedicecream.recipes.R;
-import com.bigfriedicecream.recipes.interfaces.IMainContract;
-import com.bigfriedicecream.recipes.presenters.MainPresenter;
+import com.bigfriedicecream.overcooked.R;
+import com.bigfriedicecream.overcooked.interfaces.IMainContract;
+import com.bigfriedicecream.overcooked.presenters.MainPresenter;
 
 public class MainFragment extends Fragment implements IMainContract.View {
 

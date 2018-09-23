@@ -1,8 +1,8 @@
-package com.bigfriedicecream.recipes.interfaces
+package com.bigfriedicecream.overcooked.interfaces
 
 import android.content.Context
 
-import com.bigfriedicecream.recipes.models.RecipeDataModel
+import com.bigfriedicecream.overcooked.models.RecipeDataModel
 
 interface IRecipeListContract {
 

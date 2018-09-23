@@ -1,4 +1,4 @@
-package com.bigfriedicecream.recipes.models
+package com.bigfriedicecream.overcooked.models
 
 import java.util.HashMap
 

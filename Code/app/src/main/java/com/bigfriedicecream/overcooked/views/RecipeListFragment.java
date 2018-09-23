@@ -1,4 +1,4 @@
-package com.bigfriedicecream.recipes.views;
+package com.bigfriedicecream.overcooked.views;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.bigfriedicecream.recipes.R;
-import com.bigfriedicecream.recipes.interfaces.IRecipeListContract;
-import com.bigfriedicecream.recipes.models.RecipeDataModel;
-import com.bigfriedicecream.recipes.presenters.RecipeListPresenter;
+import com.bigfriedicecream.overcooked.R;
+import com.bigfriedicecream.overcooked.interfaces.IRecipeListContract;
+import com.bigfriedicecream.overcooked.models.RecipeDataModel;
+import com.bigfriedicecream.overcooked.presenters.RecipeListPresenter;
 import com.google.gson.Gson;
 
 import java.util.Map;

@@ -1,12 +1,12 @@
-package com.bigfriedicecream.recipes.observables;
+package com.bigfriedicecream.overcooked.observables;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.bigfriedicecream.recipes.BuildConfig;
-import com.bigfriedicecream.recipes.models.RecipeDataModel;
-import com.bigfriedicecream.recipes.models.RecipeResponseDataModel;
+import com.bigfriedicecream.overcooked.BuildConfig;
+import com.bigfriedicecream.overcooked.models.RecipeDataModel;
+import com.bigfriedicecream.overcooked.models.RecipeResponseDataModel;
 import com.google.gson.GsonBuilder;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;

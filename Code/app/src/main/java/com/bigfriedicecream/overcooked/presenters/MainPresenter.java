@@ -1,11 +1,11 @@
-package com.bigfriedicecream.recipes.presenters;
+package com.bigfriedicecream.overcooked.presenters;
 
 
 import android.content.Context;
 
-import com.bigfriedicecream.recipes.interfaces.IMainContract;
-import com.bigfriedicecream.recipes.observables.EventsDispatcher;
-import com.bigfriedicecream.recipes.observables.RecipeRepository;
+import com.bigfriedicecream.overcooked.interfaces.IMainContract;
+import com.bigfriedicecream.overcooked.observables.EventsDispatcher;
+import com.bigfriedicecream.overcooked.observables.RecipeRepository;
 
 import java.util.HashMap;
 import java.util.Observable;

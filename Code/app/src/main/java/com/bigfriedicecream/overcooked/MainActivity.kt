@@ -1,9 +1,9 @@
-package com.bigfriedicecream.recipes
+package com.bigfriedicecream.overcooked
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-import com.bigfriedicecream.recipes.views.MainFragment
+import com.bigfriedicecream.overcooked.views.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.bigfriedicecream.recipes.interfaces
+package com.bigfriedicecream.overcooked.interfaces
 
 import android.content.Context
 

@@ -1,4 +1,4 @@
-package com.bigfriedicecream.recipes.observables;
+package com.bigfriedicecream.overcooked.observables;
 
 import java.util.HashMap;
 import java.util.Observable;

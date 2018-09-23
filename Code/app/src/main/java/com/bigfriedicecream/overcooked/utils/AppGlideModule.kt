@@ -1,4 +1,4 @@
-package com.bigfriedicecream.recipes.utils
+package com.bigfriedicecream.overcooked.utils
 
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule
