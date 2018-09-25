@@ -1,5 +1,4 @@
-# Recipes
+# Overcooked
 
 ### Images
-###### Hero:
-19:9 (1280px x 720px)
+**Hero:** 16:9 (1280px x 720px)
