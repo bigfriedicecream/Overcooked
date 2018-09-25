@@ -2,12 +2,9 @@ package com.bigfriedicecream.overcooked.views
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import com.bigfriedicecream.overcooked.BuildConfig
 
 import com.bigfriedicecream.overcooked.R
@@ -15,8 +12,8 @@ import com.bigfriedicecream.overcooked.interfaces.IRecipeContract
 import com.bigfriedicecream.overcooked.models.RecipeDataModel
 import com.bigfriedicecream.overcooked.presenters.RecipePresenter
 import com.bigfriedicecream.overcooked.utils.GlideApp
+import com.bigfriedicecream.overcooked.utils.minsToPrettyTimeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.koushikdutta.ion.Ion
 import kotlinx.android.synthetic.main.fragment_recipe.view.*
 
 class RecipeFragment:Fragment(), IRecipeContract.View {
@@ -48,17 +45,16 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         presenter.stop()
     }
 
-    override fun onSaveInstanceState(state: Bundle) {
+    override fun onSaveInstanceState(state:Bundle) {
         super.onSaveInstanceState(state)
         state.putBoolean("isLoaded", isLoaded)
     }
 
-    override fun render(recipe: RecipeDataModel) {
-
+    override fun render(recipe:RecipeDataModel) {
         val servesMakes:String = if (recipe.serves > 0) "Serves ${recipe.serves}" else "Makes ${recipe.makes}"
-        val prepTime = "Prep ${recipe.prepTime} min"
-        val cookTime = "Cook ${recipe.cookTime} min"
-        val totalTime = "${recipe.prepTime + recipe.cookTime} min"
+        val prepTime = "Prep ${Int.minsToPrettyTimeFormat(recipe.prepTime)}"
+        val cookTime = "Cook ${Int.minsToPrettyTimeFormat(recipe.cookTime)}"
+        val totalTime:String = Int.minsToPrettyTimeFormat(recipe.prepTime + recipe.cookTime)
 
         GlideApp
                 .with(view!!)
