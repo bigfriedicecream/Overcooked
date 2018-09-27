@@ -50,19 +50,20 @@ class App extends Component {
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Typography>Ingredients</Typography>
-                                        {recipe.ingredients.map(ing => {
+                                        {recipe.ingredients.map((ing, i) => {
                                             return (
-                                                <div>
+                                                <div key={`recipe-${key}ing-${i}`}>
                                                     <TextField label="Value" margin="normal" type="number" />
                                                     <TextField
                                                         select
-                                                        label="Select"
-                                                        helperText="Please select your currency"
+                                                        label="Ingredient Type"
                                                         margin="normal"
+                                                        className="defaultFormFieldWidth"
+                                                        value="optionvalue1"
                                                     >
-                                                        <MenuItem key={"test1"} value={"option value1"}>option label 1</MenuItem >
-                                                        <MenuItem key={"test2"} value={"option value2"}>option label 2</MenuItem >
-                                                        <MenuItem key={"test3"} value={"option value3"}>option label 3</MenuItem >
+                                                        <MenuItem key={"test1"} value={"optionvalue1"}>option label 1</MenuItem >
+                                                        <MenuItem key={"test2"} value={"optionvalue2"}>option label 2</MenuItem >
+                                                        <MenuItem key={"test3"} value={"optionvalue3"}>option label 3</MenuItem >
                                                     </TextField>
                                                     <TextField label="Recipe Display" margin="normal" />
                                                 </div>
