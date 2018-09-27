@@ -1,3 +1,7 @@
-.defaultFormFieldWidth {
-    width: 178px;
+body {
+    padding: 15px;
+}
+
+.card {
+    margin-bottom: 15px;
 }
