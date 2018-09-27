@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import data from './recipes.json';
 import AddIcon from '@material-ui/icons/Add';
+import MenuItem from '@material-ui/core/MenuItem';
 
 class App extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class App extends Component {
     render() {
         const { recipes } = this.state.data
         return (
-            <div className="App">
+            <div>
                 {Object.keys(recipes).map(key => {
                     const recipe = recipes[key];
                     return (
@@ -36,7 +37,7 @@ class App extends Component {
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                                 <Typography>{recipe.title}</Typography>
                             </ExpansionPanelSummary>
-                            <ExpansionPanelDetails className="flex-">
+                            <ExpansionPanelDetails>
                                 <Grid container spacing={24}>
                                     <Grid item xs={12}>
                                         <TextField label="Title" fullWidth margin="normal" value={recipe.title} onChange={this.handleChange(key, 'title')} />
@@ -46,6 +47,31 @@ class App extends Component {
                                         <TextField label="Makes" margin="normal" value={recipe.makes} onChange={this.handleChange(key, 'makes')} type="number" />
                                         <TextField label="Prep Time" margin="normal" value={recipe.prepTime} onChange={this.handleChange(key, 'prepTime')} type="number" />
                                         <TextField label="Cook Time" margin="normal" value={recipe.cookTime} onChange={this.handleChange(key, 'cookTime')} type="number" />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Typography>Ingredients</Typography>
+                                        {recipe.ingredients.map(ing => {
+                                            return (
+                                                <div>
+                                                    <TextField label="Value" margin="normal" type="number" />
+                                                    <TextField
+                                                        select
+                                                        label="Select"
+                                                        helperText="Please select your currency"
+                                                        margin="normal"
+                                                    >
+                                                        <MenuItem key={"test1"} value={"option value1"}>option label 1</MenuItem >
+                                                        <MenuItem key={"test2"} value={"option value2"}>option label 2</MenuItem >
+                                                        <MenuItem key={"test3"} value={"option value3"}>option label 3</MenuItem >
+                                                    </TextField>
+                                                    <TextField label="Recipe Display" margin="normal" />
+                                                </div>
+                                                
+                                            )
+                                        })}
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Typography>Method</Typography>
                                     </Grid>
                                 </Grid>
                             </ExpansionPanelDetails>
