@@ -7,37 +7,37 @@
       "makes": 0,
       "prepTime": 15,
       "cookTime": 100,
-      "ingredients": [
+      "ings": [
         {
-          "ingredientType": 2,
+          "ingType": 2,
           "display": "Melted butter, to grease"
         },
         {
-          "ingredientType": 0,
+          "ingType": 0,
           "quantity": 2,
           "ingredient": 0
         },
         {
-          "ingredientType": 0,
+          "ingType": 0,
           "quantity": 3,
           "ingredient": 1
         },
         {
-          "ingredientType": 0,
+          "ingType": 0,
           "quantity": 215,
           "ingredient": 2
         },
         {
-          "ingredientType": 0,
+          "ingType": 0,
           "quantity": 1,
           "ingredient": 3
         },
         {
-          "ingredientType": 1,
+          "ingType": 1,
           "display": "Orange Syrup"
         },
         {
-          "ingredientType": 0,
+          "ingType": 0,
           "quantity": 155,
           "ingredient": 2
         }
@@ -56,21 +56,25 @@
   },
   "ingredients": {
     "0": {
+      "id": "0",
       "name": "orange",
       "namePlural": "oranges",
       "unitType": 0
     },
     "1": {
+      "id": "1",
       "name": "egg",
       "namePlural": "eggs",
       "unitType": 0
     },
     "2": {
+      "id": "2",
       "name": "caster sugar",
       "namePlural": "caster sugar",
       "unitType": 1
     },
     "3": {
+      "id": "3",
       "name": "baking powder",
       "namePlural": "baking powder",
       "unitType": 4

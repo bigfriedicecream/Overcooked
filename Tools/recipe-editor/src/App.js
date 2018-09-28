@@ -18,7 +18,7 @@ class App extends Component {
     }
 
     render() {
-        const { recipes } = this.state.data
+        const { recipes, ingredients } = this.state.data
         const handlers = {
             onFieldChange: this.onFieldChange
         }
@@ -27,7 +27,7 @@ class App extends Component {
                 {Object.keys(recipes).map(key => {
                     const recipe = recipes[key];
                     return (
-                        <Recipe key={`recipe-${recipe.id}`} recipe={recipe} handlers={handlers} />
+                        <Recipe key={`recipe-${recipe.id}`} recipe={recipe} ingredients={ingredients} handlers={handlers} />
                     )
                 })}
                 <button type="button" className="btn btn-primary">+</button>

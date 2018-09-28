@@ -1,8 +1,8 @@
 import React from 'react';
 import Ingredient from './Ingredient'
 
-const Recipe = ({ recipe, handlers }) => {
-    const { id, title, serves, makes, prepTime, cookTime, ingredients } = recipe
+const Recipe = ({ recipe, ingredients, handlers }) => {
+    const { id, title, serves, makes, prepTime, cookTime, ings } = recipe
     return (
         <div className="card">
             <div className="card-body">
@@ -31,9 +31,9 @@ const Recipe = ({ recipe, handlers }) => {
                 </div>
                 <div>
                     <h6>Ingredients</h6>
-                    {ingredients.map((ing, i) => {
+                    {ings.map((ing, i) => {
                         return (
-                            <Ingredient key={`recipe-${id}ing-${i}`} {...ing} />
+                            <Ingredient key={`recipe-${id}ing-${i}`} {...ing} ingredients={ingredients} />
                         )
                     })}
                 </div>
