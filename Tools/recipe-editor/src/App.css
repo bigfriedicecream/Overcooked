@@ -2,6 +2,10 @@ body {
     padding: 15px;
 }
 
+.form-control {
+    min-width: 300px;
+}
+
 .card {
     margin-bottom: 15px;
 }

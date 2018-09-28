@@ -1,6 +1,8 @@
 import React from 'react';
+import Ingredient from './Ingredient'
 
-const Recipe = ({ id, title, serves, makes, prepTime, cookTime, handlers }) => {
+const Recipe = ({ recipe, handlers }) => {
+    const { id, title, serves, makes, prepTime, cookTime, ingredients } = recipe
     return (
         <div className="card">
             <div class="card-body">
@@ -28,30 +30,12 @@ const Recipe = ({ id, title, serves, makes, prepTime, cookTime, handlers }) => {
                     </div>
                 </div>
                 <div>
-                    Ingredients
-                    {/*recipe.ingredients.map((ing, i) => {
+                    <h6>Ingredients</h6>
+                    {ingredients.map((ing, i) => {
                         return (
-                            <div key={`recipe-${key}ing-${i}`}>
-                                <div class="form-group">
-                                    <label>Quantity</label>
-                                    <input type="number" className="form-control" value="1" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Ingredient Type</label>
-                                    <select className="form-control">
-                                        <option>op1</option>
-                                        <option>op2</option>
-                                        <option>op3</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Recipe Display</label>
-                                    <input type="text" className="form-control" value="Recipe Display" />
-                                </div>
-                            </div>
-
+                            <Ingredient key={`recipe-${id}ing-${i}`} {...ing} />
                         )
-                    })*/}
+                    })}
                 </div>
                 {/*<div>
                     Method
