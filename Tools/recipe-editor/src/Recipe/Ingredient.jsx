@@ -6,7 +6,7 @@ const Ingredient = ({ ingredientType, quantity, ingredient, display }) => {
         <div className="d-flex">
             <div className="form-group">
                 <label>Ingredient Type</label>
-                <select className="form-control" value={ingredientType}>
+                <select className="form-control" value={ingredientType} readOnly>
                     {LookupIngType.dataList().map(item => {
                         const { id, description } = item
                         return (
@@ -19,14 +19,14 @@ const Ingredient = ({ ingredientType, quantity, ingredient, display }) => {
                 ingredientType === LookupIngType.normal.id ? 
                     <div className="form-group">
                         <label>Quantity</label>
-                        <input type="number" className="form-control" value={quantity} />
+                        <input type="number" className="form-control" value={quantity} readOnly />
                     </div> : ''
             }
             {
                 ingredientType === LookupIngType.heading.id || ingredientType === LookupIngType.textOnly.id ?
                     <div className="form-group">
                         <label>Display</label>
-                        <input type="text" className="form-control" value={display} />
+                        <input type="text" className="form-control" value={display} readOnly />
                     </div> : ''
             }
         </div>

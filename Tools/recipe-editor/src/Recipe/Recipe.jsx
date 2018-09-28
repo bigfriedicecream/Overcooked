@@ -5,8 +5,8 @@ const Recipe = ({ recipe, handlers }) => {
     const { id, title, serves, makes, prepTime, cookTime, ingredients } = recipe
     return (
         <div className="card">
-            <div class="card-body">
-                <h5 class="card-title">{title}</h5>
+            <div className="card-body">
+                <h5 className="card-title">{title}</h5>
                 <div className="form-group">
                     <label>Title</label>
                     <input type="text" className="form-control" value={title} onChange={handlers.onFieldChange(id, 'title')} />

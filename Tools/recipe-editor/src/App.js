@@ -27,7 +27,7 @@ class App extends Component {
                 {Object.keys(recipes).map(key => {
                     const recipe = recipes[key];
                     return (
-                        <Recipe recipe={recipe} handlers={handlers} />
+                        <Recipe key={`recipe-${recipe.id}`} recipe={recipe} handlers={handlers} />
                     )
                 })}
                 <button type="button" className="btn btn-primary">+</button>
