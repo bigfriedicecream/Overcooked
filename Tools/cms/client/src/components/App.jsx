@@ -28,12 +28,8 @@ class App extends Component {
         return body;
     }
 
-    onTitleChange = e => {
-        this.setState({ title: e.target.value });
-    }
-
     onSave = async() => {
-        const output = JSON.stringify(Object.assign({}, this.state));
+        const output = JSON.stringify(Object.assign({}, this.state.data));
 
         const response = await fetch('/recipes/save', {
             method: 'POST',
@@ -46,13 +42,27 @@ class App extends Component {
         return true;
     }
 
+    onRecipeFieldChange = (id, field) => e => {
+        const data = Object.assign({}, this.state.data);
+        data.recipes[id][field] = e.target.value
+        this.setState({ data });
+    }
+
     render() {
+        const handlers = {
+            onRecipeFieldChange: this.onRecipeFieldChange
+        }
+
         return (
-            <Switch>
-                <Route exact path='/' component={Root} />
-                <Route path='/recipe/list' render={routeProps => <RecipeList {...routeProps} data={this.state.data} />} />
-                <Route path='/ingredient/list' component={IngredientList} />
-            </Switch>
+            <div>
+                <button type="button" className="btn btn-primary" onClick={this.onSave}>Save</button>
+                <hr />
+                <Switch>
+                    <Route exact path='/' component={Root} />
+                    <Route path='/recipe/list' render={routeProps => <RecipeList {...routeProps} data={this.state.data} handlers={handlers} />} />
+                    <Route path='/ingredient/list' component={IngredientList} />
+                </Switch>
+            </div>
         );
     }
 }
