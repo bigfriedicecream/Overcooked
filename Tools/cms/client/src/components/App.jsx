@@ -9,7 +9,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: ''
+            data: null
         }
     }
 
@@ -50,7 +50,7 @@ class App extends Component {
         return (
             <Switch>
                 <Route exact path='/' component={Root} />
-                <Route path='/recipe/list' component={RecipeList} />
+                <Route path='/recipe/list' render={routeProps => <RecipeList {...routeProps} data={this.state.data} />} />
                 <Route path='/ingredient/list' component={IngredientList} />
             </Switch>
         );
