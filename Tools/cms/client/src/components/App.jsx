@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Root from './Root';
+import RecipeList from './recipe/RecipeList';
+import IngredientList from './ingredient/IngredientList';
 import './App.css';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: ''
+            data: ''
         }
     }
 
     componentDidMount() {
         this.callApi()
-            .then(res => this.setState({ title: res.title }))
+            .then(res => this.setState({ data: res }))
             .catch(err => console.log(err))
     }
 
@@ -44,10 +48,11 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <input type="text" value={this.state.title} onChange={this.onTitleChange} />
-                <button type="button" onClick={this.onSave}>Save</button>
-            </div>
+            <Switch>
+                <Route exact path='/' component={Root} />
+                <Route path='/recipe/list' component={RecipeList} />
+                <Route path='/ingredient/list' component={IngredientList} />
+            </Switch>
         );
     }
 }
