@@ -8,12 +8,16 @@ const RecipeList = ({ data, handlers }) => {
 
     return (
         <div>
-            {Object.keys(recipes).map(key => {
-                const recipe = recipes[key];
-                return (
-                    <Link key={`recipe-${recipe.id}`} to={`/recipe/edit/${recipe.id}`}>{recipe.title}</Link>
-                )
-            })}
+            <ul className="list-group">
+                {Object.keys(recipes).map(key => {
+                    const recipe = recipes[key];
+                    return (
+                        <li key={`recipe-${recipe.id}`} className="list-group-item">
+                            <Link to={`/recipe/edit/${recipe.id}`}>{recipe.title}</Link>
+                        </li>
+                    )
+                })}
+            </ul>
         </div>
     )
 }

@@ -80,7 +80,7 @@ class App extends Component {
                     <Route exact path='/' component={Root} />
                     <Route path="/recipe/list" render={routeProps => <RecipeList {...routeProps} data={this.state.data} handlers={handlers} />} />
                     <Route path="/recipe/edit/:id" render={routeProps => <Recipe {...routeProps} data={this.state.data} handlers={handlers} />} />
-                    <Route path="/ingredient/list" component={IngredientList} />
+                    <Route path="/ingredient/list" render={routeProps => <IngredientList {...routeProps} data={this.state.data} handlers={handlers} />} />
                 </Switch>
             </div>
         );
