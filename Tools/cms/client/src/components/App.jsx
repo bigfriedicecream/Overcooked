@@ -4,8 +4,8 @@ import Root from './Root';
 import RecipeList from './recipe/RecipeList';
 import Recipe from './recipe/Recipe';
 import IngredientList from './ingredient/IngredientList';
+import Ingredient from './ingredient/Ingredient';
 import { Link } from 'react-router-dom';
-import './App.css';
 
 class App extends Component {
     constructor(props) {
@@ -81,6 +81,7 @@ class App extends Component {
                     <Route path="/recipe/list" render={routeProps => <RecipeList {...routeProps} data={this.state.data} handlers={handlers} />} />
                     <Route path="/recipe/edit/:id" render={routeProps => <Recipe {...routeProps} data={this.state.data} handlers={handlers} />} />
                     <Route path="/ingredient/list" render={routeProps => <IngredientList {...routeProps} data={this.state.data} handlers={handlers} />} />
+                    <Route path="/ingredient/edit/:id" render={routeProps => <Ingredient {...routeProps} data={this.state.data} handlers={handlers} />} />
                 </Switch>
             </div>
         );
