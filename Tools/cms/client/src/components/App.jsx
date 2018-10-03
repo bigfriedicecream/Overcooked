@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Root from './Root';
 import RecipeList from './recipe/RecipeList';
+import Recipe from './recipe/Recipe';
 import IngredientList from './ingredient/IngredientList';
 import { Link } from 'react-router-dom';
 import './App.css';
@@ -77,8 +78,9 @@ class App extends Component {
                 </nav>
                 <Switch>
                     <Route exact path='/' component={Root} />
-                    <Route path='/recipe/list' render={routeProps => <RecipeList {...routeProps} data={this.state.data} handlers={handlers} />} />
-                    <Route path='/ingredient/list' component={IngredientList} />
+                    <Route path="/recipe/list" render={routeProps => <RecipeList {...routeProps} data={this.state.data} handlers={handlers} />} />
+                    <Route path="/recipe/edit/:id" render={routeProps => <Recipe {...routeProps} data={this.state.data} handlers={handlers} />} />
+                    <Route path="/ingredient/list" component={IngredientList} />
                 </Switch>
             </div>
         );
