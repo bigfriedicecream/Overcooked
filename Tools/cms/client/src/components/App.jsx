@@ -49,7 +49,7 @@ class App extends Component {
 
         var targetValue = e.target.value;
 
-        if (e.target.type === 'number') {
+        if (e.target.type === 'number' || e.target.type === 'select-one') {
             targetValue = parseFloat(e.target.value)
         }
 
@@ -58,12 +58,25 @@ class App extends Component {
         this.setState({ data });
     }
 
-    render() {
-        const handlers = {
-            onRecipeFieldChange: this.onRecipeFieldChange
+    onIngredientFieldChange = (id, field) => e => {
+        const data = Object.assign({}, this.state.data);
+
+        var targetValue = e.target.value;
+
+        if (e.target.type === 'number' || e.target.type ===  'select-one') {
+            targetValue = parseFloat(e.target.value)
         }
 
-        // <button type="button" className="btn btn-primary" onClick={this.onSave}>Save</button>
+        data.ingredients[id][field] = targetValue
+
+        this.setState({ data });
+    }
+
+    render() {
+        const handlers = {
+            onRecipeFieldChange: this.onRecipeFieldChange,
+            onIngredientFieldChange: this.onIngredientFieldChange
+        }
 
         return (
             <div>
