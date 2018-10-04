@@ -33,7 +33,7 @@ const Recipe = ({ data, handlers, match }) => {
                 <div className="col-xl">
                     <h6>Method</h6>
                     {recipe.method.map((item, i) => {
-                        return <Textarea key={`method-${i}`} value={item} readOnly />
+                        return <Textarea key={`method-${i}`} value={item} onChange={handlers.onRecipeMethodChange(recipe.id, i)} />
                     })}
                 </div>
             </div>

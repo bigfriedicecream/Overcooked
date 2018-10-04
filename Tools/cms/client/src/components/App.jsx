@@ -86,12 +86,19 @@ class App extends Component {
         this.setState({ data });
     }
 
+    onRecipeMethodChange = (id, index) => e => {
+        const data = Object.assign({}, this.state.data);
+        data.recipes[id].method[index] = e.target.value;
+        this.setState({ data });
+    }
+
     render() {
         const handlers = {
             onRecipeFieldChange: this.onRecipeFieldChange,
             onIngredientFieldChange: this.onIngredientFieldChange,
             onAddIngredient: this.onAddIngredient,
-            onRemoveIngredient: this.onRemoveIngredient
+            onRemoveIngredient: this.onRemoveIngredient,
+            onRecipeMethodChange: this.onRecipeMethodChange
         }
 
         return (
