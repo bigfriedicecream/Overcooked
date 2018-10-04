@@ -7,17 +7,23 @@ const IngredientList = ({ data, handlers }) => {
     const { ingredients } = data
 
     return (
-        <div>
-            <ul className="list-group">
-                {Object.keys(ingredients).map(key => {
-                    const ingredient = ingredients[key];
-                    return (
-                        <li key={`ingredient-${ingredient.id}`} className="list-group-item">
-                            <Link to={`/ingredient/edit/${ingredient.id}`}>{ingredient.name}</Link>
-                        </li>
-                    )
-                })}
-            </ul>
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-xl">
+                    <ul className="list-group">
+                        {Object.keys(ingredients).map(key => {
+                            const ingredient = ingredients[key];
+                            return (
+                                <li key={`ingredient-${ingredient.id}`} className="list-group-item">
+                                    <Link to={`/ingredient/edit/${ingredient.id}`}>{ingredient.name}</Link>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                    <br />
+                    <button type="button" className="btn btn-primary" onClick={handlers.onAddIngredient}>+</button>
+                </div>
+            </div>
         </div>
     )
 }

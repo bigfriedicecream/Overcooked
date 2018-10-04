@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Root from './Root';
 import RecipeList from './recipe/RecipeList';
 import Recipe from './recipe/Recipe';
 import IngredientList from './ingredient/IngredientList';
 import Ingredient from './ingredient/Ingredient';
-import { Link } from 'react-router-dom';
+import { IngredientModel } from '../models/IngredientModel';
 
 class App extends Component {
     constructor(props) {
@@ -72,10 +73,18 @@ class App extends Component {
         this.setState({ data });
     }
 
+    onAddIngredient = () => {
+        const data = Object.assign({}, this.state.data);
+        const ingredientModel = IngredientModel;
+        data.ingredients[ingredientModel.id] = ingredientModel;
+        this.setState({ data });
+    }
+
     render() {
         const handlers = {
             onRecipeFieldChange: this.onRecipeFieldChange,
-            onIngredientFieldChange: this.onIngredientFieldChange
+            onIngredientFieldChange: this.onIngredientFieldChange,
+            onAddIngredient: this.onAddIngredient
         }
 
         return (
