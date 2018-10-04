@@ -80,11 +80,18 @@ class App extends Component {
         this.setState({ data });
     }
 
+    onRemoveIngredient = id => e => {
+        const data = Object.assign({}, this.state.data);
+        delete data.ingredients[id];
+        this.setState({ data });
+    }
+
     render() {
         const handlers = {
             onRecipeFieldChange: this.onRecipeFieldChange,
             onIngredientFieldChange: this.onIngredientFieldChange,
-            onAddIngredient: this.onAddIngredient
+            onAddIngredient: this.onAddIngredient,
+            onRemoveIngredient: this.onRemoveIngredient
         }
 
         return (

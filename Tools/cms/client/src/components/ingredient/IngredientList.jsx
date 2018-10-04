@@ -16,6 +16,7 @@ const IngredientList = ({ data, handlers }) => {
                             return (
                                 <li key={`ingredient-${ingredient.id}`} className="list-group-item">
                                     <Link to={`/ingredient/edit/${ingredient.id}`}>{ingredient.name}</Link>
+                                    <button type="button" className="btn btn-danger btn-sm float-right" onClick={handlers.onRemoveIngredient(ingredient.id)}>Remove</button>
                                 </li>
                             )
                         })}
