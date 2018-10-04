@@ -32,9 +32,17 @@ const Recipe = ({ data, handlers, match }) => {
             <div className="row">
                 <div className="col-xl">
                     <h6>Method</h6>
-                    {recipe.method.map((item, i) => {
-                        return <Textarea key={`method-${i}`} value={item} onChange={handlers.onRecipeMethodChange(recipe.id, i)} />
-                    })}
+                    <ol>
+                        {recipe.method.map((item, i) => {
+                            return (
+                                <li key={`method-${i}`}>
+                                    <button type="button" class="btn btn-link text-danger float-right" onClick={handlers.onRemoveMethod(recipe.id, i)}>Remove</button>
+                                    <Textarea value={item} onChange={handlers.onRecipeMethodChange(recipe.id, i)} />
+                                </li>
+                            )
+                        })}
+                    </ol>
+                    <button type="button" className="btn btn-primary" onClick={handlers.onAddMethod(recipe.id)}>+</button>
                 </div>
             </div>
         </div>
