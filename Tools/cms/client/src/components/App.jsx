@@ -75,7 +75,7 @@ class App extends Component {
 
     onAddIngredient = () => {
         const data = Object.assign({}, this.state.data);
-        const ingredientModel = IngredientModel;
+        const ingredientModel = IngredientModel();
         data.ingredients[ingredientModel.id] = ingredientModel;
         this.setState({ data });
     }
