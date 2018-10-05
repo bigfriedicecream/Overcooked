@@ -1,13 +1,16 @@
 import React from 'react';
 import { withRouter } from "react-router";
+import { LookupIngDisplayType } from '../../lookups/LookupIngDisplayType';
 import Text from '../form/Text';
 import Number from '../form/Number';
 import Textarea from '../form/Textarea';
+import Select from '../form/Select';
 
 const Recipe = ({ data, handlers, match }) => {
     if (data === null) return null
 
     const recipe = data.recipes[match.params.id];
+    const { ingredients } = data;
     
     return (
         <div className="container-fluid">
@@ -27,8 +30,51 @@ const Recipe = ({ data, handlers, match }) => {
             <div className="row">
                 <div className="col-xl">
                     <h6>Ingredients</h6>
+                    <ul className="list-group">
+                        {recipe.ings.map((item, i) => {
+                            return (
+                                <li key={`recipeitem-${i}`} className="list-group-item">
+                                    <div className="d-flex">
+                                        <Select label="Display Type" value={item.ingDisplayType} options={LookupIngDisplayType.dataList()} readOnly />
+                                        {
+                                            item.ingDisplayType === LookupIngDisplayType.normal.id ?
+                                                <div className="d-flex">
+                                                    <Number label="Quantity" value={item.quantity} readOnly />
+                                                    <div className="form-group">
+                                                        <label>Ingredient</label>
+                                                        <select className="form-control" value={item.ingredientId} readOnly>
+                                                            {Object.keys(ingredients).map(ingKey => {
+                                                                const ingredient = ingredients[ingKey];
+                                                                return (
+                                                                    <option key={`ing-${ingredient.id}`} value={ingredient.id}>{ingredient.name}</option>
+                                                                )
+                                                            })}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            :
+                                                ''
+                                        }
+                                        {
+                                            item.ingDisplayType === LookupIngDisplayType.heading.id ?
+                                                <Text label="Display" value={item.display} readOnly />
+                                            :
+                                                ''
+                                        }
+                                        {
+                                            item.ingDisplayType === LookupIngDisplayType.textOnly.id ?
+                                                <Text label="Display" value={item.display} readOnly />
+                                                :
+                                                ''
+                                        }
+                                    </div>
+                                </li>
+                            )
+                        })}
+                    </ul>
                 </div>
             </div>
+            <br />
             <div className="row">
                 <div className="col-xl">
                     <h6>Method</h6>
@@ -36,7 +82,7 @@ const Recipe = ({ data, handlers, match }) => {
                         {recipe.method.map((item, i) => {
                             return (
                                 <li key={`method-${i}`}>
-                                    <button type="button" class="btn btn-link text-danger float-right" onClick={handlers.onRemoveMethod(recipe.id, i)}>Remove</button>
+                                    <button type="button" className="btn btn-link text-danger float-right" onClick={handlers.onRemoveMethod(recipe.id, i)}>Remove</button>
                                     <Textarea value={item} onChange={handlers.onRecipeMethodChange(recipe.id, i)} />
                                 </li>
                             )
