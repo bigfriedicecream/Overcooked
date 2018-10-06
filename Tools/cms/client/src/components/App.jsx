@@ -7,6 +7,7 @@ import Recipe from './recipe/Recipe';
 import IngredientList from './ingredient/IngredientList';
 import Ingredient from './ingredient/Ingredient';
 import { IngredientModel } from '../models/IngredientModel';
+import { RecipeModel } from '../models/RecipeModel';
 import { NormalIngredientTypeModel } from '../models/NormalIngredientTypeModel';
 import { HeadingIngredientTypeModel } from '../models/HeadingIngredientTypeModel';
 import { TextOnlyIngredientTypeModel } from '../models/TextOnlyIngredientTypeModel';
@@ -84,9 +85,22 @@ class App extends Component {
         this.setState({ data });
     }
 
+    onAddRecipe = () => {
+        const data = Object.assign({}, this.state.data);
+        const recipeModel = RecipeModel();
+        data.recipes[recipeModel.id] = recipeModel;
+        this.setState({ data });
+    }
+
     onRemoveIngredient = id => e => {
         const data = Object.assign({}, this.state.data);
         delete data.ingredients[id];
+        this.setState({ data });
+    }
+
+    onRemoveRecipe = id => e => {
+        const data = Object.assign({}, this.state.data);
+        delete data.recipes[id];
         this.setState({ data });
     }
 
@@ -141,7 +155,9 @@ class App extends Component {
             onRecipeFieldChange: this.onRecipeFieldChange,
             onIngredientFieldChange: this.onIngredientFieldChange,
             onAddIngredient: this.onAddIngredient,
+            onAddRecipe: this.onAddRecipe,
             onRemoveIngredient: this.onRemoveIngredient,
+            onRemoveRecipe: this.onRemoveRecipe,
             onRecipeMethodChange: this.onRecipeMethodChange,
             onAddMethod: this.onAddMethod,
             onRemoveMethod: this.onRemoveMethod,

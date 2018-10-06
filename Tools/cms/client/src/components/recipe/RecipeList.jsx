@@ -7,17 +7,24 @@ const RecipeList = ({ data, handlers }) => {
     const { recipes } = data
 
     return (
-        <div>
-            <ul className="list-group">
-                {Object.keys(recipes).map(key => {
-                    const recipe = recipes[key];
-                    return (
-                        <li key={`recipe-${recipe.id}`} className="list-group-item">
-                            <Link to={`/recipe/edit/${recipe.id}`}>{recipe.title}</Link>
-                        </li>
-                    )
-                })}
-            </ul>
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-xl">
+                    <ul className="list-group">
+                        {Object.keys(recipes).map(key => {
+                            const recipe = recipes[key];
+                            return (
+                                <li key={`recipe-${recipe.id}`} className="list-group-item">
+                                    <Link to={`/recipe/edit/${recipe.id}`}>{recipe.title}</Link>
+                                    <button type="button" className="btn btn-danger btn-sm float-right" onClick={handlers.onRemoveRecipe(recipe.id)}>Remove</button>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                    <br />
+                    <button type="button" className="btn btn-primary" onClick={handlers.onAddRecipe}>+</button>
+                </div>
+            </div>
         </div>
     )
 }
