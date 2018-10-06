@@ -116,6 +116,12 @@ class App extends Component {
         this.setState({ data });
     }
 
+    onAddRecipeIng = id => e => {
+        const data = Object.assign({}, this.state.data);
+        data.recipes[id].ings.push(NormalIngredientTypeModel());
+        this.setState({ data });
+    }
+
     onRemoveMethod = (id, i) => e => {
         const data = Object.assign({}, this.state.data);
         data.recipes[id].method.splice(i, 1);
@@ -166,6 +172,7 @@ class App extends Component {
             onRemoveRecipe: this.onRemoveRecipe,
             onRecipeMethodChange: this.onRecipeMethodChange,
             onAddMethod: this.onAddMethod,
+            onAddRecipeIng: this.onAddRecipeIng,
             onRemoveMethod: this.onRemoveMethod,
             onRemoveRecipeIng: this.onRemoveRecipeIng,
             onRecipeIngFieldChange: this.onRecipeIngFieldChange

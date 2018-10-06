@@ -73,6 +73,8 @@ const Recipe = ({ data, handlers, match }) => {
                             )
                         })}
                     </ul>
+                    <br />
+                    <button type="button" className="btn btn-primary" onClick={handlers.onAddRecipeIng(recipe.id)}>+</button>
                 </div>
             </div>
             <br />
