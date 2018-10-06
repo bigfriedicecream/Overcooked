@@ -7,6 +7,10 @@ import Recipe from './recipe/Recipe';
 import IngredientList from './ingredient/IngredientList';
 import Ingredient from './ingredient/Ingredient';
 import { IngredientModel } from '../models/IngredientModel';
+import { NormalIngredientTypeModel } from '../models/NormalIngredientTypeModel';
+import { HeadingIngredientTypeModel } from '../models/HeadingIngredientTypeModel';
+import { TextOnlyIngredientTypeModel } from '../models/TextOnlyIngredientTypeModel';
+import { LookupIngDisplayType } from '../lookups/LookupIngDisplayType';
 
 class App extends Component {
     constructor(props) {
@@ -106,14 +110,23 @@ class App extends Component {
 
     onRecipeIngFieldChange = (id, i, field) => e => {
         const data = Object.assign({}, this.state.data);
-        
+
+        var targetValue = e.target.value;
+
         if (field === 'ingDisplayTypeId') {
-            console.log('change object');
+            targetValue = parseInt(e.target.value);
+            if (targetValue === LookupIngDisplayType.normal.id) {
+                data.recipes[id].ings[i] = NormalIngredientTypeModel();
+
+            } else if (targetValue === LookupIngDisplayType.heading.id) {
+                data.recipes[id].ings[i] = HeadingIngredientTypeModel();
+
+            } else if (targetValue === LookupIngDisplayType.textOnly.id) {
+                data.recipes[id].ings[i] = TextOnlyIngredientTypeModel();
+            }
 
         } else {
-            var targetValue = e.target.value;
-
-            if (e.target.type === 'number' || e.target.type === 'select-one') {
+            if (e.target.type === 'number') {
                 targetValue = parseFloat(e.target.value)
             }
 

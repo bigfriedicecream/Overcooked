@@ -42,7 +42,7 @@ const Recipe = ({ data, handlers, match }) => {
                                                     <Number label="Quantity" value={item.quantity} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'quantity')} />
                                                     <div className="form-group">
                                                         <label>Ingredient</label>
-                                                        <select className="form-control" value={item.ingredientId} readOnly>
+                                                        <select className="form-control" value={item.ingredientId} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'ingredientId')}>
                                                             {Object.keys(ingredients).map(ingKey => {
                                                                 const ingredient = ingredients[ingKey];
                                                                 return (
