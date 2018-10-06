@@ -35,11 +35,11 @@ const Recipe = ({ data, handlers, match }) => {
                             return (
                                 <li key={`recipeitem-${i}`} className="list-group-item">
                                     <div className="d-flex">
-                                        <Select label="Display Type" value={item.ingDisplayType} options={LookupIngDisplayType.dataList()} readOnly />
+                                        <Select label="Display Type" value={item.ingDisplayTypeId} options={LookupIngDisplayType.dataList()} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'ingDisplayTypeId')} />
                                         {
-                                            item.ingDisplayType === LookupIngDisplayType.normal.id ?
+                                            item.ingDisplayTypeId === LookupIngDisplayType.normal.id ?
                                                 <div className="d-flex">
-                                                    <Number label="Quantity" value={item.quantity} readOnly />
+                                                    <Number label="Quantity" value={item.quantity} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'quantity')} />
                                                     <div className="form-group">
                                                         <label>Ingredient</label>
                                                         <select className="form-control" value={item.ingredientId} readOnly>
@@ -56,14 +56,14 @@ const Recipe = ({ data, handlers, match }) => {
                                                 ''
                                         }
                                         {
-                                            item.ingDisplayType === LookupIngDisplayType.heading.id ?
-                                                <Text label="Display" value={item.display} readOnly />
+                                            item.ingDisplayTypeId === LookupIngDisplayType.heading.id ?
+                                                <Text label="Display" value={item.display} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'display')} />
                                             :
                                                 ''
                                         }
                                         {
-                                            item.ingDisplayType === LookupIngDisplayType.textOnly.id ?
-                                                <Text label="Display" value={item.display} readOnly />
+                                            item.ingDisplayTypeId === LookupIngDisplayType.textOnly.id ?
+                                                <Text label="Display" value={item.display} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'display')} />
                                                 :
                                                 ''
                                         }

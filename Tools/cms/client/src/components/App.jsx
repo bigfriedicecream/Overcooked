@@ -104,6 +104,25 @@ class App extends Component {
         this.setState({ data });
     }
 
+    onRecipeIngFieldChange = (id, i, field) => e => {
+        const data = Object.assign({}, this.state.data);
+        
+        if (field === 'ingDisplayTypeId') {
+            console.log('change object');
+
+        } else {
+            var targetValue = e.target.value;
+
+            if (e.target.type === 'number' || e.target.type === 'select-one') {
+                targetValue = parseFloat(e.target.value)
+            }
+
+            data.recipes[id].ings[i][field] = targetValue;
+        }
+
+        this.setState({ data });
+    }
+
     render() {
         const handlers = {
             onRecipeFieldChange: this.onRecipeFieldChange,
@@ -112,7 +131,8 @@ class App extends Component {
             onRemoveIngredient: this.onRemoveIngredient,
             onRecipeMethodChange: this.onRecipeMethodChange,
             onAddMethod: this.onAddMethod,
-            onRemoveMethod: this.onRemoveMethod
+            onRemoveMethod: this.onRemoveMethod,
+            onRecipeIngFieldChange: this.onRecipeIngFieldChange
         }
 
         return (
