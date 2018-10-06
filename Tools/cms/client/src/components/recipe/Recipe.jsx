@@ -34,6 +34,7 @@ const Recipe = ({ data, handlers, match }) => {
                         {recipe.ings.map((item, i) => {
                             return (
                                 <li key={`recipeitem-${i}`} className="list-group-item">
+                                    <button type="button" className="btn btn-link text-danger float-right" onClick={handlers.onRemoveRecipeIng(recipe.id, i)}>Remove</button>
                                     <div className="d-flex">
                                         <Select label="Display Type" value={item.ingDisplayTypeId} options={LookupIngDisplayType.dataList()} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'ingDisplayTypeId')} />
                                         {
