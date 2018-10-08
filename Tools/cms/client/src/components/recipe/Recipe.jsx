@@ -19,6 +19,7 @@ const Recipe = ({ data, handlers, match }) => {
                     <h2>{recipe.title}</h2>
                     <p><small>ID: {recipe.id}</small></p>
                     <Text label="Title" value={recipe.title} onChange={handlers.onRecipeFieldChange(recipe.id, 'title')} />
+                    <Text label="Reference URL" value={recipe.referenceURL} onChange={handlers.onRecipeFieldChange(recipe.id, 'referenceURL')} />
                     <div className="d-flex">
                         <Number label="Serves" value={recipe.serves} onChange={handlers.onRecipeFieldChange(recipe.id, 'serves')} />
                         <Number label="Makes" value={recipe.makes} onChange={handlers.onRecipeFieldChange(recipe.id, 'makes')} />
