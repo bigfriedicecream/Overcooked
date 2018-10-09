@@ -24,11 +24,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_URL", "\"https://raw.githubusercontent.com/bigfriedicecream/Overcooked/master\""
+            buildConfigField "String", "BASE_URL", "\"https://firebasestorage.googleapis.com/v0/b/overcooked-f5fc4.appspot.com/o\""
+            buildConfigField "String", "DATABASE_URL", "\"https://firebasestorage.googleapis.com/v0/b/overcooked-f5fc4.appspot.com/o/db%2Fovercooked-release.json?alt=media\""
             signingConfig signingConfigs.overcooked
         }
         debug {
-            buildConfigField "String", "BASE_URL", "\"https://raw.githubusercontent.com/bigfriedicecream/Overcooked/develop\""
+            buildConfigField "String", "BASE_URL", "\"https://firebasestorage.googleapis.com/v0/b/overcooked-f5fc4.appspot.com/o\""
+            buildConfigField "String", "DATABASE_URL", "\"https://firebasestorage.googleapis.com/v0/b/overcooked-f5fc4.appspot.com/o/db%2Fovercooked-develop.json?alt=media\""
         }
     }
 }

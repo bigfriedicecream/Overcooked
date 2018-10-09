@@ -51,14 +51,14 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
     }
 
     override fun render(recipe:RecipeDataModel) {
-        /*val servesMakes:String = if (recipe.serves > 0) "Serves ${recipe.serves}" else "Makes ${recipe.makes}"
+        val servesMakes:String = if (recipe.serves > 0) "Serves ${recipe.serves}" else "Makes ${recipe.makes}"
         val prepTime = "Prep ${Int.minsToPrettyTimeFormat(recipe.prepTime)}"
         val cookTime = "Cook ${Int.minsToPrettyTimeFormat(recipe.cookTime)}"
         val totalTime:String = Int.minsToPrettyTimeFormat(recipe.prepTime + recipe.cookTime)
 
         GlideApp
                 .with(view!!)
-                .load("${BuildConfig.BASE_URL}/Assets/images/${recipe.id}/hero.jpg")
+                .load("${BuildConfig.BASE_URL}/recipes%2F${recipe.id}%2Fhero.jpg?alt=media")
                 .placeholder(R.drawable.placeholder)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
@@ -70,6 +70,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         view!!.cook_time.text = cookTime
         view!!.total_time.text = totalTime
 
+        /*
         // render ingredients
         view!!.ingredients_container.removeAllViews()
         recipe.ingredients?.forEach { ing ->
@@ -84,6 +85,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                     .add(R.id.ingredients_container, ingredientItem)
                     .commit()
         }
+        */
 
         // render method
         view!!.method_container.removeAllViews()
@@ -101,6 +103,6 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                     .commit()
         }
 
-        isLoaded = true*/
+        isLoaded = true
     }
 }

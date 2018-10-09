@@ -29,7 +29,7 @@ class RecipeListItemFragment : Fragment() {
 
             GlideApp
                     .with(view)
-                    .load("https://firebasestorage.googleapis.com/v0/b/overcooked-f5fc4.appspot.com/o/recipes%2F${model.id}%2Fhero.jpg?alt=media")
+                    .load("${BuildConfig.BASE_URL}/recipes%2F${model.id}%2Fhero.jpg?alt=media")
                     .placeholder(R.drawable.placeholder)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .fitCenter()

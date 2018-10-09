@@ -18,9 +18,11 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
         recipeRepository.deleteObserver(this)
     }
 
-    override fun load(id: String) {
-        //val recipe:RecipeDataModel = recipeRepository.get(id)
-        //view.render(recipe)
+    override fun load(id:String) {
+        val recipe:RecipeDataModel? = recipeRepository.get()?.recipes?.get(id)
+        if (recipe != null) {
+            view.render(recipe)
+        }
     }
 
     override fun update(observable:Observable, o:Any) {

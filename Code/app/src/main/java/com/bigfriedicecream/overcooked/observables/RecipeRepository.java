@@ -42,7 +42,7 @@ public class RecipeRepository extends Observable {
         } else {
             Ion
                     .with(context)
-                    .load("https://firebasestorage.googleapis.com/v0/b/overcooked-f5fc4.appspot.com/o/db%2Fovercooked-develop.json?alt=media")
+                    .load(BuildConfig.DATABASE_URL)
                     .asString()
                     .setCallback(new FutureCallback<String>() {
                         @Override
