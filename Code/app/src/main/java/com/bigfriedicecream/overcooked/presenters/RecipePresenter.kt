@@ -19,8 +19,8 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     }
 
     override fun load(id: String) {
-        val recipe:RecipeDataModel = recipeRepository.get(id)
-        view.render(recipe)
+        //val recipe:RecipeDataModel = recipeRepository.get(id)
+        //view.render(recipe)
     }
 
     override fun update(observable:Observable, o:Any) {

@@ -43,17 +43,19 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
         LinearLayout layoutList = getView().findViewById(R.id.layout_list);
         layoutList.removeAllViews();
 
-        for (Map.Entry<String, RecipeDataModel> entry : recipeList.entrySet()) {
-            Bundle bundle = new Bundle();
-            bundle.putString("data", new Gson().toJson(entry.getValue()));
+        if (recipeList != null) {
+            for (Map.Entry<String, RecipeDataModel> entry : recipeList.entrySet()) {
+                Bundle bundle = new Bundle();
+                bundle.putString("data", new Gson().toJson(entry.getValue()));
 
-            Fragment fragment = new RecipeListItemFragment();
-            fragment.setArguments(bundle);
+                Fragment fragment = new RecipeListItemFragment();
+                fragment.setArguments(bundle);
 
-            getChildFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.layout_list, fragment)
-                    .commit();
+                getChildFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.layout_list, fragment)
+                        .commit();
+            }
         }
     }
 }

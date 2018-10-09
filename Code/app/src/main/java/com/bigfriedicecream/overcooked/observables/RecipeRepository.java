@@ -31,55 +31,24 @@ public class RecipeRepository extends Observable {
     }
 
     public void load(Context context) {
-        try {
-            InputStream inputStream = context.getAssets().open("recipes.json");
-            int size = inputStream.available();
-            byte[] buffer = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            String json = new String(buffer, "UTF-8");
-
-            model = new GsonBuilder().create().fromJson(json, RecipeResponseDataModel.class);
-
-            setChanged();
-            notifyObservers();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /*public void load(Context c) {
-        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(c);
-        final String recipeResponse = preferences.getString("recipe_response", "");
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        final String recipeResponse = preferences.getString("overcooked_database", "");
 
         if (!recipeResponse.equalsIgnoreCase("")) {
             model = new GsonBuilder().create().fromJson(recipeResponse, RecipeResponseDataModel.class);
             setChanged();
             notifyObservers();
-            Ion
-                    .with(c)
-                    .load(BuildConfig.BASE_URL + "/Assets/recipes.json")
-                    .asString()
-                    .setCallback(new FutureCallback<String>() {
-                        @Override
-                        public void onCompleted(Exception e, String result) {
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("recipe_response", result);
-                            editor.apply();
-                        }
-                    });
 
         } else {
             Ion
-                    .with(c)
-                    .load(BuildConfig.BASE_URL + "/Assets/recipes.json")
+                    .with(context)
+                    .load("https://firebasestorage.googleapis.com/v0/b/overcooked-f5fc4.appspot.com/o/db%2Fovercooked-develop.json?alt=media")
                     .asString()
                     .setCallback(new FutureCallback<String>() {
                         @Override
                         public void onCompleted(Exception e, String result) {
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("recipe_response", result);
+                            editor.putString("overcooked_database", result);
                             editor.apply();
                             model = new GsonBuilder().create().fromJson(result, RecipeResponseDataModel.class);
                             setChanged();
@@ -87,13 +56,14 @@ public class RecipeRepository extends Observable {
                         }
                     });
         }
-    }*/
 
-    public Map<String, RecipeDataModel> getList() {
-        return model == null ? null : model.getRecipes();
     }
 
-    public RecipeDataModel get(String id) {
+    public RecipeResponseDataModel get() {
+        return model;
+    }
+
+    /*public RecipeDataModel get(String id) {
         return model == null ? null : model.getRecipes().get(id);
-    }
+    }*/
 }

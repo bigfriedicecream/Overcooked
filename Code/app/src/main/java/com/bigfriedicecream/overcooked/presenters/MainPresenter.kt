@@ -12,8 +12,8 @@ import java.util.Observable
 import java.util.Observer
 
 class MainPresenter(private val view: IMainContract.View) : IMainContract.Presenter, Observer {
-    private val recipeRepository: RecipeRepository = RecipeRepository.getInstance()
-    private val eventsDispatcher: EventsDispatcher = EventsDispatcher.getInstance()
+    private val recipeRepository:RecipeRepository = RecipeRepository.getInstance()
+    private val eventsDispatcher:EventsDispatcher = EventsDispatcher.getInstance()
 
     override fun start(c:Context) {
         eventsDispatcher.addObserver(this)
