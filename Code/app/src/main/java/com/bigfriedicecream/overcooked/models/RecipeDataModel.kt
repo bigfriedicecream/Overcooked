@@ -2,6 +2,7 @@ package com.bigfriedicecream.overcooked.models
 
 import com.google.gson.JsonObject
 
+
 class RecipeDataModel {
     var id:String = ""
     var title:String = ""

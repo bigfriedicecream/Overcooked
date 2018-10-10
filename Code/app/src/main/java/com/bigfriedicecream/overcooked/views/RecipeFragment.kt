@@ -14,6 +14,7 @@ import com.bigfriedicecream.overcooked.presenters.RecipePresenter
 import com.bigfriedicecream.overcooked.utils.GlideApp
 import com.bigfriedicecream.overcooked.utils.minsToPrettyTimeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_recipe.view.*
 
 class RecipeFragment:Fragment(), IRecipeContract.View {
@@ -69,6 +70,21 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         view!!.prep_time.text = prepTime
         view!!.cook_time.text = cookTime
         view!!.total_time.text = totalTime
+
+        // render ingredients
+        view!!.ingredients_container.removeAllViews()
+        recipe.ings.forEach { ing ->
+            val bundle = Bundle()
+            bundle.putString("item", ing.toString())
+
+            val ingredientItem:Fragment = RecipeIngredientItemFragment()
+            ingredientItem.arguments = bundle
+
+            fragmentManager!!
+                    .beginTransaction()
+                    .add(R.id.ingredients_container, ingredientItem)
+                    .commit()
+        }
 
         /*
         // render ingredients
