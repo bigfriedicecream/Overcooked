@@ -9,7 +9,6 @@ import com.bigfriedicecream.overcooked.BuildConfig
 
 import com.bigfriedicecream.overcooked.R
 import com.bigfriedicecream.overcooked.interfaces.IRecipeContract
-import com.bigfriedicecream.overcooked.models.RecipeDataModel
 import com.bigfriedicecream.overcooked.presenters.RecipePresenter
 import com.bigfriedicecream.overcooked.utils.GlideApp
 import com.bigfriedicecream.overcooked.utils.minsToPrettyTimeFormat
@@ -51,8 +50,8 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         state.putBoolean("isLoaded", isLoaded)
     }
 
-    override fun render(recipe:RecipeDataModel) {
-        val servesMakes:String = if (recipe.serves > 0) "Serves ${recipe.serves}" else "Makes ${recipe.makes}"
+    override fun render() {
+        /*val servesMakes:String = if (recipe.serves > 0) "Serves ${recipe.serves}" else "Makes ${recipe.makes}"
         val prepTime = "Prep ${Int.minsToPrettyTimeFormat(recipe.prepTime)}"
         val cookTime = "Cook ${Int.minsToPrettyTimeFormat(recipe.cookTime)}"
         val totalTime:String = Int.minsToPrettyTimeFormat(recipe.prepTime + recipe.cookTime)
@@ -84,7 +83,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                     .beginTransaction()
                     .add(R.id.ingredients_container, ingredientItem)
                     .commit()
-        }
+        }*/
 
         /*
         // render ingredients
@@ -104,7 +103,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         */
 
         // render method
-        view!!.method_container.removeAllViews()
+        /*view!!.method_container.removeAllViews()
         recipe.method?.forEachIndexed { i, method ->
             val bundle = Bundle()
             bundle.putInt("counter", i + 1)
@@ -117,7 +116,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                     .beginTransaction()
                     .add(R.id.method_container, methodItem)
                     .commit()
-        }
+        }*/
 
         isLoaded = true
     }

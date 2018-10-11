@@ -5,15 +5,14 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.bigfriedicecream.overcooked.BuildConfig;
-import com.bigfriedicecream.overcooked.models.RecipeDataModel;
+import com.bigfriedicecream.overcooked.models.CondensedRecipeModel;
 import com.bigfriedicecream.overcooked.models.RecipeResponseDataModel;
 import com.google.gson.GsonBuilder;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 public class RecipeRepository extends Observable {
@@ -59,9 +58,23 @@ public class RecipeRepository extends Observable {
 
     }
 
-    public RecipeResponseDataModel get() {
-        return model;
+    public List<CondensedRecipeModel> getRecipeList() {
+        List<CondensedRecipeModel> recipeList = new ArrayList<>();
+
+        for (RecipeResponseDataModel.RecipeDataModel recipe : model.getRecipes().values()) {
+            CondensedRecipeModel recipeModel = new CondensedRecipeModel();
+            recipeModel.setId(recipe.getId());
+            recipeModel.setTitle(recipe.getTitle());
+            recipeModel.setImageURL(BuildConfig.BASE_URL + "/recipes%2F" + recipe.getId() + "%2Fhero.jpg?alt=media");
+            recipeList.add(recipeModel);
+        }
+
+        return recipeList;
     }
+
+    /*public RecipeResponseDataModel get() {
+        return model;
+    }*/
 
     /*public RecipeDataModel get(String id) {
         return model == null ? null : model.getRecipes().get(id);

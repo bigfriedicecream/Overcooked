@@ -3,8 +3,7 @@ package com.bigfriedicecream.overcooked.presenters
 import android.content.Context
 
 import com.bigfriedicecream.overcooked.interfaces.IRecipeListContract
-import com.bigfriedicecream.overcooked.models.RecipeDataModel
-import com.bigfriedicecream.overcooked.models.RecipeResponseDataModel
+import com.bigfriedicecream.overcooked.models.CondensedRecipeModel
 import com.bigfriedicecream.overcooked.observables.RecipeRepository
 import java.util.Observable
 import java.util.Observer
@@ -14,10 +13,8 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
 
     override fun start(c: Context) {
         recipeRepository.addObserver(this)
-        val model:RecipeResponseDataModel? = recipeRepository.get()
-        if (model != null) {
-            view.render(model.recipes)
-        }
+        val recipeList:List<CondensedRecipeModel>  = recipeRepository.recipeList
+        view.render(recipeList)
     }
 
     override fun stop() {
@@ -26,10 +23,10 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
 
     override fun update(observable:Observable, o:Any) {
         if (observable is RecipeRepository) {
-            val model:RecipeResponseDataModel? = recipeRepository.get()
+            /*val model:RecipeResponseDataModel? = recipeRepository.get()
             if (model != null) {
                 view.render(model.recipes)
-            }
+            }*/
         }
     }
 

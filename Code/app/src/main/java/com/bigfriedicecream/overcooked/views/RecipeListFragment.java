@@ -11,10 +11,13 @@ import android.widget.LinearLayout;
 
 import com.bigfriedicecream.overcooked.R;
 import com.bigfriedicecream.overcooked.interfaces.IRecipeListContract;
-import com.bigfriedicecream.overcooked.models.RecipeDataModel;
+import com.bigfriedicecream.overcooked.models.CondensedRecipeModel;
 import com.bigfriedicecream.overcooked.presenters.RecipeListPresenter;
 import com.google.gson.Gson;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 import java.util.Map;
 
 public class RecipeListFragment extends Fragment implements IRecipeListContract.View {
@@ -39,7 +42,25 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
         presenter.stop();
     }
 
-    public void render(Map<String, RecipeDataModel> recipeList) {
+    public void render(@NotNull List<CondensedRecipeModel> recipes) {
+        LinearLayout layoutList = getView().findViewById(R.id.layout_list);
+        layoutList.removeAllViews();
+        System.out.println("MIKEY");
+        for (CondensedRecipeModel recipe : recipes) {
+            Bundle bundle = new Bundle();
+            bundle.putString("data", new Gson().toJson(recipe));
+
+            Fragment fragment = new RecipeListItemFragment();
+            fragment.setArguments(bundle);
+
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.layout_list, fragment)
+                    .commitAllowingStateLoss();
+        }
+    }
+
+    /*public void render(Map<String, RecipeDataModel> recipeList) {
         LinearLayout layoutList = getView().findViewById(R.id.layout_list);
         layoutList.removeAllViews();
 
@@ -57,5 +78,5 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
                         .commit();
             }
         }
-    }
+    }*/
 }
