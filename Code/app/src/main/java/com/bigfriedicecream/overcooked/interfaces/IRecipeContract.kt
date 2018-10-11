@@ -1,15 +1,16 @@
 package com.bigfriedicecream.overcooked.interfaces
 
+import com.bigfriedicecream.overcooked.models.RecipeModel
+
 
 interface IRecipeContract {
 
     interface View {
-        fun render()
+        fun render(recipe:RecipeModel)
     }
 
     interface Presenter {
-        fun start()
+        fun start(id:String?)
         fun stop()
-        fun load(id:String)
     }
 }

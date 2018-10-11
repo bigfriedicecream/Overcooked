@@ -9,6 +9,7 @@ import com.bigfriedicecream.overcooked.BuildConfig
 
 import com.bigfriedicecream.overcooked.R
 import com.bigfriedicecream.overcooked.interfaces.IRecipeContract
+import com.bigfriedicecream.overcooked.models.RecipeModel
 import com.bigfriedicecream.overcooked.presenters.RecipePresenter
 import com.bigfriedicecream.overcooked.utils.GlideApp
 import com.bigfriedicecream.overcooked.utils.minsToPrettyTimeFormat
@@ -19,25 +20,19 @@ import kotlinx.android.synthetic.main.fragment_recipe.view.*
 class RecipeFragment:Fragment(), IRecipeContract.View {
 
     private var presenter:IRecipeContract.Presenter = RecipePresenter(this)
-    private var id:String = ""
-    private var isLoaded:Boolean = false
+    private var id:String? = ""
 
     override fun onCreateView(inflater:LayoutInflater, container:ViewGroup?, state:Bundle?):View? {
         presenter = RecipePresenter(this)
 
-        id = arguments!!.getString("id")
-
-        state?.getBoolean("isLoaded")
+        id = arguments?.getString("id")
 
         return inflater.inflate(R.layout.fragment_recipe, container, false)
     }
 
     override fun onStart() {
         super.onStart()
-        presenter.start()
-        if (!isLoaded) {
-            presenter.load(id)
-        }
+        presenter.start(id)
     }
 
     override fun onStop() {
@@ -45,33 +40,33 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         presenter.stop()
     }
 
-    override fun onSaveInstanceState(state:Bundle) {
-        super.onSaveInstanceState(state)
-        state.putBoolean("isLoaded", isLoaded)
-    }
+    override fun render(recipe:RecipeModel) {
+        val servesMakes:String = if (recipe.serves > 0) "Serves ${recipe.serves}" else "Makes ${recipe.makes}"
 
-    override fun render() {
-        /*val servesMakes:String = if (recipe.serves > 0) "Serves ${recipe.serves}" else "Makes ${recipe.makes}"
         val prepTime = "Prep ${Int.minsToPrettyTimeFormat(recipe.prepTime)}"
         val cookTime = "Cook ${Int.minsToPrettyTimeFormat(recipe.cookTime)}"
         val totalTime:String = Int.minsToPrettyTimeFormat(recipe.prepTime + recipe.cookTime)
 
+        view?.serves_makes?.text = servesMakes
+        view?.prep_time?.text = prepTime
+        view?.cook_time?.text = cookTime
+        view?.total_time?.text = totalTime
+
+        view?.title?.text = recipe.title
+
         GlideApp
                 .with(view!!)
-                .load("${BuildConfig.BASE_URL}/recipes%2F${recipe.id}%2Fhero.jpg?alt=media")
+                .load(recipe.imageURL)
                 .placeholder(R.drawable.placeholder)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(view!!.hero)
+    }
 
-        view!!.title.text = recipe.title
-        view!!.serves_makes.text = servesMakes
-        view!!.prep_time.text = prepTime
-        view!!.cook_time.text = cookTime
-        view!!.total_time.text = totalTime
+    //override fun render() {
 
         // render ingredients
-        view!!.ingredients_container.removeAllViews()
+        /*view!!.ingredients_container.removeAllViews()
         recipe.ings.forEach { ing ->
             val bundle = Bundle()
             bundle.putString("item", ing.toString())
@@ -117,7 +112,5 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                     .add(R.id.method_container, methodItem)
                     .commit()
         }*/
-
-        isLoaded = true
-    }
+    //}
 }

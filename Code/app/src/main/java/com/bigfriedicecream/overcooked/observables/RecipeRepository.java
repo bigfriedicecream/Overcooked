@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 
 import com.bigfriedicecream.overcooked.BuildConfig;
 import com.bigfriedicecream.overcooked.models.CondensedRecipeModel;
+import com.bigfriedicecream.overcooked.models.RecipeModel;
 import com.bigfriedicecream.overcooked.models.RecipeResponseDataModel;
 import com.google.gson.GsonBuilder;
 import com.koushikdutta.async.future.FutureCallback;
@@ -72,11 +73,19 @@ public class RecipeRepository extends Observable {
         return recipeList;
     }
 
-    /*public RecipeResponseDataModel get() {
-        return model;
-    }*/
+    public RecipeModel getRecipeById(String id) {
+        RecipeModel recipeModel = new RecipeModel();
+        RecipeResponseDataModel.RecipeDataModel recipe = model.getRecipes().get(id);
 
-    /*public RecipeDataModel get(String id) {
-        return model == null ? null : model.getRecipes().get(id);
-    }*/
+        recipeModel.setId(recipe.getId());
+        recipeModel.setTitle(recipe.getTitle());
+        recipeModel.setImageURL(BuildConfig.BASE_URL + "/recipes%2F" + recipe.getId() + "%2Fhero.jpg?alt=media");
+        recipeModel.setServes(recipe.getServes());
+        recipeModel.setMakes(recipe.getMakes());
+        recipeModel.setPrepTime(recipe.getPrepTime());
+        recipeModel.setCookTime(recipe.getCookTime());
+        recipeModel.setMethod(recipe.getMethod());
+
+        return recipeModel;
+    }
 }

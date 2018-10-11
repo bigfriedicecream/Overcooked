@@ -15,18 +15,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c046f160-6080-443c-847d-7fd6d98d4ee8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/CondensedRecipeModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/interfaces/IRecipeContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/interfaces/IRecipeContract.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/interfaces/IRecipeListContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/interfaces/IRecipeListContract.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeDataModel.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeResponseDataModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeResponseDataModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/observables/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/observables/RecipeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipeListPresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipeListPresenter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeListFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeListItemFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeListItemFragment.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,11 +45,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RecipeRepository.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecipeResponseDataModel.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeResponseDataModel.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="45" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="45" />
+              <folding>
+                <element signature="e#48#106#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecipeRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/observables/RecipeRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="35" column="51" lean-forward="true" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
+            <state relative-caret-position="497">
+              <caret line="86" column="50" lean-forward="true" selection-start-line="86" selection-start-column="50" selection-end-line="86" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1659#2253#0" expanded="true" />
@@ -63,14 +71,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecipeListItemFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeListItemFragment.kt">
+      <file leaf-file-name="RecipeModel.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeModel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
-              <folding>
-                <element signature="e#47#603#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecipeFragment.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeFragment.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="565">
+              <caret line="62" column="34" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IRecipeContract.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/interfaces/IRecipeContract.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecipePresenter.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -92,7 +124,9 @@
       <find>when</find>
       <find>HERE</find>
       <find>TITLE</find>
+      <find>flour</find>
       <find>MIKEY</find>
+      <find>system.out</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -2561,17 +2595,18 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/TextOnlyIngDataModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeDataModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeIngredientItemFragment.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeResponseDataModel.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/interfaces/IRecipeContract.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeListModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/CondensedRecipeModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipeListPresenter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/interfaces/IRecipeListContract.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeListFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeListItemFragment.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeListFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/interfaces/IRecipeContract.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeResponseDataModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/observables/RecipeRepository.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeFragment.kt" />
       </list>
     </option>
   </component>
@@ -2956,8 +2991,9 @@
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.46013987" visible="true" weight="0.27506426" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.46013987" visible="true" weight="0.27506426" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32867134" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
@@ -2987,7 +3023,6 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32867134" />
       <window_info anchor="bottom" id="Terminal" order="7" />
@@ -3006,13 +3041,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="42" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state />
@@ -3289,50 +3317,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-          <folding>
-            <element signature="e#52#302#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/interfaces/IRecipeContract.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/CondensedRecipeModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="790">
-          <caret line="112" column="41" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="41" />
-          <folding>
-            <element signature="e#47#754#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeResponseDataModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="39" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="39" />
-          <folding>
-            <element signature="e#48#106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipeListPresenter.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -3350,16 +3334,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="58" column="47" lean-forward="true" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeListItemFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
@@ -3370,15 +3344,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/CondensedRecipeModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="52" column="42" lean-forward="true" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/interfaces/IRecipeContract.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeResponseDataModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="45" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="45" />
+          <folding>
+            <element signature="e#48#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/observables/RecipeRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="35" column="51" lean-forward="true" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
+        <state relative-caret-position="497">
+          <caret line="86" column="50" lean-forward="true" selection-start-line="86" selection-start-column="50" selection-end-line="86" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1659#2253#0" expanded="true" />
             <element signature="e#2252#2253#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/RecipeModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="41" lean-forward="true" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="62" column="34" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
         </state>
       </provider>
     </entry>

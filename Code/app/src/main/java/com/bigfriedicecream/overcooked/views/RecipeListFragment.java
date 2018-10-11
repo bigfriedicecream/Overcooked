@@ -45,7 +45,6 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
     public void render(@NotNull List<CondensedRecipeModel> recipes) {
         LinearLayout layoutList = getView().findViewById(R.id.layout_list);
         layoutList.removeAllViews();
-        System.out.println("MIKEY");
         for (CondensedRecipeModel recipe : recipes) {
             Bundle bundle = new Bundle();
             bundle.putString("data", new Gson().toJson(recipe));

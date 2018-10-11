@@ -4,7 +4,7 @@ import com.google.gson.JsonObject
 import java.util.HashMap
 
 class RecipeResponseDataModel {
-    var recipes: HashMap<String, RecipeDataModel>? = null
+    var recipes:HashMap<String, RecipeDataModel>? = null
     class RecipeDataModel {
         var id:String = ""
         var title:String = ""
@@ -13,6 +13,6 @@ class RecipeResponseDataModel {
         var prepTime:Int = 0
         var cookTime:Int = 0
         var ings:MutableList<JsonObject> = mutableListOf()
-        var method:List<String>? = null
+        var method:List<String> = ArrayList()
     }
 }
