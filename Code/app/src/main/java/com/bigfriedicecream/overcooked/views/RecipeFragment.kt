@@ -61,6 +61,23 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(view!!.hero)
+
+        // render method
+        view?.method_container?.removeAllViews()
+        recipe.method.forEachIndexed { i, method ->
+            val bundle = Bundle()
+            bundle.putInt("counter", i + 1)
+            bundle.putString("step", method)
+
+            val methodItem:Fragment = RecipeMethodItemFragment()
+            methodItem.arguments = bundle
+
+            fragmentManager!!
+                    .beginTransaction()
+                    .add(R.id.method_container, methodItem)
+                    .commitAllowingStateLoss()
+        }
+
     }
 
     //override fun render() {
@@ -96,21 +113,5 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                     .commit()
         }
         */
-
-        // render method
-        /*view!!.method_container.removeAllViews()
-        recipe.method?.forEachIndexed { i, method ->
-            val bundle = Bundle()
-            bundle.putInt("counter", i + 1)
-            bundle.putString("step", method)
-
-            val methodItem:Fragment = RecipeMethodItemFragment()
-            methodItem.arguments = bundle
-
-            fragmentManager!!
-                    .beginTransaction()
-                    .add(R.id.method_container, methodItem)
-                    .commit()
-        }*/
     //}
 }
