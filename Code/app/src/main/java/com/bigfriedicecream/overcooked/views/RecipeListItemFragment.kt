@@ -32,7 +32,7 @@ class RecipeListItemFragment : Fragment() {
                     .fitCenter()
                     .into(view.hero)
 
-            val eventsDispatcher:EventsDispatcher = EventsDispatcher.getInstance()
+            val eventsDispatcher:EventsDispatcher = EventsDispatcher.instance
 
             view.setOnClickListener { eventsDispatcher.dispatch("NAVIGATION_RECIPE", recipe.id) }
         }
