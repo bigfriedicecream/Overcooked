@@ -67,6 +67,11 @@ class RecipeRepository private constructor() : Observable() {
     }
 
     fun getRecipeById(id:String?):RecipeModel {
-        return RecipeModel()
+        val overcooked:JsonObject = Gson().fromJson(model, JsonObject::class.java)
+        val recipesJson:JsonObject = overcooked.getAsJsonObject("recipes")
+        val recipeJson:JsonObject = recipesJson.getAsJsonObject(id)
+        val recipe:RecipeModel = GsonBuilder().create().fromJson(recipeJson, RecipeModel::class.java)
+        recipe.imageURL = "${BuildConfig.BASE_URL}/recipes%2F${recipe.id}%2Fhero.jpg?alt=media"
+        return recipe
     }
 }
