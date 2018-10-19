@@ -79,39 +79,4 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         }
 
     }
-
-    //override fun render() {
-
-        // render ingredients
-        /*view!!.ingredients_container.removeAllViews()
-        recipe.ings.forEach { ing ->
-            val bundle = Bundle()
-            bundle.putString("item", ing.toString())
-
-            val ingredientItem:Fragment = RecipeIngredientItemFragment()
-            ingredientItem.arguments = bundle
-
-            fragmentManager!!
-                    .beginTransaction()
-                    .add(R.id.ingredients_container, ingredientItem)
-                    .commit()
-        }*/
-
-        /*
-        // render ingredients
-        view!!.ingredients_container.removeAllViews()
-        recipe.ingredients?.forEach { ing ->
-            val bundle = Bundle()
-            bundle.putString("item", ing)
-
-            val ingredientItem:Fragment = RecipeIngredientItemFragment()
-            ingredientItem.arguments = bundle
-
-            fragmentManager!!
-                    .beginTransaction()
-                    .add(R.id.ingredients_container, ingredientItem)
-                    .commit()
-        }
-        */
-    //}
 }

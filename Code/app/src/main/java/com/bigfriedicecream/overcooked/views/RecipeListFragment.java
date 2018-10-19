@@ -47,18 +47,6 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
     public void render(@NotNull HashMap<String, RecipeModel> recipes) {
         LinearLayout layoutList = getView().findViewById(R.id.layout_list);
         layoutList.removeAllViews();
-        /* for (RecipeModel recipe : recipes) {
-            Bundle bundle = new Bundle();
-            bundle.putString("data", new Gson().toJson(recipe));
-
-            Fragment fragment = new RecipeListItemFragment();
-            fragment.setArguments(bundle);
-
-            getChildFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.layout_list, fragment)
-                    .commitAllowingStateLoss();
-        }*/
 
         for (RecipeModel recipe : recipes.values()) {
             Bundle bundle = new Bundle();
@@ -73,24 +61,4 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
                     .commitAllowingStateLoss();
         }
     }
-
-    /*public void render(Map<String, RecipeDataModel> recipeList) {
-        LinearLayout layoutList = getView().findViewById(R.id.layout_list);
-        layoutList.removeAllViews();
-
-        if (recipeList != null) {
-            for (Map.Entry<String, RecipeDataModel> entry : recipeList.entrySet()) {
-                Bundle bundle = new Bundle();
-                bundle.putString("data", new Gson().toJson(entry.getValue()));
-
-                Fragment fragment = new RecipeListItemFragment();
-                fragment.setArguments(bundle);
-
-                getChildFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.layout_list, fragment)
-                        .commit();
-            }
-        }
-    }*/
 }

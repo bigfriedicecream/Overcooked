@@ -23,12 +23,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     }
 
     override fun update(observable:Observable, o:Any) {
-        if (observable is RecipeRepository) {
-            /*val model:RecipeResponseDataModel? = recipeRepository.get()
-            if (model != null) {
-                view.render(model.recipes)
-            }*/
-        }
+
     }
 
 }

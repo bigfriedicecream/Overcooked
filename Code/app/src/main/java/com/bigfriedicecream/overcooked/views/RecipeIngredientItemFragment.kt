@@ -30,7 +30,6 @@ class RecipeIngredientItemFragment:Fragment() {
         if (arguments != null) {
             val item:String? = arguments?.getString("item")
             val obj:JsonObject = JsonParser().parse(item).asJsonObject
-            // val baseIngType:BaseIngDataModel = GsonBuilder().create().fromJson<BaseIngDataModel>(item, BaseIngDataModel::class.java)
 
             when (obj.get("ingDisplayTypeId").asInt) {
                 LookupIngDisplayType.Normal.id -> {
@@ -48,9 +47,6 @@ class RecipeIngredientItemFragment:Fragment() {
                     view.item.text = model.display
                 }
             }
-
-
-            // view.item.text = arguments!!.getString("item")
         }
 
         return view
