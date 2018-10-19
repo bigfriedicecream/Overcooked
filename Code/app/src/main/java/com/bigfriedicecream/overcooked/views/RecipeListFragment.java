@@ -12,11 +12,13 @@ import android.widget.LinearLayout;
 import com.bigfriedicecream.overcooked.R;
 import com.bigfriedicecream.overcooked.interfaces.IRecipeListContract;
 import com.bigfriedicecream.overcooked.models.CondensedRecipeModel;
+import com.bigfriedicecream.overcooked.models.RecipeModel;
 import com.bigfriedicecream.overcooked.presenters.RecipeListPresenter;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,10 +44,23 @@ public class RecipeListFragment extends Fragment implements IRecipeListContract.
         presenter.stop();
     }
 
-    public void render(@NotNull List<CondensedRecipeModel> recipes) {
+    public void render(@NotNull HashMap<String, RecipeModel> recipes) {
         LinearLayout layoutList = getView().findViewById(R.id.layout_list);
         layoutList.removeAllViews();
-        for (CondensedRecipeModel recipe : recipes) {
+        /* for (RecipeModel recipe : recipes) {
+            Bundle bundle = new Bundle();
+            bundle.putString("data", new Gson().toJson(recipe));
+
+            Fragment fragment = new RecipeListItemFragment();
+            fragment.setArguments(bundle);
+
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.layout_list, fragment)
+                    .commitAllowingStateLoss();
+        }*/
+
+        for (RecipeModel recipe : recipes.values()) {
             Bundle bundle = new Bundle();
             bundle.putString("data", new Gson().toJson(recipe));
 

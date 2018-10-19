@@ -12,7 +12,7 @@ import java.util.Observable
 import java.util.Observer
 
 class MainPresenter(private val view: IMainContract.View) : IMainContract.Presenter, Observer {
-    private val recipeRepository:RecipeRepository = RecipeRepository.getInstance()
+    private val recipeRepository:RecipeRepository = RecipeRepository.instance
     private val eventsDispatcher:EventsDispatcher = EventsDispatcher.instance
 
     override fun start(c:Context) {

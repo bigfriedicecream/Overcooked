@@ -8,7 +8,7 @@ import java.util.Observable
 import java.util.Observer
 
 class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.Presenter, Observer {
-    private val recipeRepository:RecipeRepository = RecipeRepository.getInstance()
+    private val recipeRepository:RecipeRepository = RecipeRepository.instance
 
     override fun start(id:String?) {
         recipeRepository.addObserver(this)

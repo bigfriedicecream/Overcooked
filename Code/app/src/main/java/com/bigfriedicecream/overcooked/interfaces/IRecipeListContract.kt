@@ -1,13 +1,13 @@
 package com.bigfriedicecream.overcooked.interfaces
 
 import android.content.Context
-import com.bigfriedicecream.overcooked.models.CondensedRecipeModel
+import com.bigfriedicecream.overcooked.models.RecipeModel
 
 
 interface IRecipeListContract {
 
     interface View {
-        fun render(recipeList:List<CondensedRecipeModel>)
+        fun render(recipeList:HashMap<String, RecipeModel>)
     }
 
     interface Presenter {
