@@ -1,6 +1,6 @@
 package com.bigfriedicecream.overcooked.models
 
-class NormalIngDataModel:BaseIngDataModel() {
+class NormalRecipeIngredient:BaseRecipeIngredient() {
     var quantity:Int = 0
     var ingredientId:String = ""
 }

@@ -1,7 +1,6 @@
 package com.bigfriedicecream.overcooked.views
 
 import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -10,10 +9,8 @@ import android.view.ViewGroup
 
 import com.bigfriedicecream.overcooked.R
 import com.bigfriedicecream.overcooked.lookups.LookupIngDisplayType
-import com.bigfriedicecream.overcooked.models.BaseIngDataModel
-import com.bigfriedicecream.overcooked.models.HeadingIngDataModel
-import com.bigfriedicecream.overcooked.models.RecipeResponseDataModel
-import com.bigfriedicecream.overcooked.models.TextOnlyIngDataModel
+import com.bigfriedicecream.overcooked.models.HeadingRecipeIngredient
+import com.bigfriedicecream.overcooked.models.TextOnlyRecipeIngredient
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_recipe_ingredient_item.view.*
@@ -36,14 +33,14 @@ class RecipeIngredientItemFragment:Fragment() {
                     //println("normal")
                 }
                 LookupIngDisplayType.Heading.id -> {
-                    val model:HeadingIngDataModel = GsonBuilder().create().fromJson<HeadingIngDataModel>(item, HeadingIngDataModel::class.java)
+                    val model:HeadingRecipeIngredient = GsonBuilder().create().fromJson<HeadingRecipeIngredient>(item, HeadingRecipeIngredient::class.java)
                     view.item.typeface = ResourcesCompat.getFont(context!!, R.font.mission_gothic_regular)
                     view.item.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
                     view.item.setTextColor(Color.parseColor("#3e3e3e"))
                     view.item.text = model.display.toUpperCase()
                 }
                 LookupIngDisplayType.TextOnly.id -> {
-                    val model:TextOnlyIngDataModel = GsonBuilder().create().fromJson<TextOnlyIngDataModel>(item, TextOnlyIngDataModel::class.java)
+                    val model:TextOnlyRecipeIngredient = GsonBuilder().create().fromJson<TextOnlyRecipeIngredient>(item, TextOnlyRecipeIngredient::class.java)
                     view.item.text = model.display
                 }
             }

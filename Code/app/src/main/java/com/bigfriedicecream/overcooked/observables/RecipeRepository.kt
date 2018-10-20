@@ -5,13 +5,15 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 
 import com.bigfriedicecream.overcooked.BuildConfig
-import com.bigfriedicecream.overcooked.models.RecipeModel
+import com.bigfriedicecream.overcooked.lookups.LookupIngDisplayType
+import com.bigfriedicecream.overcooked.models.*
 import com.koushikdutta.ion.Ion
 
 import java.util.Observable
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonArray
 import com.google.gson.reflect.TypeToken
 
 
@@ -70,8 +72,34 @@ class RecipeRepository private constructor() : Observable() {
         val overcooked:JsonObject = Gson().fromJson(model, JsonObject::class.java)
         val recipesJson:JsonObject = overcooked.getAsJsonObject("recipes")
         val recipeJson:JsonObject = recipesJson.getAsJsonObject(id)
+        val recipeIngredientsJson:JsonArray = recipeJson.getAsJsonArray("ings")
         val recipe:RecipeModel = GsonBuilder().create().fromJson(recipeJson, RecipeModel::class.java)
         recipe.imageURL = "${BuildConfig.BASE_URL}/recipes%2F${recipe.id}%2Fhero.jpg?alt=media"
+
+        recipe.ings = ArrayList()
+
+        // add recipe ingredients
+        for (item in recipeIngredientsJson) {
+            val ing = item.asJsonObject
+            val ingDisplayTypeId = ing.get("ingDisplayTypeId").asInt
+
+            var recipeIngredient:Any? = null
+
+            when (ingDisplayTypeId) {
+                LookupIngDisplayType.Normal.id -> {
+                    recipeIngredient = GsonBuilder().create().fromJson(ing, NormalRecipeIngredient::class.java)
+                }
+                LookupIngDisplayType.Heading.id -> {
+                    recipeIngredient = GsonBuilder().create().fromJson(ing, HeadingRecipeIngredient::class.java)
+                }
+                LookupIngDisplayType.TextOnly.id -> {
+                    recipeIngredient = GsonBuilder().create().fromJson(ing, TextOnlyRecipeIngredient::class.java)
+                }
+            }
+
+            recipe.ings.add(recipeIngredient)
+        }
+
         return recipe
     }
 }

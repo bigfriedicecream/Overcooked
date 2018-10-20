@@ -1,5 +1,5 @@
 package com.bigfriedicecream.overcooked.models
 
-class HeadingIngDataModel:BaseIngDataModel() {
+class HeadingRecipeIngredient:BaseRecipeIngredient() {
     var display:String = ""
 }
