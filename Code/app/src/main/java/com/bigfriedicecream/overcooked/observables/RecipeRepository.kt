@@ -76,7 +76,7 @@ class RecipeRepository private constructor() : Observable() {
         val recipe:RecipeModel = GsonBuilder().create().fromJson(recipeJson, RecipeModel::class.java)
         recipe.imageURL = "${BuildConfig.BASE_URL}/recipes%2F${recipe.id}%2Fhero.jpg?alt=media"
 
-        recipe.ings = ArrayList()
+        recipe.ingredients = ArrayList()
 
         // add recipe ingredients
         for (item in recipeIngredientsJson) {
@@ -97,7 +97,7 @@ class RecipeRepository private constructor() : Observable() {
                 }
             }
 
-            recipe.ings.add(recipeIngredient)
+            recipe.ingredients.add(recipeIngredient)
         }
 
         return recipe

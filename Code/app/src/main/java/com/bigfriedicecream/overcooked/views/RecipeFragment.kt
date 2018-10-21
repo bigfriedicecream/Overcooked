@@ -9,7 +9,10 @@ import com.bigfriedicecream.overcooked.BuildConfig
 
 import com.bigfriedicecream.overcooked.R
 import com.bigfriedicecream.overcooked.interfaces.IRecipeContract
+import com.bigfriedicecream.overcooked.models.HeadingRecipeIngredient
+import com.bigfriedicecream.overcooked.models.NormalRecipeIngredient
 import com.bigfriedicecream.overcooked.models.RecipeModel
+import com.bigfriedicecream.overcooked.models.TextOnlyRecipeIngredient
 import com.bigfriedicecream.overcooked.presenters.RecipePresenter
 import com.bigfriedicecream.overcooked.utils.GlideApp
 import com.bigfriedicecream.overcooked.utils.minsToPrettyTimeFormat
@@ -61,6 +64,30 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(view!!.hero)
+
+        // render ingredients
+        view?.ingredients_container?.removeAllViews()
+        recipe.ingredients.forEach {
+            when (it) {
+                is NormalRecipeIngredient -> {
+                    println("is normal")
+                }
+                is HeadingRecipeIngredient -> {
+                    println("is heading")
+                }
+                is TextOnlyRecipeIngredient -> {
+                    val bundle = Bundle()
+                    bundle.putString("data", Gson().toJson(it))
+                    val textOnly = TextOnlyIngredientItemFragment()
+                    textOnly.arguments = bundle
+
+                    fragmentManager!!
+                            .beginTransaction()
+                            .add(R.id.ingredients_container, textOnly)
+                            .commitAllowingStateLoss()
+                }
+            }
+        }
 
         // render method
         view?.method_container?.removeAllViews()

@@ -1,6 +1,5 @@
 package com.bigfriedicecream.overcooked.views
 
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,23 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.bigfriedicecream.overcooked.R
-import com.bigfriedicecream.overcooked.lookups.LookupIngDisplayType
-import com.bigfriedicecream.overcooked.models.HeadingRecipeIngredient
 import com.bigfriedicecream.overcooked.models.TextOnlyRecipeIngredient
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.fragment_recipe_ingredient_item.view.*
-import com.google.gson.JsonParser
-import android.support.v4.content.res.ResourcesCompat
-import android.util.TypedValue
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_textonly_ingredient_item.view.*
 
 
-class RecipeIngredientItemFragment:Fragment() {
+class TextOnlyIngredientItemFragment:Fragment() {
 
     override fun onCreateView(inflater:LayoutInflater, container:ViewGroup?, savedInstanceState:Bundle?):View? {
-        val view:View = inflater.inflate(R.layout.fragment_recipe_ingredient_item, container, false)
+        val view:View = inflater.inflate(R.layout.fragment_textonly_ingredient_item, container, false)
 
-        if (arguments != null) {
+        val data:String? = arguments?.getString("data")
+
+        if (data != null) {
+            val recipeIngredient:TextOnlyRecipeIngredient = Gson().fromJson(data, TextOnlyRecipeIngredient::class.java)
+            view.item.text = recipeIngredient.display
+        }
+
+        /* if (arguments != null) {
             val item:String? = arguments?.getString("item")
             val obj:JsonObject = JsonParser().parse(item).asJsonObject
 
@@ -44,7 +44,7 @@ class RecipeIngredientItemFragment:Fragment() {
                     view.item.text = model.display
                 }
             }
-        }
+        }*/
 
         return view
     }
