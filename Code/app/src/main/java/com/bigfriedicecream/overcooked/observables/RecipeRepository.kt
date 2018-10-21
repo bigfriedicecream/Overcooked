@@ -70,9 +70,11 @@ class RecipeRepository private constructor() : Observable() {
 
     fun getRecipeById(id:String?):RecipeModel {
         val overcooked:JsonObject = Gson().fromJson(model, JsonObject::class.java)
+
         val recipesJson:JsonObject = overcooked.getAsJsonObject("recipes")
         val recipeJson:JsonObject = recipesJson.getAsJsonObject(id)
         val recipeIngredientsJson:JsonArray = recipeJson.getAsJsonArray("ings")
+
         val recipe:RecipeModel = GsonBuilder().create().fromJson(recipeJson, RecipeModel::class.java)
         recipe.imageURL = "${BuildConfig.BASE_URL}/recipes%2F${recipe.id}%2Fhero.jpg?alt=media"
 
@@ -88,6 +90,12 @@ class RecipeRepository private constructor() : Observable() {
             when (ingDisplayTypeId) {
                 LookupIngDisplayType.Normal.id -> {
                     recipeIngredient = GsonBuilder().create().fromJson(ing, NormalRecipeIngredient::class.java)
+                    val ingredientsJson:JsonObject = overcooked.getAsJsonObject("ingredients")
+                    val ingredientJson:JsonObject = ingredientsJson.getAsJsonObject(recipeIngredient.ingredientId)
+                    val ingredient = GsonBuilder().create().fromJson(ingredientJson, IngredientModel::class.java)
+                    recipeIngredient.name = ingredient.name
+                    recipeIngredient.namePlural = ingredient.namePlural
+                    recipeIngredient.ingUnitTypeId = ingredient.ingUnitTypeId
                 }
                 LookupIngDisplayType.Heading.id -> {
                     recipeIngredient = GsonBuilder().create().fromJson(ing, HeadingRecipeIngredient::class.java)

@@ -22,7 +22,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     }
 
     override fun update(observable:Observable, o:Any) {
-
+        
     }
 
 }

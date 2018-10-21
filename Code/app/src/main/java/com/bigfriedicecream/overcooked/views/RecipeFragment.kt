@@ -72,7 +72,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
             when (it) {
                 is NormalRecipeIngredient -> {
-                    println("is normal")
+                    fragment = NormalIngredientItemFragment()
                 }
                 is HeadingRecipeIngredient -> {
                     fragment = HeadingIngredientItemFragment()
