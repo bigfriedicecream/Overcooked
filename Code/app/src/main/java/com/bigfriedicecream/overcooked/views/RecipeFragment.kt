@@ -68,24 +68,28 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         // render ingredients
         view?.ingredients_container?.removeAllViews()
         recipe.ingredients.forEach {
+            var fragment:Fragment? = null
+
             when (it) {
                 is NormalRecipeIngredient -> {
                     println("is normal")
                 }
                 is HeadingRecipeIngredient -> {
-                    println("is heading")
+                    fragment = HeadingIngredientItemFragment()
                 }
                 is TextOnlyRecipeIngredient -> {
-                    val bundle = Bundle()
-                    bundle.putString("data", Gson().toJson(it))
-                    val textOnly = TextOnlyIngredientItemFragment()
-                    textOnly.arguments = bundle
-
-                    fragmentManager!!
-                            .beginTransaction()
-                            .add(R.id.ingredients_container, textOnly)
-                            .commitAllowingStateLoss()
+                    fragment = TextOnlyIngredientItemFragment()
                 }
+            }
+
+            if (fragment != null) {
+                val bundle = Bundle()
+                bundle.putString("data", Gson().toJson(it))
+                fragment.arguments = bundle
+                fragmentManager!!
+                        .beginTransaction()
+                        .add(R.id.ingredients_container, fragment)
+                        .commitAllowingStateLoss()
             }
         }
 
