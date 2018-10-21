@@ -3,7 +3,6 @@ package com.bigfriedicecream.overcooked.views;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.LinearLayout;
 
 import com.bigfriedicecream.overcooked.R;
 import com.bigfriedicecream.overcooked.interfaces.IRecipeListContract;
-import com.bigfriedicecream.overcooked.models.CondensedRecipeModel;
 import com.bigfriedicecream.overcooked.models.RecipeModel;
 import com.bigfriedicecream.overcooked.presenters.RecipeListPresenter;
 import com.google.gson.Gson;
@@ -19,8 +17,6 @@ import com.google.gson.Gson;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class RecipeListFragment extends Fragment implements IRecipeListContract.View {
 

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.bigfriedicecream.overcooked.R
-import com.bigfriedicecream.overcooked.models.CondensedRecipeModel
+import com.bigfriedicecream.overcooked.models.RecipeModel
 import com.bigfriedicecream.overcooked.observables.EventsDispatcher
 import com.bigfriedicecream.overcooked.utils.GlideApp
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -21,7 +21,7 @@ class RecipeListItemFragment : Fragment() {
         val view:View = inflater.inflate(R.layout.fragment_recipe_list_item, container, false)
 
         if (arguments != null) {
-            val recipe:CondensedRecipeModel = Gson().fromJson(arguments?.getString("data"), CondensedRecipeModel::class.java)
+            val recipe:RecipeModel = Gson().fromJson(arguments?.getString("data"), RecipeModel::class.java)
             view.title.text = recipe.title
 
             GlideApp

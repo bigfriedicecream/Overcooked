@@ -3,7 +3,6 @@ package com.bigfriedicecream.overcooked.presenters
 import android.content.Context
 
 import com.bigfriedicecream.overcooked.interfaces.IRecipeListContract
-import com.bigfriedicecream.overcooked.models.CondensedRecipeModel
 import com.bigfriedicecream.overcooked.models.RecipeModel
 import com.bigfriedicecream.overcooked.observables.RecipeRepository
 import java.util.Observable
