@@ -23,7 +23,6 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     }
 
     override fun update(observable:Observable, o:Any?) {
-        println("update")
         if (observable is RecipeRepository) {
             val recipe:RecipeModel = recipeRepository.getRecipeById(id)
             view.render(recipe)

@@ -65,7 +65,6 @@ class RecipeRepository private constructor() : Observable() {
                     model = result
 
                     if (willChange) {
-                        println("notify after fetch")
                         setChanged()
                         notifyObservers()
                     }
