@@ -1,5 +1,6 @@
 package com.bigfriedicecream.overcooked.interfaces
 
+import android.content.Context
 import com.bigfriedicecream.overcooked.models.RecipeModel
 
 
@@ -10,7 +11,7 @@ interface IRecipeContract {
     }
 
     interface Presenter {
-        fun start(id:String?)
+        fun start(context:Context?, id:String?)
         fun stop()
     }
 }

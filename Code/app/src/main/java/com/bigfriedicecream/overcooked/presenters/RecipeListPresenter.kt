@@ -11,18 +11,20 @@ import java.util.Observer
 class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter, Observer {
     private val recipeRepository:RecipeRepository = RecipeRepository.instance
 
-    override fun start(c: Context) {
+    override fun start(c:Context) {
         recipeRepository.addObserver(this)
-        val recipeList:HashMap<String, RecipeModel> = recipeRepository.getRecipeList()
-        view.render(recipeList)
+        recipeRepository.load(c)
     }
 
     override fun stop() {
         recipeRepository.deleteObserver(this)
     }
 
-    override fun update(observable:Observable, o:Any) {
-        
+    override fun update(observable:Observable, o:Any?) {
+        if (observable is RecipeRepository) {
+            val recipeList:HashMap<String, RecipeModel> = recipeRepository.getRecipeList()
+            view.render(recipeList)
+        }
     }
 
 }

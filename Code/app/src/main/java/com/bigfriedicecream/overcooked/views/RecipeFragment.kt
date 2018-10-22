@@ -35,7 +35,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
     override fun onStart() {
         super.onStart()
-        presenter.start(id)
+        presenter.start(context, id)
     }
 
     override fun onStop() {

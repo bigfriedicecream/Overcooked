@@ -26,9 +26,22 @@ class RecipeRepository private constructor() : Observable() {
     companion object {
         val instance:RecipeRepository by lazy { Holder.INSTANCE }
         var model:String = ""
+        var isFetching:Boolean = false
     }
 
-    fun load(context:Context) {
+    fun load(context:Context?) {
+        if (model != "") {
+            setChanged()
+            notifyObservers()
+            return
+        }
+
+        if (isFetching) {
+            return
+        }
+
+        isFetching = true
+
         val sharedPreferences:SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         val overcookedDb:String = sharedPreferences.getString("overcooked_database", "")
 
@@ -36,22 +49,29 @@ class RecipeRepository private constructor() : Observable() {
             model = overcookedDb
             setChanged()
             notifyObservers()
+        }
 
-        } else {
-            Ion
-                    .with(context)
-                    .load(BuildConfig.DATABASE_URL)
-                    .asString()
-                    .setCallback { _, result ->
-                        val editor:SharedPreferences.Editor = sharedPreferences.edit()
-                        editor.putString("overcooked_database", result)
-                        editor.apply()
+        Ion
+                .with(context)
+                .load(BuildConfig.DATABASE_URL)
+                .asString()
+                .setCallback { _, result ->
+                    val editor:SharedPreferences.Editor = sharedPreferences.edit()
+                    editor.putString("overcooked_database", result)
+                    editor.apply()
 
-                        model = result
+                    val willChange:Boolean = model == ""
+
+                    model = result
+
+                    if (willChange) {
+                        println("notify after fetch")
                         setChanged()
                         notifyObservers()
                     }
-        }
+
+                    isFetching = false
+                }
     }
 
     fun getRecipeList():HashMap<String, RecipeModel> {
