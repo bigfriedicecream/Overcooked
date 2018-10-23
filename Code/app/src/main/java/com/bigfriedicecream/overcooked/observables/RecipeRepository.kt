@@ -25,12 +25,12 @@ class RecipeRepository private constructor() : Observable() {
 
     companion object {
         val instance:RecipeRepository by lazy { Holder.INSTANCE }
-        var model:String = ""
+        var model:String? = null
         var isFetching:Boolean = false
     }
 
     fun load(context:Context?) {
-        if (model != "") {
+        if (model != null) {
             setChanged()
             notifyObservers()
             return
@@ -56,20 +56,22 @@ class RecipeRepository private constructor() : Observable() {
                 .load(BuildConfig.DATABASE_URL)
                 .asString()
                 .setCallback { _, result ->
-                    val editor:SharedPreferences.Editor = sharedPreferences.edit()
-                    editor.putString("overcooked_database", result)
-                    editor.apply()
+                    if (result != null) {
+                        val editor:SharedPreferences.Editor = sharedPreferences.edit()
+                        editor.putString("overcooked_database", result)
+                        editor.apply()
 
-                    val willChange:Boolean = model == ""
+                        val willChange:Boolean = model == null
 
-                    model = result
+                        model = result
 
-                    if (willChange) {
-                        setChanged()
-                        notifyObservers()
+                        if (willChange) {
+                            setChanged()
+                            notifyObservers()
+                        }
+
+                        isFetching = false
                     }
-
-                    isFetching = false
                 }
     }
 
