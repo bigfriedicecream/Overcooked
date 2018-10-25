@@ -7,6 +7,7 @@ import Recipe from './recipe/Recipe';
 import IngredientList from './ingredient/IngredientList';
 import Ingredient from './ingredient/Ingredient';
 import { IngredientModel } from '../models/IngredientModel';
+import { AlternateUnitModel } from '../models/AlternateUnitModel';
 import { RecipeModel } from '../models/RecipeModel';
 import { NormalIngredientTypeModel } from '../models/NormalIngredientTypeModel';
 import { HeadingIngredientTypeModel } from '../models/HeadingIngredientTypeModel';
@@ -59,7 +60,7 @@ class App extends Component {
             targetValue = parseFloat(e.target.value)
         }
 
-        data.recipes[id][field] = targetValue
+        data.recipes[id][field] = targetValue;
 
         this.setState({ data });
     }
@@ -73,7 +74,7 @@ class App extends Component {
             targetValue = parseFloat(e.target.value)
         }
 
-        data.ingredients[id][field] = targetValue
+        data.ingredients[id][field] = targetValue;
 
         this.setState({ data });
     }
@@ -134,6 +135,12 @@ class App extends Component {
         this.setState({ data });
     }
 
+    onAddAlternateUnit = id => e => {
+        const data = Object.assign({}, this.state.data);
+        data.ingredients[id].alternateUnits.push(AlternateUnitModel());
+        this.setState({ data });
+    }
+
     onRecipeIngFieldChange = (id, i, field) => e => {
         const data = Object.assign({}, this.state.data);
 
@@ -175,7 +182,8 @@ class App extends Component {
             onAddRecipeIng: this.onAddRecipeIng,
             onRemoveMethod: this.onRemoveMethod,
             onRemoveRecipeIng: this.onRemoveRecipeIng,
-            onRecipeIngFieldChange: this.onRecipeIngFieldChange
+            onRecipeIngFieldChange: this.onRecipeIngFieldChange,
+            onAddAlternateUnit: this.onAddAlternateUnit
         }
 
         return (
