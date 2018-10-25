@@ -9,7 +9,7 @@ import Select from '../form/Select';
 import Checkbox from '../form/Checkbox';
 
 const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers }) => {
-    const alternateUnits = ingredients[item.ingredientId].alternateUnits;
+    const alternateUnits = ingredients[item.ingredientId] ? ingredients[item.ingredientId].alternateUnits : [];
 
     return (
         <div className="d-flex">
