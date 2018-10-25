@@ -164,29 +164,31 @@ class App extends Component {
     onRecipeIngFieldChange = (id, i, field) => e => {
         const data = Object.assign({}, this.state.data);
 
-        var targetValue = e.target.value;
-
         if (field === 'ingDisplayTypeId') {
-            targetValue = parseInt(e.target.value);
-            if (targetValue === LookupIngDisplayType.normal.id) {
+            var ingDisplayVal = parseInt(e.target.value);
+            if (ingDisplayVal === LookupIngDisplayType.normal.id) {
                 data.recipes[id].ings[i] = NormalIngredientTypeModel();
 
-            } else if (targetValue === LookupIngDisplayType.heading.id) {
+            } else if (ingDisplayVal === LookupIngDisplayType.heading.id) {
                 data.recipes[id].ings[i] = HeadingIngredientTypeModel();
 
-            } else if (targetValue === LookupIngDisplayType.textOnly.id) {
+            } else if (ingDisplayVal === LookupIngDisplayType.textOnly.id) {
                 data.recipes[id].ings[i] = TextOnlyIngredientTypeModel();
             }
 
+        } else if (field === 'ingredientId') {
+            data.recipes[id].ings[i][field] = e.target.value;
+
         } else {
+            var fieldValue = e.target.value;
             if (e.target.type === 'number' || e.target.type === 'select-one') {
-                targetValue = parseFloat(e.target.value)
+                fieldValue = parseFloat(e.target.value)
 
             } else if (e.target.type === 'checkbox') {
-                targetValue = e.target.checked;
+                fieldValue = e.target.checked;
             }
 
-            data.recipes[id].ings[i][field] = targetValue;
+            data.recipes[id].ings[i][field] = fieldValue;
         }
 
         this.setState({ data });
