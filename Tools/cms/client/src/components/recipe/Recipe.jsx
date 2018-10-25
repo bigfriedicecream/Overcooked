@@ -26,7 +26,7 @@ const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers })
             </div>
             <div className="form-group">
                 <label>Alternate Unit</label>
-                <select className="form-control" value={0} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'alternateUnit')}>
+                <select className="form-control" value={item.alternateUnit} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'alternateUnit')}>
                     <option value={0}>None</option>
                     {alternateUnits.map((unit, i) => {
                         const key = `ing-${item.ingredientId}-alt-${unit.unitTypeId}-${i}`
