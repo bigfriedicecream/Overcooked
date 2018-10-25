@@ -31,7 +31,7 @@ const Ingredient = ({ data, handlers, match }) => {
                                     <div key={`alternateunit-${i}`} className="d-flex">
                                         <Select label="Unit Type" value={unit.unitTypeId} onChange={handlers.onAlternateUnitFieldChange(ingredient.id, i, 'unitTypeId')} options={LookupIngUnitType.dataList()} />
                                         <Number label="Multiplier" value={unit.multiplier} onChange={handlers.onAlternateUnitFieldChange(ingredient.id, i, 'multiplier')} />
-                                        <button type="button" className="btn btn-link text-danger float-right" onClick={() => { }}>Remove</button>
+                                        <button type="button" className="btn btn-link text-danger float-right" onClick={handlers.onRemoveAlternateUnit(ingredient.id, i)}>Remove</button>
                                     </div>
                                 )
                             })}

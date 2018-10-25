@@ -146,12 +146,18 @@ class App extends Component {
 
         var targetValue = e.target.value;
 
-        if (e.target.type === 'number') {
+        if (e.target.type === 'number' || e.target.type === 'select-one') {
             targetValue = parseFloat(e.target.value)
         }
 
         data.ingredients[id].alternateUnits[i][field] = targetValue
 
+        this.setState({ data });
+    }
+
+    onRemoveAlternateUnit = (id, i) => e => {
+        const data = Object.assign({}, this.state.data);
+        data.ingredients[id].alternateUnits.splice(i, 1);
         this.setState({ data });
     }
 
@@ -198,7 +204,8 @@ class App extends Component {
             onRemoveRecipeIng: this.onRemoveRecipeIng,
             onRecipeIngFieldChange: this.onRecipeIngFieldChange,
             onAddAlternateUnit: this.onAddAlternateUnit,
-            onAlternateUnitFieldChange: this.onAlternateUnitFieldChange
+            onAlternateUnitFieldChange: this.onAlternateUnitFieldChange,
+            onRemoveAlternateUnit: this.onRemoveAlternateUnit
         }
 
         return (
