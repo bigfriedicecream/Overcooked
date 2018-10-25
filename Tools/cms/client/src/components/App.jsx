@@ -141,6 +141,20 @@ class App extends Component {
         this.setState({ data });
     }
 
+    onAlternateUnitFieldChange = (id, i, field) => e => {
+        const data = Object.assign({}, this.state.data);
+
+        var targetValue = e.target.value;
+
+        if (e.target.type === 'number') {
+            targetValue = parseFloat(e.target.value)
+        }
+
+        data.ingredients[id].alternateUnits[i][field] = targetValue
+
+        this.setState({ data });
+    }
+
     onRecipeIngFieldChange = (id, i, field) => e => {
         const data = Object.assign({}, this.state.data);
 
@@ -183,7 +197,8 @@ class App extends Component {
             onRemoveMethod: this.onRemoveMethod,
             onRemoveRecipeIng: this.onRemoveRecipeIng,
             onRecipeIngFieldChange: this.onRecipeIngFieldChange,
-            onAddAlternateUnit: this.onAddAlternateUnit
+            onAddAlternateUnit: this.onAddAlternateUnit,
+            onAlternateUnitFieldChange: this.onAlternateUnitFieldChange
         }
 
         return (

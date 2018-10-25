@@ -29,8 +29,8 @@ const Ingredient = ({ data, handlers, match }) => {
                             {ingredient.alternateUnits.map((unit, i) => {
                                 return (
                                     <div key={`alternateunit-${i}`} className="d-flex">
-                                        <Select label="Unit Type" value={unit.unitTypeId} onChange={() => { }} options={LookupIngUnitType.dataList()} />
-                                        <Number label="Multiplier" value={unit.multiplier} onChange={() => { }} />
+                                        <Select label="Unit Type" value={unit.unitTypeId} onChange={handlers.onAlternateUnitFieldChange(ingredient.id, i, 'unitTypeId')} options={LookupIngUnitType.dataList()} />
+                                        <Number label="Multiplier" value={unit.multiplier} onChange={handlers.onAlternateUnitFieldChange(ingredient.id, i, 'multiplier')} />
                                         <button type="button" className="btn btn-link text-danger float-right" onClick={() => { }}>Remove</button>
                                     </div>
                                 )
