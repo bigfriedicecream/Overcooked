@@ -6,6 +6,7 @@ import Text from '../form/Text';
 import Number from '../form/Number';
 import Textarea from '../form/Textarea';
 import Select from '../form/Select';
+import Checkbox from '../form/Checkbox';
 
 const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers }) => {
     const alternateUnits = ingredients[item.ingredientId].alternateUnits;
@@ -37,6 +38,7 @@ const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers })
                     })}
                 </select>
             </div>
+            <Checkbox label="View Alternate Only" checked={item.viewAlternateOnly} value={1} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'viewAlternateOnly')} />
         </div>
     )
 }
