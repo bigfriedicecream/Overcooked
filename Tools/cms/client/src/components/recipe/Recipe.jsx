@@ -1,10 +1,45 @@
 import React from 'react';
 import { withRouter } from "react-router";
 import { LookupIngDisplayType } from '../../lookups/LookupIngDisplayType';
+import { LookupIngUnitType } from '../../lookups/LookupIngUnitType';
 import Text from '../form/Text';
 import Number from '../form/Number';
 import Textarea from '../form/Textarea';
 import Select from '../form/Select';
+
+const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers }) => {
+    const alternateUnits = ingredients[item.ingredientId].alternateUnits;
+
+    return (
+        <div className="d-flex">
+            <Number label="Quantity" value={item.quantity} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'quantity')} />
+            <div className="form-group">
+                <label>Ingredient</label>
+                <select className="form-control" value={item.ingredientId} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'ingredientId')}>
+                    {Object.keys(ingredients).map(ingKey => {
+                        const ingredient = ingredients[ingKey];
+                        return (
+                            <option key={`ing-${ingredient.id}`} value={ingredient.id}>{ingredient.name}</option>
+                        )
+                    })}
+                </select>
+            </div>
+            <div className="form-group">
+                <label>Alternate Unit</label>
+                <select className="form-control" value={0} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'alternateUnit')}>
+                    <option value={0}>None</option>
+                    {alternateUnits.map((unit, i) => {
+                        const key = `ing-${item.ingredientId}-alt-${unit.unitTypeId}-${i}`
+                        const unitName = LookupIngUnitType.dataLookup(unit.unitTypeId).description;
+                        return (
+                            <option key={key} value={unit.unitTypeId}>{unitName}</option>
+                        )
+                    })}
+                </select>
+            </div>
+        </div>
+    )
+}
 
 const Recipe = ({ data, handlers, match }) => {
     if (data === null) return null
@@ -40,20 +75,13 @@ const Recipe = ({ data, handlers, match }) => {
                                         <Select label="Display Type" value={item.ingDisplayTypeId} options={LookupIngDisplayType.dataList()} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'ingDisplayTypeId')} />
                                         {
                                             item.ingDisplayTypeId === LookupIngDisplayType.normal.id ?
-                                                <div className="d-flex">
-                                                    <Number label="Quantity" value={item.quantity} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'quantity')} />
-                                                    <div className="form-group">
-                                                        <label>Ingredient</label>
-                                                        <select className="form-control" value={item.ingredientId} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'ingredientId')}>
-                                                            {Object.keys(ingredients).map(ingKey => {
-                                                                const ingredient = ingredients[ingKey];
-                                                                return (
-                                                                    <option key={`ing-${ingredient.id}`} value={ingredient.id}>{ingredient.name}</option>
-                                                                )
-                                                            })}
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                <NormalIngredientDisplayType
+                                                    i={i}
+                                                    item={item}
+                                                    recipe={recipe}
+                                                    ingredients={ingredients}
+                                                    handlers={handlers}
+                                                />
                                             :
                                                 ''
                                         }
