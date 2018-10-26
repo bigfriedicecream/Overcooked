@@ -83,7 +83,7 @@ class RecipeRepository private constructor() : Observable() {
         val recipeList = GsonBuilder().create().fromJson<HashMap<String, RecipeModel>>(recipesJson, listType)
 
         for ((_, recipe) in recipeList) {
-            recipe.imageURL = "${BuildConfig.BASE_URL}/recipes%2F${recipe.id}%2Fhero.jpg?alt=media"
+            recipe.imageURL = "${BuildConfig.BASE_URL}/images%2Frecipes%2F${recipe.id}%2Fhero.jpg?alt=media"
         }
 
         return recipeList
@@ -97,7 +97,7 @@ class RecipeRepository private constructor() : Observable() {
         val recipeIngredientsJson:JsonArray = recipeJson.getAsJsonArray("ings")
 
         val recipe:RecipeModel = GsonBuilder().create().fromJson(recipeJson, RecipeModel::class.java)
-        recipe.imageURL = "${BuildConfig.BASE_URL}/recipes%2F${recipe.id}%2Fhero.jpg?alt=media"
+        recipe.imageURL = "${BuildConfig.BASE_URL}/images%2Frecipes%2F${recipe.id}%2Fhero.jpg?alt=media"
 
         recipe.ingredients = ArrayList()
 
