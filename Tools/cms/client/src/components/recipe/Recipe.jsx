@@ -10,7 +10,6 @@ import Select from '../form/Select';
 
 const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers }) => {
     const ingredient = ingredients[item.ingredientId] ? ingredients[item.ingredientId] : IngredientModel();
-    const alternateUnits = ingredient ? ingredient.alternateUnits : [];
 
     return (
         <div className="d-flex">
@@ -27,14 +26,13 @@ const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers })
                 </select>
             </div>
             <div className="form-group">
-                <label>Unit</label>
-                <select className="form-control" value={item.unitId} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'unitId')}>
-                    <option value={ingredient.ingUnitTypeId}>{LookupIngUnitType.dataLookup(ingredient.ingUnitTypeId).description}</option>
-                    {alternateUnits.map((unit, i) => {
-                        const key = `ing-${item.ingredientId}-unit-${unit.unitTypeId}-${i}`
-                        const unitName = LookupIngUnitType.dataLookup(unit.unitTypeId).description;
+                <label>Unit Type</label>
+                <select className="form-control" value={item.ingUnitTypeId} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'ingUnitTypeId')}>
+                    {ingredient.unitTypes.map((unit, i) => {
+                        const key = `ing-${item.id}-unit-${unit.ratio}-${i}`
+                        const unitName = LookupIngUnitType.dataLookup(unit.id).description;
                         return (
-                            <option key={key} value={unit.unitTypeId}>{unitName}</option>
+                            <option key={key} value={unit.id}>{unitName}</option>
                         )
                     })}
                 </select>
@@ -43,11 +41,11 @@ const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers })
                 <label>Alternate Unit</label>
                 <select className="form-control" value={item.alternateUnit} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'alternateUnit')}>
                     <option value={0}>None</option>
-                    {alternateUnits.map((unit, i) => {
-                        const key = `ing-${item.ingredientId}-alt-${unit.unitTypeId}-${i}`
-                        const unitName = LookupIngUnitType.dataLookup(unit.unitTypeId).description;
+                    {ingredient.unitTypes.map((unit, i) => {
+                        const key = `ing-${item.id}-alt-${unit.ratio}-${i}`
+                        const unitName = LookupIngUnitType.dataLookup(unit.id).description;
                         return (
-                            <option key={key} value={unit.unitTypeId}>{unitName}</option>
+                            <option key={key} value={unit.id}>{unitName}</option>
                         )
                     })}
                 </select>
