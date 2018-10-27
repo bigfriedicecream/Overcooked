@@ -6,7 +6,7 @@ export function IngredientModel() {
         id: uuidv4(),
         name: '[name]',
         namePlural: '[name plural]',
-        unitType: LookupIngUnitType.singular.id,
+        unitTypeId: LookupIngUnitType.singular.id,
         alternateUnits: []
     }
 }

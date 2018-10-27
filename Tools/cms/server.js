@@ -14,7 +14,7 @@ app.get('/api/hello', (req, res) => {
 });
 
 app.post('/recipes/save', (req, res) => {
-    var file = fs.writeFileSync('./overcooked.json', JSON.stringify(req.body), { encoding: 'utf8' });
+    var file = fs.writeFileSync('./overcooked.json', JSON.stringify(req.body, null, 2), { encoding: 'utf8' });
     res.send(file);
 });
 
