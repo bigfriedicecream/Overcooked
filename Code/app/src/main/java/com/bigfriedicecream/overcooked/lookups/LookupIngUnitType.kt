@@ -22,6 +22,7 @@ enum class LookupIngUnitType constructor(val id:Int, val description:String, val
             when (id) {
                 LookupIngUnitType.Singular.id -> return LookupIngUnitType.Singular
                 LookupIngUnitType.Grams.id -> return LookupIngUnitType.Grams
+                LookupIngUnitType.Millilitres.id -> return LookupIngUnitType.Millilitres
                 LookupIngUnitType.Tsp.id -> return LookupIngUnitType.Tsp
                 LookupIngUnitType.Tbs.id -> return LookupIngUnitType.Tbs
                 LookupIngUnitType.Cups.id -> return LookupIngUnitType.Cups
