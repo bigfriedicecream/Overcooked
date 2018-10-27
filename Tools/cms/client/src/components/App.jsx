@@ -135,13 +135,13 @@ class App extends Component {
         this.setState({ data });
     }
 
-    onAddAlternateUnit = id => e => {
+    onAddIngredientUnit = id => e => {
         const data = Object.assign({}, this.state.data);
-        data.ingredients[id].alternateUnits.push(AlternateUnitModel());
+        data.ingredients[id].unitTypes.push(AlternateUnitModel());
         this.setState({ data });
     }
 
-    onAlternateUnitFieldChange = (id, i, field) => e => {
+    onIngUnitFieldChange = (id, i, field) => e => {
         const data = Object.assign({}, this.state.data);
 
         var targetValue = e.target.value;
@@ -150,14 +150,14 @@ class App extends Component {
             targetValue = parseFloat(e.target.value)
         }
 
-        data.ingredients[id].alternateUnits[i][field] = targetValue
+        data.ingredients[id].unitTypes[i][field] = targetValue
 
         this.setState({ data });
     }
 
-    onRemoveAlternateUnit = (id, i) => e => {
+    onRemoveIngredientUnit = (id, i) => e => {
         const data = Object.assign({}, this.state.data);
-        data.ingredients[id].alternateUnits.splice(i, 1);
+        data.ingredients[id].unitTypes.splice(i, 1);
         this.setState({ data });
     }
 
@@ -205,9 +205,9 @@ class App extends Component {
             onRemoveMethod: this.onRemoveMethod,
             onRemoveRecipeIng: this.onRemoveRecipeIng,
             onRecipeIngFieldChange: this.onRecipeIngFieldChange,
-            onAddAlternateUnit: this.onAddAlternateUnit,
-            onAlternateUnitFieldChange: this.onAlternateUnitFieldChange,
-            onRemoveAlternateUnit: this.onRemoveAlternateUnit
+            onAddIngredientUnit: this.onAddIngredientUnit,
+            onIngUnitFieldChange: this.onIngUnitFieldChange,
+            onRemoveIngredientUnit: this.onRemoveIngredientUnit
         }
 
         return (

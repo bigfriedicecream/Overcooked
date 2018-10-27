@@ -18,25 +18,24 @@ const Ingredient = ({ data, handlers, match }) => {
                     <p><small>ID: {ingredient.id}</small></p>
                     <Text label="Name" value={ingredient.name} onChange={handlers.onIngredientFieldChange(ingredient.id, 'name')} />
                     <Text label="Name Plural" value={ingredient.namePlural} onChange={handlers.onIngredientFieldChange(ingredient.id, 'namePlural')} />
-                    <Select label="Base Unit Type" value={ingredient.ingUnitTypeId} onChange={handlers.onIngredientFieldChange(ingredient.id, 'ingUnitTypeId')} options={LookupIngUnitType.dataList()} />
                 </div>
             </div>
             <div className="row">
                 <div className="col-xl">
                     <div className="card">
                         <div className="card-body">
-                            <h5 className="card-title">Alternate Units</h5>
-                            {ingredient.alternateUnits.map((unit, i) => {
+                            <h5 className="card-title">Units</h5>
+                            {ingredient.unitTypes.map((unit, i) => {
                                 return (
                                     <div key={`alternateunit-${i}`} className="d-flex">
-                                        <Select label="Unit Type" value={unit.unitTypeId} onChange={handlers.onAlternateUnitFieldChange(ingredient.id, i, 'unitTypeId')} options={LookupIngUnitType.dataList()} />
-                                        <Number label="Multiplier" value={unit.multiplier} onChange={handlers.onAlternateUnitFieldChange(ingredient.id, i, 'multiplier')} />
-                                        <button type="button" className="btn btn-link text-danger float-right" onClick={handlers.onRemoveAlternateUnit(ingredient.id, i)}>Remove</button>
+                                        <Select label="Unit Type" value={unit.id} onChange={handlers.onIngUnitFieldChange(ingredient.id, i, 'id')} options={LookupIngUnitType.dataList()} />
+                                        <Number label="Ratio" value={unit.ratio} onChange={handlers.onIngUnitFieldChange(ingredient.id, i, 'ratio')} />
+                                        <button type="button" className="btn btn-link text-danger float-right" onClick={handlers.onRemoveIngredientUnit(ingredient.id, i)}>Remove</button>
                                     </div>
                                 )
                             })}
                             <br />
-                            <button type="button" className="btn btn-primary" onClick={handlers.onAddAlternateUnit(ingredient.id)}>+</button>
+                            <button type="button" className="btn btn-primary" onClick={handlers.onAddIngredientUnit(ingredient.id)}>+</button>
                         </div>
                     </div>
                 </div>
