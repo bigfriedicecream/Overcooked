@@ -2,14 +2,15 @@ import React from 'react';
 import { withRouter } from "react-router";
 import { LookupIngDisplayType } from '../../lookups/LookupIngDisplayType';
 import { LookupIngUnitType } from '../../lookups/LookupIngUnitType';
+import { IngredientModel } from '../../models/IngredientModel';
 import Text from '../form/Text';
 import Number from '../form/Number';
 import Textarea from '../form/Textarea';
 import Select from '../form/Select';
-import Checkbox from '../form/Checkbox';
 
 const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers }) => {
-    const alternateUnits = ingredients[item.ingredientId] ? ingredients[item.ingredientId].alternateUnits : [];
+    const ingredient = ingredients[item.ingredientId] ? ingredients[item.ingredientId] : IngredientModel();
+    const alternateUnits = ingredient ? ingredient.alternateUnits : [];
 
     return (
         <div className="d-flex">
@@ -21,6 +22,19 @@ const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers })
                         const ingredient = ingredients[ingKey];
                         return (
                             <option key={`ing-${ingredient.id}`} value={ingredient.id}>{ingredient.name}</option>
+                        )
+                    })}
+                </select>
+            </div>
+            <div className="form-group">
+                <label>Unit</label>
+                <select className="form-control" value={item.unitId} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'unitId')}>
+                    <option value={ingredient.ingUnitTypeId}>{LookupIngUnitType.dataLookup(ingredient.ingUnitTypeId).description}</option>
+                    {alternateUnits.map((unit, i) => {
+                        const key = `ing-${item.ingredientId}-unit-${unit.unitTypeId}-${i}`
+                        const unitName = LookupIngUnitType.dataLookup(unit.unitTypeId).description;
+                        return (
+                            <option key={key} value={unit.unitTypeId}>{unitName}</option>
                         )
                     })}
                 </select>
@@ -38,7 +52,6 @@ const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers })
                     })}
                 </select>
             </div>
-            <Checkbox label="View Alternate Only" checked={item.viewAlternateOnly} value={1} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'viewAlternateOnly')} />
         </div>
     )
 }

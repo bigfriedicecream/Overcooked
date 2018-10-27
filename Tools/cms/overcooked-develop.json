@@ -94,11 +94,12 @@
         },
         {
           "ingDisplayTypeId": 0,
-          "quantity": 54,
+          "quantity": 0.5,
           "ingredientId": "fe3d5e9a-27b0-419d-be38-13a5c4210e6a",
           "alternateUnits": [],
           "viewAlternateOnly": true,
-          "alternateUnit": 5
+          "alternateUnit": 0,
+          "unitId": 5
         },
         {
           "ingDisplayTypeId": 0,
@@ -106,6 +107,55 @@
           "ingredientId": "53cfa6a0-e715-48bf-a77a-3b71cd2ba25c",
           "alternateUnits": [],
           "viewAlternateOnly": false
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 1,
+          "ingredientId": "a28ddfae-3bec-4ab8-b012-4107aa208f2f",
+          "unitId": 4,
+          "alternateUnits": []
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 0.25,
+          "ingredientId": "51274104-356a-43bb-a8d2-2c197b5cf26f",
+          "unitId": 5,
+          "alternateUnits": []
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 2,
+          "ingredientId": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
+          "unitId": 0,
+          "alternateUnits": []
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 1,
+          "ingredientId": "89174bcc-b45e-453d-8d92-f4948b331184",
+          "unitId": 4,
+          "alternateUnits": []
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 400,
+          "ingredientId": "2af89db3-0d6e-415e-88d0-609b5d0d3d9a",
+          "unitId": 0,
+          "alternateUnits": []
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 0.5,
+          "ingredientId": "4dac2c34-eda9-46e1-9b87-ee35d00dade5",
+          "unitId": 5,
+          "alternateUnits": []
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 1.5,
+          "ingredientId": "a28ddfae-3bec-4ab8-b012-4107aa208f2f",
+          "unitId": 4,
+          "alternateUnits": []
         }
       ],
       "method": [],
@@ -190,6 +240,82 @@
         }
       ],
       "ingUnitTypeId": 1
+    },
+    "a28ddfae-3bec-4ab8-b012-4107aa208f2f": {
+      "id": "a28ddfae-3bec-4ab8-b012-4107aa208f2f",
+      "name": "smoked paprika",
+      "namePlural": "smoked paprika",
+      "unitTypeId": 0,
+      "alternateUnits": [
+        {
+          "unitTypeId": 3,
+          "multiplier": 0.43
+        },
+        {
+          "unitTypeId": 4,
+          "multiplier": 0.15
+        }
+      ],
+      "ingUnitTypeId": 1
+    },
+    "51274104-356a-43bb-a8d2-2c197b5cf26f": {
+      "id": "51274104-356a-43bb-a8d2-2c197b5cf26f",
+      "name": "parsley",
+      "namePlural": "parsley",
+      "unitTypeId": 0,
+      "alternateUnits": [
+        {
+          "unitTypeId": 5,
+          "multiplier": 0.017
+        }
+      ],
+      "ingUnitTypeId": 1
+    },
+    "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0": {
+      "id": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
+      "name": "garlic clove",
+      "namePlural": "garlic cloves",
+      "unitTypeId": 0,
+      "alternateUnits": [],
+      "ingUnitTypeId": 0
+    },
+    "89174bcc-b45e-453d-8d92-f4948b331184": {
+      "id": "89174bcc-b45e-453d-8d92-f4948b331184",
+      "name": "olive oil",
+      "namePlural": "olive oil",
+      "unitTypeId": 0,
+      "alternateUnits": [
+        {
+          "unitTypeId": 3,
+          "multiplier": 0.202884
+        },
+        {
+          "unitTypeId": 4,
+          "multiplier": 0.067628
+        }
+      ],
+      "ingUnitTypeId": 2
+    },
+    "2af89db3-0d6e-415e-88d0-609b5d0d3d9a": {
+      "id": "2af89db3-0d6e-415e-88d0-609b5d0d3d9a",
+      "name": "tin tomatoes",
+      "namePlural": "tin tomatoes",
+      "unitTypeId": 0,
+      "alternateUnits": [],
+      "ingUnitTypeId": 1
+    },
+    "4dac2c34-eda9-46e1-9b87-ee35d00dade5": {
+      "id": "4dac2c34-eda9-46e1-9b87-ee35d00dade5",
+      "name": "red wine",
+      "namePlural": "red wine",
+      "unitTypeId": 0,
+      "alternateUnits": [
+        {
+          "unitTypeId": 5,
+          "multiplier": 0.00423
+        }
+      ],
+      "ingUnitTypeId": 2
     }
   }
 }

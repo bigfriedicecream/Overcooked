@@ -183,9 +183,6 @@ class App extends Component {
             var fieldValue = e.target.value;
             if (e.target.type === 'number' || e.target.type === 'select-one') {
                 fieldValue = parseFloat(e.target.value)
-
-            } else if (e.target.type === 'checkbox') {
-                fieldValue = e.target.checked;
             }
 
             data.recipes[id].ings[i][field] = fieldValue;
