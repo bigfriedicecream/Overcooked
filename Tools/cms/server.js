@@ -9,12 +9,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/api/hello', (req, res) => {
-    var file = fs.readFileSync('./overcooked.json', 'utf8');
+    var file = fs.readFileSync('./overcooked-develop.json', 'utf8');
     res.send(JSON.parse(file));
 });
 
 app.post('/recipes/save', (req, res) => {
-    var file = fs.writeFileSync('./overcooked.json', JSON.stringify(req.body, null, 2), { encoding: 'utf8' });
+    var file = fs.writeFileSync('./overcooked-develop.json', JSON.stringify(req.body, null, 2), { encoding: 'utf8' });
+    var file = fs.writeFileSync('./overcooked.json', JSON.stringify(req.body), { encoding: 'utf8' });
     res.send(file);
 });
 
