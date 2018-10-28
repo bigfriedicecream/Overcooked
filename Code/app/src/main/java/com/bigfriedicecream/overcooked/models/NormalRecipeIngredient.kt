@@ -1,11 +1,11 @@
 package com.bigfriedicecream.overcooked.models
 
-import com.bigfriedicecream.overcooked.lookups.LookupIngUnitType
-
 class NormalRecipeIngredient:BaseRecipeIngredient() {
-    var quantity:Int = 0
+    var quantity:Double = 0.0
     var ingredientId:String = ""
+    var ingUnitTypeId:Int = 0
+    var alternateUnit:Int = 0
     var name:String = ""
     var namePlural:String = ""
-    var ingUnitTypeId:Int = LookupIngUnitType.Singular.id
+    var unitTypes:List<UnitData> = ArrayList()
 }

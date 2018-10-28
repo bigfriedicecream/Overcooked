@@ -16,14 +16,14 @@
           "ingDisplayTypeId": 0,
           "quantity": 2,
           "ingredientId": "0bb81427-414f-413a-82c9-083709dbaf11",
-          "ingUnitTypeId": 5,
-          "alternateUnit": 5
+          "ingUnitTypeId": 0,
+          "alternateUnit": 0
         },
         {
           "ingDisplayTypeId": 0,
           "quantity": 3,
           "ingredientId": "53cfa6a0-e715-48bf-a77a-3b71cd2ba25c",
-          "ingUnitTypeId": 5
+          "ingUnitTypeId": 0
         },
         {
           "ingDisplayTypeId": 0,
@@ -43,7 +43,7 @@
           "ingDisplayTypeId": 0,
           "quantity": 1,
           "ingredientId": "e8614fb5-50c4-4158-86b2-214d3a0731b8",
-          "ingUnitTypeId": 5
+          "ingUnitTypeId": 3
         },
         {
           "ingDisplayTypeId": 1,
@@ -53,7 +53,7 @@
           "ingDisplayTypeId": 0,
           "quantity": 1,
           "ingredientId": "0bb81427-414f-413a-82c9-083709dbaf11",
-          "ingUnitTypeId": 5
+          "ingUnitTypeId": 0
         },
         {
           "ingDisplayTypeId": 0,
@@ -88,36 +88,34 @@
           "quantity": 250,
           "ingredientId": "0d1a5c25-108f-4601-932d-d47a485e8bfa",
           "alternateUnit": 0,
-          "ingUnitTypeId": 5
+          "ingUnitTypeId": 1
         },
         {
           "ingDisplayTypeId": 0,
           "quantity": 250,
           "ingredientId": "7608870d-196a-471c-8665-55194cd15c5c",
-          "unitId": 0,
-          "alternateUnits": []
+          "alternateUnit": 0,
+          "ingUnitTypeId": 1
         },
         {
           "ingDisplayTypeId": 0,
           "quantity": 0.5,
           "ingredientId": "fe3d5e9a-27b0-419d-be38-13a5c4210e6a",
-          "unitId": 0,
-          "alternateUnits": [],
+          "alternateUnit": 0,
           "ingUnitTypeId": 5
         },
         {
           "ingDisplayTypeId": 0,
           "quantity": 1,
           "ingredientId": "53cfa6a0-e715-48bf-a77a-3b71cd2ba25c",
-          "unitId": 0,
-          "alternateUnits": []
+          "alternateUnit": 0,
+          "ingUnitTypeId": 0
         },
         {
           "ingDisplayTypeId": 0,
           "quantity": 1,
           "ingredientId": "a28ddfae-3bec-4ab8-b012-4107aa208f2f",
-          "unitId": 0,
-          "alternateUnits": [],
+          "alternateUnit": 0,
           "ingUnitTypeId": 4
         }
       ],

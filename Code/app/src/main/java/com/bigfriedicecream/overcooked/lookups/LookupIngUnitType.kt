@@ -8,7 +8,7 @@ enum class LookupIngUnitType constructor(val id:Int, val description:String, val
     Millilitres(2, "Millilitres", "ml ", "ml "),
     Tsp(3, "Tsp", " tsp ", " tsp "),
     Tbs(4, "Tbs", " tbs ", " tbs "),
-    Cups(5, "Cups", " cup", " cups "),
+    Cups(5, "Cups", " cup ", " cups "),
     Bunch(6, "Bunch", " bunch of ", " bunches of "),
     Rashers(7, "Rashers", " rasher of ", " rashes of "),
     Head(8, "Head", " head of ", " heads of "),

@@ -116,7 +116,7 @@ class RecipeRepository private constructor() : Observable() {
                     val ingredient = GsonBuilder().create().fromJson(ingredientJson, IngredientModel::class.java)
                     recipeIngredient.name = ingredient.name
                     recipeIngredient.namePlural = ingredient.namePlural
-                    recipeIngredient.ingUnitTypeId = ingredient.ingUnitTypeId
+                    recipeIngredient.unitTypes = ingredient.unitTypes
                 }
                 LookupIngDisplayType.Heading.id -> {
                     recipeIngredient = GsonBuilder().create().fromJson(ing, HeadingRecipeIngredient::class.java)
