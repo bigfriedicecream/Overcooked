@@ -122,7 +122,6 @@
           "ingDisplayTypeId": 0,
           "quantity": 0.25,
           "ingredientId": "51274104-356a-43bb-a8d2-2c197b5cf26f",
-          "unitId": 0,
           "alternateUnits": [],
           "ingUnitTypeId": 5
         },
@@ -130,8 +129,8 @@
           "ingDisplayTypeId": 0,
           "quantity": 2,
           "ingredientId": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
-          "unitId": 0,
-          "alternateUnits": []
+          "alternateUnits": [],
+          "ingUnitTypeId": 0
         },
         {
           "ingDisplayTypeId": 2,
@@ -141,7 +140,6 @@
           "ingDisplayTypeId": 0,
           "quantity": 1,
           "ingredientId": "89174bcc-b45e-453d-8d92-f4948b331184",
-          "unitId": 0,
           "alternateUnits": [],
           "ingUnitTypeId": 4
         },
@@ -149,14 +147,13 @@
           "ingDisplayTypeId": 0,
           "quantity": 400,
           "ingredientId": "2af89db3-0d6e-415e-88d0-609b5d0d3d9a",
-          "unitId": 0,
-          "alternateUnits": []
+          "alternateUnits": [],
+          "ingUnitTypeId": 1
         },
         {
           "ingDisplayTypeId": 0,
           "quantity": 0.5,
           "ingredientId": "4dac2c34-eda9-46e1-9b87-ee35d00dade5",
-          "unitId": 0,
           "alternateUnits": [],
           "ingUnitTypeId": 5
         },
@@ -164,7 +161,6 @@
           "ingDisplayTypeId": 0,
           "quantity": 1.5,
           "ingredientId": "a28ddfae-3bec-4ab8-b012-4107aa208f2f",
-          "unitId": 0,
           "alternateUnits": [],
           "ingUnitTypeId": 4
         }
