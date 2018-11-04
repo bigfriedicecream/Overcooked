@@ -47,40 +47,86 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:gravity="center">
-            <TextView
-                android:id="@+id/serves_makes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_semibold"
-                android:textAllCaps="true"
-                android:textColor="#3e3e3e"
-                android:textSize="13sp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp" />
-            <TextView
-                android:id="@+id/prep_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_semibold"
-                android:textAllCaps="true"
-                android:textColor="#3e3e3e"
-                android:textSize="13sp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp" />
-            <TextView
-                android:id="@+id/cook_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_semibold"
-                android:textAllCaps="true"
-                android:textColor="#3e3e3e"
-                android:textSize="13sp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp" />
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:background="#333333"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/serves_makes_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:textColor="#ffffff"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
+                    android:text="Serves" />
+
+                <TextView
+                    android:id="@+id/serves_makes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_light"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:background="#222222"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:textColor="#ffffff"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
+                    android:text="Prep" />
+                <TextView
+                    android:id="@+id/prep_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_light"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:background="#333333"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:textColor="#ffffff"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
+                    android:text="Cook" />
+                <TextView
+                    android:id="@+id/cook_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_light"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffff"
+                    android:textSize="24sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <TextView

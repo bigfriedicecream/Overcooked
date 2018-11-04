@@ -44,11 +44,11 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
     }
 
     override fun render(recipe:RecipeModel) {
-        val servesMakes:String = if (recipe.serves > 0) "Serves ${recipe.serves}" else "Makes ${recipe.makes}"
+        val servesMakes:String = if (recipe.serves > 0) recipe.serves.toString() else recipe.makes.toString()
 
-        val prepTime = "Prep ${Int.minsToPrettyTimeFormat(recipe.prepTime)}"
-        val cookTime = "Cook ${Int.minsToPrettyTimeFormat(recipe.cookTime)}"
-        val totalTime:String = Int.minsToPrettyTimeFormat(recipe.prepTime + recipe.cookTime)
+        val prepTime = Int.minsToPrettyTimeFormat(recipe.prepTime)
+        val cookTime = Int.minsToPrettyTimeFormat(recipe.cookTime)
+        val totalTime = Int.minsToPrettyTimeFormat(recipe.prepTime + recipe.cookTime)
 
         view?.serves_makes?.text = servesMakes
         view?.prep_time?.text = prepTime

@@ -3,9 +3,9 @@ package com.bigfriedicecream.overcooked.utils
 import kotlin.math.roundToInt
 
 fun Int.Companion.minsToPrettyTimeFormat(mins:Int):String {
-    val hours:Int = mins / 60
-    val leftoverMins:Int = mins % 60
-    return if (hours > 0) "${hours}H ${leftoverMins}MIN" else "${mins}MIN"
+    val hours = mins / 60
+    val leftoverMins = String.format("%02d", mins % 60) // formats number to 2 digits
+    return "$hours:$leftoverMins"
 }
 
 fun Double.Companion.fractionFromNumber(value:Double):String {
