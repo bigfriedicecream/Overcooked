@@ -48,7 +48,7 @@
                 android:layout_alignBottom="@id/hero"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
-                android:textSize="24sp"/>
+                android:textSize="26sp"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -61,8 +61,8 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:background="#333333"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
                 android:gravity="center">
                 <TextView
                     android:id="@+id/serves_makes_heading"
@@ -88,8 +88,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
                 android:background="#222222"
                 android:gravity="center">
                 <TextView
@@ -113,8 +113,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
                 android:background="#333333"
                 android:gravity="center">
                 <TextView
