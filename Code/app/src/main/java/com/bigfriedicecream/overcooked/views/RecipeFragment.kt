@@ -48,12 +48,10 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
         val prepTime = Int.minsToPrettyTimeFormat(recipe.prepTime)
         val cookTime = Int.minsToPrettyTimeFormat(recipe.cookTime)
-        val totalTime = Int.minsToPrettyTimeFormat(recipe.prepTime + recipe.cookTime)
 
         view?.serves_makes?.text = servesMakes
         view?.prep_time?.text = prepTime
         view?.cook_time?.text = cookTime
-        view?.total_time?.text = totalTime
 
         view?.title?.text = recipe.title
 
