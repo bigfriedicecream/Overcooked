@@ -9,7 +9,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/mission_gothic_regular"
+        android:fontFamily="@font/open_sans_semibold"
         android:paddingTop="24dp"
         android:paddingBottom="8dp"
         android:paddingStart="16dp"
