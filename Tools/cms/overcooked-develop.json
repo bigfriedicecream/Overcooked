@@ -123,14 +123,16 @@
           "quantity": 0.25,
           "ingredientId": "51274104-356a-43bb-a8d2-2c197b5cf26f",
           "alternateUnits": [],
-          "ingUnitTypeId": 5
+          "ingUnitTypeId": 5,
+          "endDesc": "chopped"
         },
         {
           "ingDisplayTypeId": 0,
           "quantity": 2,
           "ingredientId": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
           "alternateUnits": [],
-          "ingUnitTypeId": 0
+          "ingUnitTypeId": 0,
+          "endDesc": "minced"
         },
         {
           "ingDisplayTypeId": 2,
@@ -197,7 +199,8 @@
           "ingredientId": "bedd40dc-851a-424a-b46d-b707925c8e79",
           "unitTypeId": 0,
           "alternateUnits": [],
-          "ingUnitTypeId": 3
+          "ingUnitTypeId": 3,
+          "endDesc": "ground"
         },
         {
           "ingDisplayTypeId": 0,
@@ -225,7 +228,8 @@
           "ingredientId": "d513a979-de93-44dd-8a2d-5f3399432566",
           "unitTypeId": 0,
           "alternateUnits": [],
-          "ingUnitTypeId": 3
+          "ingUnitTypeId": 3,
+          "endDesc": ""
         },
         {
           "ingDisplayTypeId": 0,
@@ -241,7 +245,8 @@
           "ingredientId": "dd9e8f37-3c37-4061-b622-979358f5c9a5",
           "unitTypeId": 0,
           "alternateUnits": [],
-          "ingUnitTypeId": 3
+          "ingUnitTypeId": 3,
+          "endDesc": "or more to taste"
         },
         {
           "ingDisplayTypeId": 0,
@@ -256,21 +261,24 @@
           "quantity": 450,
           "ingredientId": "34de5c45-af6d-4299-9c0e-5fcfd434498e",
           "unitTypeId": 0,
-          "alternateUnits": []
+          "alternateUnits": [],
+          "endDesc": "cut into 3cm chunks"
         },
         {
           "ingDisplayTypeId": 0,
           "quantity": 1,
           "ingredientId": "46de1be1-e9c4-44a6-b607-87d67a124c55",
           "unitTypeId": 0,
-          "alternateUnits": []
+          "alternateUnits": [],
+          "endDesc": "sliced root to tip"
         },
         {
           "ingDisplayTypeId": 0,
           "quantity": 5,
           "ingredientId": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
           "unitTypeId": 0,
-          "alternateUnits": []
+          "alternateUnits": [],
+          "endDesc": "minced"
         },
         {
           "ingDisplayTypeId": 0,
@@ -285,7 +293,8 @@
           "quantity": 2,
           "ingredientId": "d22d1d26-47a8-4084-a0b9-c7486a0cd9c0",
           "unitTypeId": 0,
-          "alternateUnits": []
+          "alternateUnits": [],
+          "endDesc": "seeded and minced"
         },
         {
           "ingDisplayTypeId": 0,
@@ -308,14 +317,20 @@
           "ingredientId": "019b2724-ce7b-498b-8a6c-4ece4dab106b",
           "unitTypeId": 0,
           "alternateUnits": [],
-          "ingUnitTypeId": 4
+          "ingUnitTypeId": 4,
+          "endDesc": "or to taste"
         },
         {
           "ingDisplayTypeId": 0,
           "quantity": 16,
           "ingredientId": "cb4ef187-4251-443e-b082-d5fb6cea9515",
           "unitTypeId": 0,
-          "alternateUnits": []
+          "alternateUnits": [],
+          "endDesc": "torn roughly"
+        },
+        {
+          "ingDisplayTypeId": 2,
+          "display": "Hot cooked rice for serving"
         }
       ],
       "method": [

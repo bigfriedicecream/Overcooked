@@ -26,6 +26,9 @@ const NormalIngredientDisplayType = ({ i, item, recipe, ingredients, handlers })
                 </select>
             </div>
             <div className="form-group">
+                <Text label="End Description" value={item.endDesc} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'endDesc')} />
+            </div>
+            <div className="form-group">
                 <label>Unit Type</label>
                 <select className="form-control" value={item.ingUnitTypeId} onChange={handlers.onRecipeIngFieldChange(recipe.id, i, 'ingUnitTypeId')}>
                     {ingredient.unitTypes.map((unit, i) => {
