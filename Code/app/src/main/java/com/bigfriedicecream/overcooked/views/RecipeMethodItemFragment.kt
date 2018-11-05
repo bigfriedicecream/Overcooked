@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.bigfriedicecream.overcooked.R
+import com.bigfriedicecream.overcooked.utils.fromHtml
 import kotlinx.android.synthetic.main.fragment_recipe_method_item.view.*
 
 class RecipeMethodItemFragment:Fragment() {
@@ -16,7 +17,8 @@ class RecipeMethodItemFragment:Fragment() {
 
         if (arguments != null) {
             view.counter.text = arguments!!.getInt("counter").toString()
-            view.step.text = arguments!!.getString("step")
+            val step:String = arguments!!.getString("step")
+            view.step.text = String.fromHtml(step)
         }
 
         return view

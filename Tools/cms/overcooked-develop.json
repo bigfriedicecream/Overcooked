@@ -335,7 +335,7 @@
       ],
       "method": [
         "Mix the spices: In a small bowl, mix together the salt, ground coriander, cumin, ground cloves, cinnamon, ground cardamom, black pepper, cayenne and turmeric. Set aside.",
-        "Sauté onions, jalapeños, ginger, garlic, spices: In a wok or deep sauté pan, heat the oil over high heat. The moment the oil begins to smoke, add the onions and jalapeños and toss to coat in oil. Sear the vegetables for 3 minutes, stirring only enough to keep them from burning, but still allowing the onions to sear. Add the ginger, garlic and spice mixture and toss to combine, cook for 1 minute.",
+        "Saut&eacute; onions, jalape&ntilde;os, ginger, garlic, spices: In a wok or deep saut&eacute; pan, heat the oil over high heat. The moment the oil begins to smoke, add the onions and jalape&ntilde;os and toss to coat in oil. Sear the vegetables for 3 minutes, stirring only enough to keep them from burning, but still allowing the onions to sear. Add the ginger, garlic and spice mixture and toss to combine, cook for 1 minute.",
         "Add coconut milk, chicken, simmer:  Add the coconut milk and chicken. Stir the mixture so that the chicken pieces are coated in the coconut milk. Bring to a simmer, reduce the heat, cover and cook for 20 minutes.",
         "Add basil, lime juice: When the chicken is tender, turn off the heat and add the basil and lime juice. Add more lime juice and salt to taste and serve over rice."
       ],
@@ -711,8 +711,8 @@
     },
     "d22d1d26-47a8-4084-a0b9-c7486a0cd9c0": {
       "id": "d22d1d26-47a8-4084-a0b9-c7486a0cd9c0",
-      "name": "jalapeño pepper",
-      "namePlural": "jalapeño peppers",
+      "name": "jalape&ntilde;o pepper",
+      "namePlural": "jalape&ntilde;o peppers",
       "unitTypes": [
         {
           "id": 0,

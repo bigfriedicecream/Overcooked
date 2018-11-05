@@ -8,4 +8,5 @@ class NormalRecipeIngredient:BaseRecipeIngredient() {
     var name:String = ""
     var namePlural:String = ""
     var unitTypes:List<UnitData> = ArrayList()
+    var endDesc:String = ""
 }

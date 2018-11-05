@@ -1,5 +1,8 @@
 package com.bigfriedicecream.overcooked.utils
 
+import android.os.Build
+import android.text.Html
+import android.text.Spanned
 import kotlin.math.roundToInt
 
 fun Int.Companion.minsToPrettyTimeFormat(mins:Int):String {
@@ -19,4 +22,8 @@ fun Double.Companion.fractionFromNumber(value:Double):String {
     if (fractionPart > 0.705 && fractionPart < 0.875) return (if (intPart > 0) "$intPart " else "") + "3/4"
 
     return value.roundToInt().toString()
+}
+
+fun String.Companion.fromHtml(html:String): Spanned {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY) else Html.fromHtml(html)
 }

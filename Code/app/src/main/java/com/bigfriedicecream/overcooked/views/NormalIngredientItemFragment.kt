@@ -11,6 +11,7 @@ import com.bigfriedicecream.overcooked.lookups.LookupIngUnitType
 import com.bigfriedicecream.overcooked.models.NormalRecipeIngredient
 import com.bigfriedicecream.overcooked.models.UnitData
 import com.bigfriedicecream.overcooked.utils.fractionFromNumber
+import com.bigfriedicecream.overcooked.utils.fromHtml
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_textonly_ingredient_item.view.*
 
@@ -43,9 +44,10 @@ class NormalIngredientItemFragment:Fragment() {
                 alternateString = "($alternateQuantityString$alternateIngName) "
             }
 
-            val ingName = if (ing.quantity > 1) ing.namePlural else ing.name
+            val ingName = if (ing.quantity > 1) String.fromHtml(ing.namePlural) else String.fromHtml(ing.name)
+            val endDesc = if (ing.endDesc.isNotEmpty()) ", ${String.fromHtml(ing.endDesc)}" else ""
 
-            val displayResult = "$primaryQuantity$primaryUnit$alternateString$ingName"
+            val displayResult = "$primaryQuantity$primaryUnit$alternateString$ingName$endDesc"
 
             view.item.text = displayResult
         }
