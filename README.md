@@ -1,4 +1,4 @@
 # Overcooked
 
 ### Images
-**Hero:** 16:9 (1280px x 720px)
+**Hero:** 4:3 (1400px x 1050px)
