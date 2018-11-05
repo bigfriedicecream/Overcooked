@@ -12,64 +12,44 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/hero"
+            android:adjustViewBounds="true"
+            android:contentDescription="Recipe Image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/hero"
-                android:adjustViewBounds="true"
-                android:contentDescription="Recipe Image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignStart="@+id/hero"
-                android:layout_alignEnd="@+id/hero"
-                android:layout_alignTop="@+id/hero"
-                android:layout_alignBottom="@+id/hero"
-                android:orientation="vertical"
-                android:weightSum="3"
-                android:gravity="bottom">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/image_gradient_overlay"/>
-            </LinearLayout>
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_light"
-                android:textColor="#ffffff"
-                android:layout_alignStart="@+id/hero"
-                android:layout_alignBottom="@id/hero"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
-                android:textSize="26sp"/>
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_light"
+            android:textColor="#232323"
+            android:textAllCaps="true"
+            android:layout_gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textSize="20sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:background="#333333"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
                 android:gravity="center">
                 <TextView
                     android:id="@+id/serves_makes_heading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_semibold"
-                    android:textColor="#ffffff"
+                    android:textColor="#232323"
                     android:textAllCaps="true"
                     android:textSize="12sp"
                     android:text="Serves" />
@@ -80,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_light"
                     android:textAllCaps="true"
-                    android:textColor="#ffffff"
+                    android:textColor="#232323"
                     android:textSize="24sp" />
             </LinearLayout>
             <LinearLayout
@@ -88,15 +68,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:background="#222222"
                 android:gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_semibold"
-                    android:textColor="#ffffff"
+                    android:textColor="#232323"
                     android:textAllCaps="true"
                     android:textSize="12sp"
                     android:text="Prep" />
@@ -105,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_light"
-                    android:textColor="#ffffff"
+                    android:textColor="#232323"
                     android:textSize="24sp" />
             </LinearLayout>
             <LinearLayout
@@ -113,15 +90,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:background="#333333"
                 android:gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_semibold"
-                    android:textColor="#ffffff"
+                    android:textColor="#232323"
                     android:textAllCaps="true"
                     android:textSize="12sp"
                     android:text="Cook" />
@@ -131,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_light"
                     android:textAllCaps="true"
-                    android:textColor="#ffffff"
+                    android:textColor="#232323"
                     android:textSize="24sp" />
             </LinearLayout>
         </LinearLayout>
