@@ -182,8 +182,148 @@
       "makes": 0,
       "prepTime": 15,
       "cookTime": 25,
-      "ings": [],
-      "method": [],
+      "ings": [
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 1,
+          "ingredientId": "7c748aac-bcbe-4a9c-8a00-adfaacd4088d",
+          "unitTypeId": 0,
+          "alternateUnits": [],
+          "ingUnitTypeId": 3
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 0.5,
+          "ingredientId": "bedd40dc-851a-424a-b46d-b707925c8e79",
+          "unitTypeId": 0,
+          "alternateUnits": [],
+          "ingUnitTypeId": 3
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 0.5,
+          "ingredientId": "3730c24c-e5fd-4eab-af46-5ea0b27cd600",
+          "unitTypeId": 0,
+          "alternateUnits": [],
+          "ingUnitTypeId": 3
+        },
+        {
+          "ingDisplayTypeId": 2,
+          "display": "A small pinch of ground cloves"
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 0.25,
+          "ingredientId": "7c841a52-1634-45de-a210-99afc0d24155",
+          "unitTypeId": 0,
+          "alternateUnits": [],
+          "ingUnitTypeId": 3
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 0.25,
+          "ingredientId": "d513a979-de93-44dd-8a2d-5f3399432566",
+          "unitTypeId": 0,
+          "alternateUnits": [],
+          "ingUnitTypeId": 3
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 0.5,
+          "ingredientId": "13c60f40-3a0d-4268-b815-adb051b29bd4",
+          "unitTypeId": 0,
+          "alternateUnits": [],
+          "ingUnitTypeId": 3
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 0.5,
+          "ingredientId": "dd9e8f37-3c37-4061-b622-979358f5c9a5",
+          "unitTypeId": 0,
+          "alternateUnits": [],
+          "ingUnitTypeId": 3
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 0.5,
+          "ingredientId": "dbecbfe6-901e-46b1-ba99-adf3b477ddc3",
+          "unitTypeId": 0,
+          "alternateUnits": [],
+          "ingUnitTypeId": 3
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 450,
+          "ingredientId": "34de5c45-af6d-4299-9c0e-5fcfd434498e",
+          "unitTypeId": 0,
+          "alternateUnits": []
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 1,
+          "ingredientId": "46de1be1-e9c4-44a6-b607-87d67a124c55",
+          "unitTypeId": 0,
+          "alternateUnits": []
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 5,
+          "ingredientId": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
+          "unitTypeId": 0,
+          "alternateUnits": []
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 1,
+          "ingredientId": "001c2bdf-88e6-4aca-99a2-c6c562b28d1a",
+          "unitTypeId": 0,
+          "alternateUnits": [],
+          "ingUnitTypeId": 4
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 2,
+          "ingredientId": "d22d1d26-47a8-4084-a0b9-c7486a0cd9c0",
+          "unitTypeId": 0,
+          "alternateUnits": []
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 2,
+          "ingredientId": "c194821a-8a31-47ae-8b74-222a8df3bd83",
+          "unitTypeId": 0,
+          "alternateUnits": [],
+          "ingUnitTypeId": 4
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 415,
+          "ingredientId": "f220547d-c01a-4074-a5bb-34695fafb1f7",
+          "unitTypeId": 0,
+          "alternateUnits": []
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 1,
+          "ingredientId": "019b2724-ce7b-498b-8a6c-4ece4dab106b",
+          "unitTypeId": 0,
+          "alternateUnits": [],
+          "ingUnitTypeId": 4
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 16,
+          "ingredientId": "cb4ef187-4251-443e-b082-d5fb6cea9515",
+          "unitTypeId": 0,
+          "alternateUnits": []
+        }
+      ],
+      "method": [
+        "Mix the spices: In a small bowl, mix together the salt, ground coriander, cumin, ground cloves, cinnamon, ground cardamom, black pepper, cayenne and turmeric. Set aside.",
+        "Sauté onions, jalapeños, ginger, garlic, spices: In a wok or deep sauté pan, heat the oil over high heat. The moment the oil begins to smoke, add the onions and jalapeños and toss to coat in oil. Sear the vegetables for 3 minutes, stirring only enough to keep them from burning, but still allowing the onions to sear. Add the ginger, garlic and spice mixture and toss to combine, cook for 1 minute.",
+        "Add coconut milk, chicken, simmer:  Add the coconut milk and chicken. Stir the mixture so that the chicken pieces are coated in the coconut milk. Bring to a simmer, reduce the heat, cover and cook for 20 minutes.",
+        "Add basil, lime juice: When the chicken is tender, turn off the heat and add the basil and lime juice. Add more lime juice and salt to taste and serve over rice."
+      ],
       "referenceURL": "https://www.simplyrecipes.com/recipes/basil_chicken_in_coconut_curry_sauce/"
     }
   },
@@ -410,11 +550,11 @@
     },
     "bedd40dc-851a-424a-b46d-b707925c8e79": {
       "id": "bedd40dc-851a-424a-b46d-b707925c8e79",
-      "name": "ground coriander",
-      "namePlural": "ground coriander",
+      "name": "coriander",
+      "namePlural": "coriander",
       "unitTypes": [
         {
-          "id": 0,
+          "id": 1,
           "ratio": 1
         },
         {
@@ -537,7 +677,7 @@
     },
     "001c2bdf-88e6-4aca-99a2-c6c562b28d1a": {
       "id": "001c2bdf-88e6-4aca-99a2-c6c562b28d1a",
-      "name": "ground ginger",
+      "name": "ginger",
       "namePlural": "ginger",
       "unitTypes": [
         {
