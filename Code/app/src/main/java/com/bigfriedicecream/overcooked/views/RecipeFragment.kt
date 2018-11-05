@@ -45,10 +45,12 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
     override fun render(recipe:RecipeModel) {
         val servesMakes:String = if (recipe.serves > 0) recipe.serves.toString() else recipe.makes.toString()
+        val servesMakesHeading:String = if (recipe.serves > 0) "Serves" else "Makes"
 
         val prepTime = Int.minsToPrettyTimeFormat(recipe.prepTime)
         val cookTime = Int.minsToPrettyTimeFormat(recipe.cookTime)
 
+        view?.serves_makes_heading?.text = servesMakesHeading
         view?.serves_makes?.text = servesMakes
         view?.prep_time?.text = prepTime
         view?.cook_time?.text = cookTime

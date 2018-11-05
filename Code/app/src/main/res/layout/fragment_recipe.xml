@@ -51,8 +51,7 @@
                     android:fontFamily="@font/open_sans_semibold"
                     android:textColor="#232323"
                     android:textAllCaps="true"
-                    android:textSize="12sp"
-                    android:text="Serves" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/serves_makes"
