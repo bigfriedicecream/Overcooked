@@ -1,5 +1,7 @@
 package com.bigfriedicecream.overcooked.views
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -27,10 +29,13 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
     override fun onCreateView(inflater:LayoutInflater, container:ViewGroup?, state:Bundle?):View? {
         presenter = RecipePresenter(this)
+        val view = inflater.inflate(R.layout.fragment_recipe, container, false)
 
         id = arguments?.getString("id")
 
-        return inflater.inflate(R.layout.fragment_recipe, container, false)
+        view.btn_adjust_quantity?.setOnClickListener { showAdjustQuantityDialog() }
+
+        return view
     }
 
     override fun onStart() {
@@ -108,6 +113,22 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                     .add(R.id.method_container, methodItem)
                     .commitAllowingStateLoss()
         }
+
+    }
+
+    fun showAdjustQuantityDialog() {
+        val builder = AlertDialog.Builder(activity)
+        builder
+                .setTitle("Adjust Quantity")
+                .setView(layoutInflater.inflate(R.layout.dialog_adjust_quantity, null))
+                // Add action buttons
+                .setPositiveButton("Confirm") { dialog, id ->
+                    println("confirm")
+                }
+                .setNegativeButton("Cancel") { dialog, id ->
+                    dialog.cancel()
+                }
+        builder.create().show()
 
     }
 }

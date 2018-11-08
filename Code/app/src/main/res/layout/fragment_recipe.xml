@@ -109,17 +109,25 @@
             </LinearLayout>
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btn_adjust_quantity"
+            style="@style/ButtonBorderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Adjust Quantity" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="#f2f2f2"
             android:fontFamily="@font/open_sans_semibold"
+            android:padding="16dp"
+            android:text="Ingredients"
             android:textAllCaps="true"
             android:textColor="#3e3e3e"
-            android:textSize="14sp"
-            android:background="#f2f2f2"
-            android:padding="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="Ingredients" />
+            android:textSize="14sp" />
 
         <LinearLayout
             android:id="@+id/ingredients_container"

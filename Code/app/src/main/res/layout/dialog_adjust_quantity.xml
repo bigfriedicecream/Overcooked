@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ButtonBorderless"
+        android:src="@drawable/ic_add_accent_24dp" />
+    <EditText
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:cursorVisible="false"
+        android:background="@android:color/transparent"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="60sp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="0" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ButtonBorderless"
+        android:src="@drawable/ic_remove_accent_24dp" />
+</LinearLayout>
