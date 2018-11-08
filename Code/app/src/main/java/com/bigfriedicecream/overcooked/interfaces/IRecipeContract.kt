@@ -7,11 +7,13 @@ import com.bigfriedicecream.overcooked.models.RecipeModel
 interface IRecipeContract {
 
     interface View {
-        fun render(recipe:RecipeModel)
+        fun render(recipe:RecipeModel?)
+        fun showAdjustQuantityDialog(recipe:RecipeModel?)
     }
 
     interface Presenter {
         fun start(context:Context?, id:String?)
         fun stop()
+        fun adjustQuantityClick()
     }
 }

@@ -20,6 +20,7 @@ import com.bigfriedicecream.overcooked.utils.GlideApp
 import com.bigfriedicecream.overcooked.utils.minsToPrettyTimeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.dialog_adjust_quantity.view.*
 import kotlinx.android.synthetic.main.fragment_recipe.view.*
 
 class RecipeFragment:Fragment(), IRecipeContract.View {
@@ -33,7 +34,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
         id = arguments?.getString("id")
 
-        view.btn_adjust_quantity?.setOnClickListener { showAdjustQuantityDialog() }
+        view.btn_adjust_quantity?.setOnClickListener { presenter.adjustQuantityClick() }
 
         return view
     }
@@ -48,7 +49,11 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         presenter.stop()
     }
 
-    override fun render(recipe:RecipeModel) {
+    override fun render(recipe:RecipeModel?) {
+        if (recipe == null) {
+            return
+        }
+
         val servesMakes:String = if (recipe.serves > 0) recipe.serves.toString() else recipe.makes.toString()
         val servesMakesHeading:String = if (recipe.serves > 0) "Serves" else "Makes"
 
@@ -116,19 +121,36 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
     }
 
-    fun showAdjustQuantityDialog() {
+    override fun showAdjustQuantityDialog(recipe:RecipeModel?) {
+        if (recipe == null) {
+            return
+        }
+
         val builder = AlertDialog.Builder(activity)
+        val dialog = layoutInflater.inflate(R.layout.dialog_adjust_quantity, null)
+
+        dialog.quantity.text = if (recipe.serves > 0) recipe.serves.toString() else recipe.makes.toString()
+
+        dialog.btn_add.setOnClickListener {
+            val newQuantity = (dialog.quantity.text.toString().toInt() + 1).toString()
+            dialog.quantity.text = newQuantity
+        }
+
+        dialog.btn_remove.setOnClickListener {
+            val newQuantity = (dialog.quantity.text.toString().toInt() - 1).toString()
+            dialog.quantity.text = newQuantity
+        }
+
         builder
                 .setTitle("Adjust Quantity")
-                .setView(layoutInflater.inflate(R.layout.dialog_adjust_quantity, null))
+                .setView(dialog)
                 // Add action buttons
-                .setPositiveButton("Confirm") { dialog, id ->
+                .setPositiveButton("Confirm") { _, _ ->
                     println("confirm")
                 }
-                .setNegativeButton("Cancel") { dialog, id ->
-                    dialog.cancel()
+                .setNegativeButton("Cancel") { d, _ ->
+                    d.cancel()
                 }
         builder.create().show()
-
     }
 }
