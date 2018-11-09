@@ -27,6 +27,10 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
         view.showAdjustQuantityDialog(recipeModel)
     }
 
+    override fun updateQuantity(newQuantity:Int) {
+        
+    }
+
     override fun update(observable:Observable, o:Any?) {
         if (observable is RecipeRepository) {
             recipeModel = recipeRepository.getRecipeById(id)

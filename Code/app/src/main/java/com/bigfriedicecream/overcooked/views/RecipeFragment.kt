@@ -129,24 +129,19 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         val builder = AlertDialog.Builder(activity)
         val dialog = layoutInflater.inflate(R.layout.dialog_adjust_quantity, null)
 
-        dialog.quantity.text = if (recipe.serves > 0) recipe.serves.toString() else recipe.makes.toString()
+        val recipeQuantity = if (recipe.serves > 0) recipe.serves else recipe.makes
 
-        dialog.btn_add.setOnClickListener {
-            val newQuantity = (dialog.quantity.text.toString().toInt() + 1).toString()
-            dialog.quantity.text = newQuantity
-        }
-
-        dialog.btn_remove.setOnClickListener {
-            val newQuantity = (dialog.quantity.text.toString().toInt() - 1).toString()
-            dialog.quantity.text = newQuantity
-        }
+        dialog.quantity.minValue = recipeQuantity / 2
+        dialog.quantity.maxValue = recipeQuantity * 2
+        dialog.quantity.value = recipeQuantity
+        dialog.quantity.wrapSelectorWheel = false
 
         builder
                 .setTitle("Adjust Quantity")
                 .setView(dialog)
                 // Add action buttons
                 .setPositiveButton("Confirm") { _, _ ->
-                    println("confirm")
+                    presenter.updateQuantity(dialog.quantity.value)
                 }
                 .setNegativeButton("Cancel") { d, _ ->
                     d.cancel()

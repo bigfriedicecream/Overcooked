@@ -15,5 +15,6 @@ interface IRecipeContract {
         fun start(context:Context?, id:String?)
         fun stop()
         fun adjustQuantityClick()
+        fun updateQuantity(newQuantity:Int)
     }
 }
