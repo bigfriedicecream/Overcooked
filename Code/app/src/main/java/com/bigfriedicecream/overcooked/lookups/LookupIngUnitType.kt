@@ -3,11 +3,11 @@ package com.bigfriedicecream.overcooked.lookups
 import java.util.*
 
 enum class LookupIngUnitType constructor(val id:Int, val description:String, val shortName:String, val shortNamePlural:String) {
-    Singular(0, "Singular", " x ", " x "),
+    Singular(0, "Singular", " ", " "),
     Grams(1, "Grams", "g ", "g "),
     Millilitres(2, "Millilitres", "ml ", "ml "),
     Tsp(3, "Tsp", " tsp ", " tsp "),
-    Tbs(4, "Tbs", " tbs ", " tbs "),
+    Tbs(4, "Tbs", " Tbsp ", " Tbsp "),
     Cups(5, "Cups", " cup ", " cups "),
     Bunch(6, "Bunch", " bunch of ", " bunches of "),
     Rashers(7, "Rashers", " rasher of ", " rashes of "),
