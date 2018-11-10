@@ -54,7 +54,10 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
             return
         }
 
-        val servesMakes:String = if (recipe.serves > 0) recipe.serves.toString() else recipe.makes.toString()
+        val totalServes:Int = (recipe.serves * recipe.multiplier).toInt()
+        val totalMakes:Int = (recipe.makes * recipe.multiplier).toInt()
+
+        val servesMakes:String = if (recipe.serves > 0) totalServes.toString() else totalMakes.toString()
         val servesMakesHeading:String = if (recipe.serves > 0) "Serves" else "Makes"
 
         val prepTime = Int.minsToPrettyTimeFormat(recipe.prepTime)
@@ -134,7 +137,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
 
         dialog.quantity.minValue = recipeQuantity / 2
         dialog.quantity.maxValue = recipeQuantity * 2
-        dialog.quantity.value = recipeQuantity
+        dialog.quantity.value = (recipeQuantity * recipe.multiplier).toInt()
         dialog.quantity.wrapSelectorWheel = false
 
         builder
