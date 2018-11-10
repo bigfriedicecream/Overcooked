@@ -57,18 +57,26 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         val totalServes:Int = (recipe.serves * recipe.multiplier).toInt()
         val totalMakes:Int = (recipe.makes * recipe.multiplier).toInt()
 
-        val servesMakes:String = if (recipe.serves > 0) totalServes.toString() else totalMakes.toString()
+        val servesMakesUnit:Int = if (recipe.serves > 0) totalServes else totalMakes
         val servesMakesHeading:String = if (recipe.serves > 0) "Serves" else "Makes"
 
         val prepTime = Int.minsToPrettyTimeFormat(recipe.prepTime)
         val cookTime = Int.minsToPrettyTimeFormat(recipe.cookTime)
 
         view?.serves_makes_heading?.text = servesMakesHeading
-        view?.serves_makes?.text = servesMakes
+        view?.serves_makes?.text = servesMakesUnit.toString()
         view?.prep_time?.text = prepTime
         view?.cook_time?.text = cookTime
 
         view?.title?.text = recipe.title
+
+        view?.txt_adjustment_note?.visibility = View.GONE
+
+        if (recipe.serves != totalServes || recipe.makes != totalMakes) {
+            val serveMakeString = if (recipe.serves > 0) "serve" else "make"
+            view?.txt_adjustment_note?.text = "Cook time and prep time may vary to $serveMakeString $servesMakesUnit"
+            view?.txt_adjustment_note?.visibility = View.VISIBLE
+        }
 
         GlideApp
                 .with(view!!)
