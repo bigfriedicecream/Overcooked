@@ -22,8 +22,10 @@ class NormalIngredientItemFragment:Fragment() {
         val view:View = inflater.inflate(R.layout.fragment_textonly_ingredient_item, container, false)
 
         val data:String? = arguments?.getString("data")
-
-        val multiplier = 1
+        var multiplier:Double? = arguments?.getDouble("multiplier")
+        if (multiplier == null) {
+            multiplier = 1.0
+        }
 
         if (data != null) {
             val ing:NormalRecipeIngredient = Gson().fromJson(data, NormalRecipeIngredient::class.java)

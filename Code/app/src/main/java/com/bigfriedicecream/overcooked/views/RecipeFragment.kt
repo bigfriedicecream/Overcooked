@@ -95,6 +95,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
             if (fragment != null) {
                 val bundle = Bundle()
                 bundle.putString("data", Gson().toJson(it))
+                bundle.putDouble("multiplier", recipe.multiplier)
                 fragment.arguments = bundle
                 fragmentManager!!
                         .beginTransaction()
@@ -139,7 +140,6 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         builder
                 .setTitle("Adjust Quantity")
                 .setView(dialog)
-                // Add action buttons
                 .setPositiveButton("Confirm") { _, _ ->
                     presenter.updateQuantity(dialog.quantity.value)
                 }

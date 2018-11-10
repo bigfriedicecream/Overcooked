@@ -10,7 +10,7 @@ import java.util.Observer
 
 class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.Presenter, Observer {
     private val recipeRepository:RecipeRepository = RecipeRepository.instance
-    private var recipeModel:RecipeModel? = null
+    private var recipeModel:RecipeModel = RecipeModel()
     private var id:String? = null
 
     override fun start(context:Context?, id:String?) {
@@ -28,7 +28,10 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     }
 
     override fun updateQuantity(newQuantity:Int) {
-        
+        val quantity:Int = if (recipeModel.serves > 0) recipeModel.serves else recipeModel.makes
+        val multiplier:Double = newQuantity.toDouble() / quantity.toDouble()
+        recipeModel.multiplier = multiplier
+        view.render(recipeModel)
     }
 
     override fun update(observable:Observable, o:Any?) {
