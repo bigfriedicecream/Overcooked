@@ -157,6 +157,9 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                 .setNegativeButton("Cancel") { d, _ ->
                     d.cancel()
                 }
+                .setNeutralButton("Reset") { _, _ ->
+                    presenter.updateQuantity(recipeQuantity)
+                }
         builder.create().show()
     }
 }
