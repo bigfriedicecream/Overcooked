@@ -26,27 +26,25 @@ import kotlinx.android.synthetic.main.fragment_recipe.view.*
 class RecipeFragment:Fragment(), IRecipeContract.View {
 
     private var presenter:IRecipeContract.Presenter = RecipePresenter(this)
-    private var id:String? = ""
 
     override fun onCreateView(inflater:LayoutInflater, container:ViewGroup?, state:Bundle?):View? {
         presenter = RecipePresenter(this)
         val view = inflater.inflate(R.layout.fragment_recipe, container, false)
-
-        id = arguments?.getString("id")
-
         view.btn_adjust_quantity?.setOnClickListener { presenter.adjustQuantityClick() }
-
         return view
     }
 
     override fun onStart() {
         super.onStart()
-        presenter.start(context, id)
+        val id = arguments?.getString("id")
+        val restore = arguments?.getBoolean("restore", false)
+        presenter.start(context, id, restore)
     }
 
     override fun onStop() {
         super.onStop()
         presenter.stop()
+        arguments?.putBoolean("restore", true)
     }
 
     override fun render(recipe:RecipeModel?) {
@@ -152,13 +150,13 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                 .setTitle("Adjust Quantity")
                 .setView(dialog)
                 .setPositiveButton("Confirm") { _, _ ->
-                    presenter.updateQuantity(dialog.quantity.value)
+                    presenter.updateQuantity(dialog.quantity.value, context)
                 }
                 .setNegativeButton("Cancel") { d, _ ->
                     d.cancel()
                 }
                 .setNeutralButton("Reset") { _, _ ->
-                    presenter.updateQuantity(recipeQuantity)
+                    presenter.updateQuantity(recipeQuantity, context)
                 }
         builder.create().show()
     }

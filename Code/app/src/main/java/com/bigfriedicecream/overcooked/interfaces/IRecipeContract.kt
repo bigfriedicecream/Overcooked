@@ -12,9 +12,9 @@ interface IRecipeContract {
     }
 
     interface Presenter {
-        fun start(context:Context?, id:String?)
+        fun start(context:Context?, id:String?, restore:Boolean? = false)
         fun stop()
         fun adjustQuantityClick()
-        fun updateQuantity(newQuantity:Int)
+        fun updateQuantity(newQuantity:Int, context:Context?)
     }
 }
