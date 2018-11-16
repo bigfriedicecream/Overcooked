@@ -32,24 +32,25 @@ class NormalIngredientItemFragment:Fragment() {
 
             // primary unit
             val primaryUnitType = LookupIngUnitType.dataLookup(ing.ingUnitTypeId)
-            val primaryQuantity = Double.fractionFromNumber(ing.quantity * multiplier)
-            val primaryUnit = if (ing.quantity > 1) primaryUnitType?.shortNamePlural else primaryUnitType?.shortName
+            val primaryQuantity = ing.quantity * multiplier
+            val primaryQuantityFraction = Double.fractionFromNumber(primaryQuantity)
+            val primaryUnit = if (primaryQuantity > 1) primaryUnitType?.shortNamePlural else primaryUnitType?.shortName
 
             // alternate unit
             var alternateString = ""
             if (ing.alternateUnit != 0) {
                 val alternateUnitType = LookupIngUnitType.dataLookup(ing.alternateUnit)
                 val alternateUnitData = ing.unitTypes.find { unitData -> unitData.id == ing.alternateUnit }
-                val alternateQuantity = if (alternateUnitData != null) alternateUnitData.ratio * ing.quantity * multiplier else 0.0
+                val alternateQuantity = if (alternateUnitData != null) alternateUnitData.ratio * primaryQuantity else 0.0
                 val alternateQuantityString = Double.fractionFromNumber(alternateQuantity)
                 val alternateIngName = if (alternateQuantity > 1) alternateUnitType?.shortNamePlural?.trimEnd() else alternateUnitType?.shortName?.trimEnd()
                 alternateString = "($alternateQuantityString$alternateIngName) "
             }
 
-            val ingName = if (ing.quantity > 1) String.fromHtml(ing.namePlural) else String.fromHtml(ing.name)
+            val ingName = if (primaryQuantity > 1) String.fromHtml(ing.namePlural) else String.fromHtml(ing.name)
             val endDesc = if (ing.endDesc.isNotEmpty()) ", ${String.fromHtml(ing.endDesc)}" else ""
 
-            val displayResult = "$primaryQuantity$primaryUnit$alternateString$ingName$endDesc"
+            val displayResult = "$primaryQuantityFraction$primaryUnit$alternateString$ingName$endDesc"
 
             view.item.text = displayResult
         }
