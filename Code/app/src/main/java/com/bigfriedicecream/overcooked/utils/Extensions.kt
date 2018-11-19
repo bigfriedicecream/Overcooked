@@ -3,6 +3,7 @@ package com.bigfriedicecream.overcooked.utils
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
+import com.bigfriedicecream.overcooked.lookups.LookupIngUnitType
 import kotlin.math.roundToInt
 
 fun Int.Companion.minsToPrettyTimeFormat(mins:Int):String {
@@ -26,4 +27,21 @@ fun Double.Companion.fractionFromNumber(value:Double):String {
 
 fun String.Companion.fromHtml(html:String): Spanned {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY) else Html.fromHtml(html)
+}
+
+fun Double.Companion.roundToReadableQuantity(q:Double, unitTypeId:Int):Double {
+    if (unitTypeId == LookupIngUnitType.Grams.id || unitTypeId == LookupIngUnitType.Millilitres.id) {
+        return (Math.round(q/5) * 5).toDouble()
+    }
+
+    val intPart = q.toInt()
+    val fractionPart = q - intPart
+
+    if (fractionPart > 0.125 && fractionPart < 0.29) return intPart + 0.25
+    if (fractionPart > 0.29 && fractionPart < 0.415) return intPart + 0.33
+    if (fractionPart > 0.415 && fractionPart < 0.58) return intPart + 0.50
+    if (fractionPart > 0.58 && fractionPart < 0.705) return intPart + 0.66
+    if (fractionPart > 0.705 && fractionPart < 0.875) return intPart + 0.75
+
+    return q.roundToInt().toDouble()
 }
