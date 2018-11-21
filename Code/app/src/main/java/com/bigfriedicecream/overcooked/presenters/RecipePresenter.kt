@@ -20,9 +20,15 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     override fun start(context:Context?, id:String?, restore:Boolean?) {
         this.id = id
 
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+
         if (restore == true) {
-            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
             adjustedQuantity = preferences.getInt("adjustedQuantity", -1)
+
+        } else {
+            val preferenceEditor = preferences.edit()
+            preferenceEditor.putInt("adjustedQuantity", -1)
+            preferenceEditor.apply()
         }
 
         recipeRepository.addObserver(this)

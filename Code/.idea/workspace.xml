@@ -15,7 +15,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c046f160-6080-443c-847d-7fd6d98d4ee8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,38 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LookupIngUnitType.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/lookups/LookupIngUnitType.kt">
+      <file leaf-file-name="RecipePresenter.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NormalIngredientItemFragment.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/NormalIngredientItemFragment.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="54" column="89" selection-start-line="54" selection-start-column="89" selection-end-line="54" selection-end-column="89" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Extensions.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/utils/Extensions.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+            <state relative-caret-position="255">
+              <caret line="29" column="59" lean-forward="true" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -2589,7 +2563,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipeListPresenter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/interfaces/IRecipeContract.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_heading_ingredient_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/TextOnlyIngredientItemFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/models/IngredientModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/observables/RecipeRepository.kt" />
@@ -2616,6 +2589,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/utils/Extensions.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/NormalIngredientItemFragment.kt" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt" />
       </list>
     </option>
   </component>
@@ -2695,6 +2669,30 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="bigfriedicecream" type="462c0819:PsiDirectoryNode" />
               <item name="overcooked" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="bigfriedicecream" type="462c0819:PsiDirectoryNode" />
+              <item name="overcooked" type="462c0819:PsiDirectoryNode" />
+              <item name="presenters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="bigfriedicecream" type="462c0819:PsiDirectoryNode" />
+              <item name="overcooked" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Code" type="b2602c69:ProjectViewProjectNode" />
@@ -2910,7 +2908,7 @@
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45594406" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.45594406" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32867134" />
       <window_info anchor="right" id="Gradle" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -3216,20 +3214,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/observables/EventsDispatcher.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -3268,20 +3252,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/lookups/LookupIngUnitType.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/NormalIngredientItemFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="54" column="89" selection-start-line="54" selection-start-column="89" selection-end-line="54" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -3302,7 +3272,35 @@
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/NormalIngredientItemFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="54" column="89" selection-start-line="54" selection-start-column="89" selection-end-line="54" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/lookups/LookupIngUnitType.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/views/RecipeFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/bigfriedicecream/overcooked/presenters/RecipePresenter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="29" column="59" lean-forward="true" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
         </state>
       </provider>
     </entry>
