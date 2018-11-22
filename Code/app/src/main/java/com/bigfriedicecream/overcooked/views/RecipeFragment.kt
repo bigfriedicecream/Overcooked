@@ -31,6 +31,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         presenter = RecipePresenter(this)
         val view = inflater.inflate(R.layout.fragment_recipe, container, false)
         view.btn_adjust_quantity?.setOnClickListener { presenter.adjustQuantityClick() }
+        view.toolbar.setNavigationOnClickListener { activity?.onBackPressed() }
         return view
     }
 
