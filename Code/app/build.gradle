@@ -14,7 +14,7 @@ android {
     }
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.bigfriedicecream.overcooked"
+        applicationId "com.twobrothers.overcooked"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 5
