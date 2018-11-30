@@ -1,8 +1,5 @@
 package com.twobrothers.overcooked.presenters
 
-
-import android.content.Context
-
 import com.twobrothers.overcooked.interfaces.IMainContract
 import com.twobrothers.overcooked.observables.EventsDispatcher
 
@@ -10,14 +7,15 @@ import java.util.HashMap
 import java.util.Observable
 import java.util.Observer
 
+
 class MainPresenter(private val view: IMainContract.View) : IMainContract.Presenter, Observer {
     private val eventsDispatcher:EventsDispatcher = EventsDispatcher.instance
 
-    override fun start(c:Context) {
+    override fun start() {
         eventsDispatcher.addObserver(this)
     }
 
-    override fun stop(c:Context) {
+    override fun stop() {
         eventsDispatcher.deleteObserver(this)
     }
 

@@ -26,7 +26,7 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
 
     override fun onStart() {
         super.onStart()
-        presenter?.start(context!!)
+        presenter?.start()
     }
 
     override fun onStop() {

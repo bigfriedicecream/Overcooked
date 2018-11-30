@@ -1,6 +1,5 @@
 package com.twobrothers.overcooked.interfaces
 
-import android.content.Context
 import com.twobrothers.overcooked.models.RecipeModel
 
 
@@ -12,9 +11,9 @@ interface IRecipeContract {
     }
 
     interface Presenter {
-        fun start(context:Context?, id:String?, restore:Boolean? = false)
+        fun start(id:String?, restore:Boolean? = false)
         fun stop()
         fun adjustQuantityClick()
-        fun updateQuantity(newQuantity:Int, context:Context?)
+        fun updateQuantity(newQuantity:Int)
     }
 }

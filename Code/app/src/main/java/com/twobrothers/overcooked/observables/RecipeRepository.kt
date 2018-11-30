@@ -1,6 +1,5 @@
 package com.twobrothers.overcooked.observables
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 
@@ -15,6 +14,7 @@ import com.google.gson.JsonObject
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
 import com.google.gson.reflect.TypeToken
+import com.twobrothers.overcooked.Overcooked
 
 
 class RecipeRepository private constructor() : Observable() {
@@ -29,7 +29,7 @@ class RecipeRepository private constructor() : Observable() {
         var isFetching:Boolean = false
     }
 
-    fun load(context:Context?) {
+    fun load() {
         if (model != null) {
             setChanged()
             notifyObservers()
@@ -42,7 +42,7 @@ class RecipeRepository private constructor() : Observable() {
 
         isFetching = true
 
-        val sharedPreferences:SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val sharedPreferences:SharedPreferences = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext)
         val overcookedDb:String = sharedPreferences.getString("overcooked_database", "")
 
         if (overcookedDb != "") {
@@ -52,7 +52,7 @@ class RecipeRepository private constructor() : Observable() {
         }
 
         Ion
-                .with(context)
+                .with(Overcooked.appContext)
                 .load(BuildConfig.DATABASE_URL)
                 .asString()
                 .setCallback { _, result ->

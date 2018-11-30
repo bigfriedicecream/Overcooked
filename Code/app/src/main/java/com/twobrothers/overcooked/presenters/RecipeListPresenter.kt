@@ -1,19 +1,18 @@
 package com.twobrothers.overcooked.presenters
 
-import android.content.Context
-
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.models.RecipeModel
 import com.twobrothers.overcooked.observables.RecipeRepository
 import java.util.Observable
 import java.util.Observer
 
+
 class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter, Observer {
     private val recipeRepository:RecipeRepository = RecipeRepository.instance
 
-    override fun start(c:Context) {
+    override fun start() {
         recipeRepository.addObserver(this)
-        recipeRepository.load(c)
+        recipeRepository.load()
     }
 
     override fun stop() {

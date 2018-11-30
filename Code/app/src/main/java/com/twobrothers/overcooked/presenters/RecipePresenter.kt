@@ -2,10 +2,12 @@ package com.twobrothers.overcooked.presenters
 
 import android.content.Context
 import android.preference.PreferenceManager
+import com.twobrothers.overcooked.Overcooked
 
 import com.twobrothers.overcooked.interfaces.IRecipeContract
 import com.twobrothers.overcooked.models.RecipeModel
 import com.twobrothers.overcooked.observables.RecipeRepository
+import com.twobrothers.overcooked.utils.IO
 
 import java.util.Observable
 import java.util.Observer
@@ -17,22 +19,18 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     private var id:String? = null
     private var adjustedQuantity:Int = -1
 
-    override fun start(context:Context?, id:String?, restore:Boolean?) {
+    override fun start(id:String?, restore:Boolean?) {
         this.id = id
 
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-
         if (restore == true) {
-            adjustedQuantity = preferences.getInt("adjustedQuantity", -1)
+            adjustedQuantity = IO.getInt("adjustedQuantity")
 
         } else {
-            val preferenceEditor = preferences.edit()
-            preferenceEditor.putInt("adjustedQuantity", -1)
-            preferenceEditor.apply()
+            IO.putInt("adjustedQuantity", -1)
         }
 
         recipeRepository.addObserver(this)
-        recipeRepository.load(context)
+        recipeRepository.load()
     }
 
     override fun stop() {
@@ -43,11 +41,9 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
         view.showAdjustQuantityDialog(recipeModel)
     }
 
-    override fun updateQuantity(newQuantity:Int, context:Context?) {
+    override fun updateQuantity(newQuantity:Int) {
         adjustedQuantity = newQuantity
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context).edit()
-        preferences.putInt("adjustedQuantity", adjustedQuantity)
-        preferences.apply()
+        IO.putInt("adjustedQuantity", adjustedQuantity)
 
         val recipeQuantity:Int = if (recipeModel.serves > 0) recipeModel.serves else recipeModel.makes
         val multiplier:Double = adjustedQuantity.toDouble() / recipeQuantity.toDouble()

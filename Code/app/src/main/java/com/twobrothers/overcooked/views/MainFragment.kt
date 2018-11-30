@@ -28,7 +28,7 @@ class MainFragment : Fragment(), IMainContract.View {
 
     override fun onStart() {
         super.onStart()
-        presenter?.start(context!!)
+        presenter?.start()
         if (!isLoaded) {
             presenter?.load()
         }
@@ -36,7 +36,7 @@ class MainFragment : Fragment(), IMainContract.View {
 
     override fun onStop() {
         super.onStop()
-        presenter?.stop(context!!)
+        presenter?.stop()
     }
 
     override fun onSaveInstanceState(state: Bundle) {

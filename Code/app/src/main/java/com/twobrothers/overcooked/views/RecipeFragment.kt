@@ -37,7 +37,7 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
         super.onStart()
         val id = arguments?.getString("id")
         val restore = arguments?.getBoolean("restore", false)
-        presenter.start(context, id, restore)
+        presenter.start(id, restore)
     }
 
     override fun onStop() {
@@ -149,13 +149,13 @@ class RecipeFragment:Fragment(), IRecipeContract.View {
                 .setTitle("Adjust Quantity")
                 .setView(dialog)
                 .setPositiveButton("Confirm") { _, _ ->
-                    presenter.updateQuantity(dialog.quantity.value, context)
+                    presenter.updateQuantity(dialog.quantity.value)
                 }
                 .setNegativeButton("Cancel") { d, _ ->
                     d.cancel()
                 }
                 .setNeutralButton("Reset") { _, _ ->
-                    presenter.updateQuantity(recipeQuantity, context)
+                    presenter.updateQuantity(recipeQuantity)
                 }
         builder.create().show()
     }
