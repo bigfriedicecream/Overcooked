@@ -51,6 +51,9 @@ class NormalIngredientItemFragment:Fragment() {
             // end description
             val endDesc = if (ing.endDesc.isNotEmpty()) ", ${String.fromHtml(ing.endDesc)}" else ""
 
+            println(name)
+            println(unitType)
+
             view.item.text = "$quantityAsFraction$unitName$alternateDisplay$name$endDesc"
         }
 

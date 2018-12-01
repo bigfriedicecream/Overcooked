@@ -6,7 +6,7 @@ export function NormalIngredientTypeModel() {
         ingDisplayTypeId: LookupIngDisplayType.normal.id,
         quantity: 0,
         ingredientId: 0,
-        unitTypeId: LookupIngUnitType.singular.id,
+        ingUnitTypeId: LookupIngUnitType.singular.id,
         alternateUnits: [],
         endDesc: ''
     }
