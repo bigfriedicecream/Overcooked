@@ -131,8 +131,8 @@
           "quantity": 2,
           "ingredientId": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
           "alternateUnits": [],
-          "ingUnitTypeId": 0,
-          "endDesc": "minced"
+          "ingUnitTypeId": 3,
+          "endDesc": ""
         },
         {
           "ingDisplayTypeId": 2,
@@ -268,9 +268,9 @@
           "ingDisplayTypeId": 0,
           "quantity": 5,
           "ingredientId": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
-          "ingUnitTypeId": 0,
+          "ingUnitTypeId": 3,
           "alternateUnits": [],
-          "endDesc": "minced"
+          "endDesc": ""
         },
         {
           "ingDisplayTypeId": 0,
@@ -354,9 +354,9 @@
           "ingDisplayTypeId": 0,
           "quantity": 3,
           "ingredientId": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
-          "ingUnitTypeId": 0,
+          "ingUnitTypeId": 3,
           "alternateUnits": [],
-          "endDesc": "minced"
+          "endDesc": ""
         },
         {
           "ingDisplayTypeId": 0,
@@ -412,11 +412,19 @@
         },
         {
           "ingDisplayTypeId": 0,
-          "quantity": 3,
+          "quantity": 0.5,
           "ingredientId": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
-          "ingUnitTypeId": 0,
+          "ingUnitTypeId": 3,
           "alternateUnits": [],
-          "endDesc": "minced"
+          "endDesc": ""
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 0.5,
+          "ingredientId": "001c2bdf-88e6-4aca-99a2-c6c562b28d1a",
+          "ingUnitTypeId": 3,
+          "alternateUnits": [],
+          "endDesc": ""
         },
         {
           "ingDisplayTypeId": 0,
@@ -489,14 +497,6 @@
           "alternateUnits": [],
           "endDesc": "",
           "ingUnitTypeId": 2
-        },
-        {
-          "ingDisplayTypeId": 0,
-          "quantity": 50,
-          "ingredientId": "bace8339-4b20-4404-8de6-153b5508ab27",
-          "ingUnitTypeId": 1,
-          "alternateUnits": [],
-          "endDesc": "for garnish"
         }
       ],
       "method": [
@@ -507,7 +507,7 @@
         "Put the mixture into a bowl and use a hand mixer to churn into fine puree. (alternatively, food processor or blender, to get it smooth)",
         "Add mixture back to the pan, cook for another 10-15mins to let it thicken",
         "Add remaining butter, cream, chicken and let it simmer for 10minutes on low heat",
-        "Garnish with cashew nuts. Serve with rice"
+        "Garnish with cashew nuts and fresh coriander. Serve with rice"
       ]
     }
   },
@@ -671,12 +671,16 @@
     },
     "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0": {
       "id": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
-      "name": "garlic clove",
-      "namePlural": "garlic cloves",
+      "name": "garlic",
+      "namePlural": "garlic",
       "unitTypes": [
         {
-          "id": 0,
+          "id": 1,
           "ratio": 1
+        },
+        {
+          "id": 3,
+          "ratio": 0.36
         }
       ]
     },
