@@ -12,6 +12,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
 
     override fun start() {
         recipeRepository.addObserver(this)
+        view.showLoading()
         recipeRepository.load()
     }
 

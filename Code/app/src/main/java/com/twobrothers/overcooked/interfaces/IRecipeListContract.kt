@@ -6,6 +6,7 @@ import com.twobrothers.overcooked.models.RecipeModel
 interface IRecipeListContract {
 
     interface View {
+        fun showLoading()
         fun render(recipeList:HashMap<String, RecipeModel>)
     }
 

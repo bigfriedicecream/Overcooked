@@ -34,8 +34,15 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
         presenter?.stop()
     }
 
+    override fun showLoading() {
+        view?.progress_bar?.visibility = View.VISIBLE
+        view?.scroll_recipe?.visibility = View.GONE
+    }
+
     override fun render(recipeList: HashMap<String, RecipeModel>) {
         view?.layout_list?.removeAllViews()
+        view?.progress_bar?.visibility = View.GONE
+        view?.scroll_recipe?.visibility = View.VISIBLE
 
         for (recipe in recipeList.values) {
             val bundle = Bundle()

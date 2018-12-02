@@ -42,14 +42,14 @@ class RecipeRepository private constructor() : Observable() {
 
         isFetching = true
 
-        val sharedPreferences:SharedPreferences = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext)
+        /* val sharedPreferences:SharedPreferences = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext)
         val overcookedDb:String = sharedPreferences.getString("overcooked_database", "")
 
         if (overcookedDb != "") {
             model = overcookedDb
             setChanged()
             notifyObservers()
-        }
+        }*/
 
         Ion
                 .with(Overcooked.appContext)
@@ -57,7 +57,7 @@ class RecipeRepository private constructor() : Observable() {
                 .asString()
                 .setCallback { _, result ->
                     if (result != null) {
-                        val editor:SharedPreferences.Editor = sharedPreferences.edit()
+                        /* val editor:SharedPreferences.Editor = sharedPreferences.edit()
                         editor.putString("overcooked_database", result)
                         editor.apply()
 
@@ -70,7 +70,12 @@ class RecipeRepository private constructor() : Observable() {
                             notifyObservers()
                         }
 
+                        isFetching = false*/
+
+                        model = result
                         isFetching = false
+                        setChanged()
+                        notifyObservers()
                     }
                 }
     }
