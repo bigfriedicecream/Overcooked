@@ -369,7 +369,15 @@
         {
           "ingDisplayTypeId": 0,
           "quantity": 1,
-          "ingredientId": "b4930e63-60e8-43b4-8ba5-26e4e016e680",
+          "ingredientId": "ec50615d-755d-46e5-a2f6-3136c43574e0",
+          "alternateUnits": [],
+          "endDesc": "",
+          "ingUnitTypeId": 4
+        },
+        {
+          "ingDisplayTypeId": 0,
+          "quantity": 1,
+          "ingredientId": "f5b96bc9-85cd-4ca0-9027-580f3c07b494",
           "alternateUnits": [],
           "endDesc": "",
           "ingUnitTypeId": 4
@@ -382,7 +390,7 @@
           "ingDisplayTypeId": 2,
           "display": "oil to pan fry"
         },
-		{
+        {
           "ingDisplayTypeId": 1,
           "display": "For the gravy"
         },
@@ -420,7 +428,7 @@
         },
         {
           "ingDisplayTypeId": 0,
-          "quantity": 0.5,
+          "quantity": 1,
           "ingredientId": "d8c5df43-9079-449d-a6c2-93b9e43f6945",
           "alternateUnits": [],
           "endDesc": "",
@@ -440,7 +448,7 @@
           "ingredientId": "b001ccc0-04c0-4b28-894d-0d94c9ae5907",
           "alternateUnits": [],
           "endDesc": "",
-          "ingUnitTypeId": 3
+          "ingUnitTypeId": 4
         },
         {
           "ingDisplayTypeId": 0,
@@ -1069,6 +1077,25 @@
         {
           "id": 1,
           "ratio": 1
+        }
+      ]
+    },
+    "ec50615d-755d-46e5-a2f6-3136c43574e0": {
+      "id": "ec50615d-755d-46e5-a2f6-3136c43574e0",
+      "name": "chilli powder",
+      "namePlural": "chilli powder",
+      "unitTypes": [
+        {
+          "id": 1,
+          "ratio": 1
+        },
+        {
+          "id": 4,
+          "ratio": 0.13
+        },
+        {
+          "id": 3,
+          "ratio": 0.37
         }
       ]
     }
