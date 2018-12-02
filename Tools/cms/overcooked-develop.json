@@ -352,9 +352,9 @@
         },
         {
           "ingDisplayTypeId": 0,
-          "quantity": 3,
+          "quantity": 1,
           "ingredientId": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
-          "ingUnitTypeId": 3,
+          "ingUnitTypeId": 4,
           "alternateUnits": [],
           "endDesc": ""
         },
@@ -414,7 +414,7 @@
           "ingDisplayTypeId": 0,
           "quantity": 0.5,
           "ingredientId": "44d0f31b-4bfb-484d-9ce1-fd42a4e510f0",
-          "ingUnitTypeId": 3,
+          "ingUnitTypeId": 4,
           "alternateUnits": [],
           "endDesc": ""
         },
@@ -422,7 +422,7 @@
           "ingDisplayTypeId": 0,
           "quantity": 0.5,
           "ingredientId": "001c2bdf-88e6-4aca-99a2-c6c562b28d1a",
-          "ingUnitTypeId": 3,
+          "ingUnitTypeId": 4,
           "alternateUnits": [],
           "endDesc": ""
         },
@@ -500,14 +500,14 @@
         }
       ],
       "method": [
-        "Completely coat the chicken with ginger paste, garlic paste, kashmiri chilli powder, fenugreek powder, and salt and set it aside to marinate for at least 20mins",
+        "Completely coat the chicken with ginger paste, garlic paste, chilli powder, butter, and salt. Set it aside to marinate for at least 20mins",
         "In a pan heat some oil then fry the marinated chicken pieces in it. When done, remove and place into a bowl",
-        "In the same pan add onion, oil, and a spoonful of butter. Once the onions are cooked add tomatoes",
-        "Add some water and garlic paste, salt, vinegar, sugar, garam masala powder and kashmiri chilli powder. Evenly mix it and let it simmer for 10 minutes",
-        "Put the mixture into a bowl and use a hand mixer to churn into fine puree. (alternatively, food processor or blender, to get it smooth)",
-        "Add mixture back to the pan, cook for another 10-15mins to let it thicken",
-        "Add remaining butter, cream, chicken and let it simmer for 10minutes on low heat",
-        "Garnish with cashew nuts and fresh coriander. Serve with rice"
+        "In the same pan, heat oil, then add onions. Once the onions are cooked add tomatoes",
+        "Add garlic paste, vinegar, sugar, garam masala and kashmiri chilli powder. Evenly mix it and let it simmer for 10 minutes",
+        "Pour the mixture into a food processor or blender to get it smooth",
+        "Pour the mixture into a covered saucepan, cook for another 5mins on low heat to let it thicken",
+        "Add remaining butter, chicken , cream, and let it simmer for 10minutes",
+        "Garnish with cream, cashew nuts, and fresh coriander. Serve with rice"
       ]
     }
   },
@@ -681,6 +681,10 @@
         {
           "id": 3,
           "ratio": 0.36
+        },
+        {
+          "id": 4,
+          "ratio": 0.12
         }
       ]
     },
