@@ -15,46 +15,9 @@ import kotlinx.android.synthetic.main.fragment_recipe_list.view.*
 
 import java.util.HashMap
 
-class RecipeListFragment : Fragment(), IRecipeListContract.View {
-
-    private var presenter:IRecipeListContract.Presenter? = null
+class RecipeListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        presenter = RecipeListPresenter(this)
         return inflater.inflate(R.layout.fragment_recipe_list, container, false)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        presenter?.start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        presenter?.stop()
-    }
-
-    override fun showLoading() {
-        view?.progress_bar?.visibility = View.VISIBLE
-        view?.scroll_recipe?.visibility = View.GONE
-    }
-
-    override fun render(recipeList: HashMap<String, RecipeModel>) {
-        view?.layout_list?.removeAllViews()
-        view?.progress_bar?.visibility = View.GONE
-        view?.scroll_recipe?.visibility = View.VISIBLE
-
-        for (recipe in recipeList.values) {
-            val bundle = Bundle()
-            bundle.putString("data", Gson().toJson(recipe))
-
-            val fragment = RecipeListItemFragment()
-            fragment.arguments = bundle
-
-            childFragmentManager
-                    .beginTransaction()
-                    .add(R.id.layout_list, fragment)
-                    .commitAllowingStateLoss()
-        }
     }
 }
