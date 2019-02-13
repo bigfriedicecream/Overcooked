@@ -24,10 +24,15 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 import java.util.HashMap
+import io.reactivex.disposables.CompositeDisposable
+
+
 
 
 
 class RecipeListFragment : Fragment() {
+
+    val mDisposable = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val retrofit = Retrofit.Builder()
@@ -38,14 +43,21 @@ class RecipeListFragment : Fragment() {
 
         val api = retrofit.create(ApiService::class.java)
 
-        api.getRecipes()
+        mDisposable.add(
+                api.getRecipes()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                         onNext = { println(it.recipes) },
                         onError =  { it.printStackTrace() },
                         onComplete = { println("Done!") })
+        )
 
         return inflater.inflate(R.layout.fragment_recipe_list, container, false)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mDisposable.dispose()
     }
 }
