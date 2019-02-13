@@ -1,4 +1,4 @@
-package com.twobrothers.overcooked.views
+package com.twobrothers.overcooked.recipelist
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,6 +12,7 @@ import com.twobrothers.overcooked.models.RecipeModel
 import com.twobrothers.overcooked.presenters.RecipeListPresenter
 import com.google.gson.Gson
 import com.twobrothers.overcooked.BuildConfig
+import com.twobrothers.overcooked.app.ApiService
 import io.reactivex.plugins.RxJavaPlugins
 import kotlinx.android.synthetic.main.fragment_recipe_list.view.*
 import retrofit2.Retrofit
@@ -28,6 +29,9 @@ class RecipeListFragment : Fragment() {
                 .baseUrl(BuildConfig.API_ENDPOINT)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
+
+        val api = retrofit.create(ApiService::class.java)
+
         return inflater.inflate(R.layout.fragment_recipe_list, container, false)
     }
 }
