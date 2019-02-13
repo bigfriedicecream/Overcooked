@@ -24,11 +24,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_ENDPOINT", "\"https://firebasestorage.googleapis.com/v0/b/overcooked-f5fc4.appspot.com/o\""
+            buildConfigField "String", "API_ENDPOINT", "\"https://overcooked.2brothers.tech\""
             signingConfig signingConfigs.overcooked
         }
         debug {
-            buildConfigField "String", "API_ENDPOINT", "\"https://firebasestorage.googleapis.com/v0/b/overcooked-f5fc4.appspot.com/o\""
+            buildConfigField "String", "API_ENDPOINT", "\"https://overcooked.2brothers.tech\""
         }
     }
 }
