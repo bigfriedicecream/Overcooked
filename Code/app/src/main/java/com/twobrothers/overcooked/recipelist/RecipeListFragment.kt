@@ -48,9 +48,12 @@ class RecipeListFragment : Fragment() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-                        onNext = { println(it.data.last_page) },
+                        onNext = {
+                            println(it.data.last_page)
+                            println(it.data.recipes[0].id)
+                        },
                         onError =  { it.printStackTrace() },
-                        onComplete = { println("Done!") })
+                        onComplete = { println("Complete!") })
         )
 
         return inflater.inflate(R.layout.fragment_recipe_list, container, false)
