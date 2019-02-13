@@ -48,7 +48,7 @@ class RecipeListFragment : Fragment() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-                        onNext = { println(it.recipes) },
+                        onNext = { println(it.data.last_page) },
                         onError =  { it.printStackTrace() },
                         onComplete = { println("Done!") })
         )
