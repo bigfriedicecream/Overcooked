@@ -1,4 +1,4 @@
-package com.twobrothers.overcooked.recipe
+package com.twobrothers.overcooked.models.recipe
 
 class RecipeModel {
     val id:String = ""

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.twobrothers.overcooked.R
-import com.twobrothers.overcooked.recipelist.RecipeListFragment
+import com.twobrothers.overcooked.views.recipelist.RecipeListFragment
 
 class MainFragment : Fragment() {
 
