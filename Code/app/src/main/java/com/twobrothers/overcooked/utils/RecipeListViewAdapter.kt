@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.twobrothers.overcooked.R
 import kotlinx.android.synthetic.main.fragment_recipe_list_item.view.*
 
-class RecipeListViewAdapter(private val dataSet:Array<String>):RecyclerView.Adapter<RecipeListViewAdapter.ViewHolder>() {
+class RecipeListViewAdapter(private val dataSet:ArrayList<String>):RecyclerView.Adapter<RecipeListViewAdapter.ViewHolder>() {
 
     class ViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView)
 
