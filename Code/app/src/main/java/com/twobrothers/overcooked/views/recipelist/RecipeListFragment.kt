@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.app.ApiService
+import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -36,10 +37,7 @@ class RecipeListFragment : Fragment() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-                        onNext = {
-                            println(it.data.last_page)
-                            println(it.data.recipes[0].id)
-                        },
+                        onNext = { render(it) },
                         onError =  { it.printStackTrace() },
                         onComplete = { println("Complete!") })
         )
@@ -50,5 +48,9 @@ class RecipeListFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         mDisposable.dispose()
+    }
+
+    private fun render(model:RecipeListModel) {
+        println(model.data.recipes[0].id)
     }
 }
