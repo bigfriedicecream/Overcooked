@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.app.ApiService
+import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import com.twobrothers.overcooked.utils.RecipeListViewAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -28,7 +29,7 @@ class RecipeListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
-    private var recipeListItems = ArrayList<String>()
+    private var recipes = mutableListOf<RecipeModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -42,9 +43,8 @@ class RecipeListFragment : Fragment() {
 
         val api = retrofit.create(ApiService::class.java)
 
-        recipeListItems.add("a")
         viewManager = LinearLayoutManager(context)
-        viewAdapter = RecipeListViewAdapter(recipeListItems)
+        viewAdapter = RecipeListViewAdapter(recipes)
 
         recyclerView = view.findViewById<RecyclerView>(R.id.recycler_container).apply {
             layoutManager = viewManager
@@ -70,8 +70,9 @@ class RecipeListFragment : Fragment() {
     }
 
     private fun render(model:RecipeListModel) {
-        recipeListItems.add("b")
-        // viewAdapter.notifyDataSetChanged()
-        viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
+        recipes.addAll(model.data.recipes)
+        viewAdapter.notifyDataSetChanged()
+        // recipeListItems.add("b")
+        // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
     }
 }

@@ -8,9 +8,10 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.twobrothers.overcooked.R
+import com.twobrothers.overcooked.models.recipe.RecipeModel
 import kotlinx.android.synthetic.main.fragment_recipe_list_item.view.*
 
-class RecipeListViewAdapter(private val dataSet:ArrayList<String>):RecyclerView.Adapter<RecipeListViewAdapter.ViewHolder>() {
+class RecipeListViewAdapter(private val dataSet:MutableList<RecipeModel>):RecyclerView.Adapter<RecipeListViewAdapter.ViewHolder>() {
 
     class ViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView)
 
@@ -20,7 +21,7 @@ class RecipeListViewAdapter(private val dataSet:ArrayList<String>):RecyclerView.
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.title.text = dataSet[position]
+        holder.itemView.title.text = dataSet[position].title
     }
 
     override fun getItemCount(): Int {
