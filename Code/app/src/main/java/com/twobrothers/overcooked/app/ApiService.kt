@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("/recipes/at/0")
+    @GET("recipes/at/0")
     fun getRecipes(): Observable<RecipeListModel>
 
 }
