@@ -6,6 +6,5 @@ class RecipeListModel {
     val data: Data = Data()
     class Data {
         val recipes:ArrayList<RecipeModel> = ArrayList()
-        val last_page:Boolean = false
     }
 }

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import kotlinx.android.synthetic.main.fragment_recipe_list_item.view.*
@@ -22,6 +23,14 @@ class RecipeListViewAdapter(private val dataSet:MutableList<RecipeModel>):Recycl
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.title.text = dataSet[position].title
+
+        GlideApp
+                .with(holder.itemView.context)
+                .load(dataSet[position].imageUrl)
+                .placeholder(R.drawable.placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .fitCenter()
+                .into(holder.itemView.hero)
     }
 
     override fun getItemCount(): Int {
