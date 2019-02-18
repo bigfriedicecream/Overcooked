@@ -10,6 +10,7 @@ import android.view.ViewGroup
 
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.BuildConfig
+import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.app.ApiService
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
@@ -35,14 +36,6 @@ class RecipeListFragment : Fragment() {
 
         val view:View = inflater.inflate(R.layout.fragment_recipe_list, container, false)
 
-        val retrofit = Retrofit.Builder()
-                .baseUrl(BuildConfig.API_ENDPOINT)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build()
-
-        val api = retrofit.create(ApiService::class.java)
-
         viewManager = LinearLayoutManager(context)
         viewAdapter = RecipeListViewAdapter(recipes)
 
@@ -52,7 +45,7 @@ class RecipeListFragment : Fragment() {
         }
 
         mDisposable.add(
-                api.getRecipes()
+                ApiClient.getRecipes()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
