@@ -10,7 +10,6 @@ interface IRecipeListContract {
     interface View {
         fun onStart()
         fun onStop()
-        fun initAdapter(model: ArrayList<RecipeModel>)
         fun render()
     }
 

@@ -19,12 +19,13 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     private val mDisposable = CompositeDisposable()
 
     override fun onStart() {
-        view.initAdapter(recipes as ArrayList<RecipeModel>)
         mDisposable.add(
             ApiClient.getRecipes()
             .subscribeBy(
                     onNext = {
                         recipes.addAll(it.data.recipes)
+                        // recipeListItems.add("b")
+                        // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
                         view.render()
                     },
                     onError =  { it.printStackTrace() },

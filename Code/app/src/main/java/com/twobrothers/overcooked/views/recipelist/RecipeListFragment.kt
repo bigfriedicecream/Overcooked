@@ -35,7 +35,17 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
     private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_recipe_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_recipe_list, container, false)
+
+        viewManager = LinearLayoutManager(context)
+        viewAdapter = RecipeListViewAdapter(presenter, mutableListOf())
+
+        recyclerView = view!!.findViewById<RecyclerView>(R.id.recycler_container).apply {
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
+
+        return view
     }
 
     override fun onStart() {
@@ -48,20 +58,7 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
         presenter.onStop()
     }
 
-    override fun initAdapter(model: ArrayList<RecipeModel>) {
-        viewManager = LinearLayoutManager(context)
-        viewAdapter = RecipeListViewAdapter(presenter, model)
-
-        recyclerView = view!!.findViewById<RecyclerView>(R.id.recycler_container).apply {
-            layoutManager = viewManager
-            adapter = viewAdapter
-        }
-    }
-
     override fun render() {
-        // recipes.addAll(model.data.recipes)
         viewAdapter.notifyDataSetChanged()
-        // recipeListItems.add("b")
-        // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
     }
 }
