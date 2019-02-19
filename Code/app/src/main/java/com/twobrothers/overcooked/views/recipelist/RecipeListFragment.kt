@@ -12,8 +12,10 @@ import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.app.ApiService
+import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
+import com.twobrothers.overcooked.presenters.RecipeListPresenter
 import com.twobrothers.overcooked.utils.RecipeListViewAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
@@ -24,44 +26,40 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 import io.reactivex.disposables.CompositeDisposable
 
-class RecipeListFragment : Fragment() {
+class RecipeListFragment : Fragment(), IRecipeListContract.View {
 
-    private val mDisposable = CompositeDisposable()
+    private val presenter: IRecipeListContract.Presenter = RecipeListPresenter(this)
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
-    private var recipes = mutableListOf<RecipeModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_recipe_list, container, false)
+    }
 
-        val view:View = inflater.inflate(R.layout.fragment_recipe_list, container, false)
-
-        viewManager = LinearLayoutManager(context)
-        viewAdapter = RecipeListViewAdapter(recipes)
-
-        recyclerView = view.findViewById<RecyclerView>(R.id.recycler_container).apply {
-            layoutManager = viewManager
-            adapter = viewAdapter
-        }
-
-        mDisposable.add(
-                ApiClient.getRecipes()
-                .subscribeBy(
-                        onNext = { render(it) },
-                        onError =  { it.printStackTrace() },
-                        onComplete = { println("Complete!") })
-        )
-
-        return view
+    override fun onStart() {
+        super.onStart()
+        presenter.onStart()
     }
 
     override fun onStop() {
         super.onStop()
-        mDisposable.dispose()
+        presenter.onStop()
     }
 
-    private fun render(model:RecipeListModel) {
-        recipes.addAll(model.data.recipes)
+    override fun initAdapter(model: ArrayList<RecipeModel>) {
+        viewManager = LinearLayoutManager(context)
+        viewAdapter = RecipeListViewAdapter(presenter, model)
+
+        recyclerView = view!!.findViewById<RecyclerView>(R.id.recycler_container).apply {
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
+    }
+
+    override fun render() {
+        // recipes.addAll(model.data.recipes)
         viewAdapter.notifyDataSetChanged()
         // recipeListItems.add("b")
         // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)

@@ -1,20 +1,49 @@
 package com.twobrothers.overcooked.presenters
 
+import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
-import com.twobrothers.overcooked.models.RecipeModel
+import com.twobrothers.overcooked.interfaces.RepoRowView
+import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.observables.RecipeRepository
+import com.twobrothers.overcooked.utils.RecipeListViewAdapter
+import com.twobrothers.overcooked.utils.TheViewHolder
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.subscribeBy
 import java.util.Observable
 import java.util.Observer
 
 
 class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter {
 
-    override fun onStart() {
+    private var recipes = mutableListOf<RecipeModel>()
+    private val mDisposable = CompositeDisposable()
 
+    override fun onStart() {
+        view.initAdapter(recipes as ArrayList<RecipeModel>)
+        mDisposable.add(
+            ApiClient.getRecipes()
+            .subscribeBy(
+                    onNext = {
+                        recipes.addAll(it.data.recipes)
+                        view.render()
+                    },
+                    onError =  { it.printStackTrace() },
+                    onComplete = { println("Complete!") }
+            )
+        )
     }
 
     override fun onStop() {
+        mDisposable.dispose()
+    }
 
+    override fun onBindRepositoryRowViewAtPosition(holder: RepoRowView, position: Int) {
+        val recipe = recipes[position]
+        holder.renderino(recipe)
+    }
+
+    override fun getRepositoriesRowsCount(): Int {
+        return recipes.size
     }
 
 }
