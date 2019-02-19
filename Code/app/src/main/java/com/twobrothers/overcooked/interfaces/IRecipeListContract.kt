@@ -6,12 +6,11 @@ import com.twobrothers.overcooked.models.RecipeModel
 interface IRecipeListContract {
 
     interface View {
-        fun showLoading()
-        fun render(recipeList:HashMap<String, RecipeModel>)
+
     }
 
     interface Presenter {
-        fun start()
-        fun stop()
+        fun onStart()
+        fun onStop()
     }
 }

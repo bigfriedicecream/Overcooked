@@ -46,8 +46,6 @@ class RecipeListFragment : Fragment() {
 
         mDisposable.add(
                 ApiClient.getRecipes()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                         onNext = { render(it) },
                         onError =  { it.printStackTrace() },
