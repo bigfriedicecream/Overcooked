@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.presenters.RecipeListPresenter
-import com.twobrothers.overcooked.utils.RecipeListViewAdapter
 
 class RecipeListFragment : Fragment(), IRecipeListContract.View {
 
@@ -25,7 +24,7 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
         val view = inflater.inflate(R.layout.fragment_recipe_list, container, false)
 
         viewManager = LinearLayoutManager(context)
-        viewAdapter = RecipeListViewAdapter(presenter, mutableListOf())
+        viewAdapter = RecipeListViewAdapter(presenter)
 
         recyclerView = view!!.findViewById<RecyclerView>(R.id.recycler_container).apply {
             layoutManager = viewManager
@@ -45,7 +44,7 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
         presenter.onStop()
     }
 
-    override fun render() {
+    override fun onDataSetChanged() {
         viewAdapter.notifyDataSetChanged()
     }
 }

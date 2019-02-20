@@ -2,7 +2,7 @@ package com.twobrothers.overcooked.presenters
 
 import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
-import com.twobrothers.overcooked.interfaces.RepoRowView
+import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -21,7 +21,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
                         recipes.addAll(it.data.recipes)
                         // recipeListItems.add("b")
                         // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
-                        view.render()
+                        view.onDataSetChanged()
                     },
                     onError =  { it.printStackTrace() },
                     onComplete = { println("Complete!") }
@@ -33,9 +33,9 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
         mDisposable.dispose()
     }
 
-    override fun onBindRepositoryRowViewAtPosition(holder: RepoRowView, position: Int) {
+    override fun onBindRepositoryRowViewAtPosition(holder: IRecipeListRowView, position: Int) {
         val recipe = recipes[position]
-        holder.renderino(recipe)
+        holder.render(recipe)
     }
 
     override fun getRepositoriesRowsCount(): Int {

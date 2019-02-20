@@ -2,6 +2,6 @@ package com.twobrothers.overcooked.interfaces
 
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 
-interface RepoRowView {
-    fun renderino(recipe: RecipeModel)
+interface IRecipeListRowView {
+    fun render(recipe: RecipeModel)
 }
