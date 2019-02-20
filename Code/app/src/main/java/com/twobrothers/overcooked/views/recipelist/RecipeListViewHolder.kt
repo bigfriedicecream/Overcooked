@@ -3,6 +3,7 @@ package com.twobrothers.overcooked.views.recipelist
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.jakewharton.rxbinding.view.RxView
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import com.twobrothers.overcooked.models.recipe.RecipeModel
@@ -18,5 +19,11 @@ class RecipeListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), 
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(itemView.hero)
+
+        RxView.clicks(itemView)
+                .takeUntil(RxView.detaches(itemView))
+                .subscribe {
+                    println(adapterPosition)
+                }
     }
 }

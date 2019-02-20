@@ -4,10 +4,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import com.jakewharton.rxbinding.view.RxView
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
-import com.twobrothers.overcooked.models.recipe.RecipeModel
-import com.twobrothers.overcooked.views.recipelist.RecipeListViewHolder
 
 class RecipeListViewAdapter(private val presenter:IRecipeListContract.Presenter):RecyclerView.Adapter<RecipeListViewHolder>() {
 
