@@ -4,13 +4,8 @@ import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.RepoRowView
 import com.twobrothers.overcooked.models.recipe.RecipeModel
-import com.twobrothers.overcooked.observables.RecipeRepository
-import com.twobrothers.overcooked.utils.RecipeListViewAdapter
-import com.twobrothers.overcooked.utils.TheViewHolder
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
-import java.util.Observable
-import java.util.Observer
 
 
 class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter {
