@@ -1,6 +1,7 @@
 package com.twobrothers.overcooked.presenters
 
 import com.twobrothers.overcooked.app.ApiClient
+import com.twobrothers.overcooked.app.Navigation
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import com.twobrothers.overcooked.models.recipe.RecipeModel
@@ -34,7 +35,8 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     }
 
     override fun onRecipeListItemClick(position: Int) {
-        println(position)
+        println("on recipe click $position")
+        Navigation.push("RECIPE_VIEW")
     }
 
     override fun onBindRepositoryRowViewAtPosition(holder: IRecipeListRowView, position: Int) {
