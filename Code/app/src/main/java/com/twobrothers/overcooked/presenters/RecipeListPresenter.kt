@@ -35,7 +35,6 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     }
 
     override fun onRecipeListItemClick(position: Int) {
-        println("on recipe click $position")
         Navigation.push("RECIPE_VIEW")
     }
 

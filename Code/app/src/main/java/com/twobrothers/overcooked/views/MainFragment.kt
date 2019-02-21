@@ -8,6 +8,7 @@ import android.view.ViewGroup
 
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.app.Navigation
+import com.twobrothers.overcooked.views.recipe.RecipeFragment
 import com.twobrothers.overcooked.views.recipelist.RecipeListFragment
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -22,16 +23,20 @@ class MainFragment : Fragment() {
                 .getInstance()
                 .subscribeBy(
                     onNext = {
-                        println("on next:")
-                        println(it)
+                        if (it == "RECIPE_VIEW") {
+                            fragmentManager
+                                    ?.beginTransaction()
+                                    ?.replace(R.id.layout_main, RecipeFragment())
+                                    ?.commitAllowingStateLoss()
+                        }
                     }
                 )
         )
 
-        fragmentManager!!
-                .beginTransaction()
-                .replace(R.id.layout_main, RecipeListFragment())
-                .commitAllowingStateLoss()
+        fragmentManager
+                ?.beginTransaction()
+                ?.replace(R.id.layout_main, RecipeListFragment())
+                ?.commitAllowingStateLoss()
 
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
