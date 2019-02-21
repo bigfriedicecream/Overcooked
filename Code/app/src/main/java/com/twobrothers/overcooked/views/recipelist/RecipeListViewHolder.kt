@@ -5,12 +5,13 @@ import android.view.View
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.jakewharton.rxbinding.view.RxView
 import com.twobrothers.overcooked.R
+import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.utils.GlideApp
 import kotlinx.android.synthetic.main.fragment_recipe_list_item.view.*
 
-class RecipeListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), IRecipeListRowView {
+class RecipeListViewHolder(itemView: View, private val presenter:IRecipeListContract.Presenter) : RecyclerView.ViewHolder(itemView), IRecipeListRowView {
     override fun render(recipe: RecipeModel) {
         itemView.title.text = recipe.title
         GlideApp.with(itemView.context)
@@ -23,7 +24,7 @@ class RecipeListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), 
         RxView.clicks(itemView)
                 .takeUntil(RxView.detaches(itemView))
                 .subscribe {
-                    println(adapterPosition)
+                    presenter.onRecipeListItemClick(adapterPosition)
                 }
     }
 }

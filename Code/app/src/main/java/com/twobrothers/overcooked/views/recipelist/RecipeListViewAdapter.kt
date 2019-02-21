@@ -12,7 +12,7 @@ class RecipeListViewAdapter(private val presenter:IRecipeListContract.Presenter)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeListViewHolder {
         val layout:RelativeLayout = LayoutInflater.from(parent.context).inflate(R.layout.fragment_recipe_list_item, parent, false) as RelativeLayout
-        return RecipeListViewHolder(layout)
+        return RecipeListViewHolder(layout, presenter)
     }
 
     override fun onBindViewHolder(holder: RecipeListViewHolder, position: Int) {

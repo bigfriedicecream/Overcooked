@@ -12,6 +12,7 @@ interface IRecipeListContract {
     interface Presenter {
         fun onStart()
         fun onStop()
+        fun onRecipeListItemClick(position: Int)
         fun onBindRepositoryRowViewAtPosition(holder: IRecipeListRowView, position: Int)
         fun getRepositoriesRowsCount():Int
     }

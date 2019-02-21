@@ -33,6 +33,10 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
         mDisposable.dispose()
     }
 
+    override fun onRecipeListItemClick(position: Int) {
+        println(position)
+    }
+
     override fun onBindRepositoryRowViewAtPosition(holder: IRecipeListRowView, position: Int) {
         val recipe = recipes[position]
         holder.render(recipe)
