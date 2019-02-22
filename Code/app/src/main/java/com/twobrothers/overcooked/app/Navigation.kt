@@ -8,7 +8,6 @@ object Navigation {
     private val subject = PublishSubject.create<String>()
 
     fun getInstance():PublishSubject<String> {
-        println(history)
         return subject
     }
 

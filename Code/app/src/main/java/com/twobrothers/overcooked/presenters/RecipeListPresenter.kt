@@ -18,14 +18,13 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
         mDisposable.add(
             ApiClient.getRecipes()
             .subscribeBy(
-                    onNext = {
+                    onSuccess = {
                         recipes.addAll(it.data.recipes)
+                        view.onDataSetChanged()
                         // recipeListItems.add("b")
                         // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
-                        view.onDataSetChanged()
                     },
-                    onError =  { it.printStackTrace() },
-                    onComplete = { println("Complete!") }
+                    onError =  { it.printStackTrace() }
             )
         )
     }

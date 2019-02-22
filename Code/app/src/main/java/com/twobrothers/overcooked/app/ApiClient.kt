@@ -3,6 +3,7 @@ package com.twobrothers.overcooked.app
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
@@ -17,7 +18,7 @@ object ApiClient {
             .build()
             .create(ApiService::class.java)
 
-    fun getRecipes(): Observable<RecipeListModel> {
+    fun getRecipes(): Single<RecipeListModel> {
         return apiService
                 .getRecipes()
                 .subscribeOn(Schedulers.io())
