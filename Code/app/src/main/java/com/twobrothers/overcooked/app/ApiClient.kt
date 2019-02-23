@@ -7,6 +7,7 @@ import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.Overcooked
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import io.reactivex.Single
+import io.reactivex.SingleOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -28,7 +29,12 @@ object ApiClient {
         val recipeListCache = pref.getString("recipeListCache", "")
         val mDisposable = CompositeDisposable()
 
-        println("in cache: $recipeListCache")
+        if (!recipeListCache.isNullOrEmpty()) {
+            val cachedData = Gson().fromJson(recipeListCache, RecipeListModel::class.java)
+            return Single.create {
+                it.onSuccess(cachedData)
+            }
+        }
 
         val request = apiService
                 .getRecipes()
