@@ -25,12 +25,9 @@ object ApiClient {
             .create(ApiService::class.java)
 
     fun getRecipes(): Single<RecipeListModel> {
-        val pref = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext)
-        val recipeListCache = pref.getString("recipeListCache", "")
-        val mDisposable = CompositeDisposable()
+        val cachedData = CacheService.get("recipeListCache", RecipeListModel::class.java)
 
-        if (!recipeListCache.isNullOrEmpty()) {
-            val cachedData = Gson().fromJson(recipeListCache, RecipeListModel::class.java)
+        if (cachedData != null) {
             return Single.create {
                 it.onSuccess(cachedData)
             }
@@ -41,10 +38,11 @@ object ApiClient {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
+        val mDisposable = CompositeDisposable()
         mDisposable.add(
             request.subscribeBy(
                 onSuccess = {
-                    pref.edit().putString("recipeListCache", Gson().toJson(it)).apply()
+                    CacheService.put("recipeListCache", Gson().toJson(it))
                     mDisposable.dispose()
                 }
         ))
