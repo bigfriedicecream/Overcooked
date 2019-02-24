@@ -3,22 +3,26 @@ package com.twobrothers.overcooked.app
 import android.preference.PreferenceManager
 import com.google.gson.Gson
 import com.twobrothers.overcooked.Overcooked
+import com.twobrothers.overcooked.utils.CacheItem
+import java.lang.reflect.Type
+
 
 object CacheService {
 
-    fun <T>get(key:String, cast:Class<T>):T? {
+    fun <T>get(key:String, type:Type, model:T):CacheItem<T>? {
         val data = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext).getString(key, "")
 
         if (!data.isNullOrEmpty()) {
-            return Gson().fromJson(data, cast)
+            return Gson().fromJson(data, type)
         }
 
         return null
     }
 
-    fun put(key:String, data:String) {
+    fun <T>put(key:String, data:T) {
         val pref = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext)
-        pref.edit().putString(key, data).apply()
+        val cacheItem = CacheItem(data)
+        pref.edit().putString(key, Gson().toJson(cacheItem)).apply()
     }
 
 }

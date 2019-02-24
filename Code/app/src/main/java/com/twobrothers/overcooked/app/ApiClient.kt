@@ -3,9 +3,12 @@ package com.twobrothers.overcooked.app
 import android.content.Context
 import android.preference.PreferenceManager
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.Overcooked
+import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
+import com.twobrothers.overcooked.utils.CacheItem
 import io.reactivex.Single
 import io.reactivex.SingleOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,11 +28,11 @@ object ApiClient {
             .create(ApiService::class.java)
 
     fun getRecipes(): Single<RecipeListModel> {
-        val cachedData = CacheService.get("recipeListCache", RecipeListModel::class.java)
+        val cachedData = CacheService.get("recipeListCache", object : TypeToken<CacheItem<RecipeListModel>>() {}.type, RecipeListModel())
 
         if (cachedData != null) {
             return Single.create {
-                it.onSuccess(cachedData)
+                it.onSuccess(cachedData.data)
             }
         }
 
@@ -42,7 +45,7 @@ object ApiClient {
         mDisposable.add(
             request.subscribeBy(
                 onSuccess = {
-                    CacheService.put("recipeListCache", Gson().toJson(it))
+                    CacheService.put("recipeListCache", it)
                     mDisposable.dispose()
                 }
         ))
