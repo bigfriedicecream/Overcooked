@@ -19,8 +19,9 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
             ApiClient.getRecipes()
             .subscribeBy(
                     onSuccess = {
-                        recipes.addAll(it.data.recipes)
+                        recipes = it.data.recipes
                         view.onDataSetChanged()
+                        // recipes.addAll(it.data.recipes)
                         // recipeListItems.add("b")
                         // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
                     },
