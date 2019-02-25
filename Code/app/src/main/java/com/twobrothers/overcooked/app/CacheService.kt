@@ -21,7 +21,7 @@ object CacheService {
 
     fun <T>put(key:String, data:T) {
         val pref = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext)
-        val cacheItem = CacheItem(data)
+        val cacheItem = CacheItem(data, System.currentTimeMillis() + 1000 * 60 * 2)
         pref.edit().putString(key, Gson().toJson(cacheItem)).apply()
     }
 

@@ -30,26 +30,38 @@ object ApiClient {
     fun getRecipes(): Single<RecipeListModel> {
         val cachedData = CacheService.get("recipeListCache", object : TypeToken<CacheItem<RecipeListModel>>() {}.type, RecipeListModel())
 
-        if (cachedData != null) {
-            return Single.create {
-                it.onSuccess(cachedData.data)
-            }
-        }
-
+        val mDisposable = CompositeDisposable()
         val request = apiService
                 .getRecipes()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
 
-        val mDisposable = CompositeDisposable()
-        mDisposable.add(
-            request.subscribeBy(
-                onSuccess = {
-                    CacheService.put("recipeListCache", it)
-                    mDisposable.dispose()
-                }
-        ))
+        if (cachedData != null && !cachedData.isExpiring() && !cachedData.isExpired()) {
+            return Single.create {
+                it.onSuccess(cachedData.data)
+            }
+        }
 
+        if (cachedData != null && cachedData.isExpiring()) {
+            mDisposable.add(
+                    request.subscribeBy(
+                            onSuccess = {
+                                CacheService.put("recipeListCache", it)
+                                mDisposable.dispose()
+                            }
+                    ))
+            return Single.create {
+                it.onSuccess(cachedData.data)
+            }
+        }
+
+        mDisposable.add(
+                request.subscribeBy(
+                        onSuccess = {
+                            CacheService.put("recipeListCache", it)
+                            mDisposable.dispose()
+                        }
+                ))
         return request
     }
 }
