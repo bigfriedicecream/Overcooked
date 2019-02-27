@@ -5,10 +5,14 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeContract
+import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.presenters.RecipePresenter
+import com.twobrothers.overcooked.utils.GlideApp
+import kotlinx.android.synthetic.main.fragment_recipe.*
 
 class RecipeFragment : Fragment(), IRecipeContract.View {
 
@@ -28,8 +32,17 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         presenter.onStop()
     }
 
-    override fun render() {
-
+    override fun render(recipe: RecipeModel) {
+        if (isDetached) {
+            return
+        }
+        text_title.text = recipe.title
+        GlideApp.with(view!!.context)
+                .load(recipe.imageUrl)
+                .placeholder(R.drawable.placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .fitCenter()
+                .into(image_hero)
     }
 
 }

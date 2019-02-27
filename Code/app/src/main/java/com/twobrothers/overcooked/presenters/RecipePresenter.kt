@@ -15,8 +15,7 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
                 ApiClient.getRecipeById()
                         .subscribeBy(
                                 onSuccess = {
-                                    println(it)
-                                    println(it.data.recipe.title)
+                                    view.render(it.data.recipe)
                                 },
                                 onError =  { it.printStackTrace() }
                         )
