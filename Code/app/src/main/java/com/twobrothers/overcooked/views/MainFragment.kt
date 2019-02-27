@@ -35,7 +35,7 @@ class MainFragment : Fragment() {
 
         fragmentManager
                 ?.beginTransaction()
-                ?.replace(R.id.layout_main, RecipeListFragment())
+                ?.replace(R.id.layout_main, RecipeFragment()) // RecipeListFragment())
                 ?.commitAllowingStateLoss()
 
         return inflater.inflate(R.layout.fragment_main, container, false)

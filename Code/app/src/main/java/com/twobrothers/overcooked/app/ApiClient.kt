@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.Overcooked
+import com.twobrothers.overcooked.models.recipe.RecipeDataModel
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import com.twobrothers.overcooked.utils.CacheItem
@@ -63,5 +64,12 @@ object ApiClient {
                         }
                 ))
         return request
+    }
+
+    fun getRecipeById(): Single<RecipeDataModel> {
+        return apiService
+                .getRecipeById()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
     }
 }
