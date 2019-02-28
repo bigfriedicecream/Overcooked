@@ -29,7 +29,12 @@ object ApiClient {
             .create(ApiService::class.java)
 
     fun getRecipes(): Single<RecipeListModel> {
-        val cachedData = CacheService.get("recipeListCache", object : TypeToken<CacheItem<RecipeListModel>>() {}.type, RecipeListModel())
+        return apiService
+                .getRecipes()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+
+        /* val cachedData = CacheService.get("recipeListCache", object : TypeToken<CacheItem<RecipeListModel>>() {}.type, RecipeListModel())
 
         val mDisposable = CompositeDisposable()
         val request = apiService
@@ -63,7 +68,7 @@ object ApiClient {
                             mDisposable.dispose()
                         }
                 ))
-        return request
+        return request*/
     }
 
     fun getRecipeById(): Single<RecipeDataModel> {
