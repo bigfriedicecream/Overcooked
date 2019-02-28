@@ -2,6 +2,8 @@ package com.twobrothers.overcooked.views.recipe
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +14,33 @@ import com.twobrothers.overcooked.interfaces.IRecipeContract
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.presenters.RecipePresenter
 import com.twobrothers.overcooked.utils.GlideApp
+import com.twobrothers.overcooked.views.recipelist.RecipeListViewAdapter
 import kotlinx.android.synthetic.main.fragment_recipe.*
 
 class RecipeFragment : Fragment(), IRecipeContract.View {
 
     private val presenter: IRecipeContract.Presenter = RecipePresenter(this)
+    private lateinit var methodRecyclerView: RecyclerView
+    private lateinit var methodViewAdapter: RecyclerView.Adapter<*>
+    private lateinit var methodViewManager: RecyclerView.LayoutManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_recipe, container, false)
+        val view = inflater.inflate(R.layout.fragment_recipe, container, false)
+
+        methodViewManager = LinearLayoutManager(context)
+        methodViewAdapter = MethodViewAdapter(presenter)
+
+        methodRecyclerView = view!!.findViewById<RecyclerView>(R.id.recycler_method).apply {
+            layoutManager = methodViewManager
+            adapter = methodViewAdapter
+        }
+
+        /* recycler_method.apply {
+            layoutManager = methodViewManager
+            adapter = methodViewAdapter
+        }*/
+
+        return view
     }
 
     override fun onStart() {
@@ -43,6 +64,10 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(image_hero)
+    }
+
+    override fun onMethodDataSetChanged() {
+        methodViewAdapter.notifyDataSetChanged()
     }
 
 }
