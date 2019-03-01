@@ -10,15 +10,21 @@ class RecipeModel {
     val ingredientSections: ArrayList<IngredientSection> = ArrayList()
 
     class IngredientSection {
-        val ingredientType: Int = 0
+        val heading: String = ""
+        val ingredients: ArrayList<Ingredient> = ArrayList()
+    }
 
-        class Quantified {
-            val amount: Int = 0
-            val unitIds: ArrayList<Int> = ArrayList()
-            val foodId: String = ""
-        }
-        class FreeText {
-            val description: String = ""
-        }
+    class Ingredient {
+        val ingredientType: Int = 0
+    }
+
+    class Quantified {
+        val amount: Int = 0
+        val unitIds: ArrayList<Int> = ArrayList()
+        val foodId: String = ""
+    }
+
+    class FreeText {
+        val description: String = ""
     }
 }

@@ -21,6 +21,11 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
                                     view.render(it.data.recipe)
                                     methodList = it.data.recipe.method
                                     view.onMethodDataSetChanged()
+                                    it.data.recipe.ingredientSections.forEach {
+                                        it.ingredients.forEach {
+                                            println(it.ingredientType)
+                                        }
+                                    }
                                 },
                                 onError =  { it.printStackTrace() }
                         )

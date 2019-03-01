@@ -10,7 +10,7 @@ interface ApiService {
     @GET("recipes/at/0")
     fun getRecipes(): Single<RecipeListModel>
 
-    @GET("recipes/5c70c8fdf36d3de9a97aee3e")
+    @GET("recipes/5c70f646f36d3de9a97aee3f") // 5c70c8fdf36d3de9a97aee3e
     fun getRecipeById(): Single<RecipeDataModel>
 
 }
