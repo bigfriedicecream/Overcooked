@@ -66,8 +66,25 @@
                 android:paddingEnd="16dp"
                 android:textSize="20sp"/>
 
+            <TextView
+                android:text="Method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_regular"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@drawable/border_bottom"
+                android:textAllCaps="true"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="14sp"/>
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_method"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </android.support.v7.widget.RecyclerView>

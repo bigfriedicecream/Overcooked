@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.fragment_recipe.*
 class RecipeFragment : Fragment(), IRecipeContract.View {
 
     private val presenter: IRecipeContract.Presenter = RecipePresenter(this)
-    private lateinit var methodRecyclerView: RecyclerView
     private lateinit var methodViewAdapter: RecyclerView.Adapter<*>
     private lateinit var methodViewManager: RecyclerView.LayoutManager
 
@@ -30,15 +29,10 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         methodViewManager = LinearLayoutManager(context)
         methodViewAdapter = MethodViewAdapter(presenter)
 
-        methodRecyclerView = view!!.findViewById<RecyclerView>(R.id.recycler_method).apply {
+        view!!.findViewById<RecyclerView>(R.id.recycler_method).apply {
             layoutManager = methodViewManager
             adapter = methodViewAdapter
         }
-
-        /* recycler_method.apply {
-            layoutManager = methodViewManager
-            adapter = methodViewAdapter
-        }*/
 
         return view
     }
