@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fontFamily="@font/open_sans_semibold"
+        android:fontFamily="@font/lato_regular"
         android:textColor="#3e3e3e"
         android:textSize="14sp"
         android:textAllCaps="true"

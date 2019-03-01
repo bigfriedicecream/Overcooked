@@ -5,18 +5,18 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="300"
-        android:font="@font/open_sans_light"
+        android:font="@font/lato_light"
         android:textStyle="normal"
         app:fontStyle="normal"
         app:fontWeight="300"
-        app:font="@font/open_sans_light" />
+        app:font="@font/lato_light" />
 
     <font
         android:fontStyle="normal"
-        android:fontWeight="700"
-        android:font="@font/open_sans_semibold"
-        android:textStyle="bold"
+        android:fontWeight="400"
+        android:font="@font/lato_regular"
+        android:textStyle="normal"
         app:fontStyle="normal"
-        app:fontWeight="700"
-        app:font="@font/open_sans_semibold" />
+        app:fontWeight="400"
+        app:font="@font/lato_regular" />
 </font-family>
