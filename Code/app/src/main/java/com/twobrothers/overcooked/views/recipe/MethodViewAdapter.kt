@@ -16,8 +16,9 @@ import kotlinx.android.synthetic.main.fragment_recipe_method_item.view.*
 class MethodViewAdapter(private val presenter: IRecipeContract.Presenter):RecyclerView.Adapter<MethodViewAdapter.Holder>() {
 
     class Holder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun render(stepText: String) {
-            itemView.text_step.text = stepText
+        fun render(step: Int, description: String) {
+            itemView.text_step.text = step.toString()
+            itemView.text_description.text = description
         }
     }
 

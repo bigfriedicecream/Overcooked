@@ -33,7 +33,7 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
 
     override fun onBindMethodRepositoryRowViewAtPosition(holder: MethodViewAdapter.Holder, position: Int) {
         val method = methodList[position]
-        holder.render(method)
+        holder.render(position + 1, method)
     }
 
     override fun getMethodRepositoriesRowsCount(): Int {
