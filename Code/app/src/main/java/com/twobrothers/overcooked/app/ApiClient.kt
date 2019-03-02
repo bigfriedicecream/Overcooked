@@ -88,9 +88,9 @@ object ApiClient {
             it.ingredients.mapInPlace {
                 val ingredient = Gson().fromJson(Gson().toJson(it), RecipeModel.Ingredient::class.java)
                 if (ingredient.ingredientType == 0) {
-                    "quantified"
+                    Gson().fromJson(Gson().toJson(it), RecipeModel.Quantified::class.java)
                 } else {
-                    "free"
+                    Gson().fromJson(Gson().toJson(it), RecipeModel.FreeText::class.java)
                 }
             }
         }
