@@ -75,6 +75,19 @@ object ApiClient {
         return apiService
                 .getRecipeById()
                 .subscribeOn(Schedulers.io())
+                .map {
+                    mapThings(it)
+                }
                 .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    private fun mapThings(recipeDataModel: RecipeDataModel): RecipeDataModel {
+        recipeDataModel.data.recipe.ingredientSections.map {
+            it.ingredients.map {
+                println(it)
+            }
+        }
+
+        return recipeDataModel
     }
 }
