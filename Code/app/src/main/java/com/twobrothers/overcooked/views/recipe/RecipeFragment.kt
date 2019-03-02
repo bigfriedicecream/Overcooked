@@ -61,7 +61,7 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
                 .fitCenter()
                 .into(image_hero)
 
-        expandable_ingredients.setAdapter(IngredientListAdapter(recipe.ingredientSections))
+        expandable_ingredients.setAdapter(IngredientListAdapter(this.context, recipe.ingredientSections))
     }
 
     override fun onMethodDataSetChanged() {
