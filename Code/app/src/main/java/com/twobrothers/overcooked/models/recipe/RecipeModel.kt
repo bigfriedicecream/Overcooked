@@ -11,11 +11,11 @@ class RecipeModel {
 
     class IngredientSection {
         val heading: String = ""
-        val ingredients: ArrayList<Ingredient> = ArrayList()
+        val ingredients: ArrayList<Any> = ArrayList()
     }
 
     class Ingredient {
-        val ingredientType: Int = 0
+        val ingredientType: Int? = null
     }
 
     class Quantified {

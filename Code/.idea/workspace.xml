@@ -29,7 +29,9 @@
     <list default="true" id="c046f160-6080-443c-847d-7fd6d98d4ee8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/ApiClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/ApiClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/models/recipe/RecipeModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/models/recipe/RecipeModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/utils/Extensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/utils/Extensions.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +70,7 @@
         <counts>
           <entry key="gradle" value="8" />
           <entry key="java" value="1" />
-          <entry key="kt" value="170" />
+          <entry key="kt" value="171" />
           <entry key="xml" value="42" />
         </counts>
       </usages-collector>
@@ -76,7 +78,7 @@
         <counts>
           <entry key="Groovy" value="8" />
           <entry key="JAVA" value="1" />
-          <entry key="Kotlin" value="170" />
+          <entry key="Kotlin" value="171" />
           <entry key="XML" value="42" />
         </counts>
       </usages-collector>
@@ -84,7 +86,7 @@
         <counts>
           <entry key="gradle" value="93" />
           <entry key="java" value="22" />
-          <entry key="kt" value="10096" />
+          <entry key="kt" value="11062" />
           <entry key="xml" value="894" />
         </counts>
       </usages-collector>
@@ -92,7 +94,7 @@
         <counts>
           <entry key="Groovy" value="93" />
           <entry key="JAVA" value="22" />
-          <entry key="Kotlin" value="10096" />
+          <entry key="Kotlin" value="11062" />
           <entry key="XML" value="894" />
         </counts>
       </usages-collector>
@@ -131,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/models/recipe/RecipeModel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
+            <state relative-caret-position="187">
+              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -140,8 +142,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/ApiClient.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="90" column="30" lean-forward="true" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+            <state relative-caret-position="203">
+              <caret line="90" column="32" lean-forward="true" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
               <folding>
                 <element signature="e#40#911#0" expanded="true" />
               </folding>
@@ -150,10 +152,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/utils/Extensions.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="603">
+              <caret line="50" column="36" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+            <state relative-caret-position="246">
+              <caret line="26" column="55" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -2697,7 +2708,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/MainPresenter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/NormalIngredientItemFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
@@ -2746,8 +2756,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_method_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/ApiService.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/models/recipe/RecipeModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/utils/Extensions.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/ApiClient.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/models/recipe/RecipeModel.kt" />
       </list>
     </option>
   </component>
@@ -2879,6 +2890,18 @@
               <item name="twobrothers" type="462c0819:PsiDirectoryNode" />
               <item name="overcooked" type="462c0819:PsiDirectoryNode" />
               <item name="presenters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="twobrothers" type="462c0819:PsiDirectoryNode" />
+              <item name="overcooked" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Code" type="b2602c69:ProjectViewProjectNode" />
@@ -3146,7 +3169,7 @@
       <window_info anchor="bottom" id="Build" order="7" weight="0.32684284" />
       <window_info anchor="bottom" id="Android Profiler" order="8" weight="0.32823366" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Logcat" order="10" weight="0.43810847" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="10" visible="true" weight="0.43810847" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Terminal" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -3198,7 +3221,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/recipelist/RecipeListData.kt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -3438,22 +3460,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+        <state relative-caret-position="246">
+          <caret line="26" column="55" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/models/recipe/RecipeModel.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
+        <state relative-caret-position="187">
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/utils/Extensions.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="50" column="36" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/ApiClient.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="90" column="30" lean-forward="true" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+        <state relative-caret-position="203">
+          <caret line="90" column="32" lean-forward="true" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
           <folding>
             <element signature="e#40#911#0" expanded="true" />
           </folding>

@@ -3,6 +3,7 @@ package com.twobrothers.overcooked.presenters
 import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.interfaces.IRecipeContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
+import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.views.recipe.MethodViewAdapter
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -21,11 +22,11 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
                                     view.render(it.data.recipe)
                                     methodList = it.data.recipe.method
                                     view.onMethodDataSetChanged()
-                                    /* it.data.recipe.ingredientSections.forEach {
+                                    it.data.recipe.ingredientSections.forEach {
                                         it.ingredients.forEach {
-                                            // println(it)
+                                            println(it)
                                         }
-                                    }*/
+                                    }
                                 },
                                 onError =  { it.printStackTrace() }
                         )

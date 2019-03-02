@@ -45,3 +45,9 @@ fun Double.Companion.roundToReadableQuantity(q:Double, unitTypeId:Int):Double {
 
     return q.roundToInt().toDouble()
 }
+
+fun <T> ArrayList<T>.mapInPlace(transform: (T) -> T) {
+    for (i in this.indices) {
+        this[i] = transform(this[i])
+    }
+}

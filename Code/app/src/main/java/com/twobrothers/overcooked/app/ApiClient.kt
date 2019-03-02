@@ -3,6 +3,7 @@ package com.twobrothers.overcooked.app
 import android.content.Context
 import android.preference.PreferenceManager
 import com.google.gson.Gson
+import com.google.gson.internal.LinkedTreeMap
 import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.Overcooked
@@ -10,6 +11,7 @@ import com.twobrothers.overcooked.models.recipe.RecipeDataModel
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import com.twobrothers.overcooked.utils.CacheItem
+import com.twobrothers.overcooked.utils.mapInPlace
 import io.reactivex.Single
 import io.reactivex.SingleOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -83,8 +85,13 @@ object ApiClient {
 
     private fun mapThings(recipeDataModel: RecipeDataModel): RecipeDataModel {
         recipeDataModel.data.recipe.ingredientSections.map {
-            it.ingredients.map {
-                println(it)
+            it.ingredients.mapInPlace {
+                val ingredient = Gson().fromJson(Gson().toJson(it), RecipeModel.Ingredient::class.java)
+                if (ingredient.ingredientType == 0) {
+                    "quantified"
+                } else {
+                    "free"
+                }
             }
         }
 
