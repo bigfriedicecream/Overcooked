@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ExpandableListAdapter
+import android.widget.ExpandableListView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 import com.twobrothers.overcooked.R
@@ -34,11 +36,14 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
             adapter = methodViewAdapter
         }
 
+        // view.findViewById<ExpandableListView>(R.id.expandable_ingredients).setAdapter(IngredientListAdapter(presenter))
+
         return view
     }
 
     override fun onStart() {
         super.onStart()
+        // expandable_ingredients.setAdapter(IngredientListAdapter(presenter))
         presenter.onStart()
     }
 
