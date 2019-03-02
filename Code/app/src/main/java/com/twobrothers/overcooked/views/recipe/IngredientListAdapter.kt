@@ -3,46 +3,46 @@ package com.twobrothers.overcooked.views.recipe
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
-import com.twobrothers.overcooked.interfaces.IRecipeContract
+import com.twobrothers.overcooked.models.recipe.RecipeModel
 
-class IngredientListAdapter(private val presenter: IRecipeContract.Presenter): BaseExpandableListAdapter() {
-    override fun getGroup(p0: Int): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class IngredientListAdapter(private val dataSet: ArrayList<RecipeModel.IngredientSection>): BaseExpandableListAdapter() {
+    override fun getGroup(index: Int): String {
+        return dataSet[index].heading
     }
 
     override fun isChildSelectable(p0: Int, p1: Int): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return true
     }
 
     override fun hasStableIds(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return false
     }
 
     override fun getGroupView(p0: Int, p1: Boolean, p2: View?, p3: ViewGroup?): View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getChildrenCount(p0: Int): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getChildrenCount(index: Int): Int {
+        return dataSet[index].ingredients.size
     }
 
-    override fun getChild(p0: Int, p1: Int): Any {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getChild(groupIndex: Int, childIndex: Int): Any {
+        return dataSet[groupIndex].ingredients[childIndex]
     }
 
-    override fun getGroupId(p0: Int): Long {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getGroupId(index: Int): Long {
+        return index.toLong()
     }
 
     override fun getChildView(p0: Int, p1: Int, p2: Boolean, p3: View?, p4: ViewGroup?): View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getChildId(p0: Int, p1: Int): Long {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getChildId(groupPosition: Int, childPosition: Int): Long {
+        return childPosition.toLong()
     }
 
     override fun getGroupCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return dataSet.size
     }
 }

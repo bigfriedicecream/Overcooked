@@ -36,14 +36,11 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
             adapter = methodViewAdapter
         }
 
-        // view.findViewById<ExpandableListView>(R.id.expandable_ingredients).setAdapter(IngredientListAdapter(presenter))
-
         return view
     }
 
     override fun onStart() {
         super.onStart()
-        // expandable_ingredients.setAdapter(IngredientListAdapter(presenter))
         presenter.onStart()
     }
 
@@ -63,6 +60,8 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(image_hero)
+
+        expandable_ingredients.setAdapter(IngredientListAdapter(recipe.ingredientSections))
     }
 
     override fun onMethodDataSetChanged() {
