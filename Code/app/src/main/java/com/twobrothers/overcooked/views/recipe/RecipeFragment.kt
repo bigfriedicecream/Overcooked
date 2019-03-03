@@ -60,8 +60,6 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(image_hero)
-
-        expandable_ingredients.setAdapter(IngredientListAdapter(this.context, recipe.ingredientSections))
     }
 
     override fun onMethodDataSetChanged() {

@@ -28,8 +28,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c046f160-6080-443c-847d-7fd6d98d4ee8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientListAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientListAdapter.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredient_child.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredient_group.xml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +72,7 @@
           <entry key="class" value="1" />
           <entry key="gradle" value="8" />
           <entry key="java" value="1" />
-          <entry key="kt" value="179" />
+          <entry key="kt" value="180" />
           <entry key="xml" value="51" />
         </counts>
       </usages-collector>
@@ -78,7 +81,7 @@
           <entry key="CLASS" value="1" />
           <entry key="Groovy" value="8" />
           <entry key="JAVA" value="1" />
-          <entry key="Kotlin" value="179" />
+          <entry key="Kotlin" value="180" />
           <entry key="XML" value="51" />
         </counts>
       </usages-collector>
@@ -87,7 +90,7 @@
           <entry key="gradle" value="93" />
           <entry key="java" value="22" />
           <entry key="kt" value="12252" />
-          <entry key="xml" value="1041" />
+          <entry key="xml" value="1074" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -95,7 +98,7 @@
           <entry key="Groovy" value="93" />
           <entry key="JAVA" value="22" />
           <entry key="Kotlin" value="12252" />
-          <entry key="XML" value="1041" />
+          <entry key="XML" value="1074" />
         </counts>
       </usages-collector>
     </session>
@@ -131,44 +134,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe.xml">
+          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="63" column="105" selection-start-line="63" selection-start-column="105" selection-end-line="63" selection-end-column="105" />
+            <state relative-caret-position="30">
+              <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
               <folding>
-                <element signature="e#49#754#0" expanded="true" />
+                <element signature="e#1941#1981#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientListAdapter.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
-              <folding>
-                <element signature="e#49#406#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredient_child.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="80" lean-forward="true" selection-start-line="4" selection-start-column="80" selection-end-line="4" selection-end-column="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/models/recipe/RecipeModel.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+            <state relative-caret-position="198">
+              <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -176,17 +158,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipelist/RecipeListViewAdapter.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+            <state relative-caret-position="229">
+              <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+              <folding>
+                <element signature="e#47#437#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -2776,12 +2752,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/utils/Extensions.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/ApiClient.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredient_group.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredient_child.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/models/recipe/RecipeModel.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientListAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt" />
       </list>
     </option>
   </component>
@@ -2799,9 +2775,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2899,19 +2875,6 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="twobrothers" type="462c0819:PsiDirectoryNode" />
               <item name="overcooked" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="recipe" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="twobrothers" type="462c0819:PsiDirectoryNode" />
-              <item name="overcooked" type="462c0819:PsiDirectoryNode" />
               <item name="presenters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -2995,16 +2958,15 @@
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$ANDROID_SDK_ROOT$" />
-    <property name="device.picker.selection" value="Pixel_2_API_25" />
+    <property name="device.picker.selection" value="ZX1G427SFT" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/release" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Github\overcooked-android\Code\app\src\main\res\layout" />
-      <recent name="D:\Github\Overcooked\Code\app\src\main\res\drawable" />
-      <recent name="D:\Github\Overcooked\Code\app\src\main\res\layout" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Github\overcooked-android\Code\app\src\main\res\font" />
+      <recent name="D:\Github\Overcooked\Code\app\src\main\res\font" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.twobrothers.overcooked.views.recipe" />
@@ -3019,9 +2981,10 @@
       <recent name="com.twobrothers.overcooked.models.recipe" />
       <recent name="com.twobrothers.overcooked.recipelist" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Github\overcooked-android\Code\app\src\main\res\font" />
-      <recent name="D:\Github\Overcooked\Code\app\src\main\res\font" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Github\overcooked-android\Code\app\src\main\res\layout" />
+      <recent name="D:\Github\Overcooked\Code\app\src\main\res\drawable" />
+      <recent name="D:\Github\Overcooked\Code\app\src\main\res\layout" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -3161,7 +3124,7 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45594406" visible="true" weight="0.24742931" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.45594406" visible="true" weight="0.24742931" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" sideWeight="0.54405594" side_tool="true" weight="0.25" />
@@ -3176,7 +3139,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.32684284" />
+      <window_info active="true" anchor="bottom" id="Build" order="7" visible="true" weight="0.32684284" />
       <window_info anchor="bottom" id="Android Profiler" order="8" weight="0.32823366" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Logcat" order="10" weight="0.43810847" />
@@ -3417,9 +3380,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="92" column="88" selection-start-line="92" selection-start-column="88" selection-end-line="92" selection-end-column="88" />
-          <folding>
-            <element signature="e#40#911#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3452,14 +3412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="68" column="31" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipelist/RecipeListViewAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -3469,8 +3421,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
+        <state relative-caret-position="229">
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+          <folding>
+            <element signature="e#47#437#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3489,16 +3444,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="63" column="105" selection-start-line="63" selection-start-column="105" selection-end-line="63" selection-end-column="105" />
-          <folding>
-            <element signature="e#49#754#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredient_child.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -3510,10 +3455,25 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientListAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
-          <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
           <folding>
-            <element signature="e#49#406#0" expanded="true" />
+            <element signature="e#1941#1981#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
         </state>
       </provider>
     </entry>
