@@ -2,8 +2,8 @@ package com.twobrothers.overcooked.presenters
 
 import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.interfaces.IRecipeContract
-import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import com.twobrothers.overcooked.models.recipe.RecipeModel
+import com.twobrothers.overcooked.views.recipe.IngredientViewAdapter
 import com.twobrothers.overcooked.views.recipe.MethodViewAdapter
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -13,6 +13,7 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
 
     private val disposable = CompositeDisposable()
     private var methodList = ArrayList<String>()
+    private var ingredientList = mutableListOf<Any>()
 
     override fun onStart() {
         disposable.add(
@@ -22,6 +23,17 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
                                     view.render(it.data.recipe)
                                     methodList = it.data.recipe.method
                                     view.onMethodDataSetChanged()
+
+                                    it.data.recipe.ingredientSections.forEach {
+                                        if (it.heading.isNotBlank()) {
+                                            ingredientList.add(RecipeModel.Heading(it.heading))
+                                        }
+                                        it.ingredients.forEach {
+                                            ingredientList.add(it)
+                                        }
+                                    }
+
+                                    view.onIngredientDataSetChanged()
                                 },
                                 onError =  { it.printStackTrace() }
                         )
@@ -39,6 +51,14 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
 
     override fun getMethodRepositoriesRowsCount(): Int {
         return methodList.size
+    }
+
+    override fun onBindIngredientRepositoryRowViewAtPosition(holder: IngredientViewAdapter.Holder, position: Int) {
+        holder.render()
+    }
+
+    override fun getIngredientRepositoriesRowsCount(): Int {
+        return ingredientList.size
     }
 
 }

@@ -24,6 +24,8 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
     private val presenter: IRecipeContract.Presenter = RecipePresenter(this)
     private lateinit var methodViewAdapter: RecyclerView.Adapter<*>
     private lateinit var methodViewManager: RecyclerView.LayoutManager
+    private lateinit var ingredientViewAdapter: RecyclerView.Adapter<*>
+    private lateinit var ingredientViewManager: RecyclerView.LayoutManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_recipe, container, false)
@@ -34,6 +36,14 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         view!!.findViewById<RecyclerView>(R.id.recycler_method).apply {
             layoutManager = methodViewManager
             adapter = methodViewAdapter
+        }
+
+        ingredientViewManager = LinearLayoutManager(context)
+        ingredientViewAdapter = IngredientViewAdapter(presenter)
+
+        view.findViewById<RecyclerView>(R.id.recycler_ingredients).apply {
+            layoutManager = ingredientViewManager
+            adapter = ingredientViewAdapter
         }
 
         return view
@@ -64,6 +74,10 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
 
     override fun onMethodDataSetChanged() {
         methodViewAdapter.notifyDataSetChanged()
+    }
+
+    override fun onIngredientDataSetChanged() {
+        ingredientViewAdapter.notifyDataSetChanged()
     }
 
 }

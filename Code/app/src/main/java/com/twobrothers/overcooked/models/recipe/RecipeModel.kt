@@ -27,4 +27,6 @@ class RecipeModel {
     class FreeText {
         val description: String = ""
     }
+
+    class Heading(val title: String = "")
 }
