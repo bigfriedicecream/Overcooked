@@ -4,13 +4,14 @@ import com.twobrothers.overcooked.models.recipe.RecipeDataModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiService {
 
     @GET("recipes/at/0")
     fun getRecipes(): Single<RecipeListModel>
 
-    @GET("recipes/5c70f646f36d3de9a97aee3f") // 5c70c8fdf36d3de9a97aee3e
-    fun getRecipeById(): Single<RecipeDataModel>
+    @GET("recipes/{id}")
+    fun getRecipeById(@Path("id") id: String): Single<RecipeDataModel>
 
 }
