@@ -5,6 +5,7 @@ import com.twobrothers.overcooked.app.Navigation
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import com.twobrothers.overcooked.models.recipe.RecipeModel
+import com.twobrothers.overcooked.models.recipe.RecipeRouteParams
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 
@@ -35,6 +36,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     }
 
     override fun onRecipeListItemClick(position: Int) {
+        val recipeRouteParams = RecipeRouteParams(recipes[position].id)
         Navigation.push("RECIPE_VIEW")
     }
 

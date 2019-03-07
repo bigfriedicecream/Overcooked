@@ -15,10 +15,10 @@ import io.reactivex.rxkotlin.subscribeBy
 
 class MainFragment : Fragment() {
 
-    private val mDisposable = CompositeDisposable()
+    private val disposable = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View? {
-        mDisposable.add(
+        disposable.add(
             Navigation
                 .getInstance()
                 .subscribeBy(
@@ -35,7 +35,7 @@ class MainFragment : Fragment() {
 
         fragmentManager
                 ?.beginTransaction()
-                ?.replace(R.id.layout_main, RecipeFragment()) // RecipeListFragment())
+                ?.replace(R.id.layout_main, RecipeListFragment()) // RecipeFragment
                 ?.commitAllowingStateLoss()
 
         return inflater.inflate(R.layout.fragment_main, container, false)
@@ -43,6 +43,6 @@ class MainFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
-        mDisposable.dispose()
+        disposable.dispose()
     }
 }
