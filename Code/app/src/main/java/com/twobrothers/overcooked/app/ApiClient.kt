@@ -73,13 +73,10 @@ object ApiClient {
         return request*/
     }
 
-    fun getRecipeById(): Single<RecipeDataModel> {
+    fun getRecipeById(id: String): Single<RecipeDataModel> {
         return apiService
-                .getRecipeById("5c70f646f36d3de9a97aee3f") // 5c70c8fdf36d3de9a97aee3e
+                .getRecipeById(id) // 5c70f646f36d3de9a97aee3f | 5c70c8fdf36d3de9a97aee3e
                 .subscribeOn(Schedulers.io())
-                .map {
-                    mapThings(it)
-                }
                 .observeOn(AndroidSchedulers.mainThread())
     }
 

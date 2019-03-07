@@ -1,18 +1,21 @@
 package com.twobrothers.overcooked.app
 
+import android.os.Bundle
 import io.reactivex.subjects.PublishSubject
 
 object Navigation {
 
-    private val history = mutableListOf<String>()
-    private val subject = PublishSubject.create<String>()
+    private val history = mutableListOf<NavItem>()
+    private val subject = PublishSubject.create<NavItem>()
 
-    fun getInstance():PublishSubject<String> {
+    fun getInstance():PublishSubject<NavItem> {
         return subject
     }
 
-    fun push(tag: String) {
-        history.add(tag)
-        subject.onNext(tag)
+    fun push(navItem: NavItem) {
+        history.add(navItem)
+        subject.onNext(navItem)
     }
+
+    class NavItem(val tag: String = "", val args: Bundle? = null)
 }

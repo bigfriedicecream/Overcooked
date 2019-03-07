@@ -51,7 +51,7 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
 
     override fun onStart() {
         super.onStart()
-        presenter.onStart()
+        presenter.onStart(this.arguments)
     }
 
     override fun onStop() {

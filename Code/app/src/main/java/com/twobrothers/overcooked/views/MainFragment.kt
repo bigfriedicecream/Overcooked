@@ -23,19 +23,22 @@ class MainFragment : Fragment() {
                 .getInstance()
                 .subscribeBy(
                     onNext = {
-                        if (it == "RECIPE_VIEW") {
-                            fragmentManager
-                                    ?.beginTransaction()
-                                    ?.replace(R.id.layout_main, RecipeFragment())
-                                    ?.commitAllowingStateLoss()
+                        var newView:Fragment = RecipeListFragment()
+                        if (it.tag == "RECIPE_VIEW") {
+                            newView = RecipeFragment()
                         }
+                        newView.arguments = it.args
+                        fragmentManager
+                                ?.beginTransaction()
+                                ?.replace(R.id.layout_main, newView)
+                                ?.commitAllowingStateLoss()
                     }
                 )
         )
 
         fragmentManager
                 ?.beginTransaction()
-                ?.replace(R.id.layout_main, RecipeListFragment()) // RecipeFragment
+                ?.replace(R.id.layout_main, RecipeListFragment()) // RecipeFragment | RecipeListFragment
                 ?.commitAllowingStateLoss()
 
         return inflater.inflate(R.layout.fragment_main, container, false)

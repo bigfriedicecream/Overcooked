@@ -1,5 +1,6 @@
 package com.twobrothers.overcooked.presenters
 
+import android.os.Bundle
 import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.interfaces.IRecipeContract
 import com.twobrothers.overcooked.models.recipe.RecipeModel
@@ -15,9 +16,9 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     private var methodList = ArrayList<String>()
     private var ingredientList = mutableListOf<Any>()
 
-    override fun onStart() {
+    override fun onStart(args: Bundle?) {
         disposable.add(
-                ApiClient.getRecipeById()
+                ApiClient.getRecipeById(args!!.getString("id"))
                         .subscribeBy(
                                 onSuccess = {
                                     view.render(it.data.recipe)
