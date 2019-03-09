@@ -13,13 +13,13 @@ import kotlinx.android.synthetic.main.fragment_recipe_list_item.view.*
 
 class RecipeListViewHolder(itemView: View, private val presenter:IRecipeListContract.Presenter) : RecyclerView.ViewHolder(itemView), IRecipeListRowView {
     override fun render(recipe: RecipeModel) {
-        itemView.title.text = recipe.title
+        itemView.text_title.text = recipe.title
         GlideApp.with(itemView.context)
                 .load(recipe.imageUrl)
                 .placeholder(R.drawable.placeholder)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
-                .into(itemView.hero)
+                .into(itemView.image_hero)
 
         RxView.clicks(itemView)
                 .takeUntil(RxView.detaches(itemView))
