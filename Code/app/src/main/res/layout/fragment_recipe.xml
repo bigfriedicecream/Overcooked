@@ -1,115 +1,77 @@
-<android.support.design.widget.CoordinatorLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:keepScreenOn="true"
-    android:background="@android:color/background_light"
-    android:fitsSystemWindows="true">
+    android:layout_height="wrap_content">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:fitsSystemWindows="true">
-
-        <android.support.design.widget.CollapsingToolbarLayout
+        android:layout_width="match_parent">
+        <ImageView
+            android:id="@+id/image_hero"
+            android:adjustViewBounds="true"
+            android:contentDescription="Recipe Image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:fitsSystemWindows="true"
-            app:scrimAnimationDuration="300"
-            app:contentScrim="?attr/colorPrimaryDark">
+            android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/image_hero"
-                android:adjustViewBounds="true"
-                android:contentDescription="Recipe Image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/text_title"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_light"
+            android:textColor="@color/colorPrimaryDark"
+            android:textAllCaps="true"
+            android:layout_gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textSize="20sp" />
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:navigationIcon="?attr/homeAsUpIndicator"
-                app:layout_collapseMode="pin" />
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <TextView
+            android:text="Ingredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:fontFamily="@font/lato_regular"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@drawable/border_bottom"
+            android:textAllCaps="true"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/text_title"
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_light"
-                android:textColor="@color/colorPrimaryDark"
-                android:textAllCaps="true"
-                android:layout_gravity="center"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textSize="20sp"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_ingredients"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-            <TextView
-                android:text="Ingredients"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_regular"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="@drawable/border_bottom"
-                android:textAllCaps="true"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                android:textSize="14sp"/>
+        <TextView
+            android:text="Method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@drawable/border_bottom"
+            android:textAllCaps="true"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="14sp" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_ingredients"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:text="Method"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_regular"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="@drawable/border_bottom"
-                android:textAllCaps="true"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                android:textSize="14sp"/>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_method"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-
-</android.support.design.widget.CoordinatorLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_method"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
