@@ -3,6 +3,7 @@ package com.twobrothers.overcooked.presenters
 import android.os.Bundle
 import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.interfaces.IRecipeContract
+import com.twobrothers.overcooked.models.recipe.RecipeDataModel
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.views.recipe.IngredientViewAdapter
 import com.twobrothers.overcooked.views.recipe.MethodViewAdapter
@@ -18,10 +19,19 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
 
     override fun onStart(args: Bundle?) {
         disposable.add(
-                ApiClient.getRecipeById(args!!.getString("id"))
+                ApiClient.getRecipeById("5c70f646f36d3de9a97aee3f") // args!!.getString("id")
                         .subscribeBy(
                                 onSuccess = {
+                                    if (it.data == null) {
+                                        return@subscribeBy
+                                    }
+
                                     view.render(it.data.recipe)
+                                    methodList = it.data.recipe.method
+
+                                    view.onMethodDataSetChanged()
+
+                                    /* view.render(it.data.recipe)
                                     methodList = it.data.recipe.method
                                     view.onMethodDataSetChanged()
 
@@ -34,7 +44,7 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
                                         }
                                     }
 
-                                    view.onIngredientDataSetChanged()
+                                    view.onIngredientDataSetChanged()*/
                                 },
                                 onError =  { it.printStackTrace() }
                         )

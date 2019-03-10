@@ -1,6 +1,7 @@
 package com.twobrothers.overcooked.app
 
 import com.twobrothers.overcooked.models.recipe.RecipeDataModel
+import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import io.reactivex.Single
 import retrofit2.http.GET
