@@ -1,9 +1,6 @@
 package com.twobrothers.overcooked.app
 
-import com.google.gson.JsonDeserializationContext
-import com.google.gson.JsonDeserializer
-import com.google.gson.JsonElement
-import com.google.gson.JsonObject
+import com.google.gson.*
 import com.twobrothers.overcooked.models.recipe.Data
 import com.twobrothers.overcooked.models.recipe.RecipeDataModel
 import org.json.JSONObject
@@ -19,11 +16,27 @@ class RecipeResponseDeserializer: JsonDeserializer<RecipeDataModel> {
 
         return recipeDataModel*/
 
-        val d: JsonObject? = jsonObject?.get("data")?.asJsonObject
-        d?.addProperty("happy", "me, i am most happy")
+        val data = jsonObject?.get("data")?.asJsonObject
+        val recipe = data?.get("recipe")?.asJsonObject
+        val ingredientSections = recipe?.get("ingredientSections")?.asJsonArray
+
+        val ingredientList = JsonArray()
+
+        ingredientSections?.forEach {
+            val ingredients = it.asJsonObject.get("ingredients").asJsonArray
+            ingredients.forEach {
+                val ingredientType = it.asJsonObject.get("ingredientType").asInt
+                when (ingredientType) {
+                    0 -> ingredientList.add("quantified item")
+                    1 -> ingredientList.add("free text")
+                }
+            }
+        }
+
+        recipe?.add("ingredients", ingredientList)
 
         return RecipeDataModel(
-                context?.deserialize(d, Data::class.java)
+                context?.deserialize(data, Data::class.java)
         )
 
 

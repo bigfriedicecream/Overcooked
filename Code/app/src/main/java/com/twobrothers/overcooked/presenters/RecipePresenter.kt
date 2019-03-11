@@ -26,6 +26,8 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
                                         return@subscribeBy
                                     }
 
+                                    println(it.data.recipe.ingredients)
+
                                     view.render(it.data.recipe)
                                     methodList = it.data.recipe.method
 

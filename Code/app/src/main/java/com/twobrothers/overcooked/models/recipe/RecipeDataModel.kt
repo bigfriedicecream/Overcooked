@@ -5,13 +5,13 @@ data class RecipeDataModel (
 )
 
 data class Data (
-        val recipe: Recipe,
-        val happy: String
+        val recipe: Recipe
 )
 
 data class Recipe (
         val id: String,
         val title: String,
         val imageUrl: String,
-        val method: ArrayList<String>
+        val method: ArrayList<String>,
+        val ingredients: ArrayList<Any>
 )
