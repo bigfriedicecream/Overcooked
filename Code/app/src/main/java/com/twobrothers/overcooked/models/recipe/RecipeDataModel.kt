@@ -15,3 +15,7 @@ data class Recipe (
         val method: ArrayList<String>,
         val ingredients: ArrayList<Any>
 )
+
+data class FreeText (
+        val description: String
+)

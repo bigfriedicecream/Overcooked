@@ -3,6 +3,7 @@ package com.twobrothers.overcooked.presenters
 import android.os.Bundle
 import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.interfaces.IRecipeContract
+import com.twobrothers.overcooked.models.recipe.FreeText
 import com.twobrothers.overcooked.models.recipe.RecipeDataModel
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.views.recipe.IngredientViewAdapter
@@ -54,6 +55,8 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     }
 
     override fun onBindIngredientRepositoryRowViewAtPosition(holder: IngredientViewAdapter.Holder, position: Int) {
+        val ingredient = ingredientList[position]
+        println(ingredient is FreeText)
         holder.render()
     }
 

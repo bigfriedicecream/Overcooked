@@ -2,6 +2,7 @@ package com.twobrothers.overcooked.app
 
 import com.google.gson.*
 import com.twobrothers.overcooked.models.recipe.Data
+import com.twobrothers.overcooked.models.recipe.FreeText
 import com.twobrothers.overcooked.models.recipe.RecipeDataModel
 import org.json.JSONObject
 import java.lang.reflect.Type
@@ -34,7 +35,10 @@ class RecipeResponseDeserializer: JsonDeserializer<RecipeDataModel> {
                 val ingredientType = it.asJsonObject.get("ingredientType").asInt
                 when (ingredientType) {
                     0 -> ingredientList.add("quantified item")
-                    1 -> ingredientList.add("free text")
+                    1 -> {
+                        val freeText: FreeText? = context?.deserialize(it, FreeText::class.java)
+                        ingredientList.add(Gson().toJson(freeText))
+                    }
                 }
             }
         }
