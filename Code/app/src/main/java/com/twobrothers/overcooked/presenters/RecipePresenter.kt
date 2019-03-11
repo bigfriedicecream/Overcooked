@@ -30,23 +30,10 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
 
                                     view.render(it.data.recipe)
                                     methodList = it.data.recipe.method
+                                    ingredientList = it.data.recipe.ingredients
 
                                     view.onMethodDataSetChanged()
-
-                                    /* view.render(it.data.recipe)
-                                    methodList = it.data.recipe.method
-                                    view.onMethodDataSetChanged()
-
-                                    it.data.recipe.ingredientSections.forEach {
-                                        if (it.heading.isNotBlank()) {
-                                            ingredientList.add(RecipeModel.Heading(it.heading))
-                                        }
-                                        it.ingredients.forEach {
-                                            ingredientList.add(it)
-                                        }
-                                    }
-
-                                    view.onIngredientDataSetChanged()*/
+                                    view.onIngredientDataSetChanged()
                                 },
                                 onError =  { it.printStackTrace() }
                         )

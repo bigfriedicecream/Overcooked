@@ -23,7 +23,13 @@ class RecipeResponseDeserializer: JsonDeserializer<RecipeDataModel> {
         val ingredientList = JsonArray()
 
         ingredientSections?.forEach {
+            val heading = it.asJsonObject.get("heading")?.asString
             val ingredients = it.asJsonObject.get("ingredients").asJsonArray
+
+            if (heading != null) {
+                ingredientList.add("heading")
+            }
+
             ingredients.forEach {
                 val ingredientType = it.asJsonObject.get("ingredientType").asInt
                 when (ingredientType) {
