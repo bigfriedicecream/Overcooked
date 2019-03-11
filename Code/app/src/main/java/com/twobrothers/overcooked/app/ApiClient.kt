@@ -3,7 +3,6 @@ package com.twobrothers.overcooked.app
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.twobrothers.overcooked.BuildConfig
-import com.twobrothers.overcooked.models.recipe.RecipeDataModel
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import com.twobrothers.overcooked.utils.mapInPlace
@@ -65,42 +64,14 @@ object ApiClient {
         return request*/
     }
 
-    fun getRecipeById(id: String): Single<RecipeDataModel> {
-        /* return apiService
+    fun getRecipeById(id: String): Single<RecipeModel> {
+        return apiService
                 .getRecipeById(id)
                 .subscribeOn(Schedulers.io())
                 .map {
-                    RecipeModel(it)
+                    val recipe = it.data.recipe
+                    RecipeModel(recipe.id, recipe.title, recipe.imageUrl, recipe.method)
                 }
-                .observeOn(AndroidSchedulers.mainThread())*/
-
-        val recipeResponseDeserializer = GsonBuilder().registerTypeAdapter(RecipeDataModel::class.java, RecipeResponseDeserializer()).create()
-
-        val api = Retrofit.Builder()
-                .baseUrl(BuildConfig.API_ENDPOINT)
-                .addConverterFactory(GsonConverterFactory.create(recipeResponseDeserializer))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build()
-                .create(ApiService::class.java)
-
-        return api
-                .getRecipeById(id)
-                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }
-
-    /* private fun mapThings(recipeDataModel: RecipeResponseModel): RecipeResponseModel {
-        recipeDataModel.data.recipe.ingredientSections.map {
-            it.ingredients.mapInPlace {
-                val ingredient = Gson().fromJson(Gson().toJson(it), RecipeModel.Ingredient::class.java)
-                if (ingredient.ingredientType == 0) {
-                    Gson().fromJson(Gson().toJson(it), RecipeModel.Quantified::class.java)
-                } else {
-                    Gson().fromJson(Gson().toJson(it), RecipeModel.FreeText::class.java)
-                }
-            }
-        }
-
-        return recipeDataModel
-    }*/
 }

@@ -1,7 +1,7 @@
 package com.twobrothers.overcooked.models.recipe
 
-data class RecipeDataModel (
-        val data: Data?
+data class RecipeResponseModel (
+        val data: Data
 )
 
 data class Data (
@@ -14,8 +14,4 @@ data class Recipe (
         val imageUrl: String,
         val method: ArrayList<String>,
         val ingredients: ArrayList<Any>
-)
-
-data class FreeText (
-        val description: String
 )

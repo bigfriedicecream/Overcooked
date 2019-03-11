@@ -14,7 +14,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeContract
 import com.twobrothers.overcooked.models.recipe.Recipe
-import com.twobrothers.overcooked.models.recipe.RecipeDataModel
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.presenters.RecipePresenter
 import com.twobrothers.overcooked.utils.GlideApp
@@ -61,8 +60,8 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         presenter.onStop()
     }
 
-    override fun render(recipe: Recipe?) {
-        if (isDetached || recipe == null) {
+    override fun render(recipe: RecipeModel) {
+        if (isDetached) {
             return
         }
         text_title.text = recipe.title

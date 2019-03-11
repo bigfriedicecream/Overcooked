@@ -1,7 +1,7 @@
 package com.twobrothers.overcooked.app
 
-import com.twobrothers.overcooked.models.recipe.RecipeDataModel
 import com.twobrothers.overcooked.models.recipe.RecipeModel
+import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -13,6 +13,6 @@ interface ApiService {
     fun getRecipes(): Single<RecipeListModel>
 
     @GET("recipes/{id}")
-    fun getRecipeById(@Path("id") id: String): Single<RecipeDataModel>
+    fun getRecipeById(@Path("id") id: String): Single<RecipeResponseModel>
 
 }
