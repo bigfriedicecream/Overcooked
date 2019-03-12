@@ -1,7 +1,6 @@
 package com.twobrothers.overcooked.models.recipe
 
 import com.google.gson.JsonObject
-import java.math.BigDecimal
 
 data class RecipeResponseModel (
         val data: Data

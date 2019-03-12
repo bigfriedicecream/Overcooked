@@ -71,6 +71,7 @@ object ApiClient {
                 .subscribeOn(Schedulers.io())
                 .map {
                     val recipe = it.data.recipe
+                    val food = it.data.food
                     val ingredients = arrayListOf<Any>()
                     recipe.ingredientSections.forEach {
                         if (it.heading != null) {
@@ -90,7 +91,7 @@ object ApiClient {
                             }
                         }
                     }
-                    RecipeModel(recipe.id, recipe.title, recipe.imageUrl, recipe.method, ingredients)
+                    RecipeModel(recipe.id, recipe.title, recipe.imageUrl, recipe.method, ingredients, food)
                 }
                 .observeOn(AndroidSchedulers.mainThread())
     }

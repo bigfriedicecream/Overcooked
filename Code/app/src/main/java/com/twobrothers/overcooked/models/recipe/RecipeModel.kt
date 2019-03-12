@@ -5,7 +5,8 @@ data class RecipeModel (
     val title: String,
     val imageUrl: String,
     val method: ArrayList<String>,
-    val ingredients: ArrayList<Any>
+    val ingredients: ArrayList<Any>,
+    val food: HashMap<String, RecipeResponseModel.Food>
 ) {
     data class Heading (
             val title: String
