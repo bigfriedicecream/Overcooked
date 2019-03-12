@@ -21,6 +21,7 @@ interface IRecipeContract {
         fun getMethodRepositoriesRowsCount():Int
         fun onBindIngredientRepositoryRowViewAtPosition(holder: IngredientViewAdapter.Holder, position: Int)
         fun getIngredientRepositoriesRowsCount():Int
+        fun getIngredientItemViewType(position: Int): Int
     }
 
 }

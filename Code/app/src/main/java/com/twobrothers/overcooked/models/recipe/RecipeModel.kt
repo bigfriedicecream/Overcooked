@@ -8,24 +8,24 @@ data class RecipeModel (
     val ingredients: ArrayList<Any>,
     val food: HashMap<String, RecipeResponseModel.Food>
 ) {
-    interface IngredientType {
+    interface Ingredient {
         val ingredientType: Int
     }
 
     data class Heading (
             override val ingredientType: Int,
             val title: String
-    ): IngredientType
+    ): Ingredient
 
     data class FreeText (
             override val ingredientType: Int,
             val description: String
-    ): IngredientType
+    ): Ingredient
 
     data class Quantified (
             override val ingredientType: Int,
             val amount: Int,
             val unitIds: ArrayList<Int>,
             val foodId: String
-    ): IngredientType
+    ): Ingredient
 }
