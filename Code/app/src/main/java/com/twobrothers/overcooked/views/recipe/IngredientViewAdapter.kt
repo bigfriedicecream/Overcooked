@@ -6,13 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeContract
+import com.twobrothers.overcooked.models.recipe.RecipeModel
 import kotlinx.android.synthetic.main.fragment_recipe_ingredient_quantified.view.*
 
 class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):RecyclerView.Adapter<IngredientViewAdapter.Holder>() {
 
     class Holder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun render() {
-            itemView.text_name.text = "ingredient name"
+        fun render(item: Any) {
+            when (item) {
+                is RecipeModel.Heading -> {
+                    itemView.text_name.text = "heading"
+                }
+                is RecipeModel.FreeText -> {
+                    itemView.text_name.text = "free text"
+                }
+                is RecipeModel.Quantified -> {
+                    itemView.text_name.text = "quantified"
+                }
+            }
         }
     }
 
