@@ -5,8 +5,7 @@ data class RecipeModel (
     val title: String,
     val imageUrl: String,
     val method: ArrayList<String>,
-    val ingredients: ArrayList<Any>,
-    val food: HashMap<String, RecipeResponseModel.Food>
+    val ingredients: ArrayList<Any>
 ) {
     interface Ingredient {
         val ingredientType: Int
@@ -26,6 +25,6 @@ data class RecipeModel (
             override val ingredientType: Int,
             val amount: Int,
             val unitIds: ArrayList<Int>,
-            val foodId: String
+            val food: RecipeResponseModel.Food
     ): Ingredient
 }

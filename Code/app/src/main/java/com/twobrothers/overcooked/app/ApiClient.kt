@@ -1,7 +1,6 @@
 package com.twobrothers.overcooked.app
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.google.gson.*
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.lookups.LookupIngredientType
 import com.twobrothers.overcooked.models.recipe.RecipeModel
@@ -82,6 +81,8 @@ object ApiClient {
                             val ingredientType = it.get("ingredientType").asInt
                             when (ingredientType) {
                                 0 -> {
+                                    val f = Gson().toJson(food[it.get("foodId").asString])
+                                    it.add("food", Gson().fromJson(f, JsonObject::class.java))
                                     val quantified = Gson().fromJson<RecipeModel.Quantified>(it.toString(), RecipeModel.Quantified::class.java)
                                     ingredients.add(quantified)
                                 }
@@ -92,7 +93,7 @@ object ApiClient {
                             }
                         }
                     }
-                    RecipeModel(recipe.id, recipe.title, recipe.imageUrl, recipe.method, ingredients, food)
+                    RecipeModel(recipe.id, recipe.title, recipe.imageUrl, recipe.method, ingredients)
                 }
                 .observeOn(AndroidSchedulers.mainThread())
     }

@@ -23,7 +23,7 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                     itemView.text_description.text = item.description
                 }
                 is RecipeModel.Quantified -> {
-                    itemView.text_description.text = "quantified"
+                    itemView.text_description.text = item.food.name.singular
                 }
             }
         }
