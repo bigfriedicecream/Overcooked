@@ -3,6 +3,7 @@ package com.twobrothers.overcooked.app
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.twobrothers.overcooked.BuildConfig
+import com.twobrothers.overcooked.lookups.LookupIngredientType
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
@@ -75,7 +76,7 @@ object ApiClient {
                     val ingredients = arrayListOf<Any>()
                     recipe.ingredientSections.forEach {
                         if (it.heading != null) {
-                            ingredients.add(RecipeModel.Heading(it.heading))
+                            ingredients.add(RecipeModel.Heading(LookupIngredientType.Heading.id, it.heading))
                         }
                         it.ingredients.forEach {
                             val ingredientType = it.get("ingredientType").asInt
@@ -91,6 +92,7 @@ object ApiClient {
                             }
                         }
                     }
+                    println(ingredients)
                     RecipeModel(recipe.id, recipe.title, recipe.imageUrl, recipe.method, ingredients, food)
                 }
                 .observeOn(AndroidSchedulers.mainThread())
