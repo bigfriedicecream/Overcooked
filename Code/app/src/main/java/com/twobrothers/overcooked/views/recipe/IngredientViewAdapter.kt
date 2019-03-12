@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeContract
+import com.twobrothers.overcooked.lookups.LookupIngredientType
 import com.twobrothers.overcooked.models.recipe.RecipeModel
+import kotlinx.android.synthetic.main.fragment_recipe.view.*
 import kotlinx.android.synthetic.main.fragment_recipe_ingredient_quantified.view.*
 
 class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):RecyclerView.Adapter<IngredientViewAdapter.Holder>() {
@@ -15,13 +17,13 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
         fun render(item: RecipeModel.Ingredient) {
             when (item) {
                 is RecipeModel.Heading -> {
-                    itemView.text_name.text = "heading"
+                    itemView.text_title.text = "heading"
                 }
                 is RecipeModel.FreeText -> {
-                    itemView.text_name.text = "free text"
+                    itemView.text_description.text = "free text"
                 }
                 is RecipeModel.Quantified -> {
-                    itemView.text_name.text = "quantified"
+                    itemView.text_description.text = "quantified"
                 }
             }
         }
@@ -32,7 +34,13 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientViewAdapter.Holder {
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.fragment_recipe_ingredient_quantified, parent, false)
+        var layoutId:Int = R.layout.fragment_recipe_ingredient_freetext
+        when (viewType) {
+            LookupIngredientType.Heading.id -> layoutId = R.layout.fragment_recipe_ingredient_heading
+            LookupIngredientType.FreeText.id -> layoutId = R.layout.fragment_recipe_ingredient_freetext
+            LookupIngredientType.Quantified.id -> layoutId = R.layout.fragment_recipe_ingredient_quantified
+        }
+        val layout = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
         return IngredientViewAdapter.Holder(layout)
     }
 
