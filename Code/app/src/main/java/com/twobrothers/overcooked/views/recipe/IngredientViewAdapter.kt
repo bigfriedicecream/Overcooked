@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_recipe_ingredient_quantified.view
 class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):RecyclerView.Adapter<IngredientViewAdapter.Holder>() {
 
     class Holder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun render(item: Any) {
+        fun render(item: RecipeModel.IngredientType) {
             when (item) {
                 is RecipeModel.Heading -> {
                     itemView.text_name.text = "heading"

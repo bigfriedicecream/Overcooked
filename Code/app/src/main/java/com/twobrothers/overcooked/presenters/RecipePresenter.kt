@@ -49,7 +49,7 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     override fun onBindIngredientRepositoryRowViewAtPosition(holder: IngredientViewAdapter.Holder, position: Int) {
         val recipeModel = recipeModel
         recipeModel ?: return
-        holder.render(recipeModel.ingredients[position])
+        holder.render(recipeModel.ingredients[position] as RecipeModel.IngredientType)
     }
 
     override fun getIngredientRepositoriesRowsCount(): Int {
