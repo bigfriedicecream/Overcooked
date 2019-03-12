@@ -17,10 +17,10 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
         fun render(item: RecipeModel.Ingredient) {
             when (item) {
                 is RecipeModel.Heading -> {
-                    itemView.text_title.text = "heading"
+                    itemView.text_title.text = item.title
                 }
                 is RecipeModel.FreeText -> {
-                    itemView.text_description.text = "free text"
+                    itemView.text_description.text = item.description
                 }
                 is RecipeModel.Quantified -> {
                     itemView.text_description.text = "quantified"
