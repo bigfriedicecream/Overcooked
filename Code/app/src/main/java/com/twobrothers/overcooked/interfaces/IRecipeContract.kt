@@ -1,7 +1,6 @@
 package com.twobrothers.overcooked.interfaces
 
 import android.os.Bundle
-import com.twobrothers.overcooked.models.recipe.Recipe
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.views.recipe.IngredientViewAdapter
 import com.twobrothers.overcooked.views.recipe.MethodViewAdapter

@@ -6,4 +6,16 @@ data class RecipeModel (
     val imageUrl: String,
     val method: ArrayList<String>
     // val ingredients: ArrayList<Any>
-)
+) {
+    data class Heading (
+            val title: String
+    )
+
+    data class FreeText (
+            val description: String
+    )
+
+    data class Quantified (
+            val amount: Int
+    )
+}

@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.models.recipe.RecipeModel
+import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import com.twobrothers.overcooked.utils.mapInPlace
 import io.reactivex.Single
@@ -70,6 +71,26 @@ object ApiClient {
                 .subscribeOn(Schedulers.io())
                 .map {
                     val recipe = it.data.recipe
+                    val ingredients = arrayListOf<Any>()
+                    recipe.ingredientSections.forEach {
+                        if (it.heading != null) {
+                            ingredients.add(RecipeModel.Heading(it.heading))
+                        }
+                        it.ingredients.forEach {
+                            val ingredientType = it.get("ingredientType").asInt
+                            when (ingredientType) {
+                                0 -> {
+                                    val quantified = Gson().fromJson<RecipeModel.Quantified>(it.toString(), RecipeModel.Quantified::class.java)
+                                    ingredients.add(quantified)
+                                }
+                                1 -> {
+                                    val freeText = Gson().fromJson<RecipeModel.FreeText>(it.toString(), RecipeModel.FreeText::class.java)
+                                    ingredients.add(freeText)
+                                }
+                            }
+                        }
+                    }
+                    println(ingredients)
                     RecipeModel(recipe.id, recipe.title, recipe.imageUrl, recipe.method)
                 }
                 .observeOn(AndroidSchedulers.mainThread())
