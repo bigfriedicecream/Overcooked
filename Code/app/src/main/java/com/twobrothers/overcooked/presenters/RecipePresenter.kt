@@ -3,6 +3,7 @@ package com.twobrothers.overcooked.presenters
 import android.os.Bundle
 import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.interfaces.IRecipeContract
+import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.views.recipe.IngredientViewAdapter
 import com.twobrothers.overcooked.views.recipe.MethodViewAdapter
 import io.reactivex.disposables.CompositeDisposable
@@ -12,29 +13,17 @@ import io.reactivex.rxkotlin.subscribeBy
 class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.Presenter {
 
     private val disposable = CompositeDisposable()
-    private var methodList = ArrayList<String>()
-    private var ingredientList = mutableListOf<Any>()
+    private var recipeModel: RecipeModel? = null
 
     override fun onStart(args: Bundle?) {
         disposable.add(
                 ApiClient.getRecipeById("5c70f646f36d3de9a97aee3f") // args!!.getString("id")
                         .subscribeBy(
                                 onSuccess = {
+                                    recipeModel = it
                                     view.render(it)
-                                    methodList = it.method
                                     view.onMethodDataSetChanged()
-                                    /* if (it.data == null) {
-                                        return@subscribeBy
-                                    }
-
-                                    println(it.data.recipe.ingredients)
-
-                                    view.render(it.data.recipe)
-                                    methodList = it.data.recipe.method
-                                    ingredientList = it.data.recipe.ingredients
-
-                                    view.onMethodDataSetChanged()
-                                    view.onIngredientDataSetChanged()*/
+                                    view.onIngredientDataSetChanged()
                                 },
                                 onError =  { it.printStackTrace() }
                         )
@@ -46,22 +35,25 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     }
 
     override fun onBindMethodRepositoryRowViewAtPosition(holder: MethodViewAdapter.Holder, position: Int) {
-        val method = methodList[position]
-        holder.render(position + 1, method)
+        val recipeModel = recipeModel
+        recipeModel ?: return
+        holder.render(position + 1, recipeModel.method[position])
     }
 
     override fun getMethodRepositoriesRowsCount(): Int {
-        return methodList.size
+        val recipeModel = recipeModel
+        recipeModel ?: return 0
+        return recipeModel.method.size
     }
 
     override fun onBindIngredientRepositoryRowViewAtPosition(holder: IngredientViewAdapter.Holder, position: Int) {
-        // val ingredient = ingredientList[position]
-        // println(ingredient is FreeText)
         holder.render()
     }
 
     override fun getIngredientRepositoriesRowsCount(): Int {
-        return ingredientList.size
+        val recipeModel = recipeModel
+        recipeModel ?: return 0
+        return recipeModel.ingredients.size
     }
 
 }

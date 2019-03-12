@@ -17,6 +17,8 @@ data class RecipeModel (
     )
 
     data class Quantified (
-            val amount: Int
+            val amount: Int,
+            val unitIds: ArrayList<Int>,
+            val foodId: String
     )
 }
