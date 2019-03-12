@@ -90,8 +90,7 @@ object ApiClient {
                             }
                         }
                     }
-                    println(ingredients)
-                    RecipeModel(recipe.id, recipe.title, recipe.imageUrl, recipe.method)
+                    RecipeModel(recipe.id, recipe.title, recipe.imageUrl, recipe.method, ingredients)
                 }
                 .observeOn(AndroidSchedulers.mainThread())
     }

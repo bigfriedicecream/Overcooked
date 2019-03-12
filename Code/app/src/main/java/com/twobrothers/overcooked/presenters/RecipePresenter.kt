@@ -3,7 +3,6 @@ package com.twobrothers.overcooked.presenters
 import android.os.Bundle
 import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.interfaces.IRecipeContract
-import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.views.recipe.IngredientViewAdapter
 import com.twobrothers.overcooked.views.recipe.MethodViewAdapter
 import io.reactivex.disposables.CompositeDisposable
