@@ -3,6 +3,7 @@ package com.twobrothers.overcooked.lookups
 import java.util.*
 
 enum class LookupIngredientUnitType constructor(val id:Int, val description:String, val singular:String, val plural:String) {
+    None(-1, "None", "", ""),
     Singular(0, "Singular", " ", " "),
     Grams(1, "Grams", "g ", "g "),
     Millilitres(2, "Millilitres", "ml ", "ml "),
@@ -18,7 +19,7 @@ enum class LookupIngredientUnitType constructor(val id:Int, val description:Stri
     Slice(12, "Slice", " slice of ", " slices of ");
 
     companion object {
-        fun dataLookup(id:Int):LookupIngredientUnitType? {
+        fun dataLookup(id:Int):LookupIngredientUnitType {
             when (id) {
                 Singular.id -> return Singular
                 Grams.id -> return Grams
@@ -34,7 +35,7 @@ enum class LookupIngredientUnitType constructor(val id:Int, val description:Stri
                 Sheet.id -> return Sheet
                 Slice.id -> return Slice
             }
-            return null
+            return None
         }
 
         fun dataList():List<LookupIngredientUnitType> {
