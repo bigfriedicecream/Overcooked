@@ -3,7 +3,7 @@ package com.twobrothers.overcooked.utils
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
-import com.twobrothers.overcooked.lookups.LookupIngUnitType
+import com.twobrothers.overcooked.lookups.LookupIngredientUnitType
 import kotlin.math.roundToInt
 
 fun Int.Companion.minsToPrettyTimeFormat(mins:Int):String {
@@ -30,7 +30,7 @@ fun String.Companion.fromHtml(html:String): Spanned {
 }
 
 fun Double.Companion.roundToReadableQuantity(q:Double, unitTypeId:Int):Double {
-    if (unitTypeId == LookupIngUnitType.Grams.id || unitTypeId == LookupIngUnitType.Millilitres.id) {
+    if (unitTypeId == LookupIngredientUnitType.Grams.id || unitTypeId == LookupIngredientUnitType.Millilitres.id) {
         return (Math.round(q/5) * 5).toDouble()
     }
 
