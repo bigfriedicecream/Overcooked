@@ -16,14 +16,12 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
     class Holder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun render(item: RecipeModel.Ingredient) {
             when (item) {
-                is RecipeModel.Heading -> {
-                    itemView.text_title.text = item.title
-                }
-                is RecipeModel.FreeText -> {
-                    itemView.text_description.text = item.description
-                }
+                is RecipeModel.Heading -> itemView.text_title.text = item.title
+                is RecipeModel.FreeText -> itemView.text_description.text = item.description
                 is RecipeModel.Quantified -> {
-                    itemView.text_description.text = item.food.name.singular
+                    val foodName = if (item.amount > 1) item.food.name.plural else item.food.name.plural
+                    val description = "${item.amount} $foodName"
+                    itemView.text_description.text = description
                 }
             }
         }
