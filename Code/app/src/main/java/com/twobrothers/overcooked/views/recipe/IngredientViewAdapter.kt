@@ -24,7 +24,7 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                     val units = item.unitIds.foldIndexed("") { i, acc, element ->
                         val foodConversion = item.food.conversions.find { item -> item.unitId == element }
                         foodConversion ?: return
-                        val amount = item.amount * foodConversion.ratio
+                        val amount = if (item.unitIds.size > 1) item.amount * foodConversion.ratio else item.amount
                         val ingredientUnitType = LookupIngredientUnitType.dataLookup(foodConversion.unitId)
                         val unit = if (amount > 1) ingredientUnitType.plural else ingredientUnitType.singular
                         if (i == 0) {
