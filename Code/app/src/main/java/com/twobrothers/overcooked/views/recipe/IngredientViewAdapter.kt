@@ -9,7 +9,6 @@ import com.twobrothers.overcooked.interfaces.IRecipeContract
 import com.twobrothers.overcooked.lookups.LookupIngredientType
 import com.twobrothers.overcooked.lookups.LookupIngredientUnitType
 import com.twobrothers.overcooked.models.recipe.RecipeModel
-import com.twobrothers.overcooked.utils.mapInPlace
 import com.twobrothers.overcooked.utils.toFraction
 import kotlinx.android.synthetic.main.fragment_recipe.view.*
 import kotlinx.android.synthetic.main.fragment_recipe_ingredient_quantified.view.*
@@ -28,7 +27,11 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                         val amount = item.amount * foodConversion.ratio
                         val ingredientUnitType = LookupIngredientUnitType.dataLookup(foodConversion.unitId)
                         val unit = if (amount > 1) ingredientUnitType.plural else ingredientUnitType.singular
-                        "$acc${Double.toFraction(amount)}$unit"
+                        if (i == 0) {
+                            "$acc${Double.toFraction(amount)}$unit"
+                        } else {
+                            "$acc(${Double.toFraction(amount)}${unit.trimEnd()}) "
+                        }
                     }
                     
                     val foodName = if (item.amount > 1) item.food.name.plural else item.food.name.singular
