@@ -10,7 +10,6 @@ import com.twobrothers.overcooked.views.recipe.MethodViewAdapter
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 
-
 class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.Presenter {
 
     private val disposable = CompositeDisposable()
@@ -18,7 +17,7 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
 
     override fun onStart(args: Bundle?) {
         disposable.add(
-                ApiClient.getRecipeById("5c70f646f36d3de9a97aee3f") // args!!.getString("id")
+                ApiClient.getRecipeById(args!!.getString("id"))
                         .subscribeBy(
                                 onSuccess = {
                                     recipeModel = it

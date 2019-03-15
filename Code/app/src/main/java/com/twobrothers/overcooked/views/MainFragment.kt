@@ -39,7 +39,7 @@ class MainFragment : Fragment() {
 
         fragmentManager
                 ?.beginTransaction()
-                ?.replace(R.id.layout_main, RecipeFragment()) // RecipeFragment | RecipeListFragment
+                ?.replace(R.id.layout_main, RecipeListFragment())
                 ?.addToBackStack(null)
                 ?.commitAllowingStateLoss()
 

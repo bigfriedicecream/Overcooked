@@ -23,7 +23,7 @@ data class RecipeModel (
 
     data class Quantified (
             override val ingredientType: Int,
-            val amount: Int,
+            val amount: Double,
             val unitIds: ArrayList<Int>,
             val food: RecipeResponseModel.Food
     ): Ingredient
