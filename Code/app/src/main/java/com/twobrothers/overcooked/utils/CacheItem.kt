@@ -1,12 +1,23 @@
 package com.twobrothers.overcooked.utils
 
-class CacheItem<T>(val data:T, val expiry:Long) {
+class CacheItem<T>(val data:T, val cacheLength:Long) {
+
     private val timestamp:Long = System.currentTimeMillis()
+
+    fun isFresh(): Boolean {
+        val timeElapsed = System.currentTimeMillis() - timestamp
+        return timeElapsed < cacheLength / 2
+    }
+
     fun isExpiring(): Boolean {
-        val cacheLength = expiry - timestamp
-        return expiry - System.currentTimeMillis() > 0 && expiry - System.currentTimeMillis() < cacheLength / 2
+        val timeElapsed = System.currentTimeMillis() - timestamp
+        return timeElapsed >= cacheLength / 2 && timeElapsed < cacheLength
     }
+
     fun isExpired(): Boolean {
-        return System.currentTimeMillis() > expiry
+        val timeElapsed = System.currentTimeMillis() - timestamp
+        return timeElapsed >= cacheLength
     }
+
+
 }
