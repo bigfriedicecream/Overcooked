@@ -1,14 +1,18 @@
 package com.twobrothers.overcooked.app
 
 import com.google.gson.*
+import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.lookups.LookupIngredientType
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
+import com.twobrothers.overcooked.utils.CacheItem
 import com.twobrothers.overcooked.utils.mapInPlace
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -23,31 +27,37 @@ object ApiClient {
             .create(ApiService::class.java)
 
     fun getRecipes(): Single<RecipeListModel> {
-        return apiService
+        /* return apiService
                 .getRecipes()
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())*/
 
-        /* val cachedData = CacheService.get("recipeListCache", object : TypeToken<CacheItem<RecipeListModel>>() {}.type, RecipeListModel())
+        val cachedData = CacheService.get("recipeListCache", object : TypeToken<CacheItem<RecipeListModel>>() {}.type, RecipeListModel())
+        val disposable = CompositeDisposable()
 
-        val mDisposable = CompositeDisposable()
         val request = apiService
                 .getRecipes()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess {
+                    println("on success")
+                }
 
-        if (cachedData != null && !cachedData.isExpiring() && !cachedData.isExpired()) {
+        if (cachedData != null && cachedData.isFresh()) {
+            println("return from cache")
             return Single.create {
                 it.onSuccess(cachedData.data)
             }
         }
 
         if (cachedData != null && cachedData.isExpiring()) {
-            mDisposable.add(
+            println("is expiring")
+            disposable.add(
                     request.subscribeBy(
                             onSuccess = {
+                                println("put in cache")
                                 CacheService.put("recipeListCache", it)
-                                mDisposable.dispose()
+                                disposable.dispose()
                             }
                     ))
             return Single.create {
@@ -55,14 +65,16 @@ object ApiClient {
             }
         }
 
-        mDisposable.add(
+        println("does not exist")
+        disposable.add(
                 request.subscribeBy(
                         onSuccess = {
+                            println("put in cache")
                             CacheService.put("recipeListCache", it)
-                            mDisposable.dispose()
+                            disposable.dispose()
                         }
                 ))
-        return request*/
+        return request
     }
 
     fun getRecipeById(id: String): Single<RecipeModel> {
