@@ -1,8 +1,8 @@
 package com.twobrothers.overcooked.utils
 
-class CacheItem<T>(val data:T, val cacheLength:Long) {
+class CacheItem<T>(val data: T, val cacheLength: Int) {
 
-    private val timestamp:Long = System.currentTimeMillis()
+    private val timestamp: Long = System.currentTimeMillis()
 
     fun isFresh(): Boolean {
         val timeElapsed = System.currentTimeMillis() - timestamp

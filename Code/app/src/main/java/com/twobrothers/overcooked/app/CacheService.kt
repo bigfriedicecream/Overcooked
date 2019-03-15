@@ -9,7 +9,7 @@ import java.lang.reflect.Type
 
 object CacheService {
 
-    fun <T>get(key:String, type:Type, model:T):CacheItem<T>? {
+    fun <T>get(key: String, type: Type, model: T):CacheItem<T>? {
         val data = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext).getString(key, "")
 
         if (!data.isNullOrEmpty()) {
@@ -19,9 +19,9 @@ object CacheService {
         return null
     }
 
-    fun <T>put(key:String, data:T) {
+    fun <T>put(key: String, data: T, cacheLength: Int) {
         val pref = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext)
-        val cacheItem = CacheItem(data, 1000 * 60 * 2)
+        val cacheItem = CacheItem(data, cacheLength)
         pref.edit().putString(key, Gson().toJson(cacheItem)).apply()
     }
 
