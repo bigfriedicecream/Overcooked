@@ -22,7 +22,7 @@ class RecipeListViewHolder(itemView: View, private val presenter:IRecipeListCont
                 .into(itemView.image_hero)
 
         RxView.clicks(itemView)
-                .takeUntil(RxView.detaches(itemView))
+                // .takeUntil(RxView.detaches(itemView))
                 .subscribe {
                     presenter.onRecipeListItemClick(adapterPosition)
                 }
