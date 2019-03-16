@@ -18,25 +18,6 @@ class MainFragment : Fragment() {
     private val disposable = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View? {
-        disposable.add(
-            Navigation
-                .getInstance()
-                .subscribeBy(
-                    onNext = {
-                        var newView:Fragment = RecipeListFragment()
-                        if (it.tag == "RECIPE_VIEW") {
-                            newView = RecipeFragment()
-                        }
-                        newView.arguments = it.args
-                        fragmentManager
-                                ?.beginTransaction()
-                                ?.replace(R.id.layout_main, newView)
-                                ?.addToBackStack(null)
-                                ?.commitAllowingStateLoss()
-                    }
-                )
-        )
-
         fragmentManager
                 ?.beginTransaction()
                 ?.replace(R.id.layout_main, RecipeListFragment())
@@ -46,8 +27,30 @@ class MainFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
+    override fun onStart() {
+        super.onStart()
+        disposable.add(
+                Navigation
+                        .getInstance()
+                        .subscribeBy(
+                                onNext = {
+                                    var newView:Fragment = RecipeListFragment()
+                                    if (it.tag == "RECIPE_VIEW") {
+                                        newView = RecipeFragment()
+                                    }
+                                    newView.arguments = it.args
+                                    fragmentManager
+                                            ?.beginTransaction()
+                                            ?.replace(R.id.layout_main, newView)
+                                            ?.addToBackStack(null)
+                                            ?.commitAllowingStateLoss()
+                                }
+                        )
+        )
+    }
+
     override fun onStop() {
         super.onStop()
-        disposable.dispose()
+        disposable.clear()
     }
 }
