@@ -18,12 +18,6 @@ class MainFragment : Fragment() {
     private val disposable = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?): View? {
-        fragmentManager
-                ?.beginTransaction()
-                ?.replace(R.id.layout_main, RecipeListFragment())
-                ?.addToBackStack(null)
-                ?.commitAllowingStateLoss()
-
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
@@ -35,8 +29,9 @@ class MainFragment : Fragment() {
                         .subscribeBy(
                                 onNext = {
                                     var newView:Fragment = RecipeListFragment()
-                                    if (it.tag == "RECIPE_VIEW") {
-                                        newView = RecipeFragment()
+                                    when (it.tag) {
+                                        "RECIPE_VIEW" -> newView = RecipeFragment()
+                                        "RECIPE_LIST" -> newView = RecipeListFragment()
                                     }
                                     newView.arguments = it.args
                                     fragmentManager
@@ -47,6 +42,10 @@ class MainFragment : Fragment() {
                                 }
                         )
         )
+
+        if (Navigation.getHistoryLength() == 0) {
+            Navigation.push(Navigation.NavItem("RECIPE_LIST"))
+        }
     }
 
     override fun onStop() {

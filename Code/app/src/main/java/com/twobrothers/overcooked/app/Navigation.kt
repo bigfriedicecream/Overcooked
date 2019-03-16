@@ -17,5 +17,9 @@ object Navigation {
         subject.onNext(navItem)
     }
 
+    fun getHistoryLength(): Int {
+        return history.size
+    }
+
     class NavItem(val tag: String = "", val args: Bundle? = null)
 }
