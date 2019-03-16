@@ -35,8 +35,11 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                     }
                     
                     val foodName = if (item.amount > 1) item.food.name.plural else item.food.name.singular
+                    val additionalDesc = if (!item.additionalDesc.isNullOrBlank()) ", ${item.additionalDesc}" else ""
                     val description = "$units$foodName"
+
                     itemView.text_description.text = description
+                    itemView.text_additional_desc.text = additionalDesc
                 }
             }
         }

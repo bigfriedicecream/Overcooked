@@ -25,6 +25,7 @@ data class RecipeModel (
             override val ingredientType: Int,
             val amount: Double,
             val unitIds: ArrayList<Int>,
-            val food: RecipeResponseModel.Food
+            val food: RecipeResponseModel.Food,
+            val additionalDesc: String?
     ): Ingredient
 }
