@@ -1,12 +1,10 @@
 package com.twobrothers.overcooked.app
 
 import com.google.gson.*
-import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.lookups.LookupIngredientType
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
-import com.twobrothers.overcooked.utils.CacheItem
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -23,8 +21,12 @@ object ApiClient {
             .build()
             .create(ApiService::class.java)
 
+    private fun <T>getViaCache(cacheKey: String, request: Single<T>) {
+        
+    }
+
     fun getRecipes(): Single<RecipeListModel> {
-        val cachedData = CacheService.get("recipeListCache", object : TypeToken<CacheItem<RecipeListModel>>() {}.type, RecipeListModel())
+        val cachedData = CacheService.get("recipeListCache")
         val disposable = CompositeDisposable()
 
         val request = apiService
@@ -38,14 +40,14 @@ object ApiClient {
 
         if (cachedData != null && cachedData.isFresh()) {
             return Single.create {
-                it.onSuccess(cachedData.data)
+                it.onSuccess(cachedData.data as RecipeListModel)
             }
         }
 
         if (cachedData != null && cachedData.isExpiring()) {
             disposable.add(request.subscribe())
             return Single.create {
-                it.onSuccess(cachedData.data)
+                it.onSuccess(cachedData.data as RecipeListModel)
             }
         }
 
