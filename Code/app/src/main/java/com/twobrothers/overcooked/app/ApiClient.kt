@@ -7,7 +7,6 @@ import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListModel
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -21,38 +20,11 @@ object ApiClient {
             .build()
             .create(ApiService::class.java)
 
-    private fun <T>getViaCache(cacheKey: String, request: Single<T>) {
-        
-    }
-
     fun getRecipes(): Single<RecipeListModel> {
-        val cachedData = CacheService.get("recipeListCache")
-        val disposable = CompositeDisposable()
-
-        val request = apiService
+        return apiService
                 .getRecipes()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSuccess {
-                    CacheService.put("recipeListCache", it, 1000 * 60 * 60)
-                    disposable.dispose()
-                }
-
-        if (cachedData != null && cachedData.isFresh()) {
-            return Single.create {
-                it.onSuccess(cachedData.data as RecipeListModel)
-            }
-        }
-
-        if (cachedData != null && cachedData.isExpiring()) {
-            disposable.add(request.subscribe())
-            return Single.create {
-                it.onSuccess(cachedData.data as RecipeListModel)
-            }
-        }
-
-        disposable.add(request.subscribe())
-        return request
     }
 
     fun getRecipeById(id: String): Single<RecipeModel> {
