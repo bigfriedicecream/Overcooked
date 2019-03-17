@@ -1,6 +1,6 @@
 package com.twobrothers.overcooked.utils
 
-class CacheItem(val data: Any, val cacheLength: Int) {
+class CacheItem<T>(val data: T, val cacheLength: Int) {
 
     private val timestamp: Long = System.currentTimeMillis()
 
