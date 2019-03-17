@@ -22,22 +22,39 @@ object ApiClient {
             .build()
             .create(ApiService::class.java)
 
-    fun getRecipes(): Single<RecipeListModel> {
-        val cache = CacheService.get("recipeList", object: TypeToken<CacheItem<RecipeListModel>>(){}.type, RecipeListModel::class.java)
-
-        if (cache != null) {
+    private fun <T>requestViaCache(cache: CacheItem<T>?, request: Single<T>): Single<T> {
+        if (cache != null && cache.isFresh()) {
             return Single.create {
+                println("return from cache")
                 it.onSuccess(cache.data)
             }
         }
 
-        return apiService
+        if (cache != null && cache.isExpiring()) {
+            println("is expiring")
+            request.subscribe()
+            return Single.create {
+                println("return from expiring cache")
+                it.onSuccess(cache.data)
+            }
+        }
+
+        println("fetch new")
+        return request
+    }
+
+    fun getRecipes(): Single<RecipeListModel> {
+        val cache = CacheService.get("recipeList", object: TypeToken<CacheItem<RecipeListModel>>(){}.type, RecipeListModel::class.java)
+        val request = apiService
                 .getRecipes()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doAfterSuccess {
-                    CacheService.put("recipeList", it, 1000 * 60 * 4)
+                    println("put in cache")
+                    CacheService.put("recipeList", it, 1000 * 60 * 2)
                 }
+
+        return requestViaCache(cache, request)
     }
 
     fun getRecipeById(id: String): Single<RecipeModel> {
