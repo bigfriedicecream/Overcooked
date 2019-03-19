@@ -70,6 +70,9 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(image_hero)
+
+        progress_loading.visibility = View.GONE
+        view_content.visibility = View.VISIBLE
     }
 
     override fun onMethodDataSetChanged() {
