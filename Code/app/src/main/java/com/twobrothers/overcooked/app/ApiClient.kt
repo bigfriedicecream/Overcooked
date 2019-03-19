@@ -25,21 +25,17 @@ object ApiClient {
     private fun <T>requestViaCache(cache: CacheItem<T>?, request: Single<T>): Single<T> {
         if (cache != null && cache.isFresh()) {
             return Single.create {
-                println("return from cache")
                 it.onSuccess(cache.data)
             }
         }
 
         if (cache != null && cache.isExpiring()) {
-            println("is expiring")
             request.subscribe()
             return Single.create {
-                println("return from expiring cache")
                 it.onSuccess(cache.data)
             }
         }
 
-        println("fetch new")
         return request
     }
 
@@ -50,8 +46,7 @@ object ApiClient {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doAfterSuccess {
-                    println("put in cache")
-                    CacheService.put("recipeList", it, 1000 * 60 * 2)
+                    CacheService.put("recipeList", it, 1000 * 60 * 60 * 8)
                 }
 
         return requestViaCache(cache, request)
