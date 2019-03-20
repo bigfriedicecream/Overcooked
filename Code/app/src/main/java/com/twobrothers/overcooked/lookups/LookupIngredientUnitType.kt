@@ -16,7 +16,9 @@ enum class LookupIngredientUnitType constructor(val id:Int, val description:Stri
     Sprig(9, "Sprig", " sprig of ", " sprigs of "),
     Stalk(10, "Stalk", " stalk of ", " stalks of "),
     Sheet(11, "Sheets", " sheet of ", " sheets of "),
-    Slice(12, "Slice", " slice of ", " slices of ");
+    Slice(12, "Slice", " slice of ", " slices of "),
+    Kilograms(101, "Kilograms", "kg ", "kg "),
+    Litres(201, "Litres", "L ", "L ");
 
     companion object {
         fun dataLookup(id:Int):LookupIngredientUnitType {
@@ -34,6 +36,8 @@ enum class LookupIngredientUnitType constructor(val id:Int, val description:Stri
                 Stalk.id -> return Stalk
                 Sheet.id -> return Sheet
                 Slice.id -> return Slice
+                Kilograms.id -> return Kilograms
+                Litres.id -> return Litres
             }
             return None
         }
