@@ -21,8 +21,6 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                 is RecipeModel.Heading -> itemView.text_title.text = item.title
                 is RecipeModel.FreeText -> itemView.text_description.text = item.description
                 is RecipeModel.Quantified -> {
-                    var foodName = ""
-
                     val units = item.unitIds.foldIndexed("") { i, acc, element ->
                         val foodConversion = item.food.conversions.find { item -> item.unitId == element }
 
@@ -32,12 +30,6 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                         val ingredientUnitType = LookupIngredientUnitType.dataLookup(foodConversion.unitId)
                         val unit = if (amount > 1) ingredientUnitType.plural else ingredientUnitType.singular
 
-                        foodName = when (foodConversion.unitId) {
-                            LookupIngredientUnitType.Slice.id -> item.food.name.singular
-                            LookupIngredientUnitType.Singular.id -> if (item.amount > 1) item.food.name.plural else item.food.name.singular
-                            else -> item.food.name.plural
-                        }
-
                         if (i == 0) {
                             "$acc${Double.toFraction(amount)}$unit"
                         } else {
@@ -45,6 +37,11 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                         }
                     }
 
+                    val foodName = when (item.food.conversions[item.food.conversions.lastIndex].unitId) {
+                        LookupIngredientUnitType.Slice.id -> item.food.name.singular
+                        LookupIngredientUnitType.Singular.id -> if (item.amount > 1) item.food.name.plural else item.food.name.singular
+                        else -> item.food.name.plural
+                    }
                     val additionalDesc = if (!item.additionalDesc.isNullOrBlank()) ", ${item.additionalDesc}" else ""
                     val description = "$units$foodName"
 
