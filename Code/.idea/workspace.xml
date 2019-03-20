@@ -87,7 +87,7 @@
         <counts>
           <entry key="gradle" value="94" />
           <entry key="java" value="22" />
-          <entry key="kt" value="24859" />
+          <entry key="kt" value="24923" />
           <entry key="txt" value="5" />
           <entry key="xml" value="1268" />
         </counts>
@@ -96,7 +96,7 @@
         <counts>
           <entry key="Groovy" value="94" />
           <entry key="JAVA" value="22" />
-          <entry key="Kotlin" value="24859" />
+          <entry key="Kotlin" value="24923" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="XML" value="1268" />
         </counts>
@@ -143,8 +143,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientViewAdapter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+            <state relative-caret-position="404">
+              <caret line="33" column="135" selection-start-line="33" selection-start-column="135" selection-end-line="33" selection-end-column="135" />
+              <folding>
+                <element signature="e#49#714#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/utils/Extensions.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="487">
+              <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
+              <folding>
+                <element signature="e#42#215#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -3342,8 +3357,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/utils/Extensions.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="126" selection-start-line="16" selection-start-column="126" selection-end-line="16" selection-end-column="126" />
+        <state relative-caret-position="487">
+          <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
+          <folding>
+            <element signature="e#42#215#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3385,8 +3403,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientViewAdapter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+        <state relative-caret-position="404">
+          <caret line="33" column="135" selection-start-line="33" selection-start-column="135" selection-end-line="33" selection-end-column="135" />
+          <folding>
+            <element signature="e#49#714#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

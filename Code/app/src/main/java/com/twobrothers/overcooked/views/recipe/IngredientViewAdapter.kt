@@ -12,6 +12,7 @@ import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.utils.toFraction
 import kotlinx.android.synthetic.main.fragment_recipe.view.*
 import kotlinx.android.synthetic.main.fragment_recipe_ingredient_quantified.view.*
+import java.text.DecimalFormat
 
 class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):RecyclerView.Adapter<IngredientViewAdapter.Holder>() {
 
@@ -29,8 +30,8 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                         val amount = if (item.unitIds.size > 1) item.amount * foodConversion.ratio else item.amount
                         
                         val displayAmount = when (true) {
-                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Grams.id -> "%.2f".format(amount / 1000)
-                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Millilitres.id -> "%.2f".format(amount / 1000)
+                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Grams.id -> DecimalFormat("###.##").format(amount / 1000)
+                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Millilitres.id -> DecimalFormat("###.##").format(amount / 1000)
                             else -> Double.toFraction(amount)
                         }
 
