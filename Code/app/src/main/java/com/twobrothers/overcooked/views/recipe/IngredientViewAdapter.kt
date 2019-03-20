@@ -27,13 +27,25 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                         foodConversion ?: return
 
                         val amount = if (item.unitIds.size > 1) item.amount * foodConversion.ratio else item.amount
-                        val ingredientUnitType = LookupIngredientUnitType.dataLookup(foodConversion.unitId)
+                        
+                        val displayAmount = when (true) {
+                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Grams.id -> "%.2f".format(amount / 1000)
+                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Millilitres.id -> "%.2f".format(amount / 1000)
+                            else -> Double.toFraction(amount)
+                        }
+
+                        val ingredientUnitType = when (true) {
+                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Grams.id -> LookupIngredientUnitType.Kilograms
+                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Millilitres.id -> LookupIngredientUnitType.Litres
+                            else -> LookupIngredientUnitType.dataLookup(foodConversion.unitId)
+                        }
+
                         val unit = if (amount > 1) ingredientUnitType.plural else ingredientUnitType.singular
 
                         if (i == 0) {
-                            "$acc${Double.toFraction(amount)}$unit"
+                            "$acc$displayAmount$unit"
                         } else {
-                            "$acc(${Double.toFraction(amount)}${unit.trimEnd()}) "
+                            "$acc($displayAmount)${unit.trimEnd()}) "
                         }
                     }
 
