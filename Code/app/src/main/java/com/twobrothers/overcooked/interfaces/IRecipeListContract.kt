@@ -6,6 +6,7 @@ interface IRecipeListContract {
     interface View {
         fun onStart()
         fun onStop()
+        fun render()
         fun onDataSetChanged()
     }
 

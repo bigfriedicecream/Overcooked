@@ -9,9 +9,6 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import android.os.Bundle
 
-
-
-
 class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter {
 
     private var recipes = mutableListOf<RecipeModel>()
@@ -23,6 +20,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
             .subscribeBy(
                     onSuccess = {
                         recipes = it.data.recipes
+                        view.render()
                         view.onDataSetChanged()
                         // recipes.addAll(it.data.recipes)
                         // recipeListItems.add("b")

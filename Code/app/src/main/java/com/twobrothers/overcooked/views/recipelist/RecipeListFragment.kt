@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.presenters.RecipeListPresenter
+import kotlinx.android.synthetic.main.fragment_recipe_list.*
 
 class RecipeListFragment : Fragment(), IRecipeListContract.View {
 
@@ -42,6 +43,11 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
     override fun onStop() {
         super.onStop()
         presenter.onStop()
+    }
+
+    override fun render() {
+        progress_loading.visibility = View.GONE
+        recycler_container.visibility = View.VISIBLE
     }
 
     override fun onDataSetChanged() {
