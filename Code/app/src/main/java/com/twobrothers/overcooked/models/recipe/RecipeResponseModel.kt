@@ -14,6 +14,8 @@ data class RecipeResponseModel (
             val id: String,
             val title: String,
             val imageUrl: String,
+            val serves: Int?,
+            val makes: Int?,
             val method: ArrayList<String>,
             val ingredientSections: ArrayList<IngredientSection>
     )

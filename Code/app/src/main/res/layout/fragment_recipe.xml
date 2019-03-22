@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
+                android:layout_marginBottom="16dp"
                 android:contentDescription="Recipe Image" />
 
             <TextView
@@ -36,14 +37,52 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/lato_light"
-                android:paddingStart="16dp"
-                android:paddingTop="20dp"
-                android:paddingEnd="16dp"
-                android:layout_marginBottom="32dp"
-                android:text=""
+                android:layout_marginBottom="16dp"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_serves"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_light"
+                    android:text="Serves"
+                    android:layout_marginEnd="4dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/text_makes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_light"
+                    android:text="Makes"
+                    android:layout_marginEnd="4dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/text_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_light"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"

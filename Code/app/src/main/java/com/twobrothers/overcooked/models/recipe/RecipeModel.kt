@@ -4,6 +4,8 @@ data class RecipeModel (
     val id: String,
     val title: String,
     val imageUrl: String,
+    val serves: Int?,
+    val makes: Int?,
     val method: ArrayList<String>,
     val ingredients: ArrayList<Any>
 ) {
