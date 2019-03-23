@@ -96,6 +96,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_light"
                     android:text="Prep"
+                    android:layout_marginEnd="3dp"
                     android:textAllCaps="true"
                     android:textColor="@color/colorSubText"
                     android:textSize="14sp" />
@@ -113,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_light"
-                    android:text="•"
+                    android:text="-"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp"
                     android:textAllCaps="true"
@@ -125,6 +126,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_light"
                     android:text="Cook"
+                    android:layout_marginEnd="3dp"
                     android:textAllCaps="true"
                     android:textColor="@color/colorSubText"
                     android:textSize="14sp" />

@@ -23,7 +23,7 @@ fun String.Companion.fromHtml(html:String): Spanned {
 }
 
 fun Int.Companion.toFriendlyTimeFormat(mins: Int): String {
-    val h = if (mins / 60 >= 1) "${mins / 60}H" else ""
+    val h = if (mins / 60 >= 1) "${mins / 60}H " else ""
     val m =  if (mins % 60 > 0) "${mins % 60}M" else ""
-    return "$h $m"
+    return "$h$m".trim()
 }
