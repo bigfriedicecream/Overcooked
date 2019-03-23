@@ -66,6 +66,8 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         text_title.text = recipe.title
         text_quantity.text = if (recipe.serves != null) recipe.serves.toString() else recipe.makes.toString()
         if (recipe.serves != null) text_serves.visibility = View.VISIBLE else text_makes.visibility = View.VISIBLE
+        text_preptime.text = recipe.prepTime.toString()
+        text_cooktime.text = recipe.cookTime.toString()
         GlideApp.with(view!!.context)
                 .load(recipe.imageUrl)
                 .placeholder(R.drawable.placeholder)
