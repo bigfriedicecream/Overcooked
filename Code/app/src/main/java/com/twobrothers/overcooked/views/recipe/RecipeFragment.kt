@@ -16,6 +16,7 @@ import com.twobrothers.overcooked.interfaces.IRecipeContract
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.presenters.RecipePresenter
 import com.twobrothers.overcooked.utils.GlideApp
+import com.twobrothers.overcooked.utils.toFriendlyTimeFormat
 import com.twobrothers.overcooked.views.recipelist.RecipeListViewAdapter
 import kotlinx.android.synthetic.main.fragment_recipe.*
 
@@ -66,8 +67,8 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         text_title.text = recipe.title
         text_quantity.text = if (recipe.serves != null) recipe.serves.toString() else recipe.makes.toString()
         if (recipe.serves != null) text_serves.visibility = View.VISIBLE else text_makes.visibility = View.VISIBLE
-        text_preptime.text = recipe.prepTime.toString()
-        text_cooktime.text = recipe.cookTime.toString()
+        text_preptime.text = Int.toFriendlyTimeFormat(recipe.prepTime)
+        text_cooktime.text = Int.toFriendlyTimeFormat(recipe.cookTime)
         GlideApp.with(view!!.context)
                 .load(recipe.imageUrl)
                 .placeholder(R.drawable.placeholder)
