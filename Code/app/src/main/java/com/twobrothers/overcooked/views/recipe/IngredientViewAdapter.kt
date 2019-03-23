@@ -46,7 +46,7 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                         if (i == 0) {
                             "$acc$displayAmount$unit"
                         } else {
-                            "$acc($displayAmount)${unit.trimEnd()}) "
+                            "$acc($displayAmount${unit.trimEnd()}) "
                         }
                     }
 
