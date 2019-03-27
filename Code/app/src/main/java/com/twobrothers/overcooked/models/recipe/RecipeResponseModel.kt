@@ -1,46 +1,33 @@
 package com.twobrothers.overcooked.models.recipe
 
 import com.google.gson.JsonObject
+import com.twobrothers.overcooked.models.food.FoodModel
 
 data class RecipeResponseModel (
         val data: Data
 ) {
     data class Data (
             val recipe: Recipe,
-            val food: HashMap<String, Food>
+            val food: HashMap<String, FoodModel>
     )
 
     data class Recipe (
             val id: String,
             val title: String,
-            val imageUrl: String,
-            val serves: Int?,
-            val makes: Int?,
             val prepTime: Int,
             val cookTime: Int,
+            val ingredientSections: ArrayList<IngredientSection>,
             val method: ArrayList<String>,
-            val ingredientSections: ArrayList<IngredientSection>
+            val referenceUrl: String,
+            val imageUrl: String,
+            val lastUpdated: Long,
+            val serves: Int?,
+            val makes: Int?
     )
 
     data class IngredientSection (
             val heading: String?,
             val ingredients: ArrayList<JsonObject>
-    )
-
-    data class Food (
-            val id: String,
-            val name: FoodName,
-            val conversions: ArrayList<FoodConversion>
-    )
-
-    data class FoodName (
-            val plural: String,
-            val singular: String
-    )
-
-    data class FoodConversion (
-            val ratio: Double,
-            val unitId: Int
     )
 }
 

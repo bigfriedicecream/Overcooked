@@ -56,7 +56,7 @@ object ApiClient {
         return apiService
                 .getRecipeById(id)
                 .subscribeOn(Schedulers.io())
-                .map {
+                /* .map {
                     val recipe = it.data.recipe
                     val food = it.data.food
                     val ingredients = arrayListOf<Any>()
@@ -81,6 +81,23 @@ object ApiClient {
                         }
                     }
                     RecipeModel(recipe.id, recipe.title, recipe.imageUrl, recipe.serves, recipe.makes, recipe.prepTime, recipe.cookTime, recipe.method, ingredients)
+                }*/
+                .map{
+                    val recipe = it.data.recipe
+                    val ingredients = ArrayList<JsonObject>()
+                    RecipeModel(
+                            recipe.id,
+                            recipe.title,
+                            recipe.prepTime,
+                            recipe.cookTime,
+                            ingredients,
+                            recipe.method,
+                            recipe.referenceUrl,
+                            recipe.imageUrl,
+                            recipe.lastUpdated,
+                            recipe.serves,
+                            recipe.makes
+                    )
                 }
                 .observeOn(AndroidSchedulers.mainThread())
     }

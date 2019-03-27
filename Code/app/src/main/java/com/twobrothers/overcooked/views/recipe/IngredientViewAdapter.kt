@@ -18,7 +18,8 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
 
     class Holder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun render(item: RecipeModel.Ingredient) {
-            when (item) {
+
+            /* when (item) {
                 is RecipeModel.Heading -> itemView.text_title.text = item.title
                 is RecipeModel.FreeText -> itemView.text_description.text = item.description
                 is RecipeModel.Quantified -> {
@@ -61,7 +62,7 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                     itemView.text_description.text = description
                     itemView.text_additional_desc.text = additionalDesc
                 }
-            }
+            }*/
         }
     }
 

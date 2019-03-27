@@ -1,23 +1,30 @@
 package com.twobrothers.overcooked.models.recipe
 
+import com.google.gson.JsonObject
+
 data class RecipeModel (
     val id: String,
     val title: String,
-    val imageUrl: String,
-    val serves: Int?,
-    val makes: Int?,
     val prepTime: Int,
     val cookTime: Int,
+    val ingredients: ArrayList<JsonObject>,
     val method: ArrayList<String>,
-    val ingredients: ArrayList<Any>
+    val referenceUrl: String,
+    val imageUrl: String,
+    val lastUpdated: Long,
+    val serves: Int?,
+    val makes: Int?
 ) {
     interface Ingredient {
         val ingredientType: Int
     }
 
-    data class Heading (
+    data class Quantified (
             override val ingredientType: Int,
-            val title: String
+            val amount: Double,
+            val unitIds: ArrayList<Int>,
+            val foodId: String,
+            val additionalDesc: String?
     ): Ingredient
 
     data class FreeText (
@@ -25,11 +32,8 @@ data class RecipeModel (
             val description: String
     ): Ingredient
 
-    data class Quantified (
+    data class Heading (
             override val ingredientType: Int,
-            val amount: Double,
-            val unitIds: ArrayList<Int>,
-            val food: RecipeResponseModel.Food,
-            val additionalDesc: String?
+            val title: String
     ): Ingredient
 }
