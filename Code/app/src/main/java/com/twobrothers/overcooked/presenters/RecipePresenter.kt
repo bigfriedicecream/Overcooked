@@ -17,7 +17,7 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
 
     override fun onStart(args: Bundle?) {
         disposable.add(
-                ApiClient.getRecipeById(args!!.getString("id"))
+                ApiClient.getRecipe(args!!.getString("id"))
                         .subscribeBy(
                                 onSuccess = {
                                     recipeModel = it

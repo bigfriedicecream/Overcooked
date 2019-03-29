@@ -16,7 +16,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
 
     override fun onStart() {
         mDisposable.add(
-            ApiClient.getRecipes()
+            ApiClient.getRecipesAt(0)
             .subscribeBy(
                     onSuccess = {
                         recipes = it.data.recipes
