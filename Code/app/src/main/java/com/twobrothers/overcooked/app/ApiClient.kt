@@ -55,32 +55,6 @@ object ApiClient {
         return apiService
                 .getRecipe(id)
                 .subscribeOn(Schedulers.io())
-                /* .map {
-                    val recipe = it.data.recipe
-                    val food = it.data.food
-                    val ingredients = arrayListOf<Any>()
-                    recipe.ingredientSections.forEach {
-                        if (it.heading != null) {
-                            ingredients.add(RecipeModel.Heading(LookupIngredientType.Heading.id, it.heading))
-                        }
-                        it.ingredients.forEach {
-                            val ingredientType = it.get("ingredientType").asInt
-                            when (ingredientType) {
-                                0 -> {
-                                    val f = Gson().toJson(food[it.get("foodId").asString])
-                                    it.add("food", Gson().fromJson(f, JsonObject::class.java))
-                                    val quantified = Gson().fromJson<RecipeModel.Quantified>(it.toString(), RecipeModel.Quantified::class.java)
-                                    ingredients.add(quantified)
-                                }
-                                1 -> {
-                                    val freeText = Gson().fromJson<RecipeModel.FreeText>(it.toString(), RecipeModel.FreeText::class.java)
-                                    ingredients.add(freeText)
-                                }
-                            }
-                        }
-                    }
-                    RecipeModel(recipe.id, recipe.title, recipe.imageUrl, recipe.serves, recipe.makes, recipe.prepTime, recipe.cookTime, recipe.method, ingredients)
-                }*/
                 .map{
                     val recipe = it.data.recipe
                     val ingredients = ArrayList<JsonObject>()
