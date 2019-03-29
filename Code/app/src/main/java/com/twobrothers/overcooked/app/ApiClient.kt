@@ -4,7 +4,7 @@ import com.google.gson.*
 import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.models.recipe.RecipeModel
-import com.twobrothers.overcooked.models.recipelist.RecipeListModel
+import com.twobrothers.overcooked.models.recipelist.RecipeListResponseModel
 import com.twobrothers.overcooked.utils.CacheItem
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -38,8 +38,8 @@ object ApiClient {
         return request
     }
 
-    fun getRecipesAt(page: Int): Single<RecipeListModel> {
-        val cache = CacheService.get("recipeList", object: TypeToken<CacheItem<RecipeListModel>>(){}.type, RecipeListModel::class.java)
+    fun getRecipesAt(page: Int): Single<RecipeListResponseModel> {
+        val cache = CacheService.get("recipeList", object: TypeToken<CacheItem<RecipeListResponseModel>>(){}.type, RecipeListResponseModel::class.java)
         val request = apiService
                 .getRecipesAt(page)
                 .subscribeOn(Schedulers.io())
