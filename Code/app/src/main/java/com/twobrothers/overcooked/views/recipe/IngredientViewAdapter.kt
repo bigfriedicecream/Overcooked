@@ -8,6 +8,7 @@ import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeContract
 import com.twobrothers.overcooked.lookups.LookupIngredientType
 import com.twobrothers.overcooked.lookups.LookupIngredientUnitType
+import com.twobrothers.overcooked.models.food.FoodResponseModel
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.utils.toFraction
 import kotlinx.android.synthetic.main.fragment_recipe.view.*
@@ -17,9 +18,13 @@ import java.text.DecimalFormat
 class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):RecyclerView.Adapter<IngredientViewAdapter.Holder>() {
 
     class Holder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun render(item: RecipeModel.Ingredient) {
+        fun render(item: RecipeModel.Ingredient, food: HashMap<String, FoodResponseModel>) {
             when (item) {
                 is RecipeModel.Heading -> itemView.text_title.text = item.title
+                is RecipeModel.FreeText -> itemView.text_description.text = item.description
+                is RecipeModel.Quantified -> {
+                    itemView.text_description.text = "food"
+                }
             }
 
             /* when (item) {

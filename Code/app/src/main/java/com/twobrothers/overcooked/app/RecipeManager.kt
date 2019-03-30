@@ -24,6 +24,7 @@ object RecipeManager {
                 }
                 it.ingredients.forEach {
                     when (it.get("ingredientType").asInt) {
+                        LookupIngredientType.FreeText.id -> ingredients.add(Gson().fromJson(it, RecipeModel.FreeText::class.java))
                         LookupIngredientType.Quantified.id -> {
                             val quantified = Gson().fromJson(it, RecipeModel.Quantified::class.java)
                             ingredients.add(quantified)
