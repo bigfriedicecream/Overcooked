@@ -1,7 +1,9 @@
 package com.twobrothers.overcooked.app
 
+import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.lookups.LookupIngredientType
+import com.twobrothers.overcooked.models.food.FoodResponseModel
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.utils.CacheItem
@@ -14,10 +16,20 @@ object RecipeManager {
 
         fun getRecipeModelFromResponse(recipe: RecipeResponseModel.Recipe): RecipeModel {
             val ingredients = ArrayList<RecipeModel.Ingredient>()
+            val food = HashMap<String, FoodResponseModel>()
 
             recipe.ingredientSections.forEach {
                 if (!it.heading.isNullOrBlank()) {
                     ingredients.add(RecipeModel.Heading(LookupIngredientType.Heading.id, it.heading))
+                }
+                it.ingredients.forEach {
+                    when (it.get("ingredientType").asInt) {
+                        LookupIngredientType.Quantified.id -> {
+                            val quantified = Gson().fromJson(it, RecipeModel.Quantified::class.java)
+                            ingredients.add(quantified)
+                            food[quantified.foodId] = FoodManager.get(quantified.foodId)!!
+                        }
+                    }
                 }
             }
 
@@ -32,13 +44,17 @@ object RecipeManager {
                     recipe.imageUrl,
                     recipe.lastUpdated,
                     recipe.serves,
-                    recipe.makes
+                    recipe.makes,
+                    food
             )
         }
 
         val request = ApiClient.getRecipe(id)
                 .map {
                     CacheService.put("recipe-${it.data.recipe.id}", it.data.recipe, 1000 * 60)
+                    it.data.food.forEach {
+                        FoodManager.put(it.value)
+                    }
                     getRecipeModelFromResponse(it.data.recipe)
                 }
 

@@ -1,5 +1,7 @@
 package com.twobrothers.overcooked.models.recipe
 
+import com.twobrothers.overcooked.models.food.FoodResponseModel
+
 data class RecipeModel (
     val id: String,
     val title: String,
@@ -11,7 +13,8 @@ data class RecipeModel (
     val imageUrl: String,
     val lastUpdated: Long,
     val serves: Int?,
-    val makes: Int?
+    val makes: Int?,
+    val food: HashMap<String, FoodResponseModel>
 ) {
     interface Ingredient {
         val ingredientType: Int

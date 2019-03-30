@@ -1,6 +1,6 @@
 package com.twobrothers.overcooked.models.food
 
-data class FoodModel(
+data class FoodResponseModel(
         val id: String,
         val name: Name,
         val conversions: ArrayList<Conversion>

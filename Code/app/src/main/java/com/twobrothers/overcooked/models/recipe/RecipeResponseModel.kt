@@ -1,14 +1,14 @@
 package com.twobrothers.overcooked.models.recipe
 
 import com.google.gson.JsonObject
-import com.twobrothers.overcooked.models.food.FoodModel
+import com.twobrothers.overcooked.models.food.FoodResponseModel
 
 data class RecipeResponseModel (
         val data: Data
 ) {
     data class Data (
             val recipe: Recipe,
-            val food: HashMap<String, FoodModel>
+            val food: HashMap<String, FoodResponseModel>
     )
 
     data class Recipe (
