@@ -13,6 +13,6 @@ object FoodManager {
     }
 
     fun put(model: FoodResponseModel) {
-        CacheService.put("food-${model.id}", model, 1000 * 60 * 2)
+        CacheService.put("food-${model.id}", model, 1000 * 60 * 60 * 24)
     }
 }

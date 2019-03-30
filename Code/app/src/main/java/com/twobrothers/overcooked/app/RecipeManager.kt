@@ -52,7 +52,7 @@ object RecipeManager {
 
         val request = ApiClient.getRecipe(id)
                 .map {
-                    CacheService.put("recipe-${it.data.recipe.id}", it.data.recipe, 1000 * 60)
+                    CacheService.put("recipe-${it.data.recipe.id}", it.data.recipe, 1000 * 60 * 60 * 24)
                     it.data.food.forEach {
                         FoodManager.put(it.value)
                     }
