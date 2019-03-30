@@ -51,7 +51,7 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     override fun onBindIngredientRepositoryRowViewAtPosition(holder: IngredientViewAdapter.Holder, position: Int) {
         val recipeModel = recipeModel
         recipeModel ?: return
-        // holder.render(recipeModel.ingredients[position] as RecipeModel.Ingredient)
+        holder.render(recipeModel.ingredients[position])
     }
 
     override fun getIngredientRepositoriesRowsCount(): Int {
@@ -64,9 +64,8 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
         val recipeModel = recipeModel
         recipeModel ?: return -1
 
-        // val ingredient = recipeModel.ingredients[position] as RecipeModel.Ingredient
-        // return LookupIngredientType.dataLookup(ingredient.ingredientType).id
-        return -1
+        val ingredient = recipeModel.ingredients[position]
+        return LookupIngredientType.dataLookup(ingredient.ingredientType).id
     }
 
 }

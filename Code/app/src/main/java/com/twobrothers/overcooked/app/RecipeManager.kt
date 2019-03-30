@@ -1,7 +1,7 @@
 package com.twobrothers.overcooked.app
 
-import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
+import com.twobrothers.overcooked.lookups.LookupIngredientType
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.utils.CacheItem
@@ -15,7 +15,14 @@ object RecipeManager {
                 .map {
                     CacheService.put("recipe-${it.data.recipe.id}", it.data.recipe, 1000 * 60)
                     val recipe = it.data.recipe
-                    val ingredients = ArrayList<JsonObject>()
+                    val ingredients = ArrayList<RecipeModel.Ingredient>()
+
+                    recipe.ingredientSections.forEach {
+                        if (!it.heading.isNullOrBlank()) {
+                            ingredients.add(RecipeModel.Heading(LookupIngredientType.Heading.id, it.heading))
+                        }
+                    }
+
                     RecipeModel(
                             recipe.id,
                             recipe.title,
@@ -35,7 +42,14 @@ object RecipeManager {
 
         if (recipeCache.isFresh()) {
             val recipe = recipeCache.data
-            val ingredients = ArrayList<JsonObject>()
+            val ingredients = ArrayList<RecipeModel.Ingredient>()
+
+            recipe.ingredientSections.forEach {
+                if (!it.heading.isNullOrBlank()) {
+                    ingredients.add(RecipeModel.Heading(LookupIngredientType.Heading.id, it.heading))
+                }
+            }
+
             return Single.create {
                 it.onSuccess(
                         RecipeModel(
@@ -58,7 +72,14 @@ object RecipeManager {
         if (recipeCache.isExpiring()) {
             request.subscribe()
             val recipe = recipeCache.data
-            val ingredients = ArrayList<JsonObject>()
+            val ingredients = ArrayList<RecipeModel.Ingredient>()
+
+            recipe.ingredientSections.forEach {
+                if (!it.heading.isNullOrBlank()) {
+                    ingredients.add(RecipeModel.Heading(LookupIngredientType.Heading.id, it.heading))
+                }
+            }
+
             return Single.create {
                 it.onSuccess(
                         RecipeModel(

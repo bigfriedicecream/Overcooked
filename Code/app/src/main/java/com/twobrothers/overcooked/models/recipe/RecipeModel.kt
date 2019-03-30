@@ -1,13 +1,11 @@
 package com.twobrothers.overcooked.models.recipe
 
-import com.google.gson.JsonObject
-
 data class RecipeModel (
     val id: String,
     val title: String,
     val prepTime: Int,
     val cookTime: Int,
-    val ingredients: ArrayList<JsonObject>,
+    val ingredients: ArrayList<Ingredient>,
     val method: ArrayList<String>,
     val referenceUrl: String,
     val imageUrl: String,
