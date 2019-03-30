@@ -4,6 +4,7 @@ import com.google.gson.*
 import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.models.recipe.RecipeModel
+import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListResponseModel
 import com.twobrothers.overcooked.utils.CacheItem
 import io.reactivex.Single
@@ -51,27 +52,10 @@ object ApiClient {
         return requestViaCache(cache, request)
     }
 
-    fun getRecipe(id: String): Single<RecipeModel> {
+    fun getRecipe(id: String): Single<RecipeResponseModel> {
         return apiService
                 .getRecipe(id)
                 .subscribeOn(Schedulers.io())
-                .map{
-                    val recipe = it.data.recipe
-                    val ingredients = ArrayList<JsonObject>()
-                    RecipeModel(
-                            recipe.id,
-                            recipe.title,
-                            recipe.prepTime,
-                            recipe.cookTime,
-                            ingredients,
-                            recipe.method,
-                            recipe.referenceUrl,
-                            recipe.imageUrl,
-                            recipe.lastUpdated,
-                            recipe.serves,
-                            recipe.makes
-                    )
-                }
                 .observeOn(AndroidSchedulers.mainThread())
     }
 }
