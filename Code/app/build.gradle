@@ -25,10 +25,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "API_ENDPOINT", "\"https://overcooked.2brothers.tech/v1/\""
+            buildConfigField "String", "IMAGE_ENDPOINT", "\"https://overcooked.2brothers.tech\""
             signingConfig signingConfigs.overcooked
         }
         debug {
             buildConfigField "String", "API_ENDPOINT", "\"https://overcooked.2brothers.tech/v1/\""
+            buildConfigField "String", "IMAGE_ENDPOINT", "\"https://overcooked.2brothers.tech\""
         }
     }
 }

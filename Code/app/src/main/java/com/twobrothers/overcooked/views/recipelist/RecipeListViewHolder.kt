@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.jakewharton.rxbinding.view.RxView
+import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
@@ -15,7 +16,7 @@ class RecipeListViewHolder(itemView: View, private val presenter:IRecipeListCont
     override fun render(recipe: RecipeModel) {
         itemView.text_title.text = recipe.title
         GlideApp.with(itemView.context)
-                .load(recipe.imageUrl)
+                .load("${BuildConfig.IMAGE_ENDPOINT}${recipe.imageUrl}")
                 .placeholder(R.drawable.placeholder)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
