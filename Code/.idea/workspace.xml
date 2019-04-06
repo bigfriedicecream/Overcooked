@@ -27,12 +27,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c046f160-6080-443c-847d-7fd6d98d4ee8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/icon_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/icon_launcher_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/icon_launcher_foreground.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/icon_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/icon_launcher_background.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +85,7 @@
           <entry key="java" value="2" />
           <entry key="kt" value="358" />
           <entry key="png" value="3" />
-          <entry key="xml" value="79" />
+          <entry key="xml" value="82" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -96,7 +95,7 @@
           <entry key="Image" value="3" />
           <entry key="JAVA" value="2" />
           <entry key="Kotlin" value="358" />
-          <entry key="XML" value="79" />
+          <entry key="XML" value="82" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -155,7 +154,26 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_foreground.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="35" lean-forward="true" selection-end-line="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -174,7 +192,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>BuildConfig</find>
       <find>::</find>
       <find>UnitData</find>
       <find>recyc</find>
@@ -204,6 +221,7 @@
       <find>API_END</find>
       <find>GlideApp.</find>
       <find>CacheService.put</find>
+      <find>icon_</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -2695,9 +2713,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/interfaces/IRecipeListRowView.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/utils/RecipeListViewHolder.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/utils/RecipeListViewAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/placeholder.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipelist/RecipeListViewAdapter.kt" />
@@ -2746,6 +2761,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipelist/RecipeListViewHolder.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/RecipeManager.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" />
       </list>
     </option>
   </component>
@@ -2967,6 +2985,33 @@
               <item name="res" type="462c0819:PsiDirectoryNode" />
               <item name="drawable" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="drawable-v24" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="mipmap-anydpi-v26" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -3148,8 +3193,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.45494995" visible="true" weight="0.21641791" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45494995" visible="true" weight="0.21641791" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" sideWeight="0.54405594" side_tool="true" weight="0.25" />
@@ -3178,7 +3224,7 @@
       <window_info anchor="right" id="Gradle" order="5" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Assistant" order="7" weight="0.32969153" />
-      <window_info anchor="right" id="Preview" order="8" weight="0.32995737" />
+      <window_info anchor="right" id="Preview" order="8" visible="true" weight="0.32995737" />
       <window_info anchor="right" id="Device File Explorer" order="9" side_tool="true" weight="0.32969153" />
       <window_info anchor="right" x="0" y="0" width="354" height="676" id="Documentation" order="10" side_tool="true" weight="0.32969153" />
     </layout>
@@ -3187,13 +3233,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/interfaces/IRecipeContract.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_ingredient_heading.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/font/font_resource.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -3445,21 +3484,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/icon_launcher_round.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/icon_launcher.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/icon_launcher.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/icon_launcher_round.png" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/icon_launcher.png" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/icon_launcher.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_add_accent_24dp.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/icon_launcher_round.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/icon_launcher_round.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_remove_accent_24dp.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -3467,7 +3498,11 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/icon_launcher_foreground.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="54" selection-end-line="47" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -3475,20 +3510,31 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="66" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
+        <state relative-caret-position="68">
+          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_foreground.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="69" lean-forward="true" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="69" />
+        <state relative-caret-position="272">
+          <caret line="16" column="35" lean-forward="true" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
         </state>
       </provider>
     </entry>
