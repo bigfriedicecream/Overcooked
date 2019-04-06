@@ -63,7 +63,9 @@
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="282e3a" />
                                       <entry key="backgroundImage" value="D:\_WIP\Overcooked\transparency.png" />
+                                      <entry key="backgroundLayerName" value="icon_launcher_background" />
                                       <entry key="foregroundImage" value="D:\Github\overcooked-android\Assets\original.svg" />
+                                      <entry key="foregroundLayerName" value="icon_launcher_foreground" />
                                     </map>
                                   </option>
                                 </PersistentState>
