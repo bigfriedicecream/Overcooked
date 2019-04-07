@@ -10,11 +10,12 @@ import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import com.twobrothers.overcooked.models.recipe.RecipeModel
+import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.utils.GlideApp
 import kotlinx.android.synthetic.main.fragment_recipe_list_item.view.*
 
 class RecipeListViewHolder(itemView: View, private val presenter:IRecipeListContract.Presenter) : RecyclerView.ViewHolder(itemView), IRecipeListRowView {
-    override fun render(recipe: RecipeModel) {
+    override fun render(recipe: RecipeResponseModel.Recipe) {
         itemView.text_title.text = recipe.title
         GlideApp.with(itemView.context)
                 .load("${BuildConfig.IMAGE_ENDPOINT}${recipe.imageUrl}")

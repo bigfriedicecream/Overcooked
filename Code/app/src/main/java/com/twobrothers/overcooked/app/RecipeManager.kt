@@ -17,6 +17,12 @@ object RecipeManager {
         val request = ApiClient.getRecipesAt(page)
                 .doAfterSuccess {
                     CacheService.put("recipeList-$page", it, 1000 * 60 * 60 * 8)
+                    it.data.recipes.forEach {
+                        putRecipe(it)
+                    }
+                    it.data.food.forEach {
+                        FoodManager.putFood(it.value)
+                    }
                 }
 
         if (cache != null && cache.isFresh()) {

@@ -3,15 +3,15 @@ package com.twobrothers.overcooked.presenters
 import com.twobrothers.overcooked.app.Navigation
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
-import com.twobrothers.overcooked.models.recipe.RecipeModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import android.os.Bundle
 import com.twobrothers.overcooked.app.RecipeManager
+import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 
 class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter {
 
-    private var recipes = mutableListOf<RecipeModel>()
+    private var recipes = mutableListOf<RecipeResponseModel.Recipe>()
     private val mDisposable = CompositeDisposable()
 
     override fun onStart() {
