@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ExpandableListAdapter
 import android.widget.ExpandableListView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.signature.ObjectKey
 import com.twobrothers.overcooked.BuildConfig
 
 import com.twobrothers.overcooked.R
@@ -72,6 +73,7 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         text_cooktime.text = Int.toFriendlyTimeFormat(recipe.cookTime)
         GlideApp.with(view!!.context)
                 .load("${BuildConfig.IMAGE_ENDPOINT}${recipe.imageUrl}")
+                .signature(ObjectKey("${recipe.id}${recipe.lastUpdated}"))
                 .placeholder(R.drawable.placeholder)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
