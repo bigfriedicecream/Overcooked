@@ -6,10 +6,34 @@ import com.twobrothers.overcooked.lookups.LookupIngredientType
 import com.twobrothers.overcooked.models.food.FoodResponseModel
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
+import com.twobrothers.overcooked.models.recipelist.RecipeListResponseModel
 import com.twobrothers.overcooked.utils.CacheItem
 import io.reactivex.Single
 
 object RecipeManager {
+
+    fun getRecipesAt(page: Int): Single<RecipeListResponseModel> {
+        val cache = CacheService.get("recipeList-$page", object: TypeToken<CacheItem<RecipeListResponseModel>>(){}.type, RecipeListResponseModel::class.java)
+        val request = ApiClient.getRecipesAt(page)
+                .doAfterSuccess {
+                    CacheService.put("recipeList-$page", it, 1000 * 60 * 60 * 8)
+                }
+
+        if (cache != null && cache.isFresh()) {
+            return Single.create {
+                it.onSuccess(cache.data)
+            }
+        }
+
+        if (cache != null && cache.isExpiring()) {
+            request.subscribe()
+            return Single.create {
+                it.onSuccess(cache.data)
+            }
+        }
+
+        return request
+    }
 
     fun getRecipe(id: String): Single<RecipeModel> {
         val recipeCache = CacheService.get("recipe-$id", object: TypeToken<CacheItem<RecipeResponseModel.Recipe>>(){}.type, RecipeResponseModel.Recipe::class.java)

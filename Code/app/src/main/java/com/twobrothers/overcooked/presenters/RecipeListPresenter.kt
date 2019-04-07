@@ -1,6 +1,5 @@
 package com.twobrothers.overcooked.presenters
 
-import com.twobrothers.overcooked.app.ApiClient
 import com.twobrothers.overcooked.app.Navigation
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
@@ -8,6 +7,7 @@ import com.twobrothers.overcooked.models.recipe.RecipeModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import android.os.Bundle
+import com.twobrothers.overcooked.app.RecipeManager
 
 class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter {
 
@@ -16,7 +16,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
 
     override fun onStart() {
         mDisposable.add(
-            ApiClient.getRecipesAt(0)
+            RecipeManager.getRecipesAt(0)
             .subscribeBy(
                     onSuccess = {
                         recipes = it.data.recipes
