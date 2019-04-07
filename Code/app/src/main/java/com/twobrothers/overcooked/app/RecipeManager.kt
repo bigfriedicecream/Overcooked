@@ -28,7 +28,7 @@ object RecipeManager {
                         LookupIngredientType.Quantified.id -> {
                             val quantified = Gson().fromJson(it, RecipeModel.Quantified::class.java)
                             ingredients.add(quantified)
-                            food[quantified.foodId] = FoodManager.get(quantified.foodId)!!
+                            food[quantified.foodId] = FoodManager.getFood(quantified.foodId)!!
                         }
                     }
                 }
@@ -52,9 +52,9 @@ object RecipeManager {
 
         val request = ApiClient.getRecipe(id)
                 .map {
-                    put(it.data.recipe)
+                    putRecipe(it.data.recipe)
                     it.data.food.forEach {
-                        FoodManager.put(it.value)
+                        FoodManager.putFood(it.value)
                     }
                     getRecipeModelFromResponse(it.data.recipe)
                 }
@@ -81,7 +81,7 @@ object RecipeManager {
         return request
     }
 
-    fun put(model: RecipeResponseModel.Recipe) {
+    fun putRecipe(model: RecipeResponseModel.Recipe) {
         CacheService.put("recipe-${model.id}", model, 1000 * 60 * 60 * 24)
     }
 }

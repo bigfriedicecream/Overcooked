@@ -6,13 +6,13 @@ import com.twobrothers.overcooked.utils.CacheItem
 
 object FoodManager {
 
-    fun get(id: String): FoodResponseModel? {
+    fun getFood(id: String): FoodResponseModel? {
         val cache = CacheService.get("food-$id", object: TypeToken<CacheItem<FoodResponseModel>>(){}.type, FoodResponseModel::class.java)
         cache ?: return null
         return cache.data
     }
 
-    fun put(model: FoodResponseModel) {
+    fun putFood(model: FoodResponseModel) {
         CacheService.put("food-${model.id}", model, 1000 * 60 * 60 * 24)
     }
 }
