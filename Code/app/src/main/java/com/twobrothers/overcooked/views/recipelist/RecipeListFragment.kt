@@ -27,7 +27,7 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
         viewManager = LinearLayoutManager(context)
         viewAdapter = RecipeListViewAdapter(presenter)
 
-        recyclerView = view!!.findViewById<RecyclerView>(R.id.recycler_container).apply {
+        recyclerView = view.findViewById<RecyclerView>(R.id.recycler_container).apply {
             layoutManager = viewManager
             adapter = viewAdapter
         }
@@ -48,6 +48,17 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
     override fun render() {
         progress_loading.visibility = View.GONE
         recycler_container.visibility = View.VISIBLE
+        recycler_container.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val visibleChildCount = viewManager.childCount
+                val numChildren = viewManager.itemCount
+                val visibleChildIndex = (viewManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
+                if (visibleChildIndex + visibleChildCount >= numChildren) {
+                    presenter.loadMore()
+                }
+            }
+        })
     }
 
     override fun onDataSetChanged() {

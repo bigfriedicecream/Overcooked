@@ -22,6 +22,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
                         recipes = it.data.recipes
                         view.render()
                         view.onDataSetChanged()
+
                         // recipes.addAll(it.data.recipes)
                         // recipeListItems.add("b")
                         // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
@@ -48,6 +49,10 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
 
     override fun getRepositoriesRowsCount(): Int {
         return recipes.size
+    }
+
+    override fun loadMore() {
+        println("load more")
     }
 
 }
