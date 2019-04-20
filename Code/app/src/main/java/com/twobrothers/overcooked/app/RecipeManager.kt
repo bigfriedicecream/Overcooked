@@ -6,43 +6,15 @@ import com.twobrothers.overcooked.lookups.LookupIngredientType
 import com.twobrothers.overcooked.models.food.FoodResponseModel
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
-import com.twobrothers.overcooked.models.recipelist.RecipeListResponseModel
 import com.twobrothers.overcooked.utils.CacheItem
 import io.reactivex.Single
 
 object RecipeManager {
 
-    fun getRecipesAt(page: Int): Single<RecipeListResponseModel> {
-        val cache = CacheService.get("recipeList-$page", object: TypeToken<CacheItem<RecipeListResponseModel>>(){}.type, RecipeListResponseModel::class.java)
-        val request = ApiClient.getRecipesAt(page)
-                .doAfterSuccess {
-                    CacheService.put("recipeList-$page", it, 1000 * 60 * 60 * 8)
-                    it.data.recipes.forEach {
-                        putRecipe(it)
-                    }
-                    it.data.food.forEach {
-                        FoodManager.putFood(it.value)
-                    }
-                }
-
-        if (cache != null && cache.isFresh()) {
-            return Single.create {
-                it.onSuccess(cache.data)
-            }
-        }
-
-        if (cache != null && cache.isExpiring()) {
-            request.subscribe()
-            return Single.create {
-                it.onSuccess(cache.data)
-            }
-        }
-
-        return request
-    }
+    private const val CACHE_LENGTH: Int = 1000 * 60 * 60 * 24
 
     fun getRecipe(id: String): Single<RecipeModel> {
-        val recipeCache = CacheService.get("recipe-$id", object: TypeToken<CacheItem<RecipeResponseModel.Recipe>>(){}.type, RecipeResponseModel.Recipe::class.java)
+        val cache = CacheService.get("recipe-$id", object: TypeToken<CacheItem<RecipeResponseModel.Recipe>>(){}.type, RecipeResponseModel.Recipe::class.java)
 
         fun getRecipeModelFromResponse(recipe: RecipeResponseModel.Recipe): RecipeModel {
             val ingredients = ArrayList<RecipeModel.Ingredient>()
@@ -88,22 +60,29 @@ object RecipeManager {
                     }
                     getRecipeModelFromResponse(it.data.recipe)
                 }
+                .onErrorResumeNext {
+                    Single.create {
+                        if (cache != null) {
+                            it.onSuccess(
+                                    getRecipeModelFromResponse(cache.data)
+                            )
+                        }
+                    }
+                }
 
-        recipeCache ?: return request
-
-        if (recipeCache.isFresh()) {
+        if (cache != null && cache.isFresh()) {
             return Single.create {
                 it.onSuccess(
-                        getRecipeModelFromResponse(recipeCache.data)
+                        getRecipeModelFromResponse(cache.data)
                 )
             }
         }
 
-        if (recipeCache.isExpiring()) {
+        if (cache != null && cache.isExpiring()) {
             request.subscribe()
             return Single.create {
                 it.onSuccess(
-                        getRecipeModelFromResponse(recipeCache.data)
+                        getRecipeModelFromResponse(cache.data)
                 )
             }
         }
@@ -112,6 +91,6 @@ object RecipeManager {
     }
 
     fun putRecipe(model: RecipeResponseModel.Recipe) {
-        CacheService.put("recipe-${model.id}", model, 1000 * 60 * 60 * 24)
+        CacheService.put("recipe-${model.id}", model, CACHE_LENGTH)
     }
 }
