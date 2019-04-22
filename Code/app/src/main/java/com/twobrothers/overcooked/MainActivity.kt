@@ -2,7 +2,6 @@ package com.twobrothers.overcooked
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.twobrothers.overcooked.app.Navigation
 
 import com.twobrothers.overcooked.views.MainFragment
 

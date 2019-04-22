@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.twobrothers.overcooked.R
-import com.twobrothers.overcooked.app.Navigation
+import com.twobrothers.overcooked.app.Router
 import com.twobrothers.overcooked.views.recipe.RecipeFragment
 import com.twobrothers.overcooked.views.recipelist.RecipeListFragment
 import io.reactivex.disposables.CompositeDisposable
@@ -24,7 +24,7 @@ class MainFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         disposable.add(
-                Navigation
+                Router
                         .getInstance()
                         .subscribeBy(
                                 onNext = {
@@ -43,8 +43,8 @@ class MainFragment : Fragment() {
                         )
         )
 
-        if (Navigation.getHistoryLength() == 0) {
-            Navigation.push(Navigation.NavItem("RECIPE_LIST"))
+        if (Router.historySize == 0) {
+            Router.push(Router.NavItem("RECIPE_LIST"))
         }
     }
 

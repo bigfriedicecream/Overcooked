@@ -1,6 +1,6 @@
 package com.twobrothers.overcooked.presenters
 
-import com.twobrothers.overcooked.app.Navigation
+import com.twobrothers.overcooked.app.Router
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import io.reactivex.disposables.CompositeDisposable
@@ -39,7 +39,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     override fun onRecipeListItemClick(position: Int) {
         val arguments = Bundle()
         arguments.putString("id", recipes[position].id)
-        Navigation.push(Navigation.NavItem("RECIPE_VIEW", arguments))
+        Router.push(Router.NavItem("RECIPE_VIEW", arguments))
     }
 
     override fun onBindRepositoryRowViewAtPosition(holder: IRecipeListRowView, position: Int) {
