@@ -4,13 +4,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import com.jakewharton.rxbinding.view.RxView
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeContract
-import com.twobrothers.overcooked.interfaces.IRecipeListContract
-import com.twobrothers.overcooked.presenters.RecipePresenter
 import kotlinx.android.synthetic.main.fragment_recipe_method_item.view.*
 
 class MethodViewAdapter(private val presenter: IRecipeContract.Presenter):RecyclerView.Adapter<MethodViewAdapter.Holder>() {
@@ -22,12 +17,12 @@ class MethodViewAdapter(private val presenter: IRecipeContract.Presenter):Recycl
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MethodViewAdapter.Holder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.fragment_recipe_method_item, parent, false)
-        return MethodViewAdapter.Holder(layout)
+        return Holder(layout)
     }
 
-    override fun onBindViewHolder(holder: MethodViewAdapter.Holder, position: Int) {
+    override fun onBindViewHolder(holder: Holder, position: Int) {
         presenter.onBindMethodRepositoryRowViewAtPosition(holder, position)
     }
 

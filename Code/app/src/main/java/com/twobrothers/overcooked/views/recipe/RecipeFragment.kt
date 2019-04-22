@@ -7,8 +7,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ExpandableListAdapter
-import android.widget.ExpandableListView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.signature.ObjectKey
 import com.twobrothers.overcooked.BuildConfig
@@ -19,7 +17,6 @@ import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.presenters.RecipePresenter
 import com.twobrothers.overcooked.utils.GlideApp
 import com.twobrothers.overcooked.utils.toFriendlyTimeFormat
-import com.twobrothers.overcooked.views.recipelist.RecipeListViewAdapter
 import kotlinx.android.synthetic.main.fragment_recipe.*
 
 class RecipeFragment : Fragment(), IRecipeContract.View {
@@ -36,7 +33,7 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         methodViewManager = LinearLayoutManager(context)
         methodViewAdapter = MethodViewAdapter(presenter)
 
-        view!!.findViewById<RecyclerView>(R.id.recycler_method).apply {
+        view.findViewById<RecyclerView>(R.id.recycler_method).apply {
             layoutManager = methodViewManager
             adapter = methodViewAdapter
         }

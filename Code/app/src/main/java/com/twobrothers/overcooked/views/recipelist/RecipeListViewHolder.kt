@@ -9,7 +9,6 @@ import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
-import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.utils.GlideApp
 import kotlinx.android.synthetic.main.fragment_recipe_list_item.view.*

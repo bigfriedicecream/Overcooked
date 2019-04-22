@@ -73,7 +73,7 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
         return presenter.getIngredientItemViewType(position)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientViewAdapter.Holder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         var layoutId:Int = R.layout.fragment_recipe_ingredient_freetext
         when (viewType) {
             LookupIngredientType.Heading.id -> layoutId = R.layout.fragment_recipe_ingredient_heading
@@ -81,10 +81,10 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
             LookupIngredientType.Quantified.id -> layoutId = R.layout.fragment_recipe_ingredient_quantified
         }
         val layout = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
-        return IngredientViewAdapter.Holder(layout)
+        return Holder(layout)
     }
 
-    override fun onBindViewHolder(holder: IngredientViewAdapter.Holder, position: Int) {
+    override fun onBindViewHolder(holder: Holder, position: Int) {
         presenter.onBindIngredientRepositoryRowViewAtPosition(holder, position)
     }
 
