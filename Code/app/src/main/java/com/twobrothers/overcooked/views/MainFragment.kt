@@ -28,15 +28,15 @@ class MainFragment : Fragment() {
                         .getInstance()
                         .subscribeBy(
                                 onNext = {
-                                    var newView:Fragment = RecipeListFragment()
-                                    when (it.tag) {
-                                        "RECIPE_VIEW" -> newView = RecipeFragment()
-                                        "RECIPE_LIST" -> newView = RecipeListFragment()
+                                    val view = when (it.id) {
+                                        Router.Recipe.id -> RecipeFragment()
+                                        Router.RecipeList.id -> RecipeListFragment()
+                                        else -> RecipeListFragment()
                                     }
-                                    newView.arguments = it.args
+                                    view.arguments = it.args
                                     fragmentManager
                                             ?.beginTransaction()
-                                            ?.replace(R.id.layout_main, newView)
+                                            ?.replace(R.id.layout_main, view)
                                             ?.addToBackStack(null)
                                             ?.commitAllowingStateLoss()
                                 }
@@ -44,7 +44,7 @@ class MainFragment : Fragment() {
         )
 
         if (Router.historySize == 0) {
-            Router.push(Router.NavItem("RECIPE_LIST"))
+            Router.goto(Router.RecipeList.route())
         }
     }
 
