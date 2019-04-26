@@ -10,7 +10,13 @@ import io.reactivex.Single
 object RecipeListManager {
 
     private const val CACHE_LENGTH: Int = 1000 * 60 * 60 * 8
+
     var recipes = mutableListOf<RecipeResponseModel.Recipe>()
+        private set
+    var request: Single<RecipeListResponseModel>? = null
+    var lastPage: Boolean = false
+        private set
+    var currentPage: Int = -1
         private set
 
     private fun getRecipesAt(page: Int): Single<RecipeListResponseModel> {
@@ -54,10 +60,21 @@ object RecipeListManager {
         CacheService.put("recipeList-$page", model, CACHE_LENGTH)
     }
 
-    fun loadRecipes(): Single<RecipeListResponseModel> {
-        return getRecipesAt(0)
+    fun loadRecipes(): Single<RecipeListResponseModel>? {
+        if (lastPage) {
+            return null
+        }
+        if (request != null) {
+            return request
+        }
+        request = getRecipesAt(currentPage + 1)
                 .doAfterSuccess {
-                    recipes = it.data.recipes
+                    recipes.addAll(it.data.recipes)
+                    currentPage += 1
+                    lastPage = it.data.lastPage
+                    request = null
                 }
+
+        return request
     }
 }
