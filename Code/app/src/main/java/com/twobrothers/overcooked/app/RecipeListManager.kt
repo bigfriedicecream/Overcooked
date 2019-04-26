@@ -24,7 +24,7 @@ object RecipeListManager {
                     it.data.food.forEach {
                         FoodManager.putFood(it.value)
                     }
-                    recipes = it.data.recipes
+
                 }
                 .onErrorResumeNext {
                     Single.create {
@@ -36,7 +36,6 @@ object RecipeListManager {
 
         if (cache != null && cache.isFresh()) {
             return Single.create {
-                recipes = cache.data.data.recipes
                 it.onSuccess(cache.data)
             }
         }
@@ -44,7 +43,6 @@ object RecipeListManager {
         if (cache != null && cache.isExpiring()) {
             request.subscribe()
             return Single.create {
-                recipes = cache.data.data.recipes
                 it.onSuccess(cache.data)
             }
         }
@@ -58,5 +56,8 @@ object RecipeListManager {
 
     fun loadRecipes(): Single<RecipeListResponseModel> {
         return getRecipesAt(0)
+                .doAfterSuccess {
+                    recipes = it.data.recipes
+                }
     }
 }
