@@ -62,6 +62,11 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
     }
 
     override fun onDataSetChanged() {
-        viewAdapter.notifyDataSetChanged()
+        recyclerView.post {
+            run {
+                viewAdapter.notifyDataSetChanged()
+                // viewAdapter.notifyItemInserted(10)
+            }
+        }
     }
 }
