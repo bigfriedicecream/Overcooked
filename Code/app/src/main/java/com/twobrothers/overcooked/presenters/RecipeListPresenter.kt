@@ -13,6 +13,12 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     private val disposable = CompositeDisposable()
 
     override fun onStart() {
+        if (RecipeListManager.recipes.size > 0) {
+            view.render()
+            view.onDataSetChanged()
+            return
+        }
+
         val request = RecipeListManager.loadRecipes()
                 ?.subscribeBy(
                         onSuccess = {
@@ -25,7 +31,6 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
         if (request != null) {
             disposable.add(request)
         }
-
     }
 
     override fun onStop() {
@@ -45,7 +50,21 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     }
 
     override fun loadMore() {
-        // println("load more")
+        if (!RecipeListManager.lastPage && !RecipeListManager.requestInProgress) {
+            println("load request")
+            val request = RecipeListManager.loadRecipes()
+                    ?.subscribeBy(
+                            onSuccess = {
+                                view.render()
+                                view.onDataSetChanged()
+                                // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
+                            },
+                            onError =  { it.printStackTrace() }
+                    )
+            if (request != null) {
+                disposable.add(request)
+            }
+        }
     }
 
 }

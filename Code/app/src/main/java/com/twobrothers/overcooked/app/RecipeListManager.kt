@@ -14,6 +14,12 @@ object RecipeListManager {
     var recipes = mutableListOf<RecipeResponseModel.Recipe>()
         private set
     var request: Single<RecipeListResponseModel>? = null
+        private set
+    var requestInProgress = false
+        get() {
+            return request != null
+        }
+        private set
     var lastPage: Boolean = false
         private set
     var currentPage: Int = -1
