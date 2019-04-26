@@ -10,15 +10,14 @@ import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 
 class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter {
 
-    private var recipes = mutableListOf<RecipeResponseModel.Recipe>()
     private val mDisposable = CompositeDisposable()
 
     override fun onStart() {
         mDisposable.add(
-            RecipeListManager.getRecipesAt(0)
+            RecipeListManager.loadRecipes()
             .subscribeBy(
                     onSuccess = {
-                        recipes = it.data.recipes
+                        // recipes = it.data.recipes
                         view.render()
                         view.onDataSetChanged()
 
@@ -36,16 +35,15 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     }
 
     override fun onRecipeListItemClick(position: Int) {
-        Router.goto(Router.Recipe.route(recipes[position].id))
+        Router.goto(Router.Recipe.route(RecipeListManager.recipes[position].id))
     }
 
     override fun onBindRepositoryRowViewAtPosition(holder: IRecipeListRowView, position: Int) {
-        val recipe = recipes[position]
-        holder.render(recipe)
+        holder.render(RecipeListManager.recipes[position])
     }
 
     override fun getRepositoriesRowsCount(): Int {
-        return recipes.size
+        return RecipeListManager.recipes.size
     }
 
     override fun loadMore() {
