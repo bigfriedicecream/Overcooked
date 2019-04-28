@@ -51,11 +51,9 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
 
     override fun loadMore() {
         if (!RecipeListManager.lastPage && !RecipeListManager.requestInProgress) {
-            println("load request")
             val request = RecipeListManager.loadRecipes()
                     ?.subscribeBy(
                             onSuccess = {
-                                view.render()
                                 view.onDataSetChanged()
                                 // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
                             },
