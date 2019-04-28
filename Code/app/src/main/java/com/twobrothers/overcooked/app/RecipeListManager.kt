@@ -6,6 +6,7 @@ import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListResponseModel
 import com.twobrothers.overcooked.utils.CacheItem
 import io.reactivex.Single
+import io.reactivex.rxkotlin.subscribeBy
 
 object RecipeListManager {
 
@@ -74,7 +75,7 @@ object RecipeListManager {
             return request
         }
         request = getRecipesAt(currentPage + 1)
-                .doAfterSuccess {
+                .doOnSuccess {
                     recipes.addAll(it.data.recipes)
                     currentPage += 1
                     lastPage = it.data.lastPage

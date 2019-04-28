@@ -7,7 +7,7 @@ interface IRecipeListContract {
         fun onStart()
         fun onStop()
         fun render()
-        fun onDataSetChanged()
+        fun onDataSetChanged(positionStart: Int, itemCount: Int)
     }
 
     interface Presenter {
@@ -16,7 +16,7 @@ interface IRecipeListContract {
         fun onRecipeListItemClick(position: Int)
         fun onBindRepositoryRowViewAtPosition(holder: IRecipeListRowView, position: Int)
         fun getRepositoriesRowsCount():Int
-        fun loadMore()
+        fun loadRecipes()
     }
 
 }

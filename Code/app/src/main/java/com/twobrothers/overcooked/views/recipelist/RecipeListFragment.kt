@@ -55,17 +55,16 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
                 val numChildren = viewManager.itemCount
                 val visibleChildIndex = (viewManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
                 if (visibleChildIndex + visibleChildCount >= numChildren) {
-                    presenter.loadMore()
+                    presenter.loadRecipes()
                 }
             }
         })
     }
 
-    override fun onDataSetChanged() {
+    override fun onDataSetChanged(positionStart: Int, itemCount: Int) {
         recyclerView.post {
             run {
-                viewAdapter.notifyDataSetChanged()
-                // viewAdapter.notifyItemInserted(10)
+                viewAdapter.notifyItemRangeChanged(positionStart, itemCount)
             }
         }
     }

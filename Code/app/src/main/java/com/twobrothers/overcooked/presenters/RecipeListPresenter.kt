@@ -6,7 +6,6 @@ import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import com.twobrothers.overcooked.app.RecipeListManager
-import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 
 class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter {
 
@@ -15,7 +14,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     override fun onStart() {
         if (RecipeListManager.recipes.size > 0) {
             view.render()
-            view.onDataSetChanged()
+            view.onDataSetChanged(0, RecipeListManager.recipes.size)
             return
         }
 
@@ -23,8 +22,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
                 ?.subscribeBy(
                         onSuccess = {
                             view.render()
-                            view.onDataSetChanged()
-                            // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
+                            view.onDataSetChanged(RecipeListManager.recipes.count() - it.data.recipes.count(), it.data.recipes.count())
                         },
                         onError =  { it.printStackTrace() }
                 )
@@ -49,13 +47,12 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
         return RecipeListManager.recipes.size
     }
 
-    override fun loadMore() {
+    override fun loadRecipes() {
         if (!RecipeListManager.lastPage && !RecipeListManager.requestInProgress) {
             val request = RecipeListManager.loadRecipes()
                     ?.subscribeBy(
                             onSuccess = {
-                                view.onDataSetChanged()
-                                // viewAdapter.notifyItemRangeInserted(recipeListItems.size - 1, 1)
+                                view.onDataSetChanged(RecipeListManager.recipes.count() - it.data.recipes.count(), it.data.recipes.count())
                             },
                             onError =  { it.printStackTrace() }
                     )
