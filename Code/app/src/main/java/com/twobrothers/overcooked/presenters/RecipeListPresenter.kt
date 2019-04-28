@@ -14,7 +14,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     override fun onStart() {
         if (RecipeListManager.recipes.size > 0) {
             view.render()
-            view.onDataSetChanged(0, RecipeListManager.recipes.size)
+            // view.onDataSetChanged(0, RecipeListManager.recipes.size)
             return
         }
 
