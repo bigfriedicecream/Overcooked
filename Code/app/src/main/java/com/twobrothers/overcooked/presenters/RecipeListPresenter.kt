@@ -6,6 +6,7 @@ import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import com.twobrothers.overcooked.app.RecipeListManager
+import io.reactivex.rxkotlin.addTo
 
 class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter {
 
@@ -14,11 +15,10 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     override fun onStart() {
         if (RecipeListManager.recipes.size > 0) {
             view.render()
-            // view.onDataSetChanged(0, RecipeListManager.recipes.size)
             return
         }
 
-        val request = RecipeListManager.loadRecipes()
+        RecipeListManager.loadRecipes()
                 ?.subscribeBy(
                         onSuccess = {
                             view.render()
@@ -26,9 +26,7 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
                         },
                         onError =  { it.printStackTrace() }
                 )
-        if (request != null) {
-            disposable.add(request)
-        }
+                ?.addTo(disposable)
     }
 
     override fun onStop() {
@@ -49,16 +47,14 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
 
     override fun loadRecipes() {
         if (!RecipeListManager.lastPage && !RecipeListManager.requestInProgress) {
-            val request = RecipeListManager.loadRecipes()
+            RecipeListManager.loadRecipes()
                     ?.subscribeBy(
                             onSuccess = {
                                 view.onDataSetChanged(RecipeListManager.recipes.count() - it.data.recipes.count(), it.data.recipes.count())
                             },
                             onError =  { it.printStackTrace() }
                     )
-            if (request != null) {
-                disposable.add(request)
-            }
+                    ?.addTo(disposable)
         }
     }
 

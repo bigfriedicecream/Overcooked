@@ -8,6 +8,7 @@ import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.views.recipe.IngredientViewAdapter
 import com.twobrothers.overcooked.views.recipe.MethodViewAdapter
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 
 class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.Presenter {
@@ -16,19 +17,18 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     private var recipeModel: RecipeModel? = null
 
     override fun onStart(args: Bundle?) {
-        disposable.add(
-                RecipeManager
-                        .getRecipe(args!!.getString("id"))
-                        .subscribeBy(
-                            onSuccess = {
-                                recipeModel = it
-                                view.render(it)
-                                view.onMethodDataSetChanged()
-                                view.onIngredientDataSetChanged()
-                            },
-                            onError =  { it.printStackTrace() }
-                        )
-        )
+        RecipeManager
+                .getRecipe(args!!.getString("id"))
+                .subscribeBy(
+                        onSuccess = {
+                            recipeModel = it
+                            view.render(it)
+                            view.onMethodDataSetChanged()
+                            view.onIngredientDataSetChanged()
+                        },
+                        onError =  { it.printStackTrace() }
+                )
+                .addTo(disposable)
     }
 
     override fun onStop() {
