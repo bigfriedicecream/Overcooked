@@ -63,9 +63,21 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         if (isDetached) {
             return
         }
+
+        val quantity = recipe.serves ?: recipe.makes
+
         text_title.text = recipe.title
         text_quantity.text = if (recipe.serves != null) recipe.serves.toString() else recipe.makes.toString()
         text_serves_makes.text = if (recipe.serves != null) "Serves" else "Makes"
+
+        btn_default_quantity.text = quantity.toString()
+        btn_default_quantity.textOn = quantity.toString()
+        btn_default_quantity.textOff = quantity.toString()
+
+        btn_double_quantity.text = (quantity?.times(2)).toString()
+        btn_double_quantity.textOn = (quantity?.times(2)).toString()
+        btn_double_quantity.textOff = (quantity?.times(2)).toString()
+
         text_preptime.text = Int.toFriendlyTimeFormat(recipe.prepTime)
         text_cooktime.text = Int.toFriendlyTimeFormat(recipe.cookTime)
         GlideApp.with(view!!.context)
