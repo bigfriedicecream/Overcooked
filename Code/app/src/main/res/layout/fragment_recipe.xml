@@ -50,28 +50,15 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/text_serves"
+                    android:id="@+id/text_serves_makes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_light"
-                    android:text="Serves"
+                    android:text="Serves/Makes"
                     android:layout_marginEnd="4dp"
                     android:textAllCaps="true"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/text_makes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato_light"
-                    android:text="Makes"
-                    android:layout_marginEnd="4dp"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp"
-                    android:visibility="gone" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/text_quantity"
@@ -83,26 +70,24 @@
                     android:textSize="14sp" />
 
                 <ToggleButton
-                    android:id="@+id/toggleButton"
+                    android:id="@+id/btn_default_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/toggle_button"
                     android:checked="true"
                     android:minHeight="0dp"
                     android:paddingTop="4dp"
-                    android:paddingBottom="4dp"
-                    android:text="1" />
+                    android:paddingBottom="4dp" />
 
                 <ToggleButton
-                    android:id="@+id/toggleButton2"
+                    android:id="@+id/btn_double_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/toggle_button"
                     android:checked="false"
                     android:minHeight="0dp"
                     android:paddingTop="4dp"
-                    android:paddingBottom="4dp"
-                    android:text="2" />
+                    android:paddingBottom="4dp" />
 
             </LinearLayout>
 

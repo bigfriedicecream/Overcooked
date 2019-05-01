@@ -65,7 +65,7 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         }
         text_title.text = recipe.title
         text_quantity.text = if (recipe.serves != null) recipe.serves.toString() else recipe.makes.toString()
-        if (recipe.serves != null) text_serves.visibility = View.VISIBLE else text_makes.visibility = View.VISIBLE
+        text_serves_makes.text = if (recipe.serves != null) "Serves" else "Makes"
         text_preptime.text = Int.toFriendlyTimeFormat(recipe.prepTime)
         text_cooktime.text = Int.toFriendlyTimeFormat(recipe.cookTime)
         GlideApp.with(view!!.context)
