@@ -69,29 +69,17 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
 
-                <ToggleButton
-                    android:id="@+id/btn_default_quantity"
+                <Button
+                    android:id="@+id/btn_plus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/toggle_button"
-                    android:textOn=""
-                    android:textOff=""
-                    android:checked="true"
-                    android:minHeight="0dp"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp" />
+                    android:text="+" />
 
-                <ToggleButton
-                    android:id="@+id/btn_double_quantity"
+                <Button
+                    android:id="@+id/btn_minus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/toggle_button"
-                    android:textOn=""
-                    android:textOff=""
-                    android:checked="false"
-                    android:minHeight="0dp"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp" />
+                    android:text="-" />
 
             </LinearLayout>
 
