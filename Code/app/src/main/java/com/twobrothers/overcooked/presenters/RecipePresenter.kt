@@ -35,6 +35,14 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
         disposable.dispose()
     }
 
+    override fun onIncrementQuantity() {
+
+    }
+
+    override fun onDecrementQuantity() {
+
+    }
+
     override fun onBindMethodRepositoryRowViewAtPosition(holder: MethodViewAdapter.Holder, position: Int) {
         val recipeModel = recipeModel
         recipeModel ?: return

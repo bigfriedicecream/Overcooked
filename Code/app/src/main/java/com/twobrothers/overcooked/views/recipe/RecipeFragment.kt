@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.signature.ObjectKey
+import com.jakewharton.rxbinding.view.RxView
 import com.twobrothers.overcooked.BuildConfig
 
 import com.twobrothers.overcooked.R
@@ -64,8 +65,6 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
             return
         }
 
-        val quantity = recipe.serves ?: recipe.makes
-
         text_title.text = recipe.title
         text_quantity.text = if (recipe.serves != null) recipe.serves.toString() else recipe.makes.toString()
         text_serves_makes.text = if (recipe.serves != null) "Serves" else "Makes"
@@ -79,6 +78,14 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(image_hero)
+
+        RxView.clicks(btn_increment).subscribe {
+            presenter.onIncrementQuantity()
+        }
+
+        RxView.clicks(btn_decrement).subscribe {
+            presenter.onIncrementQuantity()
+        }
 
         progress_loading.visibility = View.GONE
         view_content.visibility = View.VISIBLE

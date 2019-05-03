@@ -70,13 +70,13 @@
                     android:textSize="14sp" />
 
                 <Button
-                    android:id="@+id/btn_plus"
+                    android:id="@+id/btn_increment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+" />
 
                 <Button
-                    android:id="@+id/btn_minus"
+                    android:id="@+id/btn_decrement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="-" />

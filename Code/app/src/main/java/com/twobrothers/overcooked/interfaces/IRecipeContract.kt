@@ -17,6 +17,8 @@ interface IRecipeContract {
     interface Presenter {
         fun onStart(args: Bundle?)
         fun onStop()
+        fun onIncrementQuantity()
+        fun onDecrementQuantity()
         fun onBindMethodRepositoryRowViewAtPosition(holder: MethodViewAdapter.Holder, position: Int)
         fun getMethodRepositoriesRowsCount():Int
         fun onBindIngredientRepositoryRowViewAtPosition(holder: IngredientViewAdapter.Holder, position: Int)
