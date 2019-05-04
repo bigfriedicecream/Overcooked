@@ -91,6 +91,10 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         view_content.visibility = View.VISIBLE
     }
 
+    override fun onQuantityUpdate(quantity: Int) {
+        text_quantity.text = quantity.toString()
+    }
+
     override fun onMethodDataSetChanged() {
         methodViewAdapter.notifyDataSetChanged()
     }

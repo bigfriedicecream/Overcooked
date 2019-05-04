@@ -12,6 +12,7 @@ interface IRecipeContract {
         fun render(recipe: RecipeModel)
         fun onMethodDataSetChanged()
         fun onIngredientDataSetChanged()
+        fun onQuantityUpdate(quantity: Int)
     }
 
     interface Presenter {

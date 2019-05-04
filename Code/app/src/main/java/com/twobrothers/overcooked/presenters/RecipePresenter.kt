@@ -36,11 +36,12 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
 
     override fun onIncrementQuantity() {
         AppState.Recipe.activeQuantity = AppState.Recipe.activeQuantity + 1
-        println(AppState.Recipe.activeQuantity)
+        view.onQuantityUpdate(AppState.Recipe.activeQuantity)
     }
 
     override fun onDecrementQuantity() {
         AppState.Recipe.activeQuantity = AppState.Recipe.activeQuantity -1
+        view.onQuantityUpdate(AppState.Recipe.activeQuantity)
     }
 
     override fun onBindMethodRepositoryRowViewAtPosition(holder: MethodViewAdapter.Holder, position: Int) {
