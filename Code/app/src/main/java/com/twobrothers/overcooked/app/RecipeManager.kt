@@ -14,7 +14,10 @@ object RecipeManager {
     private const val CACHE_LENGTH: Int = 1000 * 60 * 60 * 24
 
     fun getRecipe(id: String): Single<RecipeModel> {
-        val cache = CacheService.get("recipe-$id", object: TypeToken<CacheItem<RecipeResponseModel.Recipe>>(){}.type, RecipeResponseModel.Recipe::class.java)
+        return ApiClient.getRecipe(id)
+
+
+        /* val cache = CacheService.get("recipe-$id", object: TypeToken<CacheItem<RecipeResponseModel.Recipe>>(){}.type, RecipeResponseModel.Recipe::class.java)
 
         fun getRecipeModelFromResponse(recipe: RecipeResponseModel.Recipe): RecipeModel {
             val ingredients = ArrayList<RecipeModel.Ingredient>()
@@ -87,7 +90,7 @@ object RecipeManager {
             }
         }
 
-        return request
+        return request*/
     }
 
     fun putRecipe(model: RecipeResponseModel.Recipe) {
