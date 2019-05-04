@@ -84,7 +84,7 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         }
 
         RxView.clicks(btn_decrement).subscribe {
-            presenter.onIncrementQuantity()
+            presenter.onDecrementQuantity()
         }
 
         progress_loading.visibility = View.GONE
