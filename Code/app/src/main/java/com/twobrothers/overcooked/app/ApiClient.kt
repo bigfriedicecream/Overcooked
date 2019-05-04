@@ -75,6 +75,7 @@ object ApiClient {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map {
+                    CacheService.put("recipe-${it.data.recipe.id}", it, 1000 * 60 * 60 * 24)
                     mapRecipe(it.data.recipe)
                 }
 

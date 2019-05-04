@@ -1,12 +1,10 @@
 package com.twobrothers.overcooked.app
 
 import com.google.gson.reflect.TypeToken
-import com.twobrothers.overcooked.app.RecipeManager.putRecipe
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListResponseModel
 import com.twobrothers.overcooked.utils.CacheItem
 import io.reactivex.Single
-import io.reactivex.rxkotlin.subscribeBy
 
 object RecipeListManager {
 
@@ -32,7 +30,7 @@ object RecipeListManager {
                 .doAfterSuccess {
                     putRecipeList(page, it)
                     it.data.recipes.forEach {
-                        putRecipe(it)
+                        CacheService.put("recipe-${it.id}", it, 1000 * 60 * 60 * 24)
                     }
                     it.data.food.forEach {
                         FoodManager.putFood(it.value)
