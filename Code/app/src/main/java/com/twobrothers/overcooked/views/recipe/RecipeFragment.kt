@@ -19,6 +19,7 @@ import com.twobrothers.overcooked.presenters.RecipePresenter
 import com.twobrothers.overcooked.utils.GlideApp
 import com.twobrothers.overcooked.utils.toFriendlyTimeFormat
 import kotlinx.android.synthetic.main.fragment_recipe.*
+import kotlinx.android.synthetic.main.fragment_recipe.view.*
 
 class RecipeFragment : Fragment(), IRecipeContract.View {
 
@@ -45,6 +46,14 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         view.findViewById<RecyclerView>(R.id.recycler_ingredients).apply {
             layoutManager = ingredientViewManager
             adapter = ingredientViewAdapter
+        }
+
+        RxView.clicks(view.btn_increment).subscribe {
+            presenter.onIncrementQuantity()
+        }
+
+        RxView.clicks(view.btn_decrement).subscribe {
+            presenter.onDecrementQuantity()
         }
 
         return view
@@ -78,14 +87,6 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(image_hero)
-
-        RxView.clicks(btn_increment).subscribe {
-            presenter.onIncrementQuantity()
-        }
-
-        RxView.clicks(btn_decrement).subscribe {
-            presenter.onDecrementQuantity()
-        }
 
         progress_loading.visibility = View.GONE
         view_content.visibility = View.VISIBLE
