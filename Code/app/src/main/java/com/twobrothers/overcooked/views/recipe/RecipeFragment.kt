@@ -69,13 +69,13 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
         presenter.onStop()
     }
 
-    override fun render(recipe: RecipeModel) {
+    override fun render(recipe: RecipeModel, activeQuantity: Int) {
         if (isDetached) {
             return
         }
 
         text_title.text = recipe.title
-        text_quantity.text = if (recipe.serves != null) recipe.serves.toString() else recipe.makes.toString()
+        text_quantity.text = activeQuantity.toString()
         text_serves_makes.text = if (recipe.serves != null) "Serves" else "Makes"
 
         text_preptime.text = Int.toFriendlyTimeFormat(recipe.prepTime)
@@ -90,10 +90,6 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
 
         progress_loading.visibility = View.GONE
         view_content.visibility = View.VISIBLE
-    }
-
-    override fun onQuantityUpdate(quantity: Int) {
-        text_quantity.text = quantity.toString()
     }
 
     override fun onMethodDataSetChanged() {

@@ -20,7 +20,7 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
                 .load(args!!.getString("id"))
                 .subscribeBy(
                         onSuccess = {
-                            view.render(it)
+                            view.render(it, AppState.Recipe.activeQuantity)
                             view.onMethodDataSetChanged()
                             view.onIngredientDataSetChanged()
                         },
@@ -35,12 +35,12 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
 
     override fun onIncrementQuantity() {
         AppState.Recipe.updateActiveQuantity(AppState.Recipe.activeQuantity + 1)
-        view.onQuantityUpdate(AppState.Recipe.activeQuantity)
+        view.render(AppState.Recipe.data!!, AppState.Recipe.activeQuantity)
     }
 
     override fun onDecrementQuantity() {
         AppState.Recipe.updateActiveQuantity(AppState.Recipe.activeQuantity - 1)
-        view.onQuantityUpdate(AppState.Recipe.activeQuantity)
+        view.render(AppState.Recipe.data!!, AppState.Recipe.activeQuantity)
     }
 
     override fun onBindMethodRepositoryRowViewAtPosition(holder: MethodViewAdapter.Holder, position: Int) {

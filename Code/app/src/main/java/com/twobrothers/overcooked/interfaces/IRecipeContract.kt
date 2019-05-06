@@ -9,10 +9,9 @@ import com.twobrothers.overcooked.views.recipe.MethodViewAdapter
 interface IRecipeContract {
 
     interface View {
-        fun render(recipe: RecipeModel)
+        fun render(recipe: RecipeModel, activeQuantity: Int)
         fun onMethodDataSetChanged()
         fun onIngredientDataSetChanged()
-        fun onQuantityUpdate(quantity: Int)
     }
 
     interface Presenter {
