@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.twobrothers.overcooked.R
+import com.twobrothers.overcooked.app.AppState
 import com.twobrothers.overcooked.interfaces.IRecipeContract
 import com.twobrothers.overcooked.lookups.LookupIngredientType
 import com.twobrothers.overcooked.lookups.LookupIngredientUnitType
@@ -19,6 +20,8 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
 
     class Holder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun render(item: RecipeModel.Ingredient, foodMap: HashMap<String, FoodResponseModel>) {
+            val defaultQuantity = AppState.Recipe.data?.serves ?: AppState.Recipe.data?.makes ?: 1
+
             when (item) {
                 is RecipeModel.Heading -> itemView.text_title.text = item.title
                 is RecipeModel.FreeText -> itemView.text_description.text = item.description
@@ -30,20 +33,21 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                         foodConversion ?: return
 
                         val amount = if (item.unitIds.size > 1) item.amount * foodConversion.ratio else item.amount
+                        val foodQuantity = amount / defaultQuantity * AppState.Recipe.activeQuantity
 
                         val displayAmount = when (true) {
-                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Grams.id -> DecimalFormat("###.##").format(amount / 1000)
-                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Millilitres.id -> DecimalFormat("###.##").format(amount / 1000)
-                            else -> Double.toFraction(amount)
+                            foodQuantity >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Grams.id -> DecimalFormat("###.##").format(foodQuantity / 1000)
+                            foodQuantity >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Millilitres.id -> DecimalFormat("###.##").format(foodQuantity / 1000)
+                            else -> Double.toFraction(foodQuantity)
                         }
 
                         val ingredientUnitType = when (true) {
-                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Grams.id -> LookupIngredientUnitType.Kilograms
-                            amount >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Millilitres.id -> LookupIngredientUnitType.Litres
+                            foodQuantity >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Grams.id -> LookupIngredientUnitType.Kilograms
+                            foodQuantity >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Millilitres.id -> LookupIngredientUnitType.Litres
                             else -> LookupIngredientUnitType.dataLookup(foodConversion.unitId)
                         }
 
-                        val unit = if (amount > 1) ingredientUnitType.plural else ingredientUnitType.singular
+                        val unit = if (foodQuantity > 1) ingredientUnitType.plural else ingredientUnitType.singular
 
                         if (i == 0) {
                             "$acc$displayAmount$unit"

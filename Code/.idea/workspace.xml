@@ -27,9 +27,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c046f160-6080-443c-847d-7fd6d98d4ee8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/interfaces/IRecipeContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/interfaces/IRecipeContract.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientViewAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientViewAdapter.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,8 +64,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
-              <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+            <state relative-caret-position="308">
+              <caret line="71" column="59" selection-start-line="71" selection-start-column="45" selection-end-line="71" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientViewAdapter.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="143">
+              <caret line="59" column="79" selection-start-line="59" selection-start-column="79" selection-end-line="59" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -82,17 +91,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="42" column="75" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/AppState.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            <state relative-caret-position="430">
+              <caret line="43" column="75" selection-start-line="43" selection-start-column="75" selection-end-line="43" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -116,10 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>println</find>
-      <find>returned cache</find>
-      <find>GlideApp</find>
-      <find>open_sans_light</find>
       <find>open_sans_se</find>
       <find>open</find>
       <find>method</find>
@@ -146,6 +142,10 @@
       <find>RxView</find>
       <find>putRe</find>
       <find>lateinit</find>
+      <find>quantity</find>
+      <find>when (</find>
+      <find>when (</find>
+      <find>amount</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -193,7 +193,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/Router.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/MainFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/MethodViewAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientViewAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipelist/RecipeListViewAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipelist/RecipeListViewHolder.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/models/recipelist/RecipeListResponseModel.kt" />
@@ -207,9 +206,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/RecipeManager.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/Overcooked.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/AppState.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/interfaces/IRecipeContract.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/app/AppState.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientViewAdapter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt" />
       </list>
     </option>
@@ -857,13 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientViewAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="20" column="23" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipeListPresenter.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
@@ -915,13 +908,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/interfaces/IRecipeContract.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -929,10 +915,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/IngredientViewAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="59" column="79" selection-start-line="59" selection-start-column="79" selection-end-line="59" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/views/recipe/RecipeFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="71" column="59" selection-start-line="71" selection-start-column="45" selection-end-line="71" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/twobrothers/overcooked/presenters/RecipePresenter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="42" column="75" selection-start-line="42" selection-start-column="75" selection-end-line="42" selection-end-column="75" />
+        <state relative-caret-position="430">
+          <caret line="43" column="75" selection-start-line="43" selection-start-column="75" selection-end-line="43" selection-end-column="75" />
         </state>
       </provider>
     </entry>
