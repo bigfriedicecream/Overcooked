@@ -5,6 +5,7 @@ import io.reactivex.Single
 
 object AppState {
     object Recipe {
+        const val MAX_QUANTITY: Int = 100
         var data: RecipeModel? = null
             private set
         var activeQuantity: Int = -1
@@ -20,7 +21,9 @@ object AppState {
         }
 
         fun updateActiveQuantity(quantity: Int) {
-            activeQuantity = quantity
+            if (quantity in 1..MAX_QUANTITY) {
+                activeQuantity = quantity
+            }
         }
     }
 }
