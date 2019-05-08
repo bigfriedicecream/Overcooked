@@ -32,6 +32,10 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_recipe, container, false)
 
+        if (savedInstanceState == null) {
+            presenter.reset()
+        }
+
         methodViewManager = LinearLayoutManager(context)
         methodViewAdapter = MethodViewAdapter(presenter)
 

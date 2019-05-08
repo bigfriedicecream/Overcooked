@@ -16,6 +16,15 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
     private val disposable = CompositeDisposable()
 
     override fun onStart(args: Bundle?) {
+        val recipeData = AppState.Recipe.data
+
+        if (recipeData != null) {
+            view.render(recipeData, AppState.Recipe.activeQuantity)
+            view.onMethodDataSetChanged()
+            view.onIngredientDataSetChanged()
+            return
+        }
+
         AppState.Recipe
                 .load(args!!.getString("id"))
                 .subscribeBy(
@@ -31,6 +40,10 @@ class RecipePresenter(private val view:IRecipeContract.View) : IRecipeContract.P
 
     override fun onStop() {
         disposable.dispose()
+    }
+
+    override fun reset() {
+        AppState.Recipe.reset()
     }
 
     override fun onIncrementQuantity() {

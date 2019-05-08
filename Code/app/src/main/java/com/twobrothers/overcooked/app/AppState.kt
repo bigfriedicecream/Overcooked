@@ -25,5 +25,10 @@ object AppState {
                 activeQuantity = quantity
             }
         }
+
+        fun reset() {
+            data = null
+            activeQuantity = -1
+        }
     }
 }
