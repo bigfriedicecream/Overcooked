@@ -14,7 +14,6 @@
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/view_content"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite">
@@ -83,12 +82,18 @@
                     android:id="@+id/btn_decrement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/toggle_button"
+                    android:minWidth="64dp"
+                    android:minHeight="24dp"
                     android:text="-" />
 
                 <Button
                     android:id="@+id/btn_increment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/toggle_button"
+                    android:minWidth="64dp"
+                    android:minHeight="24dp"
                     android:text="+" />
 
             </LinearLayout>
