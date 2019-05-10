@@ -33,7 +33,11 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
                         foodConversion ?: return
 
                         val amount = if (item.unitIds.size > 1) item.amount * foodConversion.ratio else item.amount
-                        val foodQuantity = amount / defaultQuantity * AppState.Recipe.activeQuantity
+                        val foodQuantity = when (true) {
+                            foodConversion.unitId == LookupIngredientUnitType.Grams.id ||
+                                    foodConversion.unitId == LookupIngredientUnitType.Millilitres.id -> Math.ceil(amount / defaultQuantity * AppState.Recipe.activeQuantity)
+                            else -> amount / defaultQuantity * AppState.Recipe.activeQuantity
+                        }
 
                         val displayAmount = when (true) {
                             foodQuantity >= 1000 && foodConversion.unitId == LookupIngredientUnitType.Grams.id -> DecimalFormat("###.##").format(foodQuantity / 1000)
