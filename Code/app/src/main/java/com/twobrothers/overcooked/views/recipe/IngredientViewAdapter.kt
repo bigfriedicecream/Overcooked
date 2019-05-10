@@ -62,7 +62,7 @@ class IngredientViewAdapter(private val presenter: IRecipeContract.Presenter):Re
 
                     val foodName = when (food.conversions[food.conversions.lastIndex].unitId) {
                         LookupIngredientUnitType.Slice.id -> food.name.singular
-                        LookupIngredientUnitType.Singular.id -> if (item.amount > 1) food.name.plural else food.name.singular
+                        LookupIngredientUnitType.Singular.id -> if (item.amount / defaultQuantity * AppState.Recipe.activeQuantity > 1) food.name.plural else food.name.singular
                         else -> food.name.plural
                     }
 
