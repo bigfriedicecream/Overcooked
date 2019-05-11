@@ -5,11 +5,20 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.Overcooked
 import com.twobrothers.overcooked.models.food.FoodResponseModel
+import com.twobrothers.overcooked.models.recipelist.RecipeListResponseModel
 import com.twobrothers.overcooked.utils.CacheItem
 import java.lang.reflect.Type
 
 
 object CacheService {
+
+    fun getRecipeList(page: Int): CacheItem<RecipeListResponseModel>? {
+        return get("recipeList-$page", object: TypeToken<CacheItem<RecipeListResponseModel>>(){}.type, RecipeListResponseModel::class.java)
+    }
+
+    fun putRecipeList(page: Int, model: RecipeListResponseModel) {
+        put("recipeList-$page", model, 1000 * 60 * 60 * 8)
+    }
 
     fun getFood(id: String): FoodResponseModel? {
         val cache = get("food-$id", object: TypeToken<CacheItem<FoodResponseModel>>(){}.type, FoodResponseModel::class.java)

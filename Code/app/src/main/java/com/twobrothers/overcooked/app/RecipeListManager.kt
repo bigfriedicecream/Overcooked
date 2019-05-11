@@ -1,15 +1,10 @@
 package com.twobrothers.overcooked.app
 
-import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListResponseModel
-import com.twobrothers.overcooked.utils.CacheItem
 import io.reactivex.Single
 
 object RecipeListManager {
-
-    private const val CACHE_LENGTH: Int = 1000 * 60 * 60 * 8
-
     var recipes = mutableListOf<RecipeResponseModel.Recipe>()
         private set
     var request: Single<RecipeListResponseModel>? = null
@@ -25,10 +20,10 @@ object RecipeListManager {
         private set
 
     private fun getRecipesAt(page: Int): Single<RecipeListResponseModel> {
-        val cache = CacheService.get("recipeList-$page", object: TypeToken<CacheItem<RecipeListResponseModel>>(){}.type, RecipeListResponseModel::class.java)
+        val cache = CacheService.getRecipeList(page)
         val request = ApiClient.getRecipesAt(page)
                 .doAfterSuccess {
-                    putRecipeList(page, it)
+                    CacheService.putRecipeList(page, it)
                     it.data.recipes.forEach {
                         CacheService.put("recipe-${it.id}", it, 1000 * 60 * 60 * 24)
                     }
@@ -59,10 +54,6 @@ object RecipeListManager {
         }
 
         return request
-    }
-
-    private fun putRecipeList(page: Int, model: RecipeListResponseModel) {
-        CacheService.put("recipeList-$page", model, CACHE_LENGTH)
     }
 
     fun loadRecipes(): Single<RecipeListResponseModel>? {
