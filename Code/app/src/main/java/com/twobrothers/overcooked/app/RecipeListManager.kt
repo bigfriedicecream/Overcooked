@@ -33,7 +33,7 @@ object RecipeListManager {
                         CacheService.put("recipe-${it.id}", it, 1000 * 60 * 60 * 24)
                     }
                     it.data.food.forEach {
-                        FoodManager.putFood(it.value)
+                        CacheService.putFood(it.value)
                     }
 
                 }
