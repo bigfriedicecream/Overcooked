@@ -32,7 +32,7 @@ object ApiClient {
     }
 
     fun getRecipe(id: String): Single<RecipeModel> {
-        val cache = CacheService.get("recipe-$id", object: TypeToken<CacheItem<RecipeResponseModel.Recipe>>(){}.type, RecipeResponseModel.Recipe::class.java)
+        val cache = CacheService.getRecipe(id)
 
         fun mapRecipe(it: RecipeResponseModel.Recipe): RecipeModel {
             val ingredients = ArrayList<RecipeModel.Ingredient>()
@@ -75,7 +75,7 @@ object ApiClient {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map {
-                    CacheService.put("recipe-${it.data.recipe.id}", it, 1000 * 60 * 60 * 24)
+                    CacheService.putRecipe(it.data.recipe)
                     mapRecipe(it.data.recipe)
                 }
 

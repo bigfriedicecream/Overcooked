@@ -25,7 +25,7 @@ object RecipeListManager {
                 .doAfterSuccess {
                     CacheService.putRecipeList(page, it)
                     it.data.recipes.forEach {
-                        CacheService.put("recipe-${it.id}", it, 1000 * 60 * 60 * 24)
+                        CacheService.putRecipe(it)
                     }
                     it.data.food.forEach {
                         CacheService.putFood(it.value)

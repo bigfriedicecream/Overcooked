@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.Overcooked
 import com.twobrothers.overcooked.models.food.FoodResponseModel
+import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListResponseModel
 import com.twobrothers.overcooked.utils.CacheItem
 import java.lang.reflect.Type
@@ -20,6 +21,14 @@ object CacheService {
         put("recipeList-$page", model, 1000 * 60 * 60 * 8)
     }
 
+    fun getRecipe(id: String): CacheItem<RecipeResponseModel.Recipe>? {
+        return get("recipe-$id", object: TypeToken<CacheItem<RecipeResponseModel.Recipe>>(){}.type, RecipeResponseModel.Recipe::class.java)
+    }
+
+    fun putRecipe(model: RecipeResponseModel.Recipe) {
+        put("recipe-${model.id}", model, 1000 * 60 * 60 * 24)
+    }
+
     fun getFood(id: String): FoodResponseModel? {
         val cache = get("food-$id", object: TypeToken<CacheItem<FoodResponseModel>>(){}.type, FoodResponseModel::class.java)
         cache ?: return null
@@ -30,7 +39,7 @@ object CacheService {
         put("food-${model.id}", model, 1000 * 60 * 60 * 24)
     }
 
-    fun <T>get(key: String, typeToken: Type, c: Class<T>): CacheItem<T>? {
+    private fun <T>get(key: String, typeToken: Type, c: Class<T>): CacheItem<T>? {
         val data = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext).getString(key, "")
 
         if (!data.isNullOrEmpty()) {
@@ -40,7 +49,7 @@ object CacheService {
         return null
     }
 
-    fun <T>put(key: String, data: T, cacheLength: Int) {
+    private fun <T>put(key: String, data: T, cacheLength: Int) {
         val pref = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext)
         val cacheItem = CacheItem(data, cacheLength)
         val collectionType = object: TypeToken<CacheItem<T>>(){}.type
