@@ -49,7 +49,7 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
         progress_loading.visibility = View.GONE
         recycler_container.visibility = View.VISIBLE
         recycler_container.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val visibleChildCount = viewManager.childCount
                 val numChildren = viewManager.itemCount
