@@ -24,8 +24,8 @@ fun String.Companion.fromHtml(html:String): Spanned {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY) else Html.fromHtml(html)
 }
 
-fun Int.Companion.toFriendlyTimeFormat(mins: Int): String {
-    val h = if (mins / 60 >= 1) "${mins / 60}H " else ""
-    val m =  if (mins % 60 > 0) "${mins % 60}M" else ""
+fun Int.Companion.toFriendlyTimeFormat(minutes: Int): String {
+    val h = if (minutes / 60 >= 1) "${minutes / 60}H " else ""
+    val m =  if (minutes % 60 > 0) "${minutes % 60}M" else ""
     return "$h$m".trim()
 }
