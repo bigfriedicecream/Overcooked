@@ -48,7 +48,7 @@ object ApiClient {
                         LookupIngredientType.Quantified.id -> {
                             val quantified = Gson().fromJson(it, RecipeModel.Quantified::class.java)
                             ingredients.add(quantified)
-                            food[quantified.foodId] = CacheService.getFood(quantified.foodId)!!
+                            food[quantified.foodId] = CacheService.getFood(quantified.foodId)?.data!!
                         }
                     }
                 }

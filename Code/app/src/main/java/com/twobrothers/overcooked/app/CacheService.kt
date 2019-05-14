@@ -30,10 +30,8 @@ object CacheService {
         put("recipe-${model.id}", model, BuildConfig.RECIPE_CACHE_LENGTH)
     }
 
-    fun getFood(id: String): FoodResponseModel? {
-        val cache = get("food-$id", object: TypeToken<CacheItem<FoodResponseModel>>(){}.type, FoodResponseModel::class.java)
-        cache ?: return null
-        return cache.data
+    fun getFood(id: String): CacheItem<FoodResponseModel>? {
+        return get("food-$id", object: TypeToken<CacheItem<FoodResponseModel>>(){}.type, FoodResponseModel::class.java)
     }
 
     fun putFood(model: FoodResponseModel) {
