@@ -1,11 +1,11 @@
 package com.twobrothers.overcooked.presenters
 
+import com.twobrothers.overcooked.app.AppState
 import com.twobrothers.overcooked.app.Router
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
-import com.twobrothers.overcooked.app.RecipeListManager
 import io.reactivex.rxkotlin.addTo
 
 class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter {
@@ -13,16 +13,16 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     private val disposable = CompositeDisposable()
 
     override fun onStart() {
-        if (RecipeListManager.recipes.size > 0) {
+        if (AppState.RecipeList.recipes.size > 0) {
             view.render()
             return
         }
 
-        RecipeListManager.loadRecipes()
+        AppState.RecipeList.loadRecipes()
                 ?.subscribeBy(
                         onSuccess = {
                             view.render()
-                            view.onDataSetChanged(RecipeListManager.recipes.count() - it.data.recipes.count(), it.data.recipes.count())
+                            view.onDataSetChanged(AppState.RecipeList.recipes.count() - it.data.recipes.count(), it.data.recipes.count())
                         },
                         onError =  { it.printStackTrace() }
                 )
@@ -34,28 +34,26 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
     }
 
     override fun onRecipeListItemClick(position: Int) {
-        Router.goto(Router.Recipe.route(RecipeListManager.recipes[position].id))
+        Router.goto(Router.Recipe.route(AppState.RecipeList.recipes[position].id))
     }
 
     override fun onBindRepositoryRowViewAtPosition(holder: IRecipeListRowView, position: Int) {
-        holder.render(RecipeListManager.recipes[position])
+        holder.render(AppState.RecipeList.recipes[position])
     }
 
     override fun getRepositoriesRowsCount(): Int {
-        return RecipeListManager.recipes.size
+        return AppState.RecipeList.recipes.size
     }
 
     override fun loadRecipes() {
-        if (!RecipeListManager.lastPage && !RecipeListManager.requestInProgress) {
-            RecipeListManager.loadRecipes()
-                    ?.subscribeBy(
-                            onSuccess = {
-                                view.onDataSetChanged(RecipeListManager.recipes.count() - it.data.recipes.count(), it.data.recipes.count())
-                            },
-                            onError =  { it.printStackTrace() }
-                    )
-                    ?.addTo(disposable)
-        }
+        AppState.RecipeList.loadRecipes()
+                ?.subscribeBy(
+                        onSuccess = {
+                            view.onDataSetChanged(AppState.RecipeList.recipes.count() - it.data.recipes.count(), it.data.recipes.count())
+                        },
+                        onError =  { it.printStackTrace() }
+                )
+                ?.addTo(disposable)
     }
 
 }
