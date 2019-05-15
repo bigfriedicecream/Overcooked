@@ -2,6 +2,7 @@ package com.twobrothers.overcooked
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.twobrothers.overcooked.app.Router
 
 import com.twobrothers.overcooked.views.MainFragment
 
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        Router.onBackPressed()
         if (supportFragmentManager.backStackEntryCount == 1) {
             this.finishAffinity()
             return

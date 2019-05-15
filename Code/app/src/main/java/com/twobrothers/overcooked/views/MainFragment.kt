@@ -11,6 +11,7 @@ import com.twobrothers.overcooked.app.Router
 import com.twobrothers.overcooked.views.recipe.RecipeFragment
 import com.twobrothers.overcooked.views.recipelist.RecipeListFragment
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 
 class MainFragment : Fragment() {
@@ -23,25 +24,24 @@ class MainFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        disposable.add(
-                Router
-                        .getInstance()
-                        .subscribeBy(
-                                onNext = {
-                                    val view = when (it.id) {
-                                        Router.Recipe.id -> RecipeFragment()
-                                        Router.RecipeList.id -> RecipeListFragment()
-                                        else -> RecipeListFragment()
-                                    }
-                                    view.arguments = it.args
-                                    fragmentManager
-                                            ?.beginTransaction()
-                                            ?.replace(R.id.layout_main, view)
-                                            ?.addToBackStack(null)
-                                            ?.commitAllowingStateLoss()
-                                }
-                        )
-        )
+        Router
+                .getInstance()
+                .subscribeBy(
+                        onNext = {
+                            val view = when (it.id) {
+                                Router.Recipe.id -> RecipeFragment()
+                                Router.RecipeList.id -> RecipeListFragment()
+                                else -> RecipeListFragment()
+                            }
+                            view.arguments = it.args
+                            fragmentManager
+                                    ?.beginTransaction()
+                                    ?.replace(R.id.layout_main, view)
+                                    ?.addToBackStack(null)
+                                    ?.commitAllowingStateLoss()
+                        }
+                )
+                .addTo(disposable)
 
         if (Router.historySize == 0) {
             Router.goto(Router.RecipeList.route())

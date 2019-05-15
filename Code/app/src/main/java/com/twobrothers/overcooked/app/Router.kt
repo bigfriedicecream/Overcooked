@@ -21,6 +21,10 @@ object Router {
         subject.onNext(navItem)
     }
 
+    fun onBackPressed() {
+        history.removeAt(history.size - 1)
+    }
+
     interface Route {
         val id: String
         val args: Bundle
