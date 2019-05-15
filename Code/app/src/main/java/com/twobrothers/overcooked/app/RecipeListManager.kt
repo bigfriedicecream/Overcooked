@@ -19,43 +19,6 @@ object RecipeListManager {
     var currentPage: Int = -1
         private set
 
-    private fun getRecipesAt(page: Int): Single<RecipeListResponseModel> {
-        val cache = CacheService.getRecipeList(page)
-        val request = ApiClient.getRecipesAt(page)
-                .doAfterSuccess {
-                    CacheService.putRecipeList(page, it)
-                    it.data.recipes.forEach {
-                        CacheService.putRecipe(it)
-                    }
-                    it.data.food.forEach {
-                        CacheService.putFood(it.value)
-                    }
-
-                }
-                .onErrorResumeNext {
-                    Single.create {
-                        if (cache != null) {
-                            it.onSuccess(cache.data)
-                        }
-                    }
-                }
-
-        if (cache != null && cache.isFresh()) {
-            return Single.create {
-                it.onSuccess(cache.data)
-            }
-        }
-
-        if (cache != null && cache.isExpiring()) {
-            request.subscribe()
-            return Single.create {
-                it.onSuccess(cache.data)
-            }
-        }
-
-        return request
-    }
-
     fun loadRecipes(): Single<RecipeListResponseModel>? {
         if (lastPage) {
             return null
@@ -63,7 +26,7 @@ object RecipeListManager {
         if (request != null) {
             return request
         }
-        request = getRecipesAt(currentPage + 1)
+        request = ApiClient.getRecipesAt(currentPage + 1)
                 .doOnSuccess {
                     recipes.addAll(it.data.recipes)
                     currentPage += 1

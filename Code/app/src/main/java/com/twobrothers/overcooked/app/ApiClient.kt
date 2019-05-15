@@ -25,10 +25,44 @@ object ApiClient {
             .create(ApiService::class.java)
 
     fun getRecipesAt(page: Int): Single<RecipeListResponseModel> {
-        return apiService
+        val cache = CacheService.getRecipeList(page)
+
+        val request = apiService
                 .getRecipesAt(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doAfterSuccess {
+                    CacheService.putRecipeList(page, it)
+                    it.data.recipes.forEach {
+                        CacheService.putRecipe(it)
+                    }
+                    it.data.food.forEach {
+                        CacheService.putFood(it.value)
+                    }
+
+                }
+                .onErrorResumeNext {
+                    Single.create {
+                        if (cache != null) {
+                            it.onSuccess(cache.data)
+                        }
+                    }
+                }
+
+        if (cache != null && cache.isFresh()) {
+            return Single.create {
+                it.onSuccess(cache.data)
+            }
+        }
+
+        if (cache != null && cache.isExpiring()) {
+            request.subscribe()
+            return Single.create {
+                it.onSuccess(cache.data)
+            }
+        }
+
+        return request
     }
 
     fun getRecipe(id: String): Single<RecipeModel> {
