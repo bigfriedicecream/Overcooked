@@ -1,5 +1,6 @@
 package com.twobrothers.overcooked.app
 
+import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListResponseModel
@@ -36,7 +37,6 @@ object AppState {
     }
 
     object Recipe {
-        const val MAX_QUANTITY: Int = 100
         var data: RecipeModel? = null
             private set
         var activeQuantity: Int = -1
@@ -52,7 +52,7 @@ object AppState {
         }
 
         fun updateActiveQuantity(quantity: Int) {
-            if (quantity in 1..MAX_QUANTITY) {
+            if (quantity in 1..BuildConfig.MAX_SERVES_MAKES) {
                 activeQuantity = quantity
             }
         }
