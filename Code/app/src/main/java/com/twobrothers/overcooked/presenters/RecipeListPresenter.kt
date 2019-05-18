@@ -5,10 +5,9 @@ import com.twobrothers.overcooked.app.Router
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.interfaces.IRecipeListRowView
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.rxkotlin.addTo
 
-class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeListContract.Presenter {
+class RecipeListPresenter(private val view: IRecipeListContract.View) : IRecipeListContract.Presenter {
 
     private val disposable = CompositeDisposable()
 
@@ -18,19 +17,24 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
             return
         }
 
-        AppState.RecipeList.loadRecipes()
-                ?.subscribeBy(
-                        onSuccess = {
-                            view.render()
-                            view.onDataSetChanged(AppState.RecipeList.recipes.count() - it.data.recipes.count(), it.data.recipes.count())
-                        },
-                        onError =  { it.printStackTrace() }
-                )
-                ?.addTo(disposable)
+        loadRecipes()
     }
 
     override fun onStop() {
         disposable.dispose()
+    }
+
+    override fun loadRecipes() {
+        AppState.RecipeList.loadRecipes()
+                ?.doOnSuccess {
+                    view.render()
+                    view.onDataSetChanged(AppState.RecipeList.recipes.count() - it.data.recipes.count(), it.data.recipes.count())
+                }
+                ?.doOnError {
+                    it.printStackTrace()
+                }
+                ?.subscribe()
+                ?.addTo(disposable)
     }
 
     override fun onRecipeListItemClick(position: Int) {
@@ -43,17 +47,6 @@ class RecipeListPresenter(private val view:IRecipeListContract.View) : IRecipeLi
 
     override fun getRepositoriesRowsCount(): Int {
         return AppState.RecipeList.recipes.size
-    }
-
-    override fun loadRecipes() {
-        AppState.RecipeList.loadRecipes()
-                ?.subscribeBy(
-                        onSuccess = {
-                            view.onDataSetChanged(AppState.RecipeList.recipes.count() - it.data.recipes.count(), it.data.recipes.count())
-                        },
-                        onError =  { it.printStackTrace() }
-                )
-                ?.addTo(disposable)
     }
 
 }
