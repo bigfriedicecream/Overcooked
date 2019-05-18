@@ -37,6 +37,9 @@ object AppState {
     }
 
     object Recipe {
+        const val MIN_SERVES_MAKES = 1
+        const val MAX_SERVES_MAKES = 100
+
         var data: RecipeModel? = null
             private set
         var activeQuantity: Int = -1
@@ -52,7 +55,7 @@ object AppState {
         }
 
         fun updateActiveQuantity(quantity: Int) {
-            if (quantity in 1..BuildConfig.MAX_SERVES_MAKES) {
+            if (quantity in 1..MAX_SERVES_MAKES) {
                 activeQuantity = quantity
             }
         }

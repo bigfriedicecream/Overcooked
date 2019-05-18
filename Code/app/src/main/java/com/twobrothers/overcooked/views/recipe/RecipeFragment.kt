@@ -13,6 +13,7 @@ import com.jakewharton.rxbinding.view.RxView
 import com.twobrothers.overcooked.BuildConfig
 
 import com.twobrothers.overcooked.R
+import com.twobrothers.overcooked.app.AppState
 import com.twobrothers.overcooked.interfaces.IRecipeContract
 import com.twobrothers.overcooked.models.recipe.RecipeModel
 import com.twobrothers.overcooked.presenters.RecipePresenter
@@ -84,6 +85,7 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
 
         text_preptime.text = Int.toFriendlyTimeFormat(recipe.prepTime)
         text_cooktime.text = Int.toFriendlyTimeFormat(recipe.cookTime)
+
         GlideApp.with(view!!.context)
                 .load("${BuildConfig.IMAGE_ENDPOINT}${recipe.imageUrl}")
                 .signature(ObjectKey("${recipe.id}${recipe.lastUpdated}"))
@@ -91,6 +93,21 @@ class RecipeFragment : Fragment(), IRecipeContract.View {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(image_hero)
+
+        btn_increment.isEnabled = true
+        btn_increment.alpha = 1.toFloat()
+        btn_decrement.isEnabled = true
+        btn_decrement.alpha = 1.toFloat()
+
+        if (activeQuantity >= AppState.Recipe.MAX_SERVES_MAKES) {
+            btn_increment.isEnabled = false
+            btn_increment.alpha = 0.2.toFloat()
+        }
+
+        if (activeQuantity <= AppState.Recipe.MIN_SERVES_MAKES) {
+            btn_decrement.isEnabled = false
+            btn_decrement.alpha = 0.2.toFloat()
+        }
 
         progress_loading.visibility = View.GONE
         view_content.visibility = View.VISIBLE
