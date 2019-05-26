@@ -4,7 +4,7 @@ import android.preference.PreferenceManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.twobrothers.overcooked.BuildConfig
-import com.twobrothers.overcooked.Overcooked
+import com.twobrothers.overcooked.App
 import com.twobrothers.overcooked.models.food.FoodResponseModel
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.models.recipelist.RecipeListResponseModel
@@ -39,7 +39,7 @@ object CacheService {
     }
 
     private fun <T>get(key: String, typeToken: Type, c: Class<T>): CacheItem<T>? {
-        val data = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext).getString(key, "")
+        val data = PreferenceManager.getDefaultSharedPreferences(App.appContext).getString(key, "")
 
         if (!data.isNullOrEmpty()) {
             return Gson().fromJson(data, typeToken)
@@ -49,7 +49,7 @@ object CacheService {
     }
 
     private fun <T>put(key: String, data: T, cacheLength: Int) {
-        val pref = PreferenceManager.getDefaultSharedPreferences(Overcooked.appContext)
+        val pref = PreferenceManager.getDefaultSharedPreferences(App.appContext)
         val cacheItem = CacheItem(data, cacheLength)
         val collectionType = object: TypeToken<CacheItem<T>>(){}.type
         pref.edit().putString(key, Gson().toJson(cacheItem, collectionType)).apply()
