@@ -12,8 +12,9 @@ import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
 import com.twobrothers.overcooked.presenters.RecipeListPresenter
 import kotlinx.android.synthetic.main.fragment_recipe_list.*
+import kotlinx.android.synthetic.main.fragment_recipe_list.view.*
 
-class RecipeListFragment : Fragment(), IRecipeListContract.View {
+class RecipeListFragment: Fragment(), IRecipeListContract.View {
 
     private val presenter: IRecipeListContract.Presenter = RecipeListPresenter(this)
 
@@ -27,7 +28,7 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
         viewManager = LinearLayoutManager(context)
         viewAdapter = RecipeListViewAdapter(presenter)
 
-        recyclerView = view.findViewById<RecyclerView>(R.id.recycler_container).apply {
+        recyclerView = view.recycler_container.apply {
             layoutManager = viewManager
             adapter = viewAdapter
         }
@@ -48,7 +49,8 @@ class RecipeListFragment : Fragment(), IRecipeListContract.View {
     override fun render() {
         progress_loading.visibility = View.GONE
         recycler_container.visibility = View.VISIBLE
-        recycler_container.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+        recycler_container.addOnScrollListener(object: RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val visibleChildCount = viewManager.childCount
