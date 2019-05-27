@@ -11,14 +11,14 @@ import com.jakewharton.rxbinding.view.RxView
 import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.interfaces.IRecipeListContract
-import com.twobrothers.overcooked.interfaces.IRecipeListRowView
+import com.twobrothers.overcooked.interfaces.IRecipeListViewHolder
 import com.twobrothers.overcooked.models.recipe.RecipeResponseModel
 import com.twobrothers.overcooked.utils.GlideApp
 import kotlinx.android.synthetic.main.fragment_recipe_list_item.view.*
 
 class RecipeListViewAdapter(private val presenter: IRecipeListContract.Presenter): RecyclerView.Adapter<RecipeListViewAdapter.Holder>() {
 
-    class Holder(itemView: View, private val presenter:IRecipeListContract.Presenter): RecyclerView.ViewHolder(itemView), IRecipeListRowView {
+    class Holder(itemView: View, private val presenter:IRecipeListContract.Presenter): RecyclerView.ViewHolder(itemView), IRecipeListViewHolder {
         override fun render(recipe: RecipeResponseModel.Recipe) {
             itemView.text_title.text = recipe.title
 

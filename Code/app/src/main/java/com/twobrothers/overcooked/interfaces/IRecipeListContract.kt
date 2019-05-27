@@ -14,7 +14,7 @@ interface IRecipeListContract {
         fun onStart()
         fun onStop()
         fun onRecipeListItemClick(position: Int)
-        fun onBindRepositoryRowViewAtPosition(holder: IRecipeListRowView, position: Int)
+        fun onBindRepositoryRowViewAtPosition(holder: IRecipeListViewHolder, position: Int)
         fun getRepositoriesRowsCount():Int
         fun loadRecipes()
     }
