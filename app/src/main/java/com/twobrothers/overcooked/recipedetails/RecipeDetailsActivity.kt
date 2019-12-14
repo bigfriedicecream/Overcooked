@@ -4,9 +4,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.twobrothers.overcooked.R
+import com.twobrothers.overcooked.databinding.ActivityRecipeDetailsBinding
 import kotlinx.android.synthetic.main.activity_recipe_library.*
 
 class RecipeDetailsActivity : AppCompatActivity() {
@@ -31,6 +33,15 @@ class RecipeDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recipe_details)
 
         // Init view model
-        viewModel = RecipeDetailsViewModel()
+        val id = this.intent.getStringExtra(EXTRA_RECIPE_ID) ?: ""
+        viewModel = RecipeDetailsViewModel(id)
+
+        // Init data binding
+        DataBindingUtil.setContentView<ActivityRecipeDetailsBinding>(
+            this, R.layout.activity_recipe_details
+        ).apply {
+            this.lifecycleOwner = this@RecipeDetailsActivity
+            this.viewModel = this@RecipeDetailsActivity.viewModel
+        }
     }
 }

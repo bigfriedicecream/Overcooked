@@ -27,11 +27,14 @@ class RecipeLibraryViewModel {
 
     private fun loadRecipes() {
         showLoadingIndicator()
-        // TODO: Handle on failure listener
         getRecipes(object : OnDataSourceResult<List<Recipe>> {
             override fun onSuccess(result: List<Recipe>) {
                 handleSuccess(result)
                 showRecipeLibrary()
+            }
+
+            override fun onFailure(result: String) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
     }
