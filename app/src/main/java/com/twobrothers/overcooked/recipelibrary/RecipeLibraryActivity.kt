@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.twobrothers.overcooked.R
+import com.twobrothers.overcooked.recipedetails.RecipeDetailsActivity
 import kotlinx.android.synthetic.main.activity_recipe_library.*
 
 class RecipeLibraryActivity : AppCompatActivity() {
@@ -20,7 +21,11 @@ class RecipeLibraryActivity : AppCompatActivity() {
         viewModel = RecipeLibraryViewModel()
 
         // Init list adapter
-        listAdapter = RecipeLibraryListAdapter()
+        listAdapter = RecipeLibraryListAdapter(object : OnRecipeClickListener {
+            override fun onClick(id: String) {
+                viewModel.onRecipeClick(id)
+            }
+        })
         recycler_score_list.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
@@ -30,6 +35,12 @@ class RecipeLibraryActivity : AppCompatActivity() {
         // Init view model observers
         viewModel.recipes.observe(this, Observer {
             listAdapter.submitList(it)
+        })
+
+        viewModel.navigateToRecipeDetails.observe(this, Observer {
+            it.getContentIfNotHandled()?.let { id ->
+                startActivity(RecipeDetailsActivity.newIntent(this, id))
+            }
         })
 
     }

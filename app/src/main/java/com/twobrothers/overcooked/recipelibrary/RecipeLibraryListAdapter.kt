@@ -11,7 +11,9 @@ import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.recipedetails.models.Recipe
 
 
-class RecipeLibraryListAdapter :
+class RecipeLibraryListAdapter(
+    private val onRecipeClickListener: OnRecipeClickListener
+) :
     ListAdapter<Recipe, RecipeLibraryListAdapter.RecipeListViewHolder>(RecipeListDifferConfig()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeListViewHolder {
@@ -27,6 +29,9 @@ class RecipeLibraryListAdapter :
     inner class RecipeListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(recipe: Recipe) {
             itemView.findViewById<TextView>(R.id.text_title).text = recipe.title
+            itemView.setOnClickListener {
+                onRecipeClickListener.onClick(recipe.id)
+            }
         }
     }
 
@@ -43,4 +48,8 @@ class RecipeLibraryListAdapter :
         }
     }
 
+}
+
+interface OnRecipeClickListener {
+    fun onClick(id: String)
 }
