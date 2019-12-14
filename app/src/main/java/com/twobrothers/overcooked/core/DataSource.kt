@@ -14,6 +14,7 @@ fun getRecipes(result: OnDataSourceResult<List<Recipe>>) {
             val recipes = it.map {
                 val firebaseRecipe = it.toObject(FirebaseRecipe::class.java)
                 Recipe(
+                    it.id,
                     firebaseRecipe.title
                 )
             }
