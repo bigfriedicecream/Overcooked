@@ -14,8 +14,11 @@ fun getRecipes(result: OnDataSourceResult<List<Recipe>>) {
             val recipes = it.map {
                 val firebaseRecipe = it.toObject(FirebaseRecipe::class.java)
                 Recipe(
-                    it.id,
-                    firebaseRecipe.title
+                    id = it.id,
+                    title = firebaseRecipe.title,
+                    serves = firebaseRecipe.serves,
+                    prepTime = firebaseRecipe.prepTime,
+                    cookTime = firebaseRecipe.cookTime
                 )
             }
             result.onSuccess(recipes)
@@ -38,8 +41,11 @@ fun getRecipe(id: String, result: OnDataSourceResult<Recipe>) {
                 return@addOnSuccessListener
             }
             val recipe = Recipe(
-                it.id,
-                firebaseRecipe.title
+                id = it.id,
+                title = firebaseRecipe.title,
+                serves = firebaseRecipe.serves,
+                prepTime = firebaseRecipe.prepTime,
+                cookTime = firebaseRecipe.cookTime
             )
             result.onSuccess(recipe)
         }

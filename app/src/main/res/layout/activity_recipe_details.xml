@@ -10,9 +10,10 @@
 
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".recipelibrary.RecipeLibraryActivity">
 
         <TextView
@@ -22,6 +23,27 @@
             android:text="@{viewModel.title}"
             tools:text="Basil chicken coconut curry" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/text_serves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.serves}"
+            tools:text="2" />
+
+        <TextView
+            android:id="@+id/text_prep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.prepTime}"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/text_cook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.cookTime}"
+            tools:text="30" />
+
+    </LinearLayout>
 
 </layout>
