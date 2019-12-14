@@ -12,6 +12,12 @@ class RecipeLibraryViewModel {
     private val _recipes = MutableLiveData<List<Recipe>>()
     val recipes: LiveData<List<Recipe>> = _recipes
 
+    private val _isRecipeLibraryVisible = MutableLiveData<Boolean>()
+    val isRecipeLibraryVisible: LiveData<Boolean> = _isRecipeLibraryVisible
+
+    private val _isLoadingIndicatorVisible = MutableLiveData<Boolean>()
+    val isLoadingIndicatorVisible: LiveData<Boolean> = _isLoadingIndicatorVisible
+
     private val _navigateToRecipeDetails = MutableLiveData<Event<String>>()
     val navigateToRecipeDetails: LiveData<Event<String>> = _navigateToRecipeDetails
 
@@ -20,12 +26,28 @@ class RecipeLibraryViewModel {
     }
 
     private fun loadRecipes() {
+        showLoadingIndicator()
         // TODO: Handle on failure listener
         getRecipes(object : OnDataSourceResult<List<Recipe>> {
             override fun onSuccess(result: List<Recipe>) {
-                _recipes.value = result
+                handleSuccess(result)
+                showRecipeLibrary()
             }
         })
+    }
+
+    private fun handleSuccess(recipes: List<Recipe>) {
+        _recipes.value = recipes
+    }
+
+    private fun showRecipeLibrary() {
+        _isLoadingIndicatorVisible.value = false
+        _isRecipeLibraryVisible.value = true
+    }
+
+    private fun showLoadingIndicator() {
+        _isRecipeLibraryVisible.value = false
+        _isLoadingIndicatorVisible.value = true
     }
 
     fun onRecipeClick(id: String) {

@@ -2,9 +2,11 @@ package com.twobrothers.overcooked.recipelibrary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.twobrothers.overcooked.R
+import com.twobrothers.overcooked.databinding.ActivityRecipeLibraryBinding
 import com.twobrothers.overcooked.recipedetails.RecipeDetailsActivity
 import kotlinx.android.synthetic.main.activity_recipe_library.*
 
@@ -19,6 +21,14 @@ class RecipeLibraryActivity : AppCompatActivity() {
 
         // Init view model
         viewModel = RecipeLibraryViewModel()
+
+        // Init data binding
+        DataBindingUtil.setContentView<ActivityRecipeLibraryBinding>(
+            this, R.layout.activity_recipe_library
+        ).apply {
+            this.lifecycleOwner = this@RecipeLibraryActivity
+            this.viewModel = this@RecipeLibraryActivity.viewModel
+        }
 
         // Init list adapter
         listAdapter = RecipeLibraryListAdapter(object : OnRecipeClickListener {

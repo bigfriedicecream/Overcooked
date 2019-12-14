@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="8dp"
-    tools:context=".recipelibrary.RecipeLibraryActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_score_list"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.twobrothers.overcooked.recipelibrary.RecipeLibraryViewModel" />
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/view_recipe_list_item" />
+        tools:context=".recipelibrary.RecipeLibraryActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_score_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="8dp"
+            app:goneUnless="@{safeUnbox(viewModel.isRecipeLibraryVisible)}"
+            tools:listitem="@layout/view_recipe_list_item" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:goneUnless="@{safeUnbox(viewModel.isLoadingIndicatorVisible)}"
+            tools:visibility="gone" />
+
+    </FrameLayout>
+
+</layout>
