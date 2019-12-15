@@ -14,7 +14,7 @@ fun getRecipes(result: OnDataSourceResult<List<Recipe>>) {
             val recipes = it.map {
                 val firebaseRecipe = it.toObject(FirebaseRecipe::class.java)
                 Recipe(
-                    id = it.id,
+                    id = firebaseRecipe.id,
                     title = firebaseRecipe.title,
                     serves = firebaseRecipe.serves,
                     prepTime = firebaseRecipe.prepTime,
@@ -41,7 +41,7 @@ fun getRecipe(id: String, result: OnDataSourceResult<Recipe>) {
                 return@addOnSuccessListener
             }
             val recipe = Recipe(
-                id = it.id,
+                id = firebaseRecipe.id,
                 title = firebaseRecipe.title,
                 serves = firebaseRecipe.serves,
                 prepTime = firebaseRecipe.prepTime,
