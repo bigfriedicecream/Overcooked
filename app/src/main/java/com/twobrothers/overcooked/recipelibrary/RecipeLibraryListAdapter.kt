@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.twobrothers.overcooked.R
-import com.twobrothers.overcooked.recipedetails.models.Recipe
+import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
 
 
 class RecipeLibraryListAdapter(
     private val onRecipeClickListener: OnRecipeClickListener
 ) :
-    ListAdapter<Recipe, RecipeLibraryListAdapter.RecipeListViewHolder>(RecipeListDifferConfig()) {
+    ListAdapter<RecipeSummary, RecipeLibraryListAdapter.RecipeListViewHolder>(RecipeListDifferConfig()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeListViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -27,7 +27,7 @@ class RecipeLibraryListAdapter(
     }
 
     inner class RecipeListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(recipe: Recipe) {
+        fun bind(recipe: RecipeSummary) {
             itemView.findViewById<TextView>(R.id.text_title).text = recipe.title
             itemView.setOnClickListener {
                 onRecipeClickListener.onClick(recipe.id)
@@ -35,14 +35,14 @@ class RecipeLibraryListAdapter(
         }
     }
 
-    private class RecipeListDifferConfig : DiffUtil.ItemCallback<Recipe>() {
-        override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
+    private class RecipeListDifferConfig : DiffUtil.ItemCallback<RecipeSummary>() {
+        override fun areItemsTheSame(oldItem: RecipeSummary, newItem: RecipeSummary): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: Recipe,
-            newItem: Recipe
+            oldItem: RecipeSummary,
+            newItem: RecipeSummary
         ): Boolean {
             return oldItem.id == newItem.id
         }

@@ -2,15 +2,17 @@ package com.twobrothers.overcooked.recipelibrary
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.twobrothers.overcooked.core.Event
-import com.twobrothers.overcooked.core.OnDataSourceResult
-import com.twobrothers.overcooked.core.getRecipes
-import com.twobrothers.overcooked.recipedetails.models.Recipe
+import com.twobrothers.overcooked.core.FirebaseApiDataSource
+import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
+import kotlinx.coroutines.launch
 
-class RecipeLibraryViewModel {
+class RecipeLibraryViewModel : ViewModel() {
 
-    private val _recipes = MutableLiveData<List<Recipe>>()
-    val recipes: LiveData<List<Recipe>> = _recipes
+    private val _recipes = MutableLiveData<List<RecipeSummary>>()
+    val recipes: LiveData<List<RecipeSummary>> = _recipes
 
     private val _isRecipeLibraryVisible = MutableLiveData<Boolean>()
     val isRecipeLibraryVisible: LiveData<Boolean> = _isRecipeLibraryVisible
@@ -27,19 +29,19 @@ class RecipeLibraryViewModel {
 
     private fun loadRecipes() {
         showLoadingIndicator()
-        getRecipes(object : OnDataSourceResult<List<Recipe>> {
-            override fun onSuccess(result: List<Recipe>) {
-                handleSuccess(result)
+        // TODO: Mikey - inject data source, use dispatcherProvider.computation
+        val dataSource = FirebaseApiDataSource()
+        viewModelScope.launch {
+            val recipeList = dataSource.getRecipes()
+            if (recipeList != null) {
+                handleSuccess(recipeList)
                 showRecipeLibrary()
             }
+        }
 
-            override fun onFailure(result: String) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-        })
     }
 
-    private fun handleSuccess(recipes: List<Recipe>) {
+    private fun handleSuccess(recipes: List<RecipeSummary>) {
         _recipes.value = recipes
     }
 
