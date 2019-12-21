@@ -20,10 +20,18 @@ class RecipeDetailsViewModel(id: String) {
     private val _cookTime = MutableLiveData<String>()
     val cookTime: LiveData<String> = _cookTime
 
+    private val _isRecipeDetailsVisible = MutableLiveData<Boolean>()
+    val isRecipeDetialsVisible: LiveData<Boolean> = _isRecipeDetailsVisible
+
+    private val _isLoadingIndicatorVisible = MutableLiveData<Boolean>()
+    val isLoadingIndicatorVisible: LiveData<Boolean> = _isLoadingIndicatorVisible
+
     init {
+        showLoadingIndicator()
         getRecipe(id, object : OnDataSourceResult<Recipe> {
             override fun onSuccess(result: Recipe) {
                 handleSuccess(result)
+                showRecipeDetails()
             }
 
             override fun onFailure(result: String) {
@@ -38,6 +46,16 @@ class RecipeDetailsViewModel(id: String) {
         _serves.value = "Serves: ${recipe.serves}"
         _prepTime.value = "Prep: ${recipe.prepTime}"
         _cookTime.value = "Cook: ${recipe.cookTime}"
+    }
+
+    private fun showLoadingIndicator() {
+        _isRecipeDetailsVisible.value = false
+        _isLoadingIndicatorVisible.value = true
+    }
+
+    private fun showRecipeDetails() {
+        _isLoadingIndicatorVisible.value = false
+        _isRecipeDetailsVisible.value = true
     }
 
 }
