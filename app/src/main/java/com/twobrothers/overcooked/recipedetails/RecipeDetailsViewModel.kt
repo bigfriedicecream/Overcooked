@@ -2,11 +2,13 @@ package com.twobrothers.overcooked.recipedetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.twobrothers.overcooked.core.OnDataSourceResult
-import com.twobrothers.overcooked.core.getRecipe
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.twobrothers.overcooked.core.FirebaseApiDataSource
 import com.twobrothers.overcooked.recipedetails.models.Recipe
+import kotlinx.coroutines.launch
 
-class RecipeDetailsViewModel(id: String) {
+class RecipeDetailsViewModel(id: String) : ViewModel() {
 
     private val _title = MutableLiveData<String>()
     val title: LiveData<String> = _title
@@ -28,16 +30,15 @@ class RecipeDetailsViewModel(id: String) {
 
     init {
         showLoadingIndicator()
-        getRecipe(id, object : OnDataSourceResult<Recipe> {
-            override fun onSuccess(result: Recipe) {
-                handleSuccess(result)
+        // TODO: Mikey - inject data source, use dispatcherProvider.computation
+        val dataSource = FirebaseApiDataSource()
+        viewModelScope.launch {
+            val recipeList = dataSource.getRecipe(id)
+            if (recipeList != null) {
+                handleSuccess(recipeList)
                 showRecipeDetails()
             }
-
-            override fun onFailure(result: String) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-        })
+        }
     }
 
     private fun handleSuccess(recipe: Recipe) {

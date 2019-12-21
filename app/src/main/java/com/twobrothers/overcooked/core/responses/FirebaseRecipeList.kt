@@ -3,10 +3,10 @@ package com.twobrothers.overcooked.core.responses
 import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
 
 data class FirebaseRecipeList(
-    val data: Data
+    val data: FirebaseRecipeListData
 )
 
-data class Data(
+data class FirebaseRecipeListData(
     val recipes: List<FirebaseRecipeSummary>
 ) {
     fun toRecipeSummaryList() = recipes.map {

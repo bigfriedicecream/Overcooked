@@ -1,5 +1,6 @@
 package com.twobrothers.overcooked.core
 
+import com.twobrothers.overcooked.recipedetails.models.Recipe
 import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -24,5 +25,9 @@ class FirebaseApiDataSource {
 
     suspend fun getRecipes(): List<RecipeSummary>? {
         return service.getRecipes().body()?.data?.toRecipeSummaryList()
+    }
+
+    suspend fun getRecipe(id: String): Recipe? {
+        return service.getRecipe(id).body()?.data?.toRecipe()
     }
 }
