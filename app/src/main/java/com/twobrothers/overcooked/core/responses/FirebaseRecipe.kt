@@ -15,7 +15,8 @@ data class FirebaseRecipeData(
             title = recipe.title,
             serves = recipe.serves,
             prepTime = recipe.prepTime,
-            cookTime = recipe.cookTime
+            cookTime = recipe.cookTime,
+            method = recipe.method
         )
     }
 }
@@ -25,5 +26,6 @@ data class FirebaseRecipeDetails(
     val title: String,
     val serves: Int,
     val prepTime: Int,
-    val cookTime: Int
+    val cookTime: Int,
+    val method: List<String>
 )

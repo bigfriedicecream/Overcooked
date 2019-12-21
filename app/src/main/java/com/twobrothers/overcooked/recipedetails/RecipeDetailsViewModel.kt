@@ -22,6 +22,9 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
     private val _cookTime = MutableLiveData<String>()
     val cookTime: LiveData<String> = _cookTime
 
+    private val _method = MutableLiveData<List<String>>()
+    val method: LiveData<List<String>> = _method
+
     private val _isRecipeDetailsVisible = MutableLiveData<Boolean>()
     val isRecipeDetialsVisible: LiveData<Boolean> = _isRecipeDetailsVisible
 
@@ -47,6 +50,7 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
         _serves.value = "Serves: ${recipe.serves}"
         _prepTime.value = "Prep: ${recipe.prepTime}"
         _cookTime.value = "Cook: ${recipe.cookTime}"
+        _method.value = recipe.method
     }
 
     private fun showLoadingIndicator() {

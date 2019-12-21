@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Overcooked</string>
+
+    <string name="recipe_method_title">Method</string>
 </resources>

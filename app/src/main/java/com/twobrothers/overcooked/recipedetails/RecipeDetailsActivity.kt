@@ -4,11 +4,13 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.databinding.ActivityRecipeDetailsBinding
+import kotlinx.android.synthetic.main.activity_recipe_details.*
 import kotlinx.android.synthetic.main.activity_recipe_library.*
 
 class RecipeDetailsActivity : AppCompatActivity() {
@@ -43,5 +45,16 @@ class RecipeDetailsActivity : AppCompatActivity() {
             this.lifecycleOwner = this@RecipeDetailsActivity
             this.viewModel = this@RecipeDetailsActivity.viewModel
         }
+
+        // Init view model observers
+        viewModel.method.observe(this, Observer {
+            layout_method.removeAllViews()
+            it.forEachIndexed { i, step ->
+                val stepView = TextView(this)
+                val stepText = "${i + 1} $step"
+                stepView.text = stepText
+                layout_method.addView(stepView)
+            }
+        })
     }
 }

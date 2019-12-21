@@ -5,5 +5,6 @@ data class Recipe(
     val title: String,
     val serves: Int,
     val prepTime: Int,
-    val cookTime: Int
+    val cookTime: Int,
+    val method: List<String>
 )

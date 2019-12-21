@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:padding="16dp"
         tools:context=".recipelibrary.RecipeLibraryActivity">
 
         <LinearLayout
@@ -51,6 +52,18 @@
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.cookTime}"
                 tools:text="30" />
+
+            <TextView
+                android:id="@+id/text_method_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recipe_method_title" />
+
+            <LinearLayout
+                android:id="@+id/layout_method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
 
         </LinearLayout>
 
