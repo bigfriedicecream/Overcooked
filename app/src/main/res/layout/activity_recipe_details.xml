@@ -30,6 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.title}"
+                android:textAppearance="@style/TextAppearance.Overcooked.Headline5"
                 tools:text="Basil chicken coconut curry" />
 
             <TextView
@@ -50,14 +51,30 @@
                 android:id="@+id/text_cook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:text="@{viewModel.cookTime}"
                 tools:text="30" />
+
+            <TextView
+                android:id="@+id/text_ingredients_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recipe_ingredients_title"
+                android:textAppearance="@style/TextAppearance.Overcooked.Subtitle2" />
+
+            <LinearLayout
+                android:id="@+id/layout_ingredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical" />
 
             <TextView
                 android:id="@+id/text_method_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/recipe_method_title" />
+                android:text="@string/recipe_method_title"
+                android:textAppearance="@style/TextAppearance.Overcooked.Subtitle2" />
 
             <LinearLayout
                 android:id="@+id/layout_method"

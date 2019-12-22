@@ -10,6 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.databinding.ActivityRecipeDetailsBinding
+import com.twobrothers.overcooked.recipedetails.models.FreeTextIngredient
+import com.twobrothers.overcooked.recipedetails.models.HeadingIngredient
+import com.twobrothers.overcooked.recipedetails.models.QuantifiedIngredient
 import kotlinx.android.synthetic.main.activity_recipe_details.*
 import kotlinx.android.synthetic.main.activity_recipe_library.*
 
@@ -47,6 +50,34 @@ class RecipeDetailsActivity : AppCompatActivity() {
         }
 
         // Init view model observers
+        viewModel.ingredients.observe(this, Observer {
+            layout_ingredients.removeAllViews()
+            it.forEach {
+                val view = when (it) {
+                    is HeadingIngredient -> {
+                        val view = layoutInflater.inflate(
+                            R.layout.view_ingredient_heading,
+                            layout_ingredients,
+                            false
+                        )
+                        view.findViewById<TextView>(R.id.text_title).text = it.title
+                        view
+                    }
+                    is QuantifiedIngredient -> {
+                        val view = TextView(this)
+                        view.text = it.food.name.singular
+                        view
+                    }
+                    is FreeTextIngredient -> {
+                        val view = TextView(this)
+                        view.text = it.description
+                        view
+                    }
+                }
+                layout_ingredients.addView(view)
+            }
+        })
+
         viewModel.method.observe(this, Observer {
             layout_method.removeAllViews()
             it.forEachIndexed { i, step ->

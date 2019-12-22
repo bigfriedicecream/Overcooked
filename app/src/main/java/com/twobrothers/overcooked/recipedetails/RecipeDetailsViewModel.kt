@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.twobrothers.overcooked.core.FirebaseApiDataSource
+import com.twobrothers.overcooked.recipedetails.models.Ingredient
 import com.twobrothers.overcooked.recipedetails.models.Recipe
 import kotlinx.coroutines.launch
 
@@ -21,6 +22,9 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
 
     private val _cookTime = MutableLiveData<String>()
     val cookTime: LiveData<String> = _cookTime
+
+    private val _ingredients = MutableLiveData<List<Ingredient>>()
+    val ingredients: LiveData<List<Ingredient>> = _ingredients
 
     private val _method = MutableLiveData<List<String>>()
     val method: LiveData<List<String>> = _method
@@ -50,6 +54,7 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
         _serves.value = "Serves: ${recipe.serves}"
         _prepTime.value = "Prep: ${recipe.prepTime}"
         _cookTime.value = "Cook: ${recipe.cookTime}"
+        _ingredients.value = recipe.ingredients
         _method.value = recipe.method
     }
 

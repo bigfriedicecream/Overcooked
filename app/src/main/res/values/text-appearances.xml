@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.Overcooked.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="TextAppearance.Overcooked.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.12</item>
+    </style>
+
+    <style name="TextAppearance.Overcooked.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.03</item>
+    </style>
+
+
+</resources>
