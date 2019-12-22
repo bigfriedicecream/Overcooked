@@ -35,6 +35,6 @@ data class FirebaseConversion(
 ) {
     fun toConversion() = Conversion(
         ratio = ratio,
-        measurementType = LookupMeasurementUnit.getById(unitId) ?: LookupMeasurementUnit.UNIT
+        measurementType = LookupMeasurementUnit.getById(unitId) ?: LookupMeasurementUnit.ITEM
     )
 }

@@ -7,14 +7,13 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.databinding.ActivityRecipeDetailsBinding
 import com.twobrothers.overcooked.recipedetails.models.FreeTextIngredient
 import com.twobrothers.overcooked.recipedetails.models.HeadingIngredient
 import com.twobrothers.overcooked.recipedetails.models.QuantifiedIngredient
+import com.twobrothers.overcooked.recipedetails.presentation.getQuantifiedIngredientReadableFormat
 import kotlinx.android.synthetic.main.activity_recipe_details.*
-import kotlinx.android.synthetic.main.activity_recipe_library.*
 
 class RecipeDetailsActivity : AppCompatActivity() {
 
@@ -65,7 +64,8 @@ class RecipeDetailsActivity : AppCompatActivity() {
                     }
                     is QuantifiedIngredient -> {
                         val view = TextView(this)
-                        view.text = it.food.name.singular
+                        // TODO: Serves is hardcoded
+                        view.text = getQuantifiedIngredientReadableFormat(this, it, 2)
                         view
                     }
                     is FreeTextIngredient -> {

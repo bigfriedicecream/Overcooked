@@ -1,8 +1,10 @@
 package com.twobrothers.overcooked.core.responses
 
+import com.twobrothers.overcooked.core.IngredientMeasurementUnit
 import com.twobrothers.overcooked.core.lookups.LookupIngredientType
 import com.twobrothers.overcooked.core.lookups.LookupMeasurementUnit
 import com.twobrothers.overcooked.recipedetails.models.*
+import com.twobrothers.overcooked.recipedetails.presentation.mapIngredientUnitType
 
 data class FirebaseRecipe(
     val data: FirebaseRecipeData
@@ -34,9 +36,8 @@ data class FirebaseRecipeData(
                 }
                 LookupIngredientType.QUANTIFIED -> {
                     QuantifiedIngredient(
-                        amount = it.amount,
-                        measurementUnit = LookupMeasurementUnit.getById(it.measurementUnit)
-                            ?: LookupMeasurementUnit.UNIT,
+                        amount = it.amount / recipe.serves,
+                        measurementUnit = mapIngredientUnitType(it.measurementUnit) ?: throw IllegalStateException("Unable to map measurement type"),
                         food = food[it.food]?.toFood()
                             ?: throw IllegalStateException("Unable to find food for quantified ingredient"),
                         endDescription = it.description

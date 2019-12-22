@@ -6,7 +6,7 @@ enum class LookupMeasurementUnit(
     val singular: String,
     val plural: String
 ) {
-    UNIT("zPmZwAS5sT6gxeMrrrAY", " ", " "),
+    ITEM("zPmZwAS5sT6gxeMrrrAY", " ", " "),
     RASHERS("1pq9A9Z24JucwiI5yCH0", " rasher of ", " rashes of "),
     TSP("4Uqpb6kmne7vc8hscrcQ", " tsp ", " tsp "),
     CUPS("51mMmatnM3zBuMKUw8Lv", " cup ", " cups "),
