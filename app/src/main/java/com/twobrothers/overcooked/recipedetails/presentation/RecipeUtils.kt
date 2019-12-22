@@ -67,7 +67,10 @@ fun getQuantifiedIngredientReadableFormat(
         else -> ingredient.food.name.singular
     }
 
-    return TextUtils.concat(ingredientDisplay, name)
+    val endDescription =
+        if (ingredient.endDescription.isNotBlank()) ", ${ingredient.endDescription}" else ""
+
+    return TextUtils.concat(ingredientDisplay, name, endDescription)
 }
 
 /**
