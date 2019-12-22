@@ -51,7 +51,8 @@ class RecipeDetailsActivity : AppCompatActivity() {
         // Init view model observers
         viewModel.ingredients.observe(this, Observer {
             layout_ingredients.removeAllViews()
-            it.forEach {
+            val serves = it.first
+            it.second.forEach {
                 val view = when (it) {
                     is HeadingIngredient -> {
                         val view = layoutInflater.inflate(
@@ -64,8 +65,7 @@ class RecipeDetailsActivity : AppCompatActivity() {
                     }
                     is QuantifiedIngredient -> {
                         val view = TextView(this)
-                        // TODO: Serves is hardcoded
-                        view.text = getQuantifiedIngredientReadableFormat(this, it, 2)
+                        view.text = getQuantifiedIngredientReadableFormat(this, it, serves)
                         view
                     }
                     is FreeTextIngredient -> {
@@ -82,7 +82,7 @@ class RecipeDetailsActivity : AppCompatActivity() {
             layout_method.removeAllViews()
             it.forEachIndexed { i, step ->
                 val stepView = TextView(this)
-                val stepText = "${i + 1} $step"
+                val stepText = "${i + 1}. $step"
                 stepView.text = stepText
                 layout_method.addView(stepView)
             }

@@ -23,8 +23,8 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
     private val _cookTime = MutableLiveData<String>()
     val cookTime: LiveData<String> = _cookTime
 
-    private val _ingredients = MutableLiveData<List<Ingredient>>()
-    val ingredients: LiveData<List<Ingredient>> = _ingredients
+    private val _ingredients = MutableLiveData<Pair<Int, List<Ingredient>>>()
+    val ingredients: LiveData<Pair<Int, List<Ingredient>>> = _ingredients
 
     private val _method = MutableLiveData<List<String>>()
     val method: LiveData<List<String>> = _method
@@ -54,7 +54,7 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
         _serves.value = "Serves: ${recipe.serves}"
         _prepTime.value = "Prep: ${recipe.prepTime}"
         _cookTime.value = "Cook: ${recipe.cookTime}"
-        _ingredients.value = recipe.ingredients
+        _ingredients.value = Pair(recipe.serves, recipe.ingredients)
         _method.value = recipe.method
     }
 
