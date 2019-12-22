@@ -31,10 +31,10 @@ data class FirebaseName(
 
 data class FirebaseConversion(
     val ratio: Double,
-    val unitId: String
+    val measurementUnitId: String
 ) {
     fun toConversion() = Conversion(
         ratio = ratio,
-        measurementType = LookupMeasurementUnit.getById(unitId) ?: LookupMeasurementUnit.ITEM
+        measurementType = LookupMeasurementUnit.getById(measurementUnitId) ?: LookupMeasurementUnit.ITEM
     )
 }
