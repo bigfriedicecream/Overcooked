@@ -16,15 +16,15 @@ sealed class Ingredient
 
 data class HeadingIngredient(
     val title: String
-)
+) : Ingredient()
 
 data class FreeTextIngredient(
     val description: String
-)
+) : Ingredient()
 
 data class QuantifiedIngredient(
     val amount: Double,
     val measurementUnit: LookupMeasurementUnit,
     val foodId: String,
     val endDescription: String
-)
+) : Ingredient()
