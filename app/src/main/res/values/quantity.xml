@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="duration_hours">
+        <item quantity="one">%1$d HR</item>
+        <item quantity="other">%1$d HRS</item>
+    </plurals>
+    <plurals name="recipe_servings_title">
+        <item quantity="one">serving</item>
+        <item quantity="other">servings</item>
+    </plurals>
+    <plurals name="recipe_method_servings_title">
+        <item quantity="one">based on %1$d serving</item>
+        <item quantity="other">based on %1$d servings</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_item">
+        <item quantity="one">\u0020</item>
+        <item quantity="other">\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_grams">
+        <item quantity="one">g\u0020</item>
+        <item quantity="other">g\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_millilitres">
+        <item quantity="one">ml\u0020</item>
+        <item quantity="other">ml\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_tsp">
+        <item quantity="one">\u0020tsp\u0020</item>
+        <item quantity="other">\u0020tsp\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_tbs">
+        <item quantity="one">\u0020tbs\u0020</item>
+        <item quantity="other">\u0020tbs\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_cups">
+        <item quantity="one">\u0020cup\u0020</item>
+        <item quantity="other">\u0020cups\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_bunch">
+        <item quantity="one">\u0020bunch of\u0020</item>
+        <item quantity="other">\u0020bunches of\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_rashers">
+        <item quantity="one">\u0020rasher of\u0020</item>
+        <item quantity="other">\u0020rashes of\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_head">
+        <item quantity="one">\u0020head of\u0020</item>
+        <item quantity="other">\u0020heads of\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_sprig">
+        <item quantity="one">\u0020sprig of\u0020</item>
+        <item quantity="other">\u0020sprigs of\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_stalk">
+        <item quantity="one">\u0020stalk of\u0020</item>
+        <item quantity="other">\u0020stalks of\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_sheets">
+        <item quantity="one">\u0020sheet of\u0020</item>
+        <item quantity="other">\u0020sheets of\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_slice">
+        <item quantity="one">\u0020slice of\u0020</item>
+        <item quantity="other">\u0020slices of\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_kilogram">
+        <item quantity="one">kg\u0020</item>
+        <item quantity="other">kg\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_litre">
+        <item quantity="one">L\u0020</item>
+        <item quantity="other">L\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_ounce">
+        <item quantity="one">\u0020oz\u0020</item>
+        <item quantity="other">\u0020oz\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_fluid_ounce">
+        <item quantity="one">\u0020fl oz\u0020</item>
+        <item quantity="other">\u0020fl oz\u0020</item>
+    </plurals>
+    <plurals name="ingredient_unit_type_pound">
+        <item quantity="one">lb\u0020</item>
+        <item quantity="other">lb\u0020</item>
+    </plurals>
+</resources>
