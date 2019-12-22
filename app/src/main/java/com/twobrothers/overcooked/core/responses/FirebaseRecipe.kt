@@ -9,7 +9,8 @@ data class FirebaseRecipe(
 )
 
 data class FirebaseRecipeData(
-    val recipe: FirebaseRecipeDetails
+    val recipe: FirebaseRecipeDetails,
+    val food: HashMap<String, FirebaseFood>
 ) {
     fun toRecipe(): Recipe {
         return Recipe(
@@ -18,9 +19,36 @@ data class FirebaseRecipeData(
             serves = recipe.serves,
             prepTime = recipe.prepTime,
             cookTime = recipe.cookTime,
-            ingredients = recipe.ingredients.map { it.toIngredient() },
+            ingredients = getMappedIngredients(),
             method = recipe.method
         )
+    }
+
+    private fun getMappedIngredients(): List<Ingredient> {
+        return recipe.ingredients.map {
+            when (LookupIngredientType.getById(it.ingredientType)) {
+                LookupIngredientType.HEADING -> {
+                    HeadingIngredient(
+                        title = it.description
+                    )
+                }
+                LookupIngredientType.QUANTIFIED -> {
+                    QuantifiedIngredient(
+                        amount = it.amount,
+                        measurementUnit = LookupMeasurementUnit.getById(it.measurementUnit)
+                            ?: LookupMeasurementUnit.UNIT,
+                        food = food[it.food]?.toFood()
+                            ?: throw IllegalStateException("Unable to find food for quantified ingredient"),
+                        endDescription = it.description
+                    )
+                }
+                else -> {
+                    FreeTextIngredient(
+                        description = it.description
+                    )
+                }
+            }
+        }
     }
 }
 
@@ -40,28 +68,4 @@ data class FirebaseIngredient(
     val measurementUnit: String,
     val food: String,
     val description: String
-) {
-    fun toIngredient(): Ingredient {
-        return when (LookupIngredientType.getById(ingredientType)) {
-            LookupIngredientType.HEADING -> {
-                HeadingIngredient(
-                    title = description
-                )
-            }
-            LookupIngredientType.QUANTIFIED -> {
-                QuantifiedIngredient(
-                    amount = amount,
-                    measurementUnit = LookupMeasurementUnit.getById(measurementUnit)
-                        ?: LookupMeasurementUnit.UNIT,
-                    foodId = food,
-                    endDescription = description
-                )
-            }
-            else -> {
-                FreeTextIngredient(
-                    description = description
-                )
-            }
-        }
-    }
-}
+)
