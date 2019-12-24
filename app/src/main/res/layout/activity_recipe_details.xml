@@ -20,8 +20,6 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
             app:goneUnless="@{safeUnbox(viewModel.isRecipeDetialsVisible)}">
 
             <LinearLayout
@@ -62,8 +60,12 @@
 
                 <TextView
                     android:id="@+id/text_ingredients_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/lightBackground"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
                     android:text="@string/recipe_ingredients_title"
                     android:textAppearance="@style/TextAppearance.Overcooked.Subtitle2" />
 
@@ -76,8 +78,12 @@
 
                 <TextView
                     android:id="@+id/text_method_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/lightBackground"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
                     android:text="@string/recipe_method_title"
                     android:textAppearance="@style/TextAppearance.Overcooked.Subtitle2" />
 
