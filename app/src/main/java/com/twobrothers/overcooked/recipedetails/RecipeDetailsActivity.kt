@@ -65,13 +65,22 @@ class RecipeDetailsActivity : AppCompatActivity() {
                         view
                     }
                     is QuantifiedIngredient -> {
-                        val view = TextView(this)
-                        view.text = getQuantifiedIngredientReadableFormat(this, it, serves)
+                        val view = layoutInflater.inflate(
+                            R.layout.view_ingredient_default,
+                            layout_ingredients,
+                            false
+                        )
+                        view.findViewById<TextView>(R.id.text_description).text =
+                            getQuantifiedIngredientReadableFormat(this, it, serves)
                         view
                     }
                     is FreeTextIngredient -> {
-                        val view = TextView(this)
-                        view.text = it.description
+                        val view = layoutInflater.inflate(
+                            R.layout.view_ingredient_default,
+                            layout_ingredients,
+                            false
+                        )
+                        view.findViewById<TextView>(R.id.text_description).text = it.description
                         view
                     }
                 }
