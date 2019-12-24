@@ -12,6 +12,7 @@ import com.twobrothers.overcooked.databinding.ActivityRecipeDetailsBinding
 import com.twobrothers.overcooked.recipedetails.models.FreeTextIngredient
 import com.twobrothers.overcooked.recipedetails.models.HeadingIngredient
 import com.twobrothers.overcooked.recipedetails.models.QuantifiedIngredient
+import com.twobrothers.overcooked.recipedetails.presentation.MethodStepView
 import com.twobrothers.overcooked.recipedetails.presentation.getQuantifiedIngredientReadableFormat
 import kotlinx.android.synthetic.main.activity_recipe_details.*
 
@@ -81,10 +82,9 @@ class RecipeDetailsActivity : AppCompatActivity() {
         viewModel.method.observe(this, Observer {
             layout_method.removeAllViews()
             it.forEachIndexed { i, step ->
-                val stepView = TextView(this)
-                val stepText = "${i + 1}. $step"
-                stepView.text = stepText
-                layout_method.addView(stepView)
+                val view = MethodStepView(this)
+                view.setContent(i + 1, step)
+                layout_method.addView(view)
             }
         })
     }
