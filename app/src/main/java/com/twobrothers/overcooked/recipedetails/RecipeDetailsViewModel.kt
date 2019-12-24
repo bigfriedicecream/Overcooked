@@ -49,11 +49,10 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
     }
 
     private fun handleSuccess(recipe: Recipe) {
-        // TODO: Get serves, prepTime, cookTime from string resource
         _title.value = recipe.title
-        _serves.value = "Serves: ${recipe.serves}"
-        _prepTime.value = "Prep: ${recipe.prepTime}"
-        _cookTime.value = "Cook: ${recipe.cookTime}"
+        _serves.value = recipe.serves.toString()
+        _prepTime.value = recipe.prepTime.toString()
+        _cookTime.value = recipe.cookTime.toString()
         _ingredients.value = Pair(recipe.serves, recipe.ingredients)
         _method.value = recipe.method
     }

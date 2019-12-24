@@ -3,4 +3,10 @@
 
     <string name="recipe_method_title">Method</string>
     <string name="recipe_ingredients_title">Ingredients</string>
+    <string name="recipe_prep_title">Prep</string>
+    <string name="recipe_cook_title">Cook</string>
+    <string name="recipe_serves_title">Serves</string>
+
+    <!-- Unicode -->
+    <string name="unicode_bullet">\u2022</string>
 </resources>

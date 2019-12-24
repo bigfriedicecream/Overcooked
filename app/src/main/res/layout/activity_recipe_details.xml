@@ -30,33 +30,90 @@
 
                 <TextView
                     android:id="@+id/text_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
                     android:text="@{viewModel.title}"
                     android:textAppearance="@style/TextAppearance.Overcooked.Headline5"
                     tools:text="Basil chicken coconut curry" />
 
-                <TextView
-                    android:id="@+id/text_serves"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.serves}"
-                    tools:text="2" />
-
-                <TextView
-                    android:id="@+id/text_prep"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.prepTime}"
-                    tools:text="5" />
-
-                <TextView
-                    android:id="@+id/text_cook"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="@{viewModel.cookTime}"
-                    tools:text="30" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_time_small"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="@string/recipe_prep_title" />
+
+                    <TextView
+                        android:id="@+id/text_prep"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="@{viewModel.prepTime}"
+                        tools:text="5" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="@string/unicode_bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="@string/recipe_cook_title" />
+
+                    <TextView
+                        android:id="@+id/text_cook"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.cookTime}"
+                        tools:text="30" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="@string/recipe_serves_title" />
+
+                    <TextView
+                        android:id="@+id/text_serves"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.serves}"
+                        tools:text="2" />
+
+                </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/text_ingredients_title"
