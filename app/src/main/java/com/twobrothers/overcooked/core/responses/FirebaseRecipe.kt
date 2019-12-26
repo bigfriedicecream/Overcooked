@@ -15,6 +15,7 @@ data class FirebaseRecipeData(
     fun toRecipe(): Recipe {
         return Recipe(
             id = recipe.id,
+            heroImageUrl = recipe.heroImageUrl,
             title = recipe.title,
             serves = recipe.serves,
             prepTime = recipe.prepTime,
@@ -35,7 +36,8 @@ data class FirebaseRecipeData(
                 LookupIngredientType.QUANTIFIED -> {
                     QuantifiedIngredient(
                         amount = it.amount / recipe.serves,
-                        measurementUnit = mapIngredientUnitType(it.measurementUnitId) ?: throw IllegalStateException("Unable to map measurement type"),
+                        measurementUnit = mapIngredientUnitType(it.measurementUnitId)
+                            ?: throw IllegalStateException("Unable to map measurement type"),
                         food = food[it.foodId]?.toFood()
                             ?: throw IllegalStateException("Unable to find food for quantified ingredient"),
                         endDescription = it.description
@@ -53,6 +55,7 @@ data class FirebaseRecipeData(
 
 data class FirebaseRecipeDetails(
     val id: String,
+    val heroImageUrl: String,
     val title: String,
     val serves: Int,
     val prepTime: Int,

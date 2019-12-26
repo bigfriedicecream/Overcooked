@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.databinding.ActivityRecipeDetailsBinding
 import com.twobrothers.overcooked.recipedetails.models.FreeTextIngredient
@@ -48,6 +49,15 @@ class RecipeDetailsActivity : AppCompatActivity() {
             this.lifecycleOwner = this@RecipeDetailsActivity
             this.viewModel = this@RecipeDetailsActivity.viewModel
         }
+
+        viewModel.heroImageUrl.observe(this, Observer {
+            Glide
+                .with(this)
+                .load(it)
+                .centerCrop()
+                .placeholder(R.drawable.img_placeholder_16_9)
+                .into(image_hero)
+        })
 
         // Init view model observers
         viewModel.ingredients.observe(this, Observer {

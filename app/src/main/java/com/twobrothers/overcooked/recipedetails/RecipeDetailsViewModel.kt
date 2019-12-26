@@ -14,6 +14,9 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
     private val _title = MutableLiveData<String>()
     val title: LiveData<String> = _title
 
+    private val _heroImageUrl = MutableLiveData<String>()
+    val heroImageUrl: LiveData<String> = _heroImageUrl
+
     private val _serves = MutableLiveData<String>()
     val serves: LiveData<String> = _serves
 
@@ -50,6 +53,7 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
 
     private fun handleSuccess(recipe: Recipe) {
         _title.value = recipe.title
+        _heroImageUrl.value = recipe.heroImageUrl
         _serves.value = recipe.serves.toString()
         _prepTime.value = recipe.prepTime.toString()
         _cookTime.value = recipe.cookTime.toString()

@@ -28,6 +28,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/image_hero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/img_placeholder_16_9" />
+
                 <TextView
                     android:id="@+id/text_title"
                     android:layout_width="match_parent"

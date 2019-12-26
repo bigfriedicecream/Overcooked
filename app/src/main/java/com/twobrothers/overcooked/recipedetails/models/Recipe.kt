@@ -5,6 +5,7 @@ import com.twobrothers.overcooked.core.IngredientMeasurementUnit
 data class Recipe(
     val id: String,
     val title: String,
+    val heroImageUrl: String,
     val serves: Int,
     val prepTime: Int,
     val cookTime: Int,
