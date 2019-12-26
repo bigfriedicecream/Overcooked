@@ -16,10 +16,12 @@ data class FirebaseRecipeListData(
 
 data class FirebaseRecipeSummary(
     val id: String,
-    val title: String
+    val title: String,
+    val heroImageUrl: String
 ) {
     fun toRecipeSummary() = RecipeSummary(
         id = id,
-        title = title
+        title = title,
+        heroImageUrl = heroImageUrl
     )
 }

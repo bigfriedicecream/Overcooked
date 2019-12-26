@@ -3,10 +3,12 @@ package com.twobrothers.overcooked.recipelibrary
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
 
@@ -27,9 +29,19 @@ class RecipeLibraryListAdapter(
     }
 
     inner class RecipeListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val root = itemView.findViewById<View>(R.id.card_root)
+        private val heroImage = itemView.findViewById<ImageView>(R.id.image_hero)
+        private val title = itemView.findViewById<TextView>(R.id.text_title)
+
         fun bind(recipe: RecipeSummary) {
-            itemView.findViewById<TextView>(R.id.text_title).text = recipe.title
-            itemView.setOnClickListener {
+            title.text = recipe.title
+            Glide
+                .with(root)
+                .load(recipe.heroImageUrl)
+                .centerCrop()
+                .placeholder(R.drawable.img_placeholder_16_9)
+                .into(heroImage)
+            root.setOnClickListener {
                 onRecipeClickListener.onClick(recipe.id)
             }
         }
