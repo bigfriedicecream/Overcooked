@@ -12,6 +12,8 @@ import org.threeten.bp.Duration
 
 class RecipeDetailsViewModel(id: String) : ViewModel() {
 
+    private var referenceUrl: String = ""
+
     private val _title = MutableLiveData<String>()
     val title: LiveData<String> = _title
 
@@ -32,6 +34,9 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
 
     private val _method = MutableLiveData<List<String>>()
     val method: LiveData<List<String>> = _method
+
+    private val _referenceName = MutableLiveData<String>()
+    val referenceName: LiveData<String> = _referenceName
 
     private val _isRecipeDetailsVisible = MutableLiveData<Boolean>()
     val isRecipeDetialsVisible: LiveData<Boolean> = _isRecipeDetailsVisible
@@ -60,6 +65,8 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
         _cookTime.value = Duration.ofMinutes(recipe.cookTime.toLong())
         _ingredients.value = Pair(recipe.serves, recipe.ingredients)
         _method.value = recipe.method
+        _referenceName.value = recipe.referenceName
+        referenceUrl = recipe.referenceUrl
     }
 
     private fun showLoadingIndicator() {

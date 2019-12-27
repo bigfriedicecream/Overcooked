@@ -21,7 +21,9 @@ data class FirebaseRecipeData(
             prepTime = recipe.prepTime,
             cookTime = recipe.cookTime,
             ingredients = getMappedIngredients(),
-            method = recipe.method
+            method = recipe.method,
+            referenceName = recipe.referenceName,
+            referenceUrl = recipe.referenceUrl
         )
     }
 
@@ -61,7 +63,9 @@ data class FirebaseRecipeDetails(
     val prepTime: Int,
     val cookTime: Int,
     val ingredients: List<FirebaseIngredient>,
-    val method: List<String>
+    val method: List<String>,
+    val referenceName: String,
+    val referenceUrl: String
 )
 
 data class FirebaseIngredient(

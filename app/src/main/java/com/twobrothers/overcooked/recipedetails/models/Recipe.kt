@@ -10,7 +10,9 @@ data class Recipe(
     val prepTime: Int,
     val cookTime: Int,
     val ingredients: List<Ingredient>,
-    val method: List<String>
+    val method: List<String>,
+    val referenceName: String,
+    val referenceUrl: String
 )
 
 sealed class Ingredient
