@@ -14,8 +14,10 @@ import com.twobrothers.overcooked.recipedetails.models.FreeTextIngredient
 import com.twobrothers.overcooked.recipedetails.models.HeadingIngredient
 import com.twobrothers.overcooked.recipedetails.models.QuantifiedIngredient
 import com.twobrothers.overcooked.recipedetails.presentation.MethodStepView
+import com.twobrothers.overcooked.recipedetails.presentation.getFormattedDuration
 import com.twobrothers.overcooked.recipedetails.presentation.getQuantifiedIngredientReadableFormat
 import kotlinx.android.synthetic.main.activity_recipe_details.*
+import org.threeten.bp.Duration
 
 class RecipeDetailsActivity : AppCompatActivity() {
 
@@ -57,6 +59,15 @@ class RecipeDetailsActivity : AppCompatActivity() {
                 .centerCrop()
                 .placeholder(R.drawable.img_placeholder_16_9)
                 .into(image_hero)
+        })
+
+        // TODO: Mikey - inject resources in the view model and data bind prepTime and cookTime
+        viewModel.prepTime.observe(this, Observer {
+            text_prep.text = getFormattedDuration(this, it)
+        })
+
+        viewModel.cookTime.observe(this, Observer {
+            text_cook.text = getFormattedDuration(this, it)
         })
 
         // Init view model observers

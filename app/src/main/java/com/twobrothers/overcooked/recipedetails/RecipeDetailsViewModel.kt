@@ -8,6 +8,7 @@ import com.twobrothers.overcooked.core.FirebaseApiDataSource
 import com.twobrothers.overcooked.recipedetails.models.Ingredient
 import com.twobrothers.overcooked.recipedetails.models.Recipe
 import kotlinx.coroutines.launch
+import org.threeten.bp.Duration
 
 class RecipeDetailsViewModel(id: String) : ViewModel() {
 
@@ -20,11 +21,11 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
     private val _serves = MutableLiveData<String>()
     val serves: LiveData<String> = _serves
 
-    private val _prepTime = MutableLiveData<String>()
-    val prepTime: LiveData<String> = _prepTime
+    private val _prepTime = MutableLiveData<Duration>()
+    val prepTime: LiveData<Duration> = _prepTime
 
-    private val _cookTime = MutableLiveData<String>()
-    val cookTime: LiveData<String> = _cookTime
+    private val _cookTime = MutableLiveData<Duration>()
+    val cookTime: LiveData<Duration> = _cookTime
 
     private val _ingredients = MutableLiveData<Pair<Int, List<Ingredient>>>()
     val ingredients: LiveData<Pair<Int, List<Ingredient>>> = _ingredients
@@ -55,8 +56,8 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
         _title.value = recipe.title
         _heroImageUrl.value = recipe.heroImageUrl
         _serves.value = recipe.serves.toString()
-        _prepTime.value = recipe.prepTime.toString()
-        _cookTime.value = recipe.cookTime.toString()
+        _prepTime.value = Duration.ofMinutes(recipe.prepTime.toLong())
+        _cookTime.value = Duration.ofMinutes(recipe.cookTime.toLong())
         _ingredients.value = Pair(recipe.serves, recipe.ingredients)
         _method.value = recipe.method
     }

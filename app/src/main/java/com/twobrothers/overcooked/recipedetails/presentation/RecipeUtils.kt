@@ -3,9 +3,11 @@ package com.twobrothers.overcooked.recipedetails.presentation
 import android.content.Context
 import android.text.TextUtils
 import androidx.core.text.HtmlCompat
+import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.core.IngredientMeasurementUnit
 import com.twobrothers.overcooked.core.lookups.LookupMeasurementUnit
 import com.twobrothers.overcooked.recipedetails.models.QuantifiedIngredient
+import org.threeten.bp.Duration
 import java.text.DecimalFormat
 import kotlin.math.ceil
 import kotlin.math.roundToInt
@@ -119,4 +121,27 @@ fun mapIngredientUnitType(unitType: String): IngredientMeasurementUnit? {
         LookupMeasurementUnit.SLICE -> IngredientMeasurementUnit.SLICE
         else -> null
     }
+}
+
+/**
+ * Formats the provided duration for display.
+ */
+fun getFormattedDuration(context: Context, duration: Duration): String {
+    if (duration.toMinutes() <= 0) {
+        return context.getString(R.string.duration_time_none)
+    }
+
+    val hours = duration.toHours().toInt()
+    val mins = duration.minusHours(hours.toLong()).toMinutes().toInt()
+
+    val hourString = if (hours == 0) "" else context.resources.getQuantityString(
+        R.plurals.duration_hours,
+        hours,
+        hours
+    )
+
+    val minString =
+        if (mins == 0) "" else "$mins ${context.getString(R.string.duration_time_format_minutes)}"
+
+    return "$hourString $minString".trim()
 }

@@ -44,6 +44,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.1.0-alpha01")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0-alpha01")
 
+    // ThreeTenABP
+    implementation("com.jakewharton.threetenabp:threetenabp:1.2.1")
+
     // Material
     implementation("com.google.android.material:material:1.0.0")
 

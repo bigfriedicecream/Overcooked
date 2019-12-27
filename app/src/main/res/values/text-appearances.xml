@@ -22,5 +22,12 @@
         <item name="android:letterSpacing">0.03</item>
     </style>
 
+    <style name="TextAppearance.Overcooked.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="fontFamily">@font/lato</item>
+        <item name="android:letterSpacing">0.09</item>
+    </style>
+
 
 </resources>

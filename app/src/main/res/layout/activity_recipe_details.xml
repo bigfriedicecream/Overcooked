@@ -67,14 +67,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
-                        android:text="@string/recipe_prep_title" />
+                        android:text="@string/recipe_prep_title"
+                        android:textAppearance="@style/TextAppearance.Overcooked.Overline" />
 
                     <TextView
                         android:id="@+id/text_prep"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
-                        android:text="@{viewModel.prepTime}"
+                        android:textAppearance="@style/TextAppearance.Overcooked.Overline"
                         tools:text="5" />
 
                     <TextView
@@ -87,13 +88,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
-                        android:text="@string/recipe_cook_title" />
+                        android:text="@string/recipe_cook_title"
+                        android:textAppearance="@style/TextAppearance.Overcooked.Overline" />
 
                     <TextView
                         android:id="@+id/text_cook"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.cookTime}"
+                        android:textAppearance="@style/TextAppearance.Overcooked.Overline"
                         tools:text="30" />
 
                 </LinearLayout>
@@ -118,13 +120,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
-                        android:text="@string/recipe_serves_title" />
+                        android:text="@string/recipe_serves_title"
+                        android:textAppearance="@style/TextAppearance.Overcooked.Overline" />
 
                     <TextView
                         android:id="@+id/text_serves"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.serves}"
+                        android:textAppearance="@style/TextAppearance.Overcooked.Overline"
                         tools:text="2" />
 
                 </LinearLayout>
