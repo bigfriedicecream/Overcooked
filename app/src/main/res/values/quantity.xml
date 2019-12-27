@@ -29,8 +29,8 @@
         <item quantity="other">\u0020tsp\u0020</item>
     </plurals>
     <plurals name="ingredient_unit_type_tbs">
-        <item quantity="one">\u0020tbs\u0020</item>
-        <item quantity="other">\u0020tbs\u0020</item>
+        <item quantity="one">\u0020Tbsp\u0020</item>
+        <item quantity="other">\u0020Tbsp\u0020</item>
     </plurals>
     <plurals name="ingredient_unit_type_cups">
         <item quantity="one">\u0020cup\u0020</item>
