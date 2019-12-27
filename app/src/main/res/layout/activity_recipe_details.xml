@@ -32,6 +32,7 @@
                     android:id="@+id/image_hero"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:adjustViewBounds="true"
                     android:background="@drawable/img_placeholder_16_9" />
 
