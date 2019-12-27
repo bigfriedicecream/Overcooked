@@ -6,12 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.twobrothers.overcooked.core.Event
 import com.twobrothers.overcooked.core.FirebaseApiDataSource
+import com.twobrothers.overcooked.core.dagger.DaggerFirebaseApiDataSourceComponent
 import com.twobrothers.overcooked.recipedetails.models.Ingredient
 import com.twobrothers.overcooked.recipedetails.models.Recipe
 import kotlinx.coroutines.launch
 import org.threeten.bp.Duration
 
 class RecipeDetailsViewModel(id: String) : ViewModel() {
+
+    private val dataSource: FirebaseApiDataSource =
+        DaggerFirebaseApiDataSourceComponent.create().getDataSource()
 
     private var referenceUrl: String = ""
 
@@ -50,8 +54,6 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
 
     init {
         showLoadingIndicator()
-        // TODO: Mikey - inject data source, use dispatcherProvider.computation
-        val dataSource = FirebaseApiDataSource()
         viewModelScope.launch {
             val recipeList = dataSource.getRecipe(id)
             if (recipeList != null) {

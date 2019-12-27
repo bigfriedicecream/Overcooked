@@ -6,10 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.twobrothers.overcooked.core.Event
 import com.twobrothers.overcooked.core.FirebaseApiDataSource
+import com.twobrothers.overcooked.core.dagger.DaggerFirebaseApiDataSourceComponent
 import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
 import kotlinx.coroutines.launch
 
 class RecipeLibraryViewModel : ViewModel() {
+
+    private val dataSource: FirebaseApiDataSource =
+        DaggerFirebaseApiDataSourceComponent.create().getDataSource()
 
     private val _recipes = MutableLiveData<List<RecipeSummary>>()
     val recipes: LiveData<List<RecipeSummary>> = _recipes
@@ -29,8 +33,6 @@ class RecipeLibraryViewModel : ViewModel() {
 
     private fun loadRecipes() {
         showLoadingIndicator()
-        // TODO: Mikey - inject data source, use dispatcherProvider.computation
-        val dataSource = FirebaseApiDataSource()
         viewModelScope.launch {
             val recipeList = dataSource.getRecipes()
             if (recipeList != null) {

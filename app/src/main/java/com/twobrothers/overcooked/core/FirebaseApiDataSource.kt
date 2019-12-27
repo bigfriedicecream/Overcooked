@@ -5,8 +5,9 @@ import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-class FirebaseApiDataSource {
+class FirebaseApiDataSource @Inject constructor() {
     private var service: FirebaseApiService
 
     init {
