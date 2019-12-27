@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.twobrothers.overcooked.core.Event
 import com.twobrothers.overcooked.core.FirebaseApiDataSource
 import com.twobrothers.overcooked.recipedetails.models.Ingredient
 import com.twobrothers.overcooked.recipedetails.models.Recipe
@@ -44,6 +45,9 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
     private val _isLoadingIndicatorVisible = MutableLiveData<Boolean>()
     val isLoadingIndicatorVisible: LiveData<Boolean> = _isLoadingIndicatorVisible
 
+    private val _navigateToReference = MutableLiveData<Event<String>>()
+    val navigateToReference: LiveData<Event<String>> = _navigateToReference
+
     init {
         showLoadingIndicator()
         // TODO: Mikey - inject data source, use dispatcherProvider.computation
@@ -77,6 +81,10 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
     private fun showRecipeDetails() {
         _isLoadingIndicatorVisible.value = false
         _isRecipeDetailsVisible.value = true
+    }
+
+    fun onReferenceClick() {
+        _navigateToReference.value = Event(referenceUrl)
     }
 
 }

@@ -48,7 +48,7 @@
                     tools:text="Basil chicken coconut curry" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:gravity="center_vertical"
@@ -102,7 +102,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:orientation="horizontal"
@@ -136,12 +136,13 @@
 
                 <TextView
                     android:id="@+id/text_reference"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:drawableStart="@drawable/ic_link"
                     android:drawablePadding="8dp"
                     android:gravity="center_vertical"
+                    android:onClick="@{() -> viewModel.onReferenceClick()}"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="@{viewModel.referenceName}"

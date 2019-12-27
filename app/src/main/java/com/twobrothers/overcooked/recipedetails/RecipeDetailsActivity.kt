@@ -2,9 +2,10 @@ package com.twobrothers.overcooked.recipedetails
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
@@ -17,7 +18,7 @@ import com.twobrothers.overcooked.recipedetails.presentation.MethodStepView
 import com.twobrothers.overcooked.recipedetails.presentation.getFormattedDuration
 import com.twobrothers.overcooked.recipedetails.presentation.getQuantifiedIngredientReadableFormat
 import kotlinx.android.synthetic.main.activity_recipe_details.*
-import org.threeten.bp.Duration
+
 
 class RecipeDetailsActivity : AppCompatActivity() {
 
@@ -52,6 +53,7 @@ class RecipeDetailsActivity : AppCompatActivity() {
             this.viewModel = this@RecipeDetailsActivity.viewModel
         }
 
+        // Init view model observers
         viewModel.heroImageUrl.observe(this, Observer {
             Glide
                 .with(this)
@@ -70,7 +72,14 @@ class RecipeDetailsActivity : AppCompatActivity() {
             text_cook.text = getFormattedDuration(this, it)
         })
 
-        // Init view model observers
+        viewModel.navigateToReference.observe(this, Observer {
+            it.getContentIfNotHandled()?.let {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(it)
+                startActivity(intent)
+            }
+        })
+
         viewModel.ingredients.observe(this, Observer {
             layout_ingredients.removeAllViews()
             val serves = it.first
