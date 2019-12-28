@@ -28,6 +28,7 @@ data class FreeTextIngredient(
 data class QuantifiedIngredient(
     val amount: Double,
     val measurementUnit: IngredientMeasurementUnit,
+    val alternateMeasurementUnit: IngredientMeasurementUnit?,
     val food: Food,
     val endDescription: String
 ) : Ingredient()

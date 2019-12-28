@@ -40,6 +40,9 @@ data class FirebaseRecipeData(
                         amount = it.amount / recipe.serves,
                         measurementUnit = mapIngredientUnitType(it.measurementUnitId)
                             ?: throw IllegalStateException("Unable to map measurement type"),
+                        alternateMeasurementUnit = if (it.alternateMeasurementUnitId != null) mapIngredientUnitType(
+                            it.alternateMeasurementUnitId
+                        ) else null,
                         food = food[it.foodId]?.toFood()
                             ?: throw IllegalStateException("Unable to find food for quantified ingredient"),
                         endDescription = it.description
@@ -72,6 +75,7 @@ data class FirebaseIngredient(
     val ingredientTypeId: Int,
     val amount: Double,
     val measurementUnitId: String,
+    val alternateMeasurementUnitId: String?,
     val foodId: String,
     val description: String
 )
