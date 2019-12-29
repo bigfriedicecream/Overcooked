@@ -4,6 +4,7 @@ import com.twobrothers.overcooked.core.lookups.LookupMeasurementUnit
 import com.twobrothers.overcooked.recipedetails.models.Conversion
 import com.twobrothers.overcooked.recipedetails.models.Food
 import com.twobrothers.overcooked.recipedetails.models.Name
+import com.twobrothers.overcooked.recipedetails.presentation.mapIngredientUnitType
 
 data class FirebaseFood(
     val id: String,
@@ -35,6 +36,7 @@ data class FirebaseConversion(
 ) {
     fun toConversion() = Conversion(
         ratio = ratio,
-        measurementType = LookupMeasurementUnit.getById(measurementUnitId) ?: LookupMeasurementUnit.ITEM
+        measurementUnit = mapIngredientUnitType(measurementUnitId)
+            ?: throw IllegalStateException("Unable to map measurement unit type")
     )
 }

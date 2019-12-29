@@ -1,6 +1,6 @@
 package com.twobrothers.overcooked.recipedetails.models
 
-import com.twobrothers.overcooked.core.lookups.LookupMeasurementUnit
+import com.twobrothers.overcooked.core.IngredientMeasurementUnit
 
 data class Food(
     val id: String,
@@ -15,5 +15,5 @@ data class Name(
 
 data class Conversion(
     val ratio: Double,
-    val measurementType: LookupMeasurementUnit
+    val measurementUnit: IngredientMeasurementUnit
 )
