@@ -12,16 +12,36 @@ import java.text.DecimalFormat
 import kotlin.math.ceil
 import kotlin.math.roundToInt
 
+const val MAX_GRAMS_QUANTITY = 1000
+const val MAX_MILLILITRES_QUANTITY = 1000
+
 fun getQuantifiedIngredientReadableFormat(
     context: Context,
     ingredient: QuantifiedIngredient,
     serves: Int
 ): CharSequence {
     val quantity = ingredient.amount * serves
-    val measurementUnit = context.resources.getQuantityString(
-        ingredient.measurementUnit.quantityStringId,
-        ceil(quantity).toInt()
-    )
+    val measurementUnit = when {
+        ingredient.measurementUnit == IngredientMeasurementUnit.GRAMS && quantity >= MAX_GRAMS_QUANTITY -> {
+            context.resources.getQuantityString(
+                IngredientMeasurementUnit.KILOGRAM.quantityStringId,
+                ceil(quantity).toInt()
+            )
+        }
+        ingredient.measurementUnit == IngredientMeasurementUnit.MILLILITRES && quantity >= MAX_MILLILITRES_QUANTITY -> {
+            context.resources.getQuantityString(
+                IngredientMeasurementUnit.MILLILITRES.quantityStringId,
+                ceil(quantity).toInt()
+            )
+        }
+        else -> {
+            context.resources.getQuantityString(
+                ingredient.measurementUnit.quantityStringId,
+                ceil(quantity).toInt()
+            )
+        }
+    }
+
     val name = when (ingredient.measurementUnit) {
         IngredientMeasurementUnit.SLICE -> ingredient.food.name.singular
         IngredientMeasurementUnit.ITEM -> {
