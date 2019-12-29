@@ -40,6 +40,9 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
     private val _method = MutableLiveData<List<String>>()
     val method: LiveData<List<String>> = _method
 
+    private val _isReferenceVisible = MutableLiveData<Boolean>()
+    val isReferenceVisible: LiveData<Boolean> = _isReferenceVisible
+
     private val _referenceName = MutableLiveData<String>()
     val referenceName: LiveData<String> = _referenceName
 
@@ -73,6 +76,7 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
         _method.value = recipe.method
         _referenceName.value = recipe.referenceName
         referenceUrl = recipe.referenceUrl
+        _isReferenceVisible.value = recipe.referenceName.isNotBlank()
     }
 
     private fun showLoadingIndicator() {

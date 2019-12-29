@@ -147,6 +147,7 @@
                     android:paddingEnd="16dp"
                     android:text="@{viewModel.referenceName}"
                     android:textAppearance="@style/TextAppearance.Overcooked.Overline"
+                    app:goneUnless="@{safeUnbox(viewModel.isReferenceVisible())}"
                     tools:text="Best Recipes" />
 
                 <TextView
