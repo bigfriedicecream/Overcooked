@@ -12,8 +12,6 @@ import java.text.DecimalFormat
 import kotlin.math.ceil
 import kotlin.math.roundToInt
 
-const val MAX_GRAMS_QUANTITY = 1000
-const val MAX_MILLILITRES_QUANTITY = 1000
 
 fun getQuantifiedIngredientReadableFormat(
     context: Context,
@@ -21,14 +19,34 @@ fun getQuantifiedIngredientReadableFormat(
     serves: Int
 ): CharSequence {
     val quantity = ingredient.amount * serves
+    val displayQuantity = when {
+        ingredient.measurementUnit == IngredientMeasurementUnit.GRAMS && quantity >= 1000 -> {
+            DecimalFormat("###.##").format(quantity / 1000)
+        }
+        ingredient.measurementUnit == IngredientMeasurementUnit.MILLILITRES && quantity >= 1000 -> {
+            DecimalFormat("###.##").format(quantity / 1000)
+        }
+        ingredient.measurementUnit == IngredientMeasurementUnit.GRAMS -> {
+            DecimalFormat("###.##").format(quantity)
+        }
+        ingredient.measurementUnit == IngredientMeasurementUnit.MILLILITRES -> {
+            DecimalFormat("###.##").format(quantity)
+        }
+        else -> {
+            HtmlCompat.fromHtml(
+                quantity.toRationalHtmlString(),
+                HtmlCompat.FROM_HTML_MODE_LEGACY
+            )
+        }
+    }
     val measurementUnit = when {
-        ingredient.measurementUnit == IngredientMeasurementUnit.GRAMS && quantity >= MAX_GRAMS_QUANTITY -> {
+        ingredient.measurementUnit == IngredientMeasurementUnit.GRAMS && quantity >= 1000 -> {
             context.resources.getQuantityString(
                 IngredientMeasurementUnit.KILOGRAM.quantityStringId,
                 ceil(quantity).toInt()
             )
         }
-        ingredient.measurementUnit == IngredientMeasurementUnit.MILLILITRES && quantity >= MAX_MILLILITRES_QUANTITY -> {
+        ingredient.measurementUnit == IngredientMeasurementUnit.MILLILITRES && quantity >= 1000 -> {
             context.resources.getQuantityString(
                 IngredientMeasurementUnit.MILLILITRES.quantityStringId,
                 ceil(quantity).toInt()
@@ -57,14 +75,42 @@ fun getQuantifiedIngredientReadableFormat(
                 it.measurementUnit == ingredient.alternateMeasurementUnit
             }?.ratio ?: 0.0
             val alternateQuantity = ingredient.amount * serves * alternateRatio
+            val alternateQuantityDisplay = when {
+                ingredient.alternateMeasurementUnit == IngredientMeasurementUnit.GRAMS && alternateQuantity >= 1000 -> {
+                    DecimalFormat("###.##").format(alternateQuantity / 1000)
+                }
+                ingredient.alternateMeasurementUnit == IngredientMeasurementUnit.MILLILITRES && alternateQuantity >= 1000 -> {
+                    DecimalFormat("###.##").format(alternateQuantity / 1000)
+                }
+                ingredient.alternateMeasurementUnit == IngredientMeasurementUnit.GRAMS -> {
+                    DecimalFormat("###.##").format(alternateQuantity)
+                }
+                ingredient.alternateMeasurementUnit == IngredientMeasurementUnit.MILLILITRES -> {
+                    DecimalFormat("###.##").format(alternateQuantity)
+                }
+                else -> {
+                    HtmlCompat.fromHtml(
+                        alternateQuantity.toRationalHtmlString(),
+                        HtmlCompat.FROM_HTML_MODE_LEGACY
+                    )
+                }
+            }
             val alternateMeasurementUnit = context.resources.getQuantityString(
                 ingredient.alternateMeasurementUnit.quantityStringId,
                 ceil(alternateQuantity).toInt()
             )
-            "$alternateQuantity $alternateMeasurementUnit($quantity${measurementUnit.trimEnd()}) $name"
+            TextUtils.concat(
+                alternateQuantityDisplay,
+                alternateMeasurementUnit,
+                "(",
+                displayQuantity,
+                measurementUnit.trimEnd(),
+                ") ",
+                name
+            )
         }
         else -> {
-            "$quantity$measurementUnit$name"
+            TextUtils.concat(displayQuantity, measurementUnit, name)
         }
     }
 }
