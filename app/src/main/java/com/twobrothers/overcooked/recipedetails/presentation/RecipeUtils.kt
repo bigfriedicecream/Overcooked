@@ -99,18 +99,10 @@ fun getQuantifiedIngredientReadableFormat(
                 ingredient.alternateMeasurementUnit.quantityStringId,
                 ceil(alternateQuantity).toInt()
             )
-            TextUtils.concat(
-                alternateQuantityDisplay,
-                alternateMeasurementUnit,
-                "(",
-                displayQuantity,
-                measurementUnit.trimEnd(),
-                ") ",
-                name
-            )
+            "$alternateQuantityDisplay$alternateMeasurementUnit($displayQuantity${measurementUnit.trimEnd()}) $name"
         }
         else -> {
-            TextUtils.concat(displayQuantity, measurementUnit, name)
+            "$displayQuantity$measurementUnit$name"
         }
     }
 }
