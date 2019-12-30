@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.twobrothers.overcooked.R
-import com.twobrothers.overcooked.core.viewModelFactory
+import com.twobrothers.overcooked.core.framework.viewModelFactory
 import com.twobrothers.overcooked.databinding.ActivityRecipeLibraryBinding
 import com.twobrothers.overcooked.recipedetails.RecipeDetailsActivity
 import kotlinx.android.synthetic.main.activity_recipe_library.*

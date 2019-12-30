@@ -1,4 +1,4 @@
-package com.twobrothers.overcooked.core
+package com.twobrothers.overcooked.core.databinding
 
 import android.view.View
 import androidx.databinding.BindingAdapter

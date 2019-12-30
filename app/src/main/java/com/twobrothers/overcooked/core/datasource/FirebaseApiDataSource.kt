@@ -1,4 +1,4 @@
-package com.twobrothers.overcooked.core
+package com.twobrothers.overcooked.core.datasource
 
 import com.twobrothers.overcooked.recipedetails.models.Recipe
 import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary

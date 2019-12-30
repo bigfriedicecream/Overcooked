@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.twobrothers.overcooked.core.Event
-import com.twobrothers.overcooked.core.FirebaseApiDataSource
+import com.twobrothers.overcooked.core.framework.Event
+import com.twobrothers.overcooked.core.datasource.FirebaseApiDataSource
 import com.twobrothers.overcooked.core.dagger.DaggerFirebaseApiDataSourceComponent
 import com.twobrothers.overcooked.recipedetails.models.Ingredient
 import com.twobrothers.overcooked.recipedetails.models.Recipe
@@ -90,7 +90,8 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
     }
 
     fun onReferenceClick() {
-        _navigateToReference.value = Event(referenceUrl)
+        _navigateToReference.value =
+            Event(referenceUrl)
     }
 
 }

@@ -1,4 +1,4 @@
-package com.twobrothers.overcooked.core
+package com.twobrothers.overcooked.core.datasource
 
 import com.twobrothers.overcooked.core.responses.FirebaseRecipe
 import com.twobrothers.overcooked.core.responses.FirebaseRecipeList

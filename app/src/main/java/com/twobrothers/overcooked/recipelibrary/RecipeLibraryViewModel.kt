@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.twobrothers.overcooked.core.Event
-import com.twobrothers.overcooked.core.FirebaseApiDataSource
+import com.twobrothers.overcooked.core.framework.Event
+import com.twobrothers.overcooked.core.datasource.FirebaseApiDataSource
 import com.twobrothers.overcooked.core.dagger.DaggerFirebaseApiDataSourceComponent
 import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
 import kotlinx.coroutines.launch
@@ -58,6 +58,7 @@ class RecipeLibraryViewModel : ViewModel() {
     }
 
     fun onRecipeClick(id: String) {
-        _navigateToRecipeDetails.value = Event(id)
+        _navigateToRecipeDetails.value =
+            Event(id)
     }
 }

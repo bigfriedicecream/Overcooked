@@ -1,4 +1,4 @@
-package com.twobrothers.overcooked.core
+package com.twobrothers.overcooked.core.framework
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

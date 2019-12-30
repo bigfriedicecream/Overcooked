@@ -1,6 +1,6 @@
 package com.twobrothers.overcooked.recipedetails.models
 
-import com.twobrothers.overcooked.core.IngredientMeasurementUnit
+import com.twobrothers.overcooked.core.lookups.IngredientMeasurementUnit
 
 data class Recipe(
     val id: String,

@@ -1,4 +1,4 @@
-package com.twobrothers.overcooked.core
+package com.twobrothers.overcooked.core.lookups
 
 import com.twobrothers.overcooked.R
 

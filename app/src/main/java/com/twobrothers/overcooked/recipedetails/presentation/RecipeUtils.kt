@@ -1,10 +1,9 @@
 package com.twobrothers.overcooked.recipedetails.presentation
 
 import android.content.Context
-import android.text.TextUtils
 import androidx.core.text.HtmlCompat
 import com.twobrothers.overcooked.R
-import com.twobrothers.overcooked.core.IngredientMeasurementUnit
+import com.twobrothers.overcooked.core.lookups.IngredientMeasurementUnit
 import com.twobrothers.overcooked.core.lookups.LookupMeasurementUnit
 import com.twobrothers.overcooked.recipedetails.models.QuantifiedIngredient
 import org.threeten.bp.Duration
@@ -48,7 +47,7 @@ fun getQuantifiedIngredientReadableFormat(
         }
         ingredient.measurementUnit == IngredientMeasurementUnit.MILLILITRES && quantity >= 1000 -> {
             context.resources.getQuantityString(
-                IngredientMeasurementUnit.MILLILITRES.quantityStringId,
+                IngredientMeasurementUnit.LITRE.quantityStringId,
                 ceil(quantity).toInt()
             )
         }

@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.twobrothers.overcooked.R
-import com.twobrothers.overcooked.core.viewModelFactory
+import com.twobrothers.overcooked.core.framework.viewModelFactory
 import com.twobrothers.overcooked.databinding.ActivityRecipeDetailsBinding
 import com.twobrothers.overcooked.recipedetails.models.FreeTextIngredient
 import com.twobrothers.overcooked.recipedetails.models.HeadingIngredient
@@ -47,7 +47,11 @@ class RecipeDetailsActivity : AppCompatActivity() {
         val id = this.intent.getStringExtra(EXTRA_RECIPE_ID) ?: ""
         viewModel = ViewModelProviders.of(
             this,
-            viewModelFactory { RecipeDetailsViewModel(id) }
+            viewModelFactory {
+                RecipeDetailsViewModel(
+                    id
+                )
+            }
         ).get(RecipeDetailsViewModel::class.java)
 
         // Init data binding
