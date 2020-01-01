@@ -23,7 +23,8 @@ data class FirebaseRecipeData(
             ingredients = getMappedIngredients(),
             method = recipe.method,
             referenceName = recipe.referenceName,
-            referenceUrl = recipe.referenceUrl
+            referenceUrl = recipe.referenceUrl,
+            interactive = getMappedInteractive()
         )
     }
 
@@ -56,6 +57,12 @@ data class FirebaseRecipeData(
             }
         }
     }
+
+    private fun getMappedInteractive(): List<InteractiveStep>? {
+        return recipe.interactive?.map {
+            it.toInteractive()
+        }
+    }
 }
 
 data class FirebaseRecipeDetails(
@@ -68,7 +75,8 @@ data class FirebaseRecipeDetails(
     val ingredients: List<FirebaseIngredient>,
     val method: List<String>,
     val referenceName: String,
-    val referenceUrl: String
+    val referenceUrl: String,
+    val interactive: List<FirebaseInteractiveStep>?
 )
 
 data class FirebaseIngredient(
@@ -79,3 +87,13 @@ data class FirebaseIngredient(
     val foodId: String,
     val description: String
 )
+
+data class FirebaseInteractiveStep(
+    val title: String
+) {
+    fun toInteractive(): InteractiveStep {
+        return InteractiveStep(
+            title = title
+        )
+    }
+}

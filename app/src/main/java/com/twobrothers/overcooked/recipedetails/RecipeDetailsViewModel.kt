@@ -49,6 +49,9 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
     private val _isRecipeDetailsVisible = MutableLiveData<Boolean>()
     val isRecipeDetialsVisible: LiveData<Boolean> = _isRecipeDetailsVisible
 
+    private val _isInteractiveVisible = MutableLiveData<Boolean>()
+    val isInteractiveVisible: LiveData<Boolean> = _isInteractiveVisible
+
     private val _isLoadingIndicatorVisible = MutableLiveData<Boolean>()
     val isLoadingIndicatorVisible: LiveData<Boolean> = _isLoadingIndicatorVisible
 
@@ -77,6 +80,7 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
         _referenceName.value = recipe.referenceName
         referenceUrl = recipe.referenceUrl
         _isReferenceVisible.value = recipe.referenceName.isNotBlank()
+        _isInteractiveVisible.value = recipe.interactive != null
     }
 
     private fun showLoadingIndicator() {

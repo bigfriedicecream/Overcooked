@@ -12,7 +12,8 @@ data class Recipe(
     val ingredients: List<Ingredient>,
     val method: List<String>,
     val referenceName: String,
-    val referenceUrl: String
+    val referenceUrl: String,
+    val interactive: List<InteractiveStep>?
 )
 
 sealed class Ingredient
@@ -32,3 +33,7 @@ data class QuantifiedIngredient(
     val food: Food,
     val endDescription: String
 ) : Ingredient()
+
+data class InteractiveStep(
+    val title: String
+)
