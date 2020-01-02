@@ -5,10 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.core.framework.viewModelFactory
 import com.twobrothers.overcooked.databinding.ActivityInteractiveBinding
+import kotlinx.android.synthetic.main.activity_interactive.*
 
 
 class InteractiveActivity : AppCompatActivity() {
@@ -52,5 +54,8 @@ class InteractiveActivity : AppCompatActivity() {
         }
 
         // Init view model observers
+        viewModel.interactive.observe(this, Observer {
+            view_pager_interactive.adapter = InteractiveAdapter(supportFragmentManager, it)
+        })
     }
 }

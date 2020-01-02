@@ -1,6 +1,7 @@
 package com.twobrothers.overcooked.recipedetails.models
 
 import com.twobrothers.overcooked.core.lookups.IngredientMeasurementUnit
+import java.io.Serializable
 
 data class Recipe(
     val id: String,
@@ -36,4 +37,4 @@ data class QuantifiedIngredient(
 
 data class InteractiveStep(
     val title: String
-)
+) : Serializable
