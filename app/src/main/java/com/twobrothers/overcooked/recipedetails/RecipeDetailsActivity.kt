@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.core.framework.viewModelFactory
 import com.twobrothers.overcooked.databinding.ActivityRecipeDetailsBinding
+import com.twobrothers.overcooked.interactive.InteractiveActivity
 import com.twobrothers.overcooked.recipedetails.models.FreeTextIngredient
 import com.twobrothers.overcooked.recipedetails.models.HeadingIngredient
 import com.twobrothers.overcooked.recipedetails.models.QuantifiedIngredient
@@ -89,6 +90,12 @@ class RecipeDetailsActivity : AppCompatActivity() {
             }
         })
 
+        viewModel.navigateToInteractive.observe(this, Observer {
+            it.getContentIfNotHandled()?.let {
+                startActivity(InteractiveActivity.newIntent(this, it))
+            }
+        })
+
         viewModel.ingredients.observe(this, Observer {
             layout_ingredients.removeAllViews()
             val serves = it.first
@@ -135,5 +142,10 @@ class RecipeDetailsActivity : AppCompatActivity() {
                 layout_method.addView(view)
             }
         })
+
+        // Init listeners
+        button_interactive.setOnClickListener {
+            viewModel.onInteractiveClick()
+        }
     }
 }

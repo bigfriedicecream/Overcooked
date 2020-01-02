@@ -12,12 +12,14 @@ import com.twobrothers.overcooked.recipedetails.models.Recipe
 import kotlinx.coroutines.launch
 import org.threeten.bp.Duration
 
-class RecipeDetailsViewModel(id: String) : ViewModel() {
+class RecipeDetailsViewModel(private val id: String) : ViewModel() {
 
     private val dataSource: FirebaseApiDataSource =
         DaggerFirebaseApiDataSourceComponent.create().getDataSource()
 
     private var referenceUrl: String = ""
+
+    //region state properties
 
     private val _title = MutableLiveData<String>()
     val title: LiveData<String> = _title
@@ -55,8 +57,17 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
     private val _isLoadingIndicatorVisible = MutableLiveData<Boolean>()
     val isLoadingIndicatorVisible: LiveData<Boolean> = _isLoadingIndicatorVisible
 
+    //endregion
+
+    //region event properties
+
     private val _navigateToReference = MutableLiveData<Event<String>>()
     val navigateToReference: LiveData<Event<String>> = _navigateToReference
+
+    private val _navigateToInteractive = MutableLiveData<Event<String>>()
+    val navigateToInteractive: LiveData<Event<String>> = _navigateToInteractive
+
+    //endregion
 
     init {
         showLoadingIndicator()
@@ -68,6 +79,8 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
             }
         }
     }
+
+    //region private
 
     private fun handleSuccess(recipe: Recipe) {
         _title.value = recipe.title
@@ -93,9 +106,18 @@ class RecipeDetailsViewModel(id: String) : ViewModel() {
         _isRecipeDetailsVisible.value = true
     }
 
+    //endregion
+
+    //region public
+
     fun onReferenceClick() {
-        _navigateToReference.value =
-            Event(referenceUrl)
+        _navigateToReference.value = Event(referenceUrl)
     }
+
+    fun onInteractiveClick() {
+        _navigateToInteractive.value = Event(id)
+    }
+
+    //endregion
 
 }
