@@ -29,15 +29,16 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/layout_tabs"
             android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_height="24dp"
             android:layout_marginBottom="32dp"
+            android:background="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:tabBackground="@drawable/interactive_tabs"
             app:tabGravity="center"
             app:tabIndicatorHeight="0dp"
-            app:tabMinWidth="32dp" />
+            app:tabMinWidth="24dp" />
 
         <ProgressBar
             android:layout_width="wrap_content"
