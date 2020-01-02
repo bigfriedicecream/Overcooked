@@ -51,12 +51,6 @@ class InteractiveStepFragment : Fragment() {
         ).get(InteractiveStepViewModel::class.java)
 
         // Init Data Binding
-        /* val view = DataBindingUtil.setContentView<FragmentInteractiveStepBinding>(
-            this, R.layout.activity_interactive
-        ).apply {
-            this.lifecycleOwner = this@InteractiveStepFragment
-            this.viewModel = this@InteractiveStepFragment.viewModel
-        }*/
         val binding = FragmentInteractiveStepBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
