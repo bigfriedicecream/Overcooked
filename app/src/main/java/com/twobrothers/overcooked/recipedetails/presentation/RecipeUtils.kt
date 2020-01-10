@@ -67,6 +67,9 @@ fun getQuantifiedIngredientReadableFormat(
         else -> ingredient.food.name.plural
     }
 
+    val endDescription =
+        if (ingredient.endDescription.isNotBlank()) ", ${ingredient.endDescription}" else ""
+
     return when {
         // alternate measurement unit
         ingredient.alternateMeasurementUnit != null -> {
@@ -98,10 +101,10 @@ fun getQuantifiedIngredientReadableFormat(
                 ingredient.alternateMeasurementUnit.quantityStringId,
                 ceil(alternateQuantity).toInt()
             )
-            "$alternateQuantityDisplay$alternateMeasurementUnit($displayQuantity${measurementUnit.trimEnd()}) $name"
+            "$alternateQuantityDisplay$alternateMeasurementUnit($displayQuantity${measurementUnit.trimEnd()}) $name$endDescription"
         }
         else -> {
-            "$displayQuantity$measurementUnit$name"
+            "$displayQuantity$measurementUnit$name$endDescription"
         }
     }
 }
