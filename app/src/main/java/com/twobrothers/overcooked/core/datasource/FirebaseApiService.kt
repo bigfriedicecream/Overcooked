@@ -1,6 +1,6 @@
 package com.twobrothers.overcooked.core.datasource
 
-import com.twobrothers.overcooked.core.responses.FirebaseRecipe
+import com.twobrothers.overcooked.core.responses.GetFirebaseRecipeResponse
 import com.twobrothers.overcooked.core.responses.FirebaseRecipeList
 import retrofit2.Response
 import retrofit2.http.GET
@@ -14,7 +14,7 @@ interface FirebaseApiService {
     @GET("/getRecipeList")
     suspend fun getRecipes(): Response<FirebaseRecipeList>
 
-    @GET("/getRecipe")
-    suspend fun getRecipe(@Query("id") id: String): Response<FirebaseRecipe>
+    @GET("/getRecipeV2")
+    suspend fun getRecipe(@Query("id") id: String): Response<GetFirebaseRecipeResponse>
 
 }

@@ -17,7 +17,7 @@ fun getQuantifiedIngredientReadableFormat(
     ingredient: QuantifiedIngredient,
     serves: Int
 ): CharSequence {
-    val quantity = ingredient.amount * serves
+    val quantity = ingredient.quantity * serves
     val displayQuantity = when {
         ingredient.measurementUnit == IngredientMeasurementUnit.GRAMS && quantity >= 1000 -> {
             DecimalFormat("###.##").format(quantity / 1000)
@@ -73,7 +73,7 @@ fun getQuantifiedIngredientReadableFormat(
             val alternateRatio = ingredient.food.conversions.firstOrNull {
                 it.measurementUnit == ingredient.alternateMeasurementUnit
             }?.ratio ?: 0.0
-            val alternateQuantity = ingredient.amount * serves * alternateRatio
+            val alternateQuantity = ingredient.quantity * serves * alternateRatio
             val alternateQuantityDisplay = when {
                 ingredient.alternateMeasurementUnit == IngredientMeasurementUnit.GRAMS && alternateQuantity >= 1000 -> {
                     DecimalFormat("###.##").format(alternateQuantity / 1000)
@@ -106,7 +106,7 @@ fun getQuantifiedIngredientReadableFormat(
     }
 }
 
-fun mapIngredientUnitType(unitType: String): IngredientMeasurementUnit? {
+fun mapIngredientUnitType(unitType: String): IngredientMeasurementUnit {
     return when (LookupMeasurementUnit.getById(unitType)) {
         LookupMeasurementUnit.ITEM -> IngredientMeasurementUnit.ITEM
         LookupMeasurementUnit.GRAMS -> IngredientMeasurementUnit.GRAMS
@@ -121,7 +121,7 @@ fun mapIngredientUnitType(unitType: String): IngredientMeasurementUnit? {
         LookupMeasurementUnit.STALK -> IngredientMeasurementUnit.STALK
         LookupMeasurementUnit.SHEETS -> IngredientMeasurementUnit.SHEETS
         LookupMeasurementUnit.SLICE -> IngredientMeasurementUnit.SLICE
-        else -> null
+        else -> throw throw IllegalStateException("Unable to map measurement type")
     }
 }
 

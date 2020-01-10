@@ -1,6 +1,5 @@
 package com.twobrothers.overcooked.core.responses
 
-import com.twobrothers.overcooked.core.lookups.LookupMeasurementUnit
 import com.twobrothers.overcooked.recipedetails.models.Conversion
 import com.twobrothers.overcooked.recipedetails.models.Food
 import com.twobrothers.overcooked.recipedetails.models.Name
@@ -37,6 +36,5 @@ data class FirebaseConversion(
     fun toConversion() = Conversion(
         ratio = ratio,
         measurementUnit = mapIngredientUnitType(measurementUnitId)
-            ?: throw IllegalStateException("Unable to map measurement unit type")
     )
 }

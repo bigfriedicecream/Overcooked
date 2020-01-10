@@ -12,9 +12,9 @@ data class Recipe(
     val cookTime: Int,
     val ingredients: List<Ingredient>,
     val method: List<String>,
+    val interactive: List<InteractiveStep>,
     val referenceName: String,
-    val referenceUrl: String,
-    val interactive: List<InteractiveStep>?
+    val referenceUrl: String
 )
 
 sealed class Ingredient
@@ -28,7 +28,7 @@ data class FreeTextIngredient(
 ) : Ingredient()
 
 data class QuantifiedIngredient(
-    val amount: Double,
+    val quantity: Double,
     val measurementUnit: IngredientMeasurementUnit,
     val alternateMeasurementUnit: IngredientMeasurementUnit?,
     val food: Food,
