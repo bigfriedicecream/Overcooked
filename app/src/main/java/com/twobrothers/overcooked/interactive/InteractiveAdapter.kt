@@ -7,13 +7,14 @@ import com.twobrothers.overcooked.recipedetails.models.InteractiveStep
 
 class InteractiveAdapter(
     fragmentManager: FragmentManager,
-    private val interactiveSteps: List<InteractiveStep>
+    private val interactiveSteps: List<InteractiveStep>,
+    private val serves: Int
 ) : FragmentPagerAdapter(
     fragmentManager,
     BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
 ) {
     override fun getItem(position: Int): Fragment {
-        return InteractiveStepFragment.newInstance(interactiveSteps[position])
+        return InteractiveStepFragment.newInstance(interactiveSteps[position], serves)
     }
 
     override fun getCount(): Int {

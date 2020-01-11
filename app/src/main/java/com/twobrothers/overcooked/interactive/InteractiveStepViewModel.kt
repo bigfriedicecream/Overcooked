@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.twobrothers.overcooked.recipedetails.models.Ingredient
 import com.twobrothers.overcooked.recipedetails.models.InteractiveStep
 
-class InteractiveStepViewModel(step: InteractiveStep) : ViewModel() {
+class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel() {
 
     //region state properties
 
@@ -16,8 +16,8 @@ class InteractiveStepViewModel(step: InteractiveStep) : ViewModel() {
     private val _body = MutableLiveData<String>()
     val body: LiveData<String> = _body
 
-    private val _ingredients = MutableLiveData<List<Ingredient>?>()
-    val ingredients: LiveData<List<Ingredient>?> = _ingredients
+    private val _ingredients = MutableLiveData<Pair<List<Ingredient>?, Int>>()
+    val ingredients: LiveData<Pair<List<Ingredient>?, Int>> = _ingredients
 
     private val _footnote = MutableLiveData<String>()
     val footnote: LiveData<String> = _footnote
@@ -27,7 +27,7 @@ class InteractiveStepViewModel(step: InteractiveStep) : ViewModel() {
     init {
         _title.value = step.title
         _body.value = step.body
-        _ingredients.value = step.ingredients
+        _ingredients.value = Pair(step.ingredients, serves)
         _footnote.value = step.footnote
     }
 

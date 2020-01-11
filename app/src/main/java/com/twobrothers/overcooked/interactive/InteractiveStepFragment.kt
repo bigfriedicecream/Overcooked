@@ -13,6 +13,7 @@ import com.twobrothers.overcooked.recipedetails.models.FreeTextIngredient
 import com.twobrothers.overcooked.recipedetails.models.HeadingIngredient
 import com.twobrothers.overcooked.recipedetails.models.InteractiveStep
 import com.twobrothers.overcooked.recipedetails.models.QuantifiedIngredient
+import com.twobrothers.overcooked.recipedetails.presentation.getQuantifiedIngredientReadableFormat
 import kotlinx.android.synthetic.main.activity_recipe_details.*
 import kotlinx.android.synthetic.main.fragment_interactive_step.*
 import kotlinx.android.synthetic.main.fragment_interactive_step.layout_ingredients
@@ -22,12 +23,14 @@ class InteractiveStepFragment : Fragment() {
     companion object {
 
         private const val ARGUMENT_INTERACTIVE_STEP = "InteractiveStepFragment.Argument.Step"
+        private const val ARGUMENT_SERVES = "InteractiveStepFragment.Argument.Serves"
 
         @JvmStatic
-        fun newInstance(step: InteractiveStep): InteractiveStepFragment {
+        fun newInstance(step: InteractiveStep, serves: Int): InteractiveStepFragment {
             val fragment = InteractiveStepFragment()
             val arguments = Bundle()
             arguments.putSerializable(ARGUMENT_INTERACTIVE_STEP, step)
+            arguments.putSerializable(ARGUMENT_SERVES, serves)
             fragment.arguments = arguments
             return fragment
         }
@@ -43,11 +46,13 @@ class InteractiveStepFragment : Fragment() {
     ): View {
         // Init ViewModel
         val step = arguments?.get(ARGUMENT_INTERACTIVE_STEP) as InteractiveStep
+        val serves = arguments?.getInt(ARGUMENT_SERVES) ?: 0
         viewModel = ViewModelProviders.of(
             this,
             viewModelFactory {
                 InteractiveStepViewModel(
-                    step
+                    step,
+                    serves
                 )
             }
         ).get(InteractiveStepViewModel::class.java)
@@ -60,7 +65,8 @@ class InteractiveStepFragment : Fragment() {
         // Init view model observers
         viewModel.ingredients.observe(this, Observer {
             layout_ingredients.removeAllViews()
-            it?.map {
+            val serves = it.second
+            it.first?.map {
                 val view = when (it) {
                     is QuantifiedIngredient -> {
                         val view = layoutInflater.inflate(
@@ -68,7 +74,8 @@ class InteractiveStepFragment : Fragment() {
                             layout_ingredients,
                             false
                         )
-                        view.findViewById<TextView>(R.id.text_description).text = "[QUANTIFIED]"
+                        view.findViewById<TextView>(R.id.text_description).text =
+                            getQuantifiedIngredientReadableFormat(requireContext(), it, serves)
                         view
                     }
                     is FreeTextIngredient -> {

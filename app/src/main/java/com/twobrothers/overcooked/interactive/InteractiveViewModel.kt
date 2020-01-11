@@ -17,8 +17,8 @@ class InteractiveViewModel(id: String) : ViewModel() {
 
     //region state properties
 
-    private val _interactive = MutableLiveData<List<InteractiveStep>>()
-    val interactive: LiveData<List<InteractiveStep>> = _interactive
+    private val _interactive = MutableLiveData<Pair<List<InteractiveStep>, Int>>()
+    val interactive: LiveData<Pair<List<InteractiveStep>, Int>> = _interactive
 
     private val _isInteractiveVisible = MutableLiveData<Boolean>()
     val isInteractiveVisible: LiveData<Boolean> = _isInteractiveVisible
@@ -42,7 +42,7 @@ class InteractiveViewModel(id: String) : ViewModel() {
     //region private
 
     private fun handleSuccess(recipe: Recipe) {
-        _interactive.value = recipe.interactive
+        _interactive.value = Pair(recipe.interactive, recipe.serves)
     }
 
     private fun showInteractive() {

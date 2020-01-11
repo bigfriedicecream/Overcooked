@@ -55,7 +55,8 @@ class InteractiveActivity : AppCompatActivity() {
 
         // Init view model observers
         viewModel.interactive.observe(this, Observer {
-            view_pager_interactive.adapter = InteractiveAdapter(supportFragmentManager, it)
+            view_pager_interactive.adapter =
+                InteractiveAdapter(supportFragmentManager, it.first, it.second)
             layout_tabs.setupWithViewPager(view_pager_interactive)
         })
     }
