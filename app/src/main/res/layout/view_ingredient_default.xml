@@ -7,4 +7,4 @@
     android:layout_height="wrap_content"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    tools:text="For the sauce" />
+    tools:text="Salt and pepper to taste" />
