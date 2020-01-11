@@ -90,7 +90,8 @@ data class FirebaseInteractiveStep(
 ) {
     fun toInteractiveStep(): InteractiveStep {
         return InteractiveStep(
-            title = title
+            title = title,
+            body = body
         )
     }
 }

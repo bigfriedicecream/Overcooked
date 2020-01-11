@@ -32,7 +32,8 @@
             app:layout_constraintGuide_end="64dp" />
 
         <TextView
-            style="@style/TextAppearance.Overcooked.Subtitle1"
+            android:id="@+id/text_title"
+            style="@style/TextAppearance.Overcooked.Headline5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -42,6 +43,18 @@
             app:layout_constraintStart_toStartOf="@id/guideline_content_start"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Marinade chicken" />
+
+        <TextView
+            style="@style/TextAppearance.Overcooked.Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="@{viewModel.body}"
+            app:layout_constraintEnd_toEndOf="@id/guideline_content_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_content_start"
+            app:layout_constraintTop_toBottomOf="@id/text_title"
+            tools:text="Coat the chicken with spices" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
