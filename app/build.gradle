@@ -15,8 +15,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField("Integer", "ENV", "1")
+        }
         release {
             minifyEnabled false
+            buildConfigField("Integer", "ENV", "0")
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

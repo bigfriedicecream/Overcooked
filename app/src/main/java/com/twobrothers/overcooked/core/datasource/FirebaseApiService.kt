@@ -13,12 +13,14 @@ interface FirebaseApiService {
 
     @GET("/getRecipes")
     suspend fun getRecipes(
-        @Query("v") v: Double
+        @Query("v") v: Double,
+        @Query("env") env: Int
     ): Response<FirebaseRecipeList>
 
     @GET("/getRecipe")
     suspend fun getRecipe(
         @Query("v") v: Double,
+        @Query("env") env: Int,
         @Query("id") id: String
     ): Response<GetFirebaseRecipeResponse>
 

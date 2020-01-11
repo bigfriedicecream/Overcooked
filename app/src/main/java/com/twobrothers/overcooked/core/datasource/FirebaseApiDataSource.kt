@@ -1,5 +1,6 @@
 package com.twobrothers.overcooked.core.datasource
 
+import com.twobrothers.overcooked.BuildConfig
 import com.twobrothers.overcooked.core.App
 import com.twobrothers.overcooked.recipedetails.models.Recipe
 import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
@@ -48,10 +49,10 @@ class FirebaseApiDataSource @Inject constructor() {
     }
 
     suspend fun getRecipes(): List<RecipeSummary>? {
-        return service.getRecipes(1.1).body()?.data?.toRecipeSummaryList()
+        return service.getRecipes(1.1, BuildConfig.ENV).body()?.data?.toRecipeSummaryList()
     }
 
     suspend fun getRecipe(id: String): Recipe? {
-        return service.getRecipe(1.1, id).body()?.data?.toRecipe()
+        return service.getRecipe(1.1, BuildConfig.ENV, id).body()?.data?.toRecipe()
     }
 }
