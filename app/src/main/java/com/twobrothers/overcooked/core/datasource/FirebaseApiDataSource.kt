@@ -1,7 +1,9 @@
 package com.twobrothers.overcooked.core.datasource
 
+import com.twobrothers.overcooked.core.App
 import com.twobrothers.overcooked.recipedetails.models.Recipe
 import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,6 +15,27 @@ class FirebaseApiDataSource @Inject constructor() {
     init {
         // Initialise client
         val clientBuilder = OkHttpClient.Builder()
+
+        // Set up 5MB cache
+        val cacheSize = (5 * 1024 * 1024).toLong()
+        val cache = Cache(App.getAppContext().cacheDir, cacheSize)
+
+        clientBuilder.cache(cache)
+
+        clientBuilder.addInterceptor { chain ->
+            var request = chain.request()
+            request = if (hasNetwork(App.getAppContext()))
+                request.newBuilder().header(
+                    "Cache-Control",
+                    "public, only-if-cached, max-stale=" + 60 * 60
+                ).build()
+            else
+                request.newBuilder().header(
+                    "Cache-Control",
+                    "public, only-if-cached, max-stale=" + 60 * 60 * 24 * 7
+                ).build()
+            chain.proceed(request)
+        }
 
         // Create service
         val retrofit = Retrofit.Builder()
