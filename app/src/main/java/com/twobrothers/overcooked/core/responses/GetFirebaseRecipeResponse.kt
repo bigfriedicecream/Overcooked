@@ -92,7 +92,8 @@ data class FirebaseInteractiveStep(
         return InteractiveStep(
             title = title,
             body = body,
-            ingredients = ingredients?.map { it.toIngredient(serves, food) }
+            ingredients = ingredients?.map { it.toIngredient(serves, food) },
+            footnote = footnote
         )
     }
 }

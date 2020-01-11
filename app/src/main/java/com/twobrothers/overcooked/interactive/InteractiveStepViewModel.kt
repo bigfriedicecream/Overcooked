@@ -19,12 +19,16 @@ class InteractiveStepViewModel(step: InteractiveStep) : ViewModel() {
     private val _ingredients = MutableLiveData<List<Ingredient>?>()
     val ingredients: LiveData<List<Ingredient>?> = _ingredients
 
+    private val _footnote = MutableLiveData<String>()
+    val footnote: LiveData<String> = _footnote
+
     //endregion
 
     init {
         _title.value = step.title
         _body.value = step.body
         _ingredients.value = step.ingredients
+        _footnote.value = step.footnote
     }
 
     //region private

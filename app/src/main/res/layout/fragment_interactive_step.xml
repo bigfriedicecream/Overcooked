@@ -67,6 +67,19 @@
             app:layout_constraintStart_toStartOf="@id/guideline_content_start"
             app:layout_constraintTop_toBottomOf="@id/text_body" />
 
+        <TextView
+            android:id="@+id/footnote"
+            style="@style/TextAppearance.Overcooked.Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="48dp"
+            android:text="@{viewModel.footnote}"
+            app:layout_constraintEnd_toEndOf="@id/guideline_content_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_content_start"
+            app:layout_constraintTop_toBottomOf="@id/layout_ingredients"
+            tools:text="Remove and place in a bowl" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -38,5 +38,6 @@ data class QuantifiedIngredient(
 data class InteractiveStep(
     val title: String,
     val body: String,
-    val ingredients: List<Ingredient>?
+    val ingredients: List<Ingredient>?,
+    val footnote: String
 ) : Serializable
