@@ -27,7 +27,7 @@ class FirebaseApiDataSource @Inject constructor() {
             request = if (hasNetwork(App.getAppContext()))
                 request.newBuilder().header(
                     "Cache-Control",
-                    "public, only-if-cached, max-stale=" + 60 * 60
+                    "public, max-age=" + 60 * 60
                 ).build()
             else
                 request.newBuilder().header(
