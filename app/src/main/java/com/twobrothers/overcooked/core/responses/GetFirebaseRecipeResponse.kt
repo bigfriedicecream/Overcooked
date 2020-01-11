@@ -22,7 +22,7 @@ data class FirebaseRecipeData(
             cookTime = recipe.cookTime,
             ingredients = recipe.ingredients.map { it.toIngredient(recipe.serves, food) },
             method = recipe.method,
-            interactive = recipe.interactive.map { it.toInteractiveStep() },
+            interactive = recipe.interactive.map { it.toInteractiveStep(recipe.serves, food) },
             referenceName = recipe.referenceName,
             referenceUrl = recipe.referenceUrl
         )
@@ -83,15 +83,16 @@ data class FirebaseIngredient(
 data class FirebaseInteractiveStep(
     val title: String,
     val body: String,
-    val ingredients: List<FirebaseIngredient>,
+    val ingredients: List<FirebaseIngredient>?,
     val footnote: String,
     val textDescription: String,
     val timer: Int
 ) {
-    fun toInteractiveStep(): InteractiveStep {
+    fun toInteractiveStep(serves: Int, food: HashMap<String, FirebaseFood>): InteractiveStep {
         return InteractiveStep(
             title = title,
-            body = body
+            body = body,
+            ingredients = ingredients?.map { it.toIngredient(serves, food) }
         )
     }
 }
