@@ -11,10 +11,15 @@ import retrofit2.http.Query
  */
 interface FirebaseApiService {
 
-    @GET("/getRecipeList")
-    suspend fun getRecipes(): Response<FirebaseRecipeList>
+    @GET("/getRecipes")
+    suspend fun getRecipes(
+        @Query("v") v: Double
+    ): Response<FirebaseRecipeList>
 
-    @GET("/getRecipeV2")
-    suspend fun getRecipe(@Query("id") id: String): Response<GetFirebaseRecipeResponse>
+    @GET("/getRecipe")
+    suspend fun getRecipe(
+        @Query("v") v: Double,
+        @Query("id") id: String
+    ): Response<GetFirebaseRecipeResponse>
 
 }

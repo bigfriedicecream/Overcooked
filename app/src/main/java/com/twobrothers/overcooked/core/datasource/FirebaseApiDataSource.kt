@@ -25,10 +25,10 @@ class FirebaseApiDataSource @Inject constructor() {
     }
 
     suspend fun getRecipes(): List<RecipeSummary>? {
-        return service.getRecipes().body()?.data?.toRecipeSummaryList()
+        return service.getRecipes(1.1).body()?.data?.toRecipeSummaryList()
     }
 
     suspend fun getRecipe(id: String): Recipe? {
-        return service.getRecipe(id).body()?.data?.toRecipe()
+        return service.getRecipe(1.1, id).body()?.data?.toRecipe()
     }
 }
