@@ -11,75 +11,56 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:keepScreenOn="true"
         tools:context=".interactive.InteractiveActivity">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_content_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="64dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_content_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="64dp" />
-
-        <TextView
-            android:id="@+id/text_title"
-            style="@style/TextAppearance.Overcooked.Headline5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="64dp"
-            android:text="@{viewModel.title}"
-            app:layout_constraintEnd_toEndOf="@id/guideline_content_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_content_start"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Marinade chicken" />
-
-        <TextView
-            android:id="@+id/text_body"
-            style="@style/TextAppearance.Overcooked.Body2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:text="@{viewModel.body}"
-            app:layout_constraintEnd_toEndOf="@id/guideline_content_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_content_start"
-            app:layout_constraintTop_toBottomOf="@id/text_title"
-            tools:text="Coat the chicken with spices" />
-
         <LinearLayout
-            android:id="@+id/layout_ingredients"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="64dp"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@id/guideline_content_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_content_start"
-            app:layout_constraintTop_toBottomOf="@id/text_body" />
+            android:paddingStart="40dp"
+            android:paddingEnd="24dp"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/footnote"
-            style="@style/TextAppearance.Overcooked.Body2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="48dp"
-            android:text="@{viewModel.footnote}"
-            app:layout_constraintEnd_toEndOf="@id/guideline_content_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_content_start"
-            app:layout_constraintTop_toBottomOf="@id/layout_ingredients"
-            tools:text="Remove and place in a bowl" />
+            <TextView
+                android:id="@+id/text_title"
+                style="@style/TextAppearance.Overcooked.Headline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@{viewModel.title}"
+                tools:text="Marinade chicken" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/text_body"
+                style="@style/TextAppearance.Overcooked.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:text="@{viewModel.body}"
+                tools:text="Coat the chicken with spices" />
+
+            <LinearLayout
+                android:id="@+id/layout_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="48dp"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/footnote"
+                style="@style/TextAppearance.Overcooked.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.footnote}"
+                tools:text="Remove and place in a bowl" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </layout>
