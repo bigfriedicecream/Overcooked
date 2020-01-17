@@ -17,7 +17,7 @@ data class Recipe(
     val referenceUrl: String
 )
 
-sealed class Ingredient
+sealed class Ingredient : Serializable
 
 data class HeadingIngredient(
     val title: String
