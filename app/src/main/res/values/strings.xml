@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Overcooked</string>
 
+    <string name="recipe_explore_title">Explore Recipes</string>
+
     <string name="recipe_method_title">Method</string>
     <string name="recipe_ingredients_title">Ingredients</string>
     <string name="recipe_prep_title">Prep</string>

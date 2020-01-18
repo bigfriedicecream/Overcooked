@@ -13,16 +13,39 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".recipelibrary.RecipeLibraryActivity">
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_score_list"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="8dp"
-            app:goneUnless="@{safeUnbox(viewModel.isRecipeLibraryVisible)}"
-            tools:listitem="@layout/view_recipe_list_item" />
+            app:goneUnless="@{safeUnbox(viewModel.isRecipeLibraryVisible)}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context=".recipelibrary.RecipeLibraryActivity">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="24dp"
+                    android:text="@string/recipe_explore_title"
+                    android:textAppearance="@style/TextAppearance.Overcooked.Headline5" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_score_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="8dp"
+                    tools:listitem="@layout/view_recipe_list_item" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
         <ProgressBar
             android:layout_width="wrap_content"
