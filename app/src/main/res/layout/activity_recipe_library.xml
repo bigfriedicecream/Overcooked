@@ -54,6 +54,17 @@
             app:goneUnless="@{safeUnbox(viewModel.isLoadingIndicatorVisible)}"
             tools:visibility="gone" />
 
+        <FrameLayout
+            android:id="@+id/layout_generic_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:goneUnless="@{safeUnbox(viewModel.isErrorVisible())}">
+
+            <include
+                layout="@layout/include_generic_error"
+                tools:visibility="gone" />
+        </FrameLayout>
+
     </FrameLayout>
 
 </layout>

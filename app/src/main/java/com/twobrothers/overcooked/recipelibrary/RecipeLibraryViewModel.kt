@@ -8,6 +8,7 @@ import com.twobrothers.overcooked.core.framework.Event
 import com.twobrothers.overcooked.core.datasource.FirebaseApiDataSource
 import com.twobrothers.overcooked.core.dagger.DaggerFirebaseApiDataSourceComponent
 import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RecipeLibraryViewModel : ViewModel() {
@@ -27,17 +28,25 @@ class RecipeLibraryViewModel : ViewModel() {
     private val _navigateToRecipeDetails = MutableLiveData<Event<String>>()
     val navigateToRecipeDetails: LiveData<Event<String>> = _navigateToRecipeDetails
 
+    private val _isErrorVisible = MutableLiveData<Boolean>()
+    val isErrorVisible: LiveData<Boolean> = _isErrorVisible
+
     init {
         loadRecipes()
     }
 
-    private fun loadRecipes() {
+    private fun loadRecipes(withDelay: Boolean = false) {
         showLoadingIndicator()
         viewModelScope.launch {
+            if (withDelay) {
+                delay(1750)
+            }
             val recipeList = dataSource.getRecipes()
             if (recipeList != null) {
                 handleSuccess(recipeList)
                 showRecipeLibrary()
+            } else {
+                showError()
             }
         }
 
@@ -49,16 +58,28 @@ class RecipeLibraryViewModel : ViewModel() {
 
     private fun showRecipeLibrary() {
         _isLoadingIndicatorVisible.value = false
+        _isErrorVisible.value = false
         _isRecipeLibraryVisible.value = true
     }
 
     private fun showLoadingIndicator() {
         _isRecipeLibraryVisible.value = false
+        _isErrorVisible.value = false
         _isLoadingIndicatorVisible.value = true
+    }
+
+    private fun showError() {
+        _isRecipeLibraryVisible.value = false
+        _isLoadingIndicatorVisible.value = false
+        _isErrorVisible.value = true
     }
 
     fun onRecipeClick(id: String) {
         _navigateToRecipeDetails.value =
             Event(id)
+    }
+
+    fun onRetryClick() {
+        loadRecipes(true)
     }
 }

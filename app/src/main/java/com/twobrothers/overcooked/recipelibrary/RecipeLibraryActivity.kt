@@ -11,6 +11,7 @@ import com.twobrothers.overcooked.core.framework.viewModelFactory
 import com.twobrothers.overcooked.databinding.ActivityRecipeLibraryBinding
 import com.twobrothers.overcooked.recipedetails.RecipeDetailsActivity
 import kotlinx.android.synthetic.main.activity_recipe_library.*
+import kotlinx.android.synthetic.main.include_generic_error.*
 
 class RecipeLibraryActivity : AppCompatActivity() {
 
@@ -57,6 +58,11 @@ class RecipeLibraryActivity : AppCompatActivity() {
                 startActivity(RecipeDetailsActivity.newIntent(this, id))
             }
         })
+
+        // Init listeners
+        button_generic_retry.setOnClickListener {
+            viewModel.onRetryClick()
+        }
 
     }
 }
