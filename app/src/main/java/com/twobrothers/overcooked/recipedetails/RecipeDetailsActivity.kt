@@ -21,6 +21,7 @@ import com.twobrothers.overcooked.recipedetails.presentation.MethodStepView
 import com.twobrothers.overcooked.recipedetails.presentation.getFormattedDuration
 import com.twobrothers.overcooked.recipedetails.presentation.getQuantifiedIngredientReadableFormat
 import kotlinx.android.synthetic.main.activity_recipe_details.*
+import kotlinx.android.synthetic.main.include_generic_error.*
 
 
 class RecipeDetailsActivity : AppCompatActivity() {
@@ -147,5 +148,10 @@ class RecipeDetailsActivity : AppCompatActivity() {
         button_interactive.setOnClickListener {
             viewModel.onInteractiveClick()
         }
+
+        button_generic_retry.setOnClickListener {
+            viewModel.onRetryClick()
+        }
+
     }
 }

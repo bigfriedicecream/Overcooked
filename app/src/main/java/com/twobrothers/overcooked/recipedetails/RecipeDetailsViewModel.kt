@@ -9,6 +9,7 @@ import com.twobrothers.overcooked.core.datasource.FirebaseApiDataSource
 import com.twobrothers.overcooked.core.dagger.DaggerFirebaseApiDataSourceComponent
 import com.twobrothers.overcooked.recipedetails.models.Ingredient
 import com.twobrothers.overcooked.recipedetails.models.Recipe
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.threeten.bp.Duration
 
@@ -73,8 +74,17 @@ class RecipeDetailsViewModel(private val id: String) : ViewModel() {
     //endregion
 
     init {
+        loadRecipe()
+    }
+
+    //region private
+
+    private fun loadRecipe(withDelay: Boolean = false) {
         showLoadingIndicator()
         viewModelScope.launch {
+            if (withDelay) {
+                delay(1750)
+            }
             val recipe = dataSource.getRecipe(id)
             if (recipe != null) {
                 handleSuccess(recipe)
@@ -84,8 +94,6 @@ class RecipeDetailsViewModel(private val id: String) : ViewModel() {
             }
         }
     }
-
-    //region private
 
     private fun handleSuccess(recipe: Recipe) {
         _title.value = recipe.title
@@ -129,6 +137,10 @@ class RecipeDetailsViewModel(private val id: String) : ViewModel() {
 
     fun onInteractiveClick() {
         _navigateToInteractive.value = Event(id)
+    }
+
+    fun onRetryClick() {
+        loadRecipe(true)
     }
 
     //endregion
