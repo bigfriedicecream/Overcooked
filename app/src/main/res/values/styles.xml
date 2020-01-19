@@ -25,5 +25,9 @@
         <item name="android:minHeight">56dp</item>
     </style>
 
+    <style name="Widget.Loup.View.Divider" parent="">
+        <item name="android:background">@color/lightBackground</item>
+    </style>
+
 
 </resources>

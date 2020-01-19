@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:adjustViewBounds="true"
-                    android:background="@drawable/img_placeholder_16_9" />
+                    android:background="@drawable/img_placeholder_4_3" />
 
                 <TextView
                     android:id="@+id/text_title"

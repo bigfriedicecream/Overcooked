@@ -70,7 +70,7 @@ class RecipeDetailsActivity : AppCompatActivity() {
                 .with(this)
                 .load(it)
                 .centerCrop()
-                .placeholder(R.drawable.img_placeholder_16_9)
+                .placeholder(R.drawable.img_placeholder_4_3)
                 .into(image_hero)
         })
 

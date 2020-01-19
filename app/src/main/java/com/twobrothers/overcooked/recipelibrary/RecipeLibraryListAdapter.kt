@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.recipelibrary.models.RecipeSummary
 
@@ -38,8 +40,8 @@ class RecipeLibraryListAdapter(
             Glide
                 .with(root)
                 .load(recipe.heroImageUrl)
-                .centerCrop()
-                .placeholder(R.drawable.img_placeholder_16_9)
+                .placeholder(R.drawable.img_placeholder_4_3)
+                .transform(CenterCrop(), RoundedCorners(16))
                 .into(heroImage)
             root.setOnClickListener {
                 onRecipeClickListener.onClick(recipe.id)
