@@ -57,6 +57,9 @@ class RecipeDetailsViewModel(private val id: String) : ViewModel() {
     private val _isLoadingIndicatorVisible = MutableLiveData<Boolean>()
     val isLoadingIndicatorVisible: LiveData<Boolean> = _isLoadingIndicatorVisible
 
+    private val _isErrorVisible = MutableLiveData<Boolean>()
+    val isErrorVisible: LiveData<Boolean> = _isErrorVisible
+
     //endregion
 
     //region event properties
@@ -72,10 +75,12 @@ class RecipeDetailsViewModel(private val id: String) : ViewModel() {
     init {
         showLoadingIndicator()
         viewModelScope.launch {
-            val recipeList = dataSource.getRecipe(id)
-            if (recipeList != null) {
-                handleSuccess(recipeList)
+            val recipe = dataSource.getRecipe(id)
+            if (recipe != null) {
+                handleSuccess(recipe)
                 showRecipeDetails()
+            } else {
+                showError()
             }
         }
     }
@@ -98,12 +103,20 @@ class RecipeDetailsViewModel(private val id: String) : ViewModel() {
 
     private fun showLoadingIndicator() {
         _isRecipeDetailsVisible.value = false
+        _isErrorVisible.value = false
         _isLoadingIndicatorVisible.value = true
     }
 
     private fun showRecipeDetails() {
         _isLoadingIndicatorVisible.value = false
+        _isErrorVisible.value = false
         _isRecipeDetailsVisible.value = true
+    }
+
+    private fun showError() {
+        _isRecipeDetailsVisible.value = false
+        _isLoadingIndicatorVisible.value = false
+        _isErrorVisible.value = true
     }
 
     //endregion

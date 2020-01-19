@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Overcooked</string>
 
+    <string name="button_retry">Retry</string>
+    <string name="text_generic_error_title">Something went wrong</string>
+    <string name="text_generic_error_summary">Please check your internet connection and try again shortly.</string>
+
     <string name="recipe_explore_title">Explore Recipes</string>
 
     <string name="recipe_method_title">Method</string>
