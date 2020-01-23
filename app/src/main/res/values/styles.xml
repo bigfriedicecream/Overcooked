@@ -8,9 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Widget.Overcooked.Body1" parent="Widget.AppCompat.TextView">
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:textColor">@color/colorBody</item>
+        <item name="android:textAppearance">@style/TextAppearance.Overcooked.Body1</item>
+    </style>
+
     <!-- Card -->
 
-    <style name="Widget.Overcocoked.CardView" parent="Widget.MaterialComponents.CardView">
+    <style name="Widget.Overcooked.CardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">4dp</item>
         <item name="cardElevation">2dp</item>
         <item name="android:layout_marginStart">8dp</item>
@@ -20,12 +26,12 @@
 
     <!-- Button -->
 
-    <style name="Widget.Overcocoked.Button.Elevated" parent="Widget.MaterialComponents.Button">
+    <style name="Widget.Overcooked.Button.Elevated" parent="Widget.MaterialComponents.Button">
         <item name="android:backgroundTint">@color/colorPrimary</item>
         <item name="android:minHeight">56dp</item>
     </style>
 
-    <style name="Widget.Loup.View.Divider" parent="">
+    <style name="Widget.Overcooked.View.Divider" parent="">
         <item name="android:background">@color/lightBackground</item>
     </style>
 

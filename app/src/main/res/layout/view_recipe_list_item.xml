@@ -39,7 +39,7 @@
 
     <View
         android:id="@+id/view_separator"
-        style="@style/Widget.Loup.View.Divider"
+        style="@style/Widget.Overcooked.View.Divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"

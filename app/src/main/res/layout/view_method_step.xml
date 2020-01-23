@@ -11,18 +11,20 @@
 
     <TextView
         android:id="@+id/text_step"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:background="@drawable/background_list_item"
         android:gravity="center"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.Overcooked.Subtitle2"
+        android:textAppearance="@style/TextAppearance.Overcooked.Overline"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1" />
 
     <TextView
         android:id="@+id/text_details"
+        style="@style/Widget.Overcooked.Body1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
