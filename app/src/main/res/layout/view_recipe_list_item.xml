@@ -31,7 +31,7 @@
         android:maxLines="2"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:textAppearance="@style/TextAppearance.Overcooked.Subtitle1"
+        android:textAppearance="@style/TextAppearance.Overcooked.Headline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/image_hero"
         app:layout_constraintTop_toTopOf="@id/image_hero"

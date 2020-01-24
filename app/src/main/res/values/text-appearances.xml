@@ -2,49 +2,55 @@
 <resources>
 
     <style name="TextAppearance.Overcooked.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
-        <item name="android:fontFamily">@font/lato_medium</item>
-        <item name="fontFamily">@font/lato_medium</item>
-        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="TextAppearance.Overcooked.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:fontFamily">@font/lato_medium</item>
-        <item name="fontFamily">@font/lato_medium</item>
+        <item name="android:fontFamily">@font/montserrat_semibold</item>
+        <item name="fontFamily">@font/montserrat_semibold</item>
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="TextAppearance.Overcooked.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:textColor">@color/colorHeadline</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
     <style name="TextAppearance.Overcooked.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="android:fontFamily">@font/lato_medium</item>
-        <item name="fontFamily">@font/lato_medium</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
         <item name="android:textSize">18sp</item>
     </style>
 
     <style name="TextAppearance.Overcooked.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="android:fontFamily">@font/lato_medium</item>
-        <item name="fontFamily">@font/lato_medium</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:letterSpacing">0.04</item>
     </style>
 
-    <style name="TextAppearance.Overcooked.Body1" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:fontFamily">@font/merriweather_regular</item>
-        <item name="fontFamily">@font/merriweather_regular</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:letterSpacing">0.04</item>
+    <style name="TextAppearance.Overcooked.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextAppearance.Overcooked.Body2" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:fontFamily">@font/lato_medium</item>
-        <item name="fontFamily">@font/lato_medium</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">0.05</item>
     </style>
 
     <style name="TextAppearance.Overcooked.Overline" parent="TextAppearance.MaterialComponents.Overline">
         <item name="android:textSize">11sp</item>
-        <item name="android:fontFamily">@font/lato_medium</item>
-        <item name="fontFamily">@font/lato_medium</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
         <item name="android:letterSpacing">0.09</item>
     </style>
 
