@@ -37,7 +37,6 @@
                     android:id="@+id/image_hero"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
                     android:adjustViewBounds="true"
                     android:background="@drawable/img_placeholder_4_3" />
 
@@ -45,9 +44,10 @@
                     android:id="@+id/text_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="24dp"
                     android:text="@{viewModel.title}"
                     android:textAppearance="@style/TextAppearance.Overcooked.Headline3"
                     tools:text="Sticky black rice pudding with coconut" />
@@ -74,15 +74,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
                         android:text="@string/recipe_prep_title"
-                        android:textAppearance="@style/TextAppearance.Overcooked.Overline" />
+                        android:textAppearance="@style/TextAppearance.Overcooked.Body2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/text_prep"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
-                        android:textAppearance="@style/TextAppearance.Overcooked.Overline"
-                        tools:text="5" />
+                        android:textAppearance="@style/TextAppearance.Overcooked.Body2"
+                        tools:text="5 MIN" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -95,14 +96,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
                         android:text="@string/recipe_cook_title"
-                        android:textAppearance="@style/TextAppearance.Overcooked.Overline" />
+                        android:textAppearance="@style/TextAppearance.Overcooked.Body2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/text_cook"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.Overcooked.Overline"
-                        tools:text="30" />
+                        android:textAppearance="@style/TextAppearance.Overcooked.Body2"
+                        tools:text="30 MIN" />
 
                 </LinearLayout>
 
@@ -127,14 +129,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
                         android:text="@string/recipe_serves_title"
-                        android:textAppearance="@style/TextAppearance.Overcooked.Overline" />
+                        android:textAppearance="@style/TextAppearance.Overcooked.Body2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/text_serves"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.serves}"
-                        android:textAppearance="@style/TextAppearance.Overcooked.Overline"
+                        android:textAppearance="@style/TextAppearance.Overcooked.Body2"
                         tools:text="2" />
 
                 </LinearLayout>
@@ -143,7 +146,7 @@
                     android:id="@+id/text_reference"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="8dp"
                     android:drawableStart="@drawable/ic_link"
                     android:drawablePadding="8dp"
                     android:gravity="center_vertical"
@@ -151,7 +154,7 @@
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:text="@{viewModel.referenceName}"
-                    android:textAppearance="@style/TextAppearance.Overcooked.Overline"
+                    android:textAppearance="@style/TextAppearance.Overcooked.Body2"
                     app:goneUnless="@{safeUnbox(viewModel.isReferenceVisible())}"
                     tools:text="Best Recipes" />
 
@@ -159,6 +162,7 @@
                     android:id="@+id/text_ingredients_title"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
                     android:background="@color/lightBackground"
                     android:gravity="center_vertical"
                     android:paddingStart="16dp"
