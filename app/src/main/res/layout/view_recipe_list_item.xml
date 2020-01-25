@@ -26,16 +26,30 @@
         android:id="@+id/text_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         android:textAppearance="@style/TextAppearance.Overcooked.Headline5"
+        app:layout_constraintBottom_toTopOf="@id/text_total_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/image_hero"
         app:layout_constraintTop_toTopOf="@id/image_hero"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="Basil chicken coconut curry" />
+
+    <TextView
+        android:id="@+id/text_total_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.Overcooked.Body2"
+        app:layout_constraintBottom_toBottomOf="@id/image_hero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/text_title"
+        app:layout_constraintTop_toBottomOf="@id/text_title"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="20 MIN" />
 
     <View
         android:id="@+id/view_separator"

@@ -34,9 +34,11 @@ class RecipeLibraryListAdapter(
         private val root = itemView.findViewById<View>(R.id.card_root)
         private val heroImage = itemView.findViewById<ImageView>(R.id.image_hero)
         private val title = itemView.findViewById<TextView>(R.id.text_title)
+        private val totalTime = itemView.findViewById<TextView>(R.id.text_total_time)
 
         fun bind(recipe: RecipeSummary) {
             title.text = recipe.title
+            totalTime.text = recipe.getTotalTime(itemView.context)
             Glide
                 .with(root)
                 .load(recipe.heroImageUrl)

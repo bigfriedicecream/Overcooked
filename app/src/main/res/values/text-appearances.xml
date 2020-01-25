@@ -43,8 +43,9 @@
     <style name="TextAppearance.Overcooked.Body2" parent="TextAppearance.MaterialComponents.Body2">
         <item name="android:fontFamily">@font/montserrat_regular</item>
         <item name="fontFamily">@font/montserrat_regular</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textColor">@color/colorBody</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">10sp</item>
     </style>
 
     <style name="TextAppearance.Overcooked.Overline" parent="TextAppearance.MaterialComponents.Overline">
