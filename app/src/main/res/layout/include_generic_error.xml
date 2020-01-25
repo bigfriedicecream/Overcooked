@@ -13,9 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-
         android:text="@string/text_generic_error_title"
-        android:textAppearance="@style/TextAppearance.Overcooked.Subtitle2" />
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Overcooked.Subtitle1" />
 
     <TextView
         android:id="@+id/text_generic_error_summary"
@@ -23,7 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:maxWidth="300dp"
-        android:text="@string/text_generic_error_summary" />
+        android:text="@string/text_generic_error_summary"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Overcooked.Body1" />
 
     <Button
         android:id="@+id/button_generic_retry"

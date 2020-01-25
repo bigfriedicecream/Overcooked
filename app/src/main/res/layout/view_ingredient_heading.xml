@@ -7,6 +7,6 @@
     android:layout_height="wrap_content"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    android:textAppearance="@style/TextAppearance.Overcooked.Body2"
+    android:textAppearance="@style/TextAppearance.Overcooked.Body1"
     android:textStyle="bold"
     tools:text="For the sauce" />

@@ -158,17 +158,24 @@
                     app:goneUnless="@{safeUnbox(viewModel.isReferenceVisible())}"
                     tools:text="Best Recipes" />
 
+                <View
+                    style="@style/Widget.Overcooked.View.Divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp" />
+
                 <TextView
                     android:id="@+id/text_ingredients_title"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/lightBackground"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
                     android:text="@string/recipe_ingredients_title"
-                    android:textAppearance="@style/TextAppearance.Overcooked.Subtitle2" />
+                    android:textAppearance="@style/TextAppearance.Overcooked.Subtitle1" />
 
                 <LinearLayout
                     android:id="@+id/layout_ingredients"
@@ -179,16 +186,24 @@
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp" />
 
+                <View
+                    style="@style/Widget.Overcooked.View.Divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp" />
+
                 <TextView
                     android:id="@+id/text_method_title"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/lightBackground"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
                     android:text="@string/recipe_method_title"
-                    android:textAppearance="@style/TextAppearance.Overcooked.Subtitle2" />
+                    android:textAppearance="@style/TextAppearance.Overcooked.Subtitle1" />
 
                 <LinearLayout
                     android:id="@+id/layout_method"

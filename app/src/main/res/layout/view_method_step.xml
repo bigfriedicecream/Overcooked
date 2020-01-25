@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingTop="16dp">
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
 
     <TextView
         android:id="@+id/text_step"
@@ -16,7 +17,7 @@
         android:background="@drawable/background_list_item"
         android:gravity="center"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.Overcooked.Overline"
+        android:textAppearance="@style/TextAppearance.Overcooked.Body2"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +29,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:textAppearance="@style/TextAppearance.Overcooked.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/text_step"
         app:layout_constraintTop_toTopOf="parent"
