@@ -28,16 +28,22 @@ data class FirebaseRecipeData(
         )
     }
 
-    private fun mapInteractiveSteps(): List<InteractiveStep> {
-        val interactiveSteps = recipe.interactive.map {
+    private fun mapInteractiveSteps(): List<InteractiveComponent> {
+        val interactiveSteps: MutableList<InteractiveComponent> = recipe.interactive.map {
             InteractiveStep(
                 title = it.title,
                 body = it.body,
                 ingredients = it.ingredients?.map { it.toIngredient(recipe.serves, food) },
                 footnote = it.footnote
             )
-        }
-        return interactiveSteps
+        }.toMutableList()
+        interactiveSteps.add(
+            CompletionStep(
+                title = recipe.title,
+                heroImageUrl = recipe.heroImageUrl
+            )
+        )
+        return interactiveSteps.toList()
     }
 }
 

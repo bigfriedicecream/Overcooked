@@ -13,6 +13,8 @@
     <string name="recipe_cook_title">Cook</string>
     <string name="recipe_serves_title">Serves</string>
     <string name="recipe_interactive_start">Start</string>
+    <string name="recipe_interactive_completion_button">Back to recipe</string>
+    <string name="recipe_interactive_completion_title">Recipe Complete!</string>
 
     <string name="duration_time_none">None</string>
     <string name="duration_time_format_minutes">MIN</string>
