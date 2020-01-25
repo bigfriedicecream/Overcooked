@@ -12,7 +12,7 @@ data class Recipe(
     val cookTime: Int,
     val ingredients: List<Ingredient>,
     val method: List<String>,
-    val interactive: List<InteractiveStep>,
+    val interactive: List<InteractiveComponent>,
     val referenceName: String,
     val referenceUrl: String
 )
@@ -35,9 +35,16 @@ data class QuantifiedIngredient(
     val endDescription: String
 ) : Ingredient()
 
+sealed class InteractiveComponent : Serializable
+
 data class InteractiveStep(
     val title: String,
     val body: String,
     val ingredients: List<Ingredient>?,
     val footnote: String
-) : Serializable
+) : InteractiveComponent()
+
+data class CompletionStep(
+    val title: String,
+    val heroImageUrl: String
+) : InteractiveComponent()

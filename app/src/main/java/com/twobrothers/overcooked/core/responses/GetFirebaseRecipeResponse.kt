@@ -22,10 +22,22 @@ data class FirebaseRecipeData(
             cookTime = recipe.cookTime,
             ingredients = recipe.ingredients.map { it.toIngredient(recipe.serves, food) },
             method = recipe.method,
-            interactive = recipe.interactive.map { it.toInteractiveStep(recipe.serves, food) },
+            interactive = mapInteractiveSteps(),
             referenceName = recipe.referenceName,
             referenceUrl = recipe.referenceUrl
         )
+    }
+
+    private fun mapInteractiveSteps(): List<InteractiveStep> {
+        val interactiveSteps = recipe.interactive.map {
+            InteractiveStep(
+                title = it.title,
+                body = it.body,
+                ingredients = it.ingredients?.map { it.toIngredient(recipe.serves, food) },
+                footnote = it.footnote
+            )
+        }
+        return interactiveSteps
     }
 }
 
@@ -87,13 +99,4 @@ data class FirebaseInteractiveStep(
     val footnote: String,
     val textDescription: String,
     val timer: Int
-) {
-    fun toInteractiveStep(serves: Int, food: HashMap<String, FirebaseFood>): InteractiveStep {
-        return InteractiveStep(
-            title = title,
-            body = body,
-            ingredients = ingredients?.map { it.toIngredient(serves, food) },
-            footnote = footnote
-        )
-    }
-}
+)

@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.twobrothers.overcooked.core.datasource.FirebaseApiDataSource
 import com.twobrothers.overcooked.core.dagger.DaggerFirebaseApiDataSourceComponent
-import com.twobrothers.overcooked.recipedetails.models.InteractiveStep
+import com.twobrothers.overcooked.recipedetails.models.InteractiveComponent
 import com.twobrothers.overcooked.recipedetails.models.Recipe
 import kotlinx.coroutines.launch
 
@@ -17,8 +17,8 @@ class InteractiveViewModel(id: String) : ViewModel() {
 
     //region state properties
 
-    private val _interactive = MutableLiveData<Pair<List<InteractiveStep>, Int>>()
-    val interactive: LiveData<Pair<List<InteractiveStep>, Int>> = _interactive
+    private val _interactive = MutableLiveData<Pair<List<InteractiveComponent>, Int>>()
+    val interactive: LiveData<Pair<List<InteractiveComponent>, Int>> = _interactive
 
     private val _isInteractiveVisible = MutableLiveData<Boolean>()
     val isInteractiveVisible: LiveData<Boolean> = _isInteractiveVisible
