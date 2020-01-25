@@ -10,6 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.core.framework.viewModelFactory
 import com.twobrothers.overcooked.databinding.FragmentCompletionStepBinding
+import com.twobrothers.overcooked.recipedetails.RecipeDetailsActivity
 import com.twobrothers.overcooked.recipedetails.models.*
 import kotlinx.android.synthetic.main.fragment_completion_step.*
 
@@ -60,6 +61,12 @@ class CompletionStepFragment : Fragment() {
                 .placeholder(R.drawable.img_placeholder_4_3)
                 .apply(RequestOptions.circleCropTransform())
                 .into(image_hero)
+        })
+
+        viewModel.onExitInteractive.observe(this, Observer {
+            it.getContentIfNotHandled()?.let {
+                activity?.onBackPressed()
+            }
         })
 
         return binding.root
