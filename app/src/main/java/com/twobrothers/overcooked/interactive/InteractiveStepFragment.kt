@@ -10,12 +10,9 @@ import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.core.framework.viewModelFactory
 import com.twobrothers.overcooked.databinding.FragmentInteractiveStepBinding
 import com.twobrothers.overcooked.recipedetails.models.FreeTextIngredient
-import com.twobrothers.overcooked.recipedetails.models.HeadingIngredient
 import com.twobrothers.overcooked.recipedetails.models.InteractiveStep
 import com.twobrothers.overcooked.recipedetails.models.QuantifiedIngredient
 import com.twobrothers.overcooked.recipedetails.presentation.getQuantifiedIngredientReadableFormat
-import kotlinx.android.synthetic.main.activity_recipe_details.*
-import kotlinx.android.synthetic.main.fragment_interactive_step.*
 import kotlinx.android.synthetic.main.fragment_interactive_step.layout_ingredients
 
 class InteractiveStepFragment : Fragment() {
@@ -70,7 +67,7 @@ class InteractiveStepFragment : Fragment() {
                 val view = when (it) {
                     is QuantifiedIngredient -> {
                         val view = layoutInflater.inflate(
-                            R.layout.view_ingredient_default,
+                            R.layout.view_checkable_ingredient,
                             layout_ingredients,
                             false
                         )
@@ -80,7 +77,7 @@ class InteractiveStepFragment : Fragment() {
                     }
                     is FreeTextIngredient -> {
                         val view = layoutInflater.inflate(
-                            R.layout.view_ingredient_default,
+                            R.layout.view_checkable_ingredient,
                             layout_ingredients,
                             false
                         )
