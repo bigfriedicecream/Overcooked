@@ -1,11 +1,13 @@
 package com.twobrothers.overcooked.interactive
 
-import android.os.CountDownTimer
+import android.os.Handler
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.twobrothers.overcooked.recipedetails.models.Ingredient
 import com.twobrothers.overcooked.recipedetails.models.InteractiveStep
+import org.threeten.bp.Duration
+import java.util.*
 
 class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel() {
 
@@ -28,10 +30,10 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
 
     //endregion
 
-    private var timer: CountDownTimer = object : CountDownTimer(0, 0) {
-        override fun onFinish() {}
-        override fun onTick(millisUntilFinished: Long) {}
-    }
+    private var timer = Timer()
+    private var handler = Handler()
+    private var timerDurationMs: Duration = Duration.ZERO
+    private var timeRemaining: Duration = Duration.ZERO
 
     init {
         _title.value = step.title
@@ -40,32 +42,26 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
         _footnote.value = step.footnote
 
         if (step.timer != null) {
-            setTimer(5000)
-            updateTimerDisplay(5000)
+            timerDurationMs = Duration.ofMillis(5000) // step.timer
+            timeRemaining = timerDurationMs
         }
     }
 
     // region private
-
-    private fun setTimer(milliseconds: Long) {
-        timer = object : CountDownTimer(milliseconds, 1000) {
-            override fun onFinish() {}
-            override fun onTick(millisUntilFinished: Long) {
-                updateTimerDisplay(millisUntilFinished)
-            }
-        }
-    }
-
-    private fun updateTimerDisplay(millisUntilFinished: Long) {
-        _timerDisplay.value = (millisUntilFinished / 1000).toString()
-    }
 
     // endregion
 
     //region public
 
     fun startTimer() {
-        timer.start()
+        timer = Timer()
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                handler.post {
+                    timeRemaining = timeRemaining.minusMillis(1000)
+                }
+            }
+        }, 0, 1000)
     }
 
     //endregion

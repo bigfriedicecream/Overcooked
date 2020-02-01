@@ -36,7 +36,7 @@ data class FirebaseRecipeData(
                 body = it.body,
                 ingredients = it.ingredients?.map { it.toIngredient(recipe.serves, food) },
                 footnote = it.footnote,
-                timer = if (it.timer != null) Duration.ofSeconds(it.timer * 60) else null
+                timer = if (it.timer != null) Duration.ofMillis(it.timer * 60 * 1000) else null
             )
         }.toMutableList()
         interactiveSteps.add(
