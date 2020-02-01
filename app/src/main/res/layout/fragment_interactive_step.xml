@@ -59,6 +59,15 @@
                 android:text="@{viewModel.footnote}"
                 tools:text="Remove and place in a bowl" />
 
+            <TextView
+                android:id="@+id/text_timer_display"
+                style="@style/TextAppearance.Overcooked.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:text="@{viewModel.timerDisplay}"
+                tools:text="01:30" />
+
         </LinearLayout>
 
     </ScrollView>

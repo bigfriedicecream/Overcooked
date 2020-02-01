@@ -3,6 +3,7 @@ package com.twobrothers.overcooked.core.responses
 import com.twobrothers.overcooked.core.lookups.LookupIngredientType
 import com.twobrothers.overcooked.recipedetails.models.*
 import com.twobrothers.overcooked.recipedetails.presentation.mapIngredientUnitType
+import org.threeten.bp.Duration
 
 data class GetFirebaseRecipeResponse(
     val data: FirebaseRecipeData
@@ -34,7 +35,8 @@ data class FirebaseRecipeData(
                 title = it.title,
                 body = it.body,
                 ingredients = it.ingredients?.map { it.toIngredient(recipe.serves, food) },
-                footnote = it.footnote
+                footnote = it.footnote,
+                timer = if (it.timer != null) Duration.ofSeconds(it.timer * 60) else null
             )
         }.toMutableList()
         interactiveSteps.add(
@@ -104,5 +106,5 @@ data class FirebaseInteractiveStep(
     val ingredients: List<FirebaseIngredient>?,
     val footnote: String,
     val textDescription: String,
-    val timer: Int
+    val timer: Long?
 )

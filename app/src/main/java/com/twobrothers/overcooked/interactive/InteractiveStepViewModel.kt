@@ -22,6 +22,9 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
     private val _footnote = MutableLiveData<String>()
     val footnote: LiveData<String> = _footnote
 
+    private val _timerDisplay = MutableLiveData<String>()
+    val timerDisplay: LiveData<String> = _timerDisplay
+
     //endregion
 
     init {
@@ -29,6 +32,7 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
         _body.value = step.body
         _ingredients.value = Pair(step.ingredients, serves)
         _footnote.value = step.footnote
+        _timerDisplay.value = step.timer?.seconds.toString()
     }
 
     //region private

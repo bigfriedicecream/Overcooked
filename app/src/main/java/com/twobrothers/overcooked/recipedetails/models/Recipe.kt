@@ -1,6 +1,7 @@
 package com.twobrothers.overcooked.recipedetails.models
 
 import com.twobrothers.overcooked.core.lookups.IngredientMeasurementUnit
+import org.threeten.bp.Duration
 import java.io.Serializable
 
 data class Recipe(
@@ -41,7 +42,8 @@ data class InteractiveStep(
     val title: String,
     val body: String,
     val ingredients: List<Ingredient>?,
-    val footnote: String
+    val footnote: String,
+    val timer: Duration?
 ) : InteractiveComponent()
 
 data class CompletionStep(
