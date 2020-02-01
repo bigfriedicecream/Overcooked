@@ -77,6 +77,14 @@
                 android:onClick="@{() -> viewModel.startTimer()}"
                 android:text="START" />
 
+            <Button
+                android:id="@+id/button_stop_timer"
+                style="@style/Widget.Overcooked.Button.Elevated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.resetTimer()}"
+                android:text="STOP" />
+
         </LinearLayout>
 
     </ScrollView>

@@ -8,6 +8,7 @@ import com.twobrothers.overcooked.recipedetails.models.Ingredient
 import com.twobrothers.overcooked.recipedetails.models.InteractiveStep
 import org.threeten.bp.Duration
 import java.util.*
+import kotlin.concurrent.fixedRateTimer
 
 class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel() {
 
@@ -60,15 +61,12 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
 
     fun startTimer() {
         resetTimer()
-        refreshTimerDisplay()
-        timer.schedule(object : TimerTask() {
-            override fun run() {
-                handler.post {
-                    timeRemaining = timeRemaining.minusMillis(1000)
-                    refreshTimerDisplay()
-                }
+        timer = fixedRateTimer("timer", false, 1000, 1000) {
+            handler.post {
+                timeRemaining = timeRemaining.minusMillis(1000)
+                refreshTimerDisplay()
             }
-        }, 1000, 1000)
+        }
     }
 
     fun resetTimer() {
