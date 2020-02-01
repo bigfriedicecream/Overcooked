@@ -4,6 +4,7 @@ import android.os.Handler
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.twobrothers.overcooked.core.framework.Event
 import com.twobrothers.overcooked.recipedetails.models.Ingredient
 import com.twobrothers.overcooked.recipedetails.models.InteractiveStep
 import org.threeten.bp.Duration
@@ -31,10 +32,17 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
 
     //endregion
 
+    // region event properties
+
+    private val _showNotification = MutableLiveData<Event<String>>()
+    val showNotification: LiveData<Event<String>> = _showNotification
+
+    //endregion
+
     private var timer = Timer()
     private var handler = Handler()
     private var timerDurationMs: Duration = Duration.ZERO
-    private var timeRemaining: Duration = Duration.ZERO
+    private var timeRemainingMs: Duration = Duration.ZERO
 
     init {
         _title.value = step.title
@@ -43,8 +51,8 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
         _footnote.value = step.footnote
 
         if (step.timer != null) {
-            timerDurationMs = Duration.ofMillis(5000) // step.timer
-            timeRemaining = timerDurationMs
+            timerDurationMs = Duration.ofMillis(50000) // step.timer
+            timeRemainingMs = timerDurationMs
             refreshTimerDisplay()
         }
     }
@@ -52,7 +60,11 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
     // region private
 
     private fun refreshTimerDisplay() {
-        _timerDisplay.value = timeRemaining.seconds.toString()
+        _timerDisplay.value = timeRemainingMs.seconds.toString()
+    }
+
+    private fun refreshNotification() {
+        _showNotification.value = Event(timeRemainingMs.seconds.toString())
     }
 
     // endregion
@@ -63,8 +75,9 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
         resetTimer()
         timer = fixedRateTimer("timer", false, 1000, 1000) {
             handler.post {
-                timeRemaining = timeRemaining.minusMillis(1000)
+                timeRemainingMs = timeRemainingMs.minusMillis(1000)
                 refreshTimerDisplay()
+                refreshNotification()
             }
         }
     }
@@ -72,8 +85,9 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
     fun resetTimer() {
         timer.cancel()
         timer = Timer()
-        timeRemaining = timerDurationMs
+        timeRemainingMs = timerDurationMs
         refreshTimerDisplay()
+        refreshNotification()
     }
 
     //endregion
