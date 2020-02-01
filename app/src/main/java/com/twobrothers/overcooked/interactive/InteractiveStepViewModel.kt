@@ -44,24 +44,38 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
         if (step.timer != null) {
             timerDurationMs = Duration.ofMillis(5000) // step.timer
             timeRemaining = timerDurationMs
+            refreshTimerDisplay()
         }
     }
 
     // region private
+
+    private fun refreshTimerDisplay() {
+        _timerDisplay.value = timeRemaining.seconds.toString()
+    }
 
     // endregion
 
     //region public
 
     fun startTimer() {
-        timer = Timer()
+        resetTimer()
+        refreshTimerDisplay()
         timer.schedule(object : TimerTask() {
             override fun run() {
                 handler.post {
                     timeRemaining = timeRemaining.minusMillis(1000)
+                    refreshTimerDisplay()
                 }
             }
-        }, 0, 1000)
+        }, 1000, 1000)
+    }
+
+    fun resetTimer() {
+        timer.cancel()
+        timer = Timer()
+        timeRemaining = timerDurationMs
+        refreshTimerDisplay()
     }
 
     //endregion
