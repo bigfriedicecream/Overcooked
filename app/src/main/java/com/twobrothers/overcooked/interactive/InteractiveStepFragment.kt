@@ -1,14 +1,15 @@
 package com.twobrothers.overcooked.interactive
 
-import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -19,7 +20,8 @@ import com.twobrothers.overcooked.recipedetails.models.FreeTextIngredient
 import com.twobrothers.overcooked.recipedetails.models.InteractiveStep
 import com.twobrothers.overcooked.recipedetails.models.QuantifiedIngredient
 import com.twobrothers.overcooked.recipedetails.presentation.getQuantifiedIngredientReadableFormat
-import kotlinx.android.synthetic.main.fragment_interactive_step.layout_ingredients
+import kotlinx.android.synthetic.main.fragment_interactive_step.*
+
 
 class InteractiveStepFragment : Fragment() {
 
@@ -102,6 +104,12 @@ class InteractiveStepFragment : Fragment() {
             }
         })
 
+        viewModel.cancelNotification.observe(this, Observer {
+            it.getContentIfNotHandled()?.let {
+                cancelNotification()
+            }
+        })
+
         return binding.root
     }
 
@@ -116,6 +124,12 @@ class InteractiveStepFragment : Fragment() {
         with(NotificationManagerCompat.from(requireContext())) {
             notify(1, builder.build())
         }
+    }
+
+    private fun cancelNotification() {
+        val notificationManager =
+            requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.cancel(1)
     }
 
 }

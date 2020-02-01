@@ -37,6 +37,9 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
     private val _showNotification = MutableLiveData<Event<String>>()
     val showNotification: LiveData<Event<String>> = _showNotification
 
+    private val _cancelNotification = MutableLiveData<Event<Unit>>()
+    val cancelNotification: LiveData<Event<Unit>> = _cancelNotification
+
     //endregion
 
     private var timer = Timer()
@@ -63,8 +66,12 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
         _timerDisplay.value = timeRemainingMs.seconds.toString()
     }
 
-    private fun refreshNotification() {
+    private fun showNotification() {
         _showNotification.value = Event(timeRemainingMs.seconds.toString())
+    }
+
+    private fun cancelNotification() {
+        _cancelNotification.value = Event(Unit)
     }
 
     // endregion
@@ -77,7 +84,7 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
             handler.post {
                 timeRemainingMs = timeRemainingMs.minusMillis(1000)
                 refreshTimerDisplay()
-                refreshNotification()
+                showNotification()
             }
         }
     }
@@ -87,7 +94,7 @@ class InteractiveStepViewModel(step: InteractiveStep, serves: Int) : ViewModel()
         timer = Timer()
         timeRemainingMs = timerDurationMs
         refreshTimerDisplay()
-        refreshNotification()
+        cancelNotification()
     }
 
     //endregion
