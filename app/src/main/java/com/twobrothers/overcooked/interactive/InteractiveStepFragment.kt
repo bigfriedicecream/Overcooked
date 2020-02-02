@@ -1,7 +1,9 @@
 package com.twobrothers.overcooked.interactive
 
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -115,10 +116,18 @@ class InteractiveStepFragment : Fragment() {
 
     private fun showNotification(text: String) {
         // TODO: Update notification details
+        val intent = InteractiveActivity.newIntent(requireContext(), "6WAwaN0y26rjCpkrhuFn")// Intent(requireContext(), InteractiveActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(
+            requireContext(),
+            0,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
         val builder = NotificationCompat.Builder(requireContext(), "CHANNEL_ID")
             .setSmallIcon(R.drawable.ic_access_time)
             .setContentTitle("Interactive Title")
             .setContentText("Timer remaining: $text")
+            .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         with(NotificationManagerCompat.from(requireContext())) {
