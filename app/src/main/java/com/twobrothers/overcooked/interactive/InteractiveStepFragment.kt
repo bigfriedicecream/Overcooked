@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.twobrothers.overcooked.R
 import com.twobrothers.overcooked.core.framework.viewModelFactory
+import com.twobrothers.overcooked.core.services.TimerService
 import com.twobrothers.overcooked.databinding.FragmentInteractiveStepBinding
 import com.twobrothers.overcooked.recipedetails.models.FreeTextIngredient
 import com.twobrothers.overcooked.recipedetails.models.InteractiveStep
@@ -111,12 +112,28 @@ class InteractiveStepFragment : Fragment() {
             }
         })
 
+        viewModel.onStartTimer.observe(this, Observer {
+            it.getContentIfNotHandled()?.let {
+                val intent = TimerService.newIntent(requireContext(), "title", "text")
+                requireContext().startService(intent)
+            }
+        })
+
+        viewModel.onStopTimer.observe(this, Observer {
+            it.getContentIfNotHandled()?.let {
+                val intent = Intent(requireContext(), TimerService::class.java)
+                requireContext().stopService(intent)
+            }
+        })
+
         return binding.root
     }
 
     private fun showNotification(text: String) {
+
+
         // TODO: Update notification details
-        val intent = InteractiveActivity.newIntent(requireContext(), "6WAwaN0y26rjCpkrhuFn")// Intent(requireContext(), InteractiveActivity::class.java)
+        /* val intent = InteractiveActivity.newIntent(requireContext(), "6WAwaN0y26rjCpkrhuFn")// Intent(requireContext(), InteractiveActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(
             requireContext(),
             0,
@@ -132,13 +149,13 @@ class InteractiveStepFragment : Fragment() {
 
         with(NotificationManagerCompat.from(requireContext())) {
             notify(1, builder.build())
-        }
+        }*/
     }
 
     private fun cancelNotification() {
-        val notificationManager =
+        /* val notificationManager =
             requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.cancel(1)
+        notificationManager.cancel(1)*/
     }
 
 }
